@@ -26,6 +26,7 @@ public class MovementLogic
 		if (rb == null)
 			return;
 		
+		rb.velocity = Vector3.zero;
 		rb.AddForce(targetDirection * speed * deltaTime, ForceMode.VelocityChange);
 	}
 }
