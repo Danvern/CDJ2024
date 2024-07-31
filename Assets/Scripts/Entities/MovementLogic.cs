@@ -1,13 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[Serializable]
 public class MovementLogic
 {
 	private Rigidbody rb;
 	private Vector3 targetDirection = Vector3.zero;
-	private float speed = 10;
+	[SerializeField] private float speed = 100;
+	public float Speed { get { return speed; } set { speed = Math.Max(0, value); } }
+
+	public MovementLogic(Rigidbody rb)
+	{
+		this.rb = rb;
+	}
 
 	public MovementLogic(Rigidbody rb, float speed)
 	{
@@ -21,11 +29,11 @@ public class MovementLogic
 		targetDirection = direction;
 	}
 
-    public void Update(float deltaTime)
+	public void Update(float deltaTime)
 	{
 		if (rb == null)
 			return;
-		
+
 		rb.velocity = Vector3.zero;
 		rb.AddForce(targetDirection * speed * deltaTime, ForceMode.VelocityChange);
 	}

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-	private MovementLogic movement;
+	[SerializeField] private MovementLogic movement;
 
 	public void MoveToDirection(Vector3 direction)
 	{
@@ -15,7 +15,7 @@ public class Entity : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        movement = new MovementLogic(GetComponent<Rigidbody>(), 10);
+        movement = new MovementLogic(GetComponent<Rigidbody>());
 
 		movement.MoveToDirection(Vector3.forward);
     }

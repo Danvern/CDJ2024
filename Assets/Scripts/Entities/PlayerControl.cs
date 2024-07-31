@@ -24,7 +24,7 @@ public class PlayerControl : MonoBehaviour
 		if (entity == null)
 			return;
 
-		entity.MoveToDirection(new Vector3(moveDirection.x, 0, moveDirection.z));
+		entity.MoveToDirection(new Vector3(moveDirection.x, 0, moveDirection.y));
 	}
 
 }
