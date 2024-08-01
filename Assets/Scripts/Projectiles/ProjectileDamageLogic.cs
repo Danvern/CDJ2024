@@ -56,7 +56,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, position, GetForwardVector(), GetCollisionArc()))
 				continue;
 			Entity entity = collider.transform.GetComponent<Entity>();
-			if (entity == null) 
+			if (entity == null || entity.IsDead) 
 				continue;
 
 			if (entityCollisions.ContainsKey(collider.transform))
