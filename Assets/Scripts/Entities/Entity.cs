@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+	[SerializeField] private EntityHealthData healthData;
+
 	[SerializeField] private MovementLogic movement;
+	private EntityHealthLogic health;
 
 	public void MoveToDirection(Vector3 direction)
 	{
@@ -15,6 +18,9 @@ public class Entity : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+		if (healthData != null)
+			health = new EntityHealthLogic(healthData);
+
         movement = new MovementLogic(GetComponent<Rigidbody>());
 
 		movement.MoveToDirection(Vector3.forward);
