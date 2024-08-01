@@ -52,6 +52,11 @@ public class Entity : MonoBehaviour, IVisitable
 		movement = new MovementLogic(GetComponent<Rigidbody>());
 
 		movement.MoveToDirection(Vector3.forward);
+
+		if (primaryWeapon != null)
+			primaryWeapon.TakeOwnership(this);
+		if (secondaryWeapon != null)
+			secondaryWeapon.TakeOwnership(this);
 	}
 
 	// Update is called once per frame

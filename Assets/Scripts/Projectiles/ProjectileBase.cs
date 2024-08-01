@@ -8,6 +8,13 @@ public class ProjectileBase : MonoBehaviour
 	ProjectileDamageLogic damageLogic;
 	bool active = true;
 	float deletionDelay = 1f;
+	private Entity owner;
+
+	public void TakeOwnership(Entity owner)
+	{
+		this.owner = owner;
+
+	}
 
     // Start is called before the first frame update
     void Start()

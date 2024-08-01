@@ -5,6 +5,16 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
 	private Attack[] attacks;
+	private Entity owner;
+
+	public void TakeOwnership(Entity owner)
+	{
+		this.owner = owner;
+		foreach (Attack attack in attacks)
+		{
+			attack.TakeOwnership(owner);
+		}
+	}
 
 	public void Activate()
 	{
