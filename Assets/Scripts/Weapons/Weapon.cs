@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+	[SerializeField] private WeaponData data;
 	private Attack[] attacks = new Attack[0];
 	private Entity owner;
+	private IWeaponLogic logic;
 
 	public void TakeOwnership(Entity owner)
 	{
@@ -18,14 +20,20 @@ public class Weapon : MonoBehaviour
 
 	public void Activate()
 	{
+		if (logic == null) return;
+		if (!logic.IsAttackReady()) return;
+
 		foreach (Attack attack in attacks)
 		{
 			attack.Activate();
 		}
+		logic.ResetCooldown();
 	}
 
 	public void Deactivate()
 	{
+		if (logic == null) return;
+
 		foreach (Attack attack in attacks)
 		{
 			attack.Deactivate();
@@ -35,5 +43,6 @@ public class Weapon : MonoBehaviour
 	void Awake()
 	{
 		attacks = GetComponentsInChildren<Attack>();
+		logic = new WeaponLogic(data);
 	}
 }

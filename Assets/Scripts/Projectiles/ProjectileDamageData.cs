@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ProjectileDamageData", menuName = "GameplayDefinitions/Projectile/DamageData", order = 1)]
+[CreateAssetMenu(fileName = "ProjectileDamageData", menuName = "GameplayDefinitions/DamageData", order = 1)]
 public class ProjectileDamageData : ScriptableObject
 {
 	public float Lifetime = 3;
