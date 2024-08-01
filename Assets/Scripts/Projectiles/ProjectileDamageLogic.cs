@@ -39,11 +39,12 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public Vector3 GetForwardVector() { return forward; }
 
-	public void CheckCollisons(Vector3 position)
+	public bool CheckCollisons(Vector3 position)
 	{
+		bool kill = false;
 		Collider[] potentialCollisions = Physics.OverlapSphere(position, GetCollisionRadius());
 
-		if (potentialCollisions.Length == 0) return;
+		if (potentialCollisions.Length == 0) return false;
 
 		foreach (Collider collider in potentialCollisions)
 		{
@@ -57,9 +58,16 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 			else
 			{
 				entityCollisions.Add(collider.transform, Time.time);
+				DecreasePierce(1);
 				DoEntityEffect(collider.transform);
+				if (piercing < 0)
+				{
+					kill = true;
+					break;
+				}
 			}
 		}
+		return kill;
 	}
 
 	public void DoEntityEffect(Transform transform)
