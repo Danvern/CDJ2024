@@ -52,6 +52,7 @@ public class EnemyControl : MonoBehaviour
 		entity.MoveToDirection(new Vector3(moveDirection.x, 0, moveDirection.z));
 		TargetCursor();
 		entity.FacePosition(aimPosition);
+		entity.PrimaryFire(true);
 	}
 
 }
