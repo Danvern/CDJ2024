@@ -39,7 +39,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public Vector3 GetForwardVector() { return forward; }
 
-	public bool CheckCollisons(Vector3 position)
+	public bool CheckCollisons(Vector3 position, Entity owner)
 	{
 		bool kill = false;
 		Collider[] potentialCollisions = Physics.OverlapSphere(position, GetCollisionRadius());
@@ -48,18 +48,21 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 		foreach (Collider collider in potentialCollisions)
 		{
-			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, position, GetForwardVector(), GetCollisionArc())) 
+			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, position, GetForwardVector(), GetCollisionArc()))
+				continue;
+			Entity entity = collider.transform.GetComponent<Entity>();
+			if (entity == null) 
 				continue;
 
 			if (entityCollisions.ContainsKey(collider.transform))
 			{
 
 			}
-			else
+			else if (owner.IsHostile(entity))
 			{
 				entityCollisions.Add(collider.transform, Time.time);
 				DecreasePierce(1);
-				DoEntityEffect(collider.transform);
+				DoEntityEffect(entity);
 				if (piercing < 0)
 				{
 					kill = true;
@@ -70,21 +73,18 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		return kill;
 	}
 
-	public void DoEntityEffect(Transform transform)
+	public void DoEntityEffect(Entity entity)
 	{
-		Entity entity = transform.GetComponent<Entity>();
-		if (entity == null) return;
-
 		entity.Accept(this);
 	}
 
-	public void Visit(MovementLogic visitable) {}
+	public void Visit(MovementLogic visitable) { }
 
-	public void Visit(EntityHealthLogic visitable) 
+	public void Visit(EntityHealthLogic visitable)
 	{
 		visitable.DoDamage(GetDamageRandom());
 		Debug.Log(visitable.ToString());
-		
+
 	}
 
 	private bool IsColliderInsideArc(Vector3 colliderPosition, Vector3 position, Vector3 forward, float arc)
@@ -92,5 +92,5 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		return Vector3.Angle(forward, colliderPosition - position) <= arc;
 	}
 
-	public void Visit(Entity visitable) {}
+	public void Visit(Entity visitable) { }
 }

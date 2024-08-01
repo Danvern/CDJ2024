@@ -853,6 +853,7 @@ MonoBehaviour:
     speed: 100
   primaryWeapon: {fileID: 5374652790378991396}
   secondaryWeapon: {fileID: 0}
+  isEnemy: 0
 --- !u!65 &1598918307
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1230,16 +1231,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Katana
       objectReference: {fileID: 0}
-    - target: {fileID: 7372851630677673739, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7372851630677673739, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
-        type: 3}
-      propertyPath: m_RenderAlignment
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7838214671550040248, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1290,9 +1281,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4403853862300901144, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e, type: 3}
-    - {fileID: 7372851630677673739, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -27,7 +27,7 @@ public class ProjectileBase : MonoBehaviour
     {
 		if (!active) return;
 
-        if (damageLogic.CheckCollisons(transform.position))
+        if (damageLogic.CheckCollisons(transform.position, owner))
 		{
 			Kill();
 		}

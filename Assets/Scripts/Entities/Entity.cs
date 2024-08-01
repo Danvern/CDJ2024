@@ -6,12 +6,19 @@ using UnityEngine;
 public class Entity : MonoBehaviour, IVisitable
 {
 	public bool IsDead { get; private set; } = false;
+	public bool IsEnemy { get {return isEnemy;} private set{isEnemy = value;} }
 	[SerializeField] private EntityHealthData healthData;
 	[SerializeField] private MovementLogic movement;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
-
+	[SerializeField] private bool isEnemy = true;
 	private EntityHealthLogic health;
+
+	public bool IsHostile(Entity entity)
+	{
+		return entity != this && entity.IsEnemy != entity.IsEnemy;
+
+	}
 
 	public void Accept(IVisitor visitor)
 	{
