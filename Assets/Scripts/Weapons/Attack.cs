@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public void Activate() {Debug.Log("attack activated");}
+	private ParticleSystem particles;
 
-    public void Deactivate() {}
+    public void Activate()
+	{
+		particles.Play();
+	}
+
+    public void Deactivate()
+	{
+		particles.Stop();
+		Debug.Log("AttackStopped");
+	}
+
+	void Awake()
+	{
+		particles = GetComponent<ParticleSystem>();
+	}
 }
