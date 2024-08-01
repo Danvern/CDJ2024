@@ -23,6 +23,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		damageMin = data.DamageMin;
 		piercing = data.Piercing;
 		collisionRadius = data.CollisionRadius;
+		collisionArc = data.CollisionArc;
 	}
 
 	public float GetLifetime() { return lifetime; }
@@ -62,7 +63,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 			{
 
 			}
-			else if (owner.IsHostile(entity))
+			else if (owner == null || owner.IsHostile(entity))
 			{
 				entityCollisions.Add(collider.transform, Time.time);
 				DecreasePierce(1);

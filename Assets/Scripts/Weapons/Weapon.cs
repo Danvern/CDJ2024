@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-	private Attack[] attacks;
+	private Attack[] attacks = new Attack[0];
 	private Entity owner;
 
 	public void TakeOwnership(Entity owner)
@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour
 		}
 	}
 
-	void Start()
+	void Awake()
 	{
 		attacks = GetComponentsInChildren<Attack>();
 	}

@@ -21,7 +21,6 @@ public class ProjectileManager : MonoBehaviour
 	{
 		GameObject instance = Instantiate(prefab, position, rotation, transform);
 		ProjectileBase projectile = instance.GetComponent<ProjectileBase>();
-
 		if (projectile != null)
 		{
 			projectile.TakeOwnership(owner);

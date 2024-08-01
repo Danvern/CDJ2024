@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Jobs;
 
@@ -16,7 +17,6 @@ public class ProjectileBase : MonoBehaviour
 	public void TakeOwnership(Entity owner)
 	{
 		this.owner = owner;
-
 	}
 
 	public void TrackTransform(Transform anchor)
@@ -52,6 +52,23 @@ public class ProjectileBase : MonoBehaviour
 			Kill();
 		}
     }
+
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.yellow;
+		float rayLength = 3;
+		float rayArc = 90;
+		if (damageLogic != null)
+		{
+			rayLength = damageLogic.GetCollisionRadius();
+			rayArc = damageLogic.GetCollisionArc();
+		}
+		Gizmos.DrawRay(transform.position, transform.forward * rayLength);
+		Gizmos.color = Color.red;
+		Gizmos.DrawRay(transform.position, Quaternion.Euler(0, rayArc / 2, 0) * transform.rotation * Vector3.forward * rayLength);
+		Gizmos.DrawRay(transform.position, Quaternion.Euler(0, -rayArc / 2, 0) * transform.rotation * Vector3.forward * rayLength);
+
+	}
 
 	private void Kill()
 	{
