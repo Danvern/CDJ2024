@@ -32,5 +32,5 @@ public class EntityHealthLogic : IEntityHealthLogic
 			entityKilled?.Invoke(source);
 	}
 
-	// public override string ToString() { return "" + GetHealthCurrent() + "/" + GetHealthMax(); }
+	public override string ToString() { return "" + GetHealthCurrent() + "/" + GetHealthMax(); }
 }

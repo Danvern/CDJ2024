@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour, IVisitable
 
 	public bool IsHostile(Entity entity)
 	{
-		return entity != this && entity.IsEnemy != entity.IsEnemy;
+		return entity != this && IsEnemy != entity.IsEnemy;
 
 	}
 

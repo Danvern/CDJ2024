@@ -17,4 +17,4 @@ MonoBehaviour:
   DamageMin: 8
   Piercing: 0
   CollisionRadius: 3
-  CollisionArc: 0
+  CollisionArc: 90
