@@ -9,8 +9,9 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private float damageMin = 1;
 	private int piercing = 0;
 
-	private int collisionRadius = 3;
-	private int collisionArc = 90;
+	private float collisionRadius = 3;
+	private float collisionArc = 0;
+	private Vector3 forward = Vector3.zero;
 
 	private Dictionary<Transform, float> entityCollisions = new Dictionary<Transform, float>();
 
@@ -19,6 +20,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		damageMax = data.DamageMax;
 		damageMin = data.DamageMin;
 		piercing = data.Piercing;
+		collisionRadius = data.CollisionRadius;
 	}
 
 	public float GetDamageMax() { return damageMax; }
@@ -31,14 +33,23 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public void DecreasePierce(int resistance) { piercing = Mathf.FloorToInt(piercing - resistance); }
 
+	public float GetCollisionRadius() { return collisionRadius; }
+
+	public float GetCollisionArc() { return collisionArc; }
+
+	public Vector3 GetForwardVector() { return forward; }
+
 	public void CheckCollisons(Vector3 position)
 	{
-		Collider[] potentialCollisions = Physics.OverlapSphere(position, collisionRadius);
+		Collider[] potentialCollisions = Physics.OverlapSphere(position, GetCollisionRadius());
 
 		if (potentialCollisions.Length == 0) return;
 
 		foreach (Collider collider in potentialCollisions)
 		{
+			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, position, GetForwardVector(), GetCollisionArc())) 
+				continue;
+
 			if (entityCollisions.ContainsKey(collider.transform))
 			{
 
@@ -66,6 +77,11 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		visitable.DoDamage(GetDamageRandom());
 		Debug.Log(visitable.ToString());
 		
+	}
+
+	private bool IsColliderInsideArc(Vector3 colliderPosition, Vector3 position, Vector3 forward, float arc)
+	{
+		return Vector3.Angle(forward, colliderPosition - position) <= arc;
 	}
 
 	public void Visit(Entity visitable) {}

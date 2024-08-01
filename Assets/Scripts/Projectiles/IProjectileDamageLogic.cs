@@ -13,4 +13,8 @@ public interface IProjectileDamageLogic : IVisitor
 	public abstract bool DoesPierce(int resistance);
 
 	public abstract void DecreasePierce(int resistance);
+
+	public abstract float GetCollisionRadius();
+
+	public abstract float GetCollisionArc();
 }
