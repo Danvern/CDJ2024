@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "ProjectileDamageData", menuName = "GameplayDefinitions/Projectile/DamagedData", order = 1)]
 public class ProjectileDamageData : ScriptableObject
 {
     public float DamageMax = 0;
