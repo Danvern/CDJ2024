@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 8009197107927425177, guid: 777f98c9d1ff00a438f7cc16c8426d28,
     type: 3}
+  melee: 1
 --- !u!1 &5283588714837828921
 GameObject:
   m_ObjectHideFlags: 0

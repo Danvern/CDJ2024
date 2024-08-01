@@ -12,6 +12,11 @@ public class ProjectileManager : MonoBehaviour
 		Instantiate(prefab, position, rotation, transform);
 	}
 
+	public void GenerateProjectile(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent)
+	{
+		Instantiate(prefab, position, rotation, parent);
+	}
+
 	void Awake()
 	{
 		if (Instance == null)
