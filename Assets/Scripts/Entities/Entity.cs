@@ -6,13 +6,15 @@ using UnityEngine;
 public class Entity : MonoBehaviour, IVisitable
 {
 	public bool IsDead { get; private set; } = false;
-	public bool IsEnemy { get {return isEnemy;} private set{isEnemy = value;} }
+	public bool IsEnemy { get { return isEnemy; } private set { isEnemy = value; } }
 	[SerializeField] private EntityHealthData healthData;
 	[SerializeField] private MovementLogic movement;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
 	[SerializeField] private bool isEnemy = true;
 	private EntityHealthLogic health;
+	private const float deletionDelay = 1f;
+
 
 	public bool IsHostile(Entity entity)
 	{
@@ -54,7 +56,10 @@ public class Entity : MonoBehaviour, IVisitable
 	private void Start()
 	{
 		if (healthData != null)
+		{
 			health = new EntityHealthLogic(healthData);
+			health.entityKilled += (killer) => { Kill(); };
+		}
 
 		movement = new MovementLogic(GetComponent<Rigidbody>());
 
@@ -72,5 +77,19 @@ public class Entity : MonoBehaviour, IVisitable
 
 		if (movement != null)
 			movement.Update(Time.deltaTime);
+	}
+
+	private void Kill()
+	{
+		if (IsDead) return;
+
+		IsDead = true;
+		StartCoroutine(DestroyAfterDelay(deletionDelay));
+	}
+
+	private IEnumerator DestroyAfterDelay(float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		Destroy(gameObject);
 	}
 }

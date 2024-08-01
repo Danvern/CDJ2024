@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ProjectileDamageLogic : IProjectileDamageLogic
 {
+	private float lifetime = 3;
 	private float damageMax = 0;
 	private float damageMin = 1;
 	private int piercing = 0;
@@ -17,11 +18,14 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public ProjectileDamageLogic(ProjectileDamageData data)
 	{
+		lifetime = data.Lifetime;
 		damageMax = data.DamageMax;
 		damageMin = data.DamageMin;
 		piercing = data.Piercing;
 		collisionRadius = data.CollisionRadius;
 	}
+
+	public float GetLifetime() { return lifetime; }
 
 	public float GetDamageMax() { return damageMax; }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IProjectileDamageLogic : IVisitor
 {
+	public abstract float GetLifetime();
 	public abstract float GetDamageMax();
 
 	public abstract float GetDamageMin();
