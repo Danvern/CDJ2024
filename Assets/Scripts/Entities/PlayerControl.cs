@@ -19,6 +19,11 @@ public class PlayerControl : MonoBehaviour
 		moveDirection = value.Get<Vector2>();
 	}
 
+	public void OnFire(InputValue value)
+	{
+		entity.PrimaryFire(value.isPressed);
+	}
+
 	private void Update()
 	{
 		if (entity == null)
