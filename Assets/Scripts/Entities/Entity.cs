@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour, IVisitable
 {
 	[SerializeField] private EntityHealthData healthData;
 	[SerializeField] private MovementLogic movement;
@@ -11,6 +11,15 @@ public class Entity : MonoBehaviour
 	[SerializeField] private Weapon secondaryWeapon;
 
 	private EntityHealthLogic health;
+
+	public void Accept(IVisitor visitor)
+	{
+		visitor.Visit(this);
+		if (health != null)
+			visitor.Visit(health);
+		if (movement != null)
+			visitor.Visit(movement);
+	}
 
 	public void MoveToDirection(Vector3 direction)
 	{

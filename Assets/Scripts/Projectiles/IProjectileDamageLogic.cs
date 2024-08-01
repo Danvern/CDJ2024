@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IProjectileDamageLogic
+public interface IProjectileDamageLogic : IVisitor
 {
-	public virtual float GetDamageMax() { return 0; }
+	public abstract float GetDamageMax();
 
-	public virtual float GetDamageMin() { return 0; }
+	public abstract float GetDamageMin();
 
-	public virtual float GetDamageRandom() { return GetDamageMin() + Random.value * (GetDamageMax() - GetDamageMin()); }
+	public abstract float GetDamageRandom();
 
 	public abstract bool DoesPierce(int resistance);
 
