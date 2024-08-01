@@ -12,7 +12,7 @@ public class Attack : MonoBehaviour
 		if (particles != null)
 			particles.Play();
 
-		Instantiate(projectile);
+		ProjectileManager.Instance.GenerateProjectile(projectile, transform.position, transform.rotation);
 	}
 
     public void Deactivate()
