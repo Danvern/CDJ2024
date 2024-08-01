@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96ac5387efbb804ab5b893a795ba7da, type: 3}
   m_Name: PlayerSlashBasicDamage
   m_EditorClassIdentifier: 
+  Lifetime: 3
   DamageMax: 5
   DamageMin: 8
   Piercing: 0
+  CollisionRadius: 3
+  CollisionArc: 0

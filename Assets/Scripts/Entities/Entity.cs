@@ -8,10 +8,11 @@ public class Entity : MonoBehaviour, IVisitable
 	public bool IsDead { get; private set; } = false;
 	public bool IsEnemy { get { return isEnemy; } private set { isEnemy = value; } }
 	[SerializeField] private EntityHealthData healthData;
-	[SerializeField] private MovementLogic movement;
+	[SerializeField] private float speed = 100;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
 	[SerializeField] private bool isEnemy = true;
+	private MovementLogic movement;
 	private EntityHealthLogic health;
 	private const float deletionDelay = 1f;
 
@@ -61,7 +62,7 @@ public class Entity : MonoBehaviour, IVisitable
 			health.entityKilled += (killer) => { Kill(); };
 		}
 
-		movement = new MovementLogic(GetComponent<Rigidbody>());
+		movement = new MovementLogic(GetComponent<Rigidbody>(), speed);
 
 		movement.MoveToDirection(Vector3.forward);
 

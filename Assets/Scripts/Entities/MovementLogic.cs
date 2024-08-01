@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[Serializable]
 public class MovementLogic : IVisitable
 {
 	private Rigidbody rb;
 	private Vector3 targetDirection = Vector3.zero;
-	[SerializeField] private float speed = 100;
-	public float Speed { get { return speed; } set { speed = Math.Max(0, value); } }
+	private float speed = 100;
+	public float Speed { get { return speed; } set { speed = Mathf.Max(0, value); } }
 
 	public void Accept(IVisitor visitor) { visitor.Visit(this); }
 
