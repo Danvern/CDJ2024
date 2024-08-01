@@ -9,10 +9,8 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private float damageMax = 0;
 	private float damageMin = 1;
 	private int piercing = 0;
-
 	private float collisionRadius = 3;
 	private float collisionArc = 0;
-	private Vector3 forward = Vector3.zero;
 
 	private Dictionary<Transform, float> entityCollisions = new Dictionary<Transform, float>();
 
@@ -42,18 +40,16 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public float GetCollisionArc() { return collisionArc; }
 
-	public Vector3 GetForwardVector() { return forward; }
-
-	public bool CheckCollisons(Vector3 position, Entity owner)
+	public bool CheckCollisons(Transform transform, Entity owner)
 	{
 		bool kill = false;
-		Collider[] potentialCollisions = Physics.OverlapSphere(position, GetCollisionRadius());
+		Collider[] potentialCollisions = Physics.OverlapSphere(transform.position, GetCollisionRadius());
 
 		if (potentialCollisions.Length == 0) return false;
 
 		foreach (Collider collider in potentialCollisions)
 		{
-			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, position, GetForwardVector(), GetCollisionArc()))
+			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, transform.position, transform.forward, GetCollisionArc()))
 				continue;
 			Entity entity = collider.transform.GetComponent<Entity>();
 			if (entity == null || entity.IsDead) 
