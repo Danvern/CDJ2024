@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour, IVisitable
 {
+	public bool IsDead { get; private set; } = false;
 	[SerializeField] private EntityHealthData healthData;
 	[SerializeField] private MovementLogic movement;
 	[SerializeField] private Weapon primaryWeapon;
@@ -24,6 +25,12 @@ public class Entity : MonoBehaviour, IVisitable
 	public void MoveToDirection(Vector3 direction)
 	{
 		movement.MoveToDirection(direction);
+	}
+
+	public void FacePosition(Vector3 position)
+	{
+		Vector3 forward = new Vector3(position.x - transform.position.x, 0, position.z - transform.position.z);
+		transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
 	}
 
 	public void PrimaryFire(bool pressed)
