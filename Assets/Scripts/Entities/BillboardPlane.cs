@@ -13,7 +13,7 @@ public class BillboardPlane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		transform.rotation = Camera.main.transform.rotation * Quaternion.Euler(-90, 0, 0);
+		transform.rotation = Camera.main.transform.rotation * Quaternion.Euler(-270, 180, 0);
         
     }
 }
