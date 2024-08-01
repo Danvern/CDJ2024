@@ -8,13 +8,14 @@ public class Attack : MonoBehaviour
 
     public void Activate()
 	{
-		particles.Play();
+		if (particles != null)
+			particles.Play();
 	}
 
     public void Deactivate()
 	{
-		particles.Stop();
-		Debug.Log("AttackStopped");
+		if (particles != null)
+			particles.Stop();
 	}
 
 	void Awake()
