@@ -49,6 +49,7 @@ public class Weapon : MonoBehaviour
 			return;
 
 		attacks[index].Activate();
+		Debug.Log("Activated Attack: " + index);
 	}
 
 	public void DeactivateAttack(int index)
@@ -76,7 +77,7 @@ public class Weapon : MonoBehaviour
 
 		stateMachine = new StateMachine();
 		void Af(IState from, IState to, System.Func<bool> condition) => stateMachine.AddTransition(from, to, new FunctionPredicate(condition));
-		void At(IState from, IState to, TriggerPredicate trigger) => stateMachine.AddTransition(from, to, trigger);
+		//void At(IState from, IState to, TriggerPredicate trigger) => stateMachine.AddTransition(from, to, trigger);
 
 		AttackCooldown cooldown = new AttackCooldown(this, logic.GetCooldown());
 		AttackCombo combo = new AttackCombo(this, data.AttackDefinitions);

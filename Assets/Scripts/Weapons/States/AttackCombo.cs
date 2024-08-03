@@ -40,8 +40,8 @@ public class AttackCombo : IState
 	{
 		weapon.LastAttackTime = Time.time;
 
-		weapon.DeactivateAttack(comboData[ComboStage].GetIndex());
 		weapon.UpdateTrackedAttack(comboData[ComboStage].GetIndex());
+		weapon.DeactivateAttack(comboData[ComboStage].GetIndex());
 
 		// Evaluate combo success
 		if (Status == ComboState.Successful || Status == ComboState.Perfect)

@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7228374
 Transform:
   m_ObjectHideFlags: 0
@@ -7875,6 +7875,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7493684135216324028, guid: 89a346df7fe37f049982877c7fbbee45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7993,11 +7998,28 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 2279567225676665490, guid: 01d5121a8260a3a468676ce1624b8d56,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 8009197107927425177, guid: 777f98c9d1ff00a438f7cc16c8426d28,
+        type: 3}
+    - target: {fileID: 4048000855602310945, guid: 01d5121a8260a3a468676ce1624b8d56,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4737439951036461151, guid: 01d5121a8260a3a468676ce1624b8d56,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8039097304542819753, guid: 01d5121a8260a3a468676ce1624b8d56,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 8009197107927425177, guid: 5d7fed4aa6de8244d9c120356d4a3a67,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
