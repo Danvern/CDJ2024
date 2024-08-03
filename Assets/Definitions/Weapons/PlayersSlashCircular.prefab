@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5205889631963328650}
   - component: {fileID: 1221675808152238812}
   m_Layer: 0
-  m_Name: PlayersSlashBasicCombo
+  m_Name: PlayersSlashCircular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -302,7 +302,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 4.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -567,7 +567,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.2217305
+      scalar: -1.2217305
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1321,7 +1321,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 9.424778
+      scalar: 31.415926
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -4869,7 +4869,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a178a768eb2fc124b8ba2b933ca12c47, type: 2}
+  - {fileID: 2100000, guid: 108af2a4cf7b96646b2b916ab25779ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackDefinitions:
   - id: 0
-    cooldown: 1
+    cooldown: 0.75
     idealTiming: 1
     idealTimingWindow: 1
   - id: 1
-    cooldown: 0.5
+    cooldown: 0.4
+    idealTiming: 1
+    idealTimingWindow: 1
+  - id: 2
+    cooldown: 1
     idealTiming: 1
     idealTimingWindow: 1
