@@ -31,18 +31,6 @@ public class AttackCombo : IState
 		else
 			Status = ComboState.Failed;
 
-		weapon.ActivateAttack(comboData[ComboStage].GetIndex());
-		
-		//AudioManager.Instance.PlayOneShot(!_gun.GunCycle.IsNull ? _gun.GunCycle : FModEvents.Instance.GunshotGenericCycle, _soundOrigin.position);
-	}
-
-	public void OnExit()
-	{
-		weapon.LastAttackTime = Time.time;
-
-		weapon.UpdateTrackedAttack(comboData[ComboStage].GetIndex());
-		weapon.DeactivateAttack(comboData[ComboStage].GetIndex());
-
 		// Evaluate combo success
 		if (Status == ComboState.Successful || Status == ComboState.Perfect)
 		{
@@ -52,6 +40,19 @@ public class AttackCombo : IState
 		{
 			ComboStage = 0;
 		}
+		weapon.ActivateAttack(comboData[ComboStage].GetIndex());
+		weapon.UpdateTrackedAttack(comboData[ComboStage].GetIndex());
+		
+		Debug.Log("Activated Attack Timing: " + (Time.time - weapon.LastAttackTime) + "s");
+
+		//AudioManager.Instance.PlayOneShot(!_gun.GunCycle.IsNull ? _gun.GunCycle : FModEvents.Instance.GunshotGenericCycle, _soundOrigin.position);
+	}
+
+	public void OnExit()
+	{
+		weapon.LastAttackTime = Time.time;
+
+		weapon.DeactivateAttack(comboData[ComboStage].GetIndex());
 	}
 
 	public void FrameUpdate()

@@ -49,7 +49,6 @@ public class Weapon : MonoBehaviour
 			return;
 
 		attacks[index].Activate();
-		Debug.Log("Activated Attack: " + index);
 	}
 
 	public void DeactivateAttack(int index)
