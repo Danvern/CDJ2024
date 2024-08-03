@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d670d1e933167e9409e1a47e4cd70cca, type: 3}
   m_Name: LightSword
   m_EditorClassIdentifier: 
-  Cooldown: 1
+  AttackDefinitions:
+  - id: 0
+    cooldown: 1
+    idealTiming: 1
+    idealTimingWindow: 1

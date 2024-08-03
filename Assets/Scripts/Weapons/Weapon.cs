@@ -86,4 +86,14 @@ public class Weapon : MonoBehaviour
 
 		stateMachine.SetState(cooldown);
 	}
+
+	void Update()
+	{
+		stateMachine.FrameUpdate();
+	}
+
+	void FixedUpdate()
+	{
+		stateMachine.PhysicsUpdate();
+	}
 }
