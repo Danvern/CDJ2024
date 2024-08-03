@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
 	private Attack[] attacks = new Attack[0];
 	private Entity owner;
 	private IWeaponLogic logic;
+	private StateMachine stateMachine;
 
 	public void TakeOwnership(Entity owner)
 	{
@@ -40,9 +41,29 @@ public class Weapon : MonoBehaviour
 		}
 	}
 
+	public void TriggerAttack(int index)
+	{
+		if (attacks.Length <= index)
+			return;
+
+		attacks[index].Activate();
+	}
+
+	public void DeactivateAttack(int index)
+	{
+		if (attacks.Length <= index)
+			return;
+
+		attacks[index].Deactivate();
+	}
+
 	void Awake()
 	{
 		attacks = GetComponentsInChildren<Attack>();
 		logic = new WeaponLogic(data);
+
+		stateMachine = new StateMachine();
+
+
 	}
 }

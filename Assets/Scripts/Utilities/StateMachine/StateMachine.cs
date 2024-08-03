@@ -163,7 +163,7 @@ public class StateMachine
 
 	private ITransition GetTransition()
 	{
-		// loop all to update predicates
+		// Loop all to update predicates
 		ITransition valid = null;
 
 		foreach (ITransition transition in _anyTransitions)
