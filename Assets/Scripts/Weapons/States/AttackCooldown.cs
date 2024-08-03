@@ -15,6 +15,7 @@ public class AttackCooldown : IState
 
 	public void OnEnter()
 	{
+		delay = weapon.GetCooldown();
 		Finished = false;
 		countdown = new OwlCountdown(delay);
 		countdown.Expired += FinishCycle;

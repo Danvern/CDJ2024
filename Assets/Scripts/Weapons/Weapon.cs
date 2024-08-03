@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -10,6 +8,7 @@ public class Weapon : MonoBehaviour
 	private Entity owner;
 	private IWeaponLogic logic;
 	private StateMachine stateMachine;
+	private bool active = false;
 
 	public void TakeOwnership(Entity owner)
 	{
@@ -25,10 +24,11 @@ public class Weapon : MonoBehaviour
 		if (logic == null) return;
 		if (!logic.IsAttackReady()) return;
 
-		foreach (Attack attack in attacks)
-		{
-			attack.Activate();
-		}
+		// foreach (Attack attack in attacks)
+		// {
+		// 	attack.Activate();
+		// }
+		active = true;
 		logic.ResetCooldown();
 	}
 
@@ -36,10 +36,11 @@ public class Weapon : MonoBehaviour
 	{
 		if (logic == null) return;
 
-		foreach (Attack attack in attacks)
-		{
-			attack.Deactivate();
-		}
+		// foreach (Attack attack in attacks)
+		// {
+		// 	attack.Deactivate();
+		// }
+		active = false;
 	}
 
 	public void ActivateAttack(int index)
@@ -58,13 +59,31 @@ public class Weapon : MonoBehaviour
 		attacks[index].Deactivate();
 	}
 
+	public float GetCooldown()
+	{
+		return logic.GetCooldown();
+	}
+
+	public void UpdateTrackedAttack(int index)
+	{
+		logic.SetTrackedAttack(index);
+	}
+
 	void Awake()
 	{
 		attacks = GetComponentsInChildren<Attack>();
 		logic = new WeaponLogic(data);
 
 		stateMachine = new StateMachine();
+		void Af(IState from, IState to, System.Func<bool> condition) => stateMachine.AddTransition(from, to, new FunctionPredicate(condition));
+		void At(IState from, IState to, TriggerPredicate trigger) => stateMachine.AddTransition(from, to, trigger);
 
+		AttackCooldown cooldown = new AttackCooldown(this, logic.GetCooldown());
+		AttackCombo combo = new AttackCombo(this, data.AttackDefinitions);
 
+		Af(cooldown, combo, () => cooldown.Finished && active);
+		Af(combo, cooldown, () => true);
+
+		stateMachine.SetState(cooldown);
 	}
 }
