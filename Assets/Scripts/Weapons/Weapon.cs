@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+	public float LastAttackTime { get;  set; } = -999;
 	[SerializeField] private WeaponData data;
 	private Attack[] attacks = new Attack[0];
 	private Entity owner;
@@ -41,7 +42,7 @@ public class Weapon : MonoBehaviour
 		}
 	}
 
-	public void TriggerAttack(int index)
+	public void ActivateAttack(int index)
 	{
 		if (attacks.Length <= index)
 			return;
