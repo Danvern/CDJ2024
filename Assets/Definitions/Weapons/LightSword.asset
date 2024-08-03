@@ -16,11 +16,11 @@ MonoBehaviour:
   - id: 0
     cooldown: 0.75
     idealTiming: 1
-    idealTimingWindow: 1
+    idealTimingWindow: 0.5
   - id: 1
     cooldown: 0.4
-    idealTiming: 1
-    idealTimingWindow: 1
+    idealTiming: 0.8
+    idealTimingWindow: 0.25
   - id: 2
     cooldown: 1
     idealTiming: 1
