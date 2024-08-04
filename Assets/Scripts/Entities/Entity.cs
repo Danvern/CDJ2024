@@ -32,7 +32,7 @@ public class Entity : MonoBehaviour, IVisitable
 			visitor.Visit(movement);
 	}
 
-	public void PushTowardsAim(float power, float slideTime, bool fullStun = true)
+	public void DashToAim(float power, float slideTime, bool fullStun = true)
 	{
 		movement.MoveToDirection(transform.forward);
 		movement.Dash(power, slideTime);

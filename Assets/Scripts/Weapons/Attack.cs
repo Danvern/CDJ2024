@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.Rendering;
 
 public interface IAttackEffect
@@ -16,7 +17,7 @@ public class DashEffect : IAttackEffect
 	float slideTime;
 	bool controlled = true;
 
-	DashEffect(float power, float slideTime, bool controlled)
+	public DashEffect(float power, float slideTime, bool controlled)
 	{
 		this.power = power;
 		this.slideTime = slideTime;
@@ -25,7 +26,7 @@ public class DashEffect : IAttackEffect
 
 	public void Activate(Entity owner)
 	{
-		owner.PushTowardsAim(power, slideTime, fullStun: !controlled);
+		owner.DashToAim(power, slideTime, fullStun: !controlled);
 	}
 
 	public void Deactivate(Entity owner)
@@ -37,6 +38,7 @@ public class Attack : MonoBehaviour
 {
 	[SerializeField] GameObject projectile;
 	[SerializeField] bool melee = false;
+	IAttackEffectData[] effectData = new IAttackEffectData[0];
 	IAttackEffect[] effects = new IAttackEffect[0];
 	private ParticleSystem particles;
 	private Entity owner;
@@ -77,5 +79,14 @@ public class Attack : MonoBehaviour
 	void Awake()
 	{
 		particles = GetComponent<ParticleSystem>();
+		List<IAttackEffect> newEffects = new();
+		foreach (var effect in effectData)
+		{
+			if (effect != null)
+			{
+				newEffects.Add(effect.CreateEffect());
+			}
+		}
+		effects = newEffects.ToArray();
 	}
 }
