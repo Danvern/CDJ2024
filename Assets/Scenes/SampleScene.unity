@@ -4315,9 +4315,9 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0.5
+  m_YDamping: 0.5
+  m_ZDamping: 0.5
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
@@ -7998,10 +7998,20 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 1531539716861385345, guid: 01d5121a8260a3a468676ce1624b8d56,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1746040309709775481, guid: 01d5121a8260a3a468676ce1624b8d56,
         type: 3}
       propertyPath: speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1746040309709775481, guid: 01d5121a8260a3a468676ce1624b8d56,
+        type: 3}
+      propertyPath: acceleration
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2279567225676665490, guid: 01d5121a8260a3a468676ce1624b8d56,
         type: 3}
