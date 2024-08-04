@@ -32,8 +32,10 @@ public class MoveWalk : IState
 		if (movement.GetRigidbody() == null)
 			return;
 
-		movement.GetRigidbody().velocity = Vector3.zero;
+		movement.GetRigidbody().velocity = movement.GetTargetDirection() * moveSpeed; // Sharp Turns
 		movement.GetRigidbody().AddForce(movement.GetTargetDirection() * acceleration * Time.deltaTime, ForceMode.VelocityChange);
+		if (movement.GetRigidbody().velocity.magnitude > moveSpeed)
+			movement.GetRigidbody().velocity = movement.GetRigidbody().velocity.normalized * moveSpeed;
 	}
 
 	public void PhysicsUpdate() { }

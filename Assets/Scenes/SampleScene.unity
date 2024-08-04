@@ -7998,6 +7998,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 1746040309709775481, guid: 01d5121a8260a3a468676ce1624b8d56,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2279567225676665490, guid: 01d5121a8260a3a468676ce1624b8d56,
         type: 3}
       propertyPath: projectile
