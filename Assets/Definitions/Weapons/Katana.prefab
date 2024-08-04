@@ -48,6 +48,13 @@ MonoBehaviour:
     type: 3}
   melee: 1
   effectData: []
+  attackSFX:
+    Guid:
+      Data1: 78615263
+      Data2: 1197672482
+      Data3: -30922872
+      Data4: 1658677162
+    Path: event:/player/Slash_def
 --- !u!1 &1747969469246421616
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +104,13 @@ MonoBehaviour:
   melee: 1
   effectData:
   - {fileID: 11400000, guid: 0774d81618747f74b9b7f27121b8c4ad, type: 2}
+  attackSFX:
+    Guid:
+      Data1: -516033480
+      Data2: 1196985909
+      Data3: -1994609219
+      Data4: -990501423
+    Path: event:/player/dashslice
 --- !u!1 &4054120091597940814
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +159,13 @@ MonoBehaviour:
     type: 3}
   melee: 1
   effectData: []
+  attackSFX:
+    Guid:
+      Data1: 1114336854
+      Data2: 1314879964
+      Data3: 1699850900
+      Data4: -26194378
+    Path: event:/player/bigslash_def
 --- !u!1 &4758878082390341933
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +214,13 @@ MonoBehaviour:
     type: 3}
   melee: 1
   effectData: []
+  attackSFX:
+    Guid:
+      Data1: 78615263
+      Data2: 1197672482
+      Data3: -30922872
+      Data4: 1658677162
+    Path: event:/player/Slash_def
 --- !u!1 &5283588714837828921
 GameObject:
   m_ObjectHideFlags: 0
