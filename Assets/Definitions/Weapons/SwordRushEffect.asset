@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a2ce0c2aa5380409f53d22ab3a85df, type: 3}
   m_Name: SwordRushEffect
   m_EditorClassIdentifier: 
-  power: 10
-  slideTime: 0.5
+  power: 800
+  slideTime: 0.1
   controlled: 1
