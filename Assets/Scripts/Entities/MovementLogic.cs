@@ -83,7 +83,7 @@ public class MovementLogic : IVisitable, IMovementLogic
 		void Af(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, new FunctionPredicate(condition));
 		//void At(IState from, IState to, TriggerPredicate trigger) => stateMachine.AddTransition(from, to, trigger);
 
-		MoveWalk walk = new MoveWalk(this, speed);
+		MoveWalk walk = new MoveWalk(this);
 		dashState = new MoveDash(this, speed * DEFAULT_DASH_MULTIPLIER);
 		dashState.Finish += () => moveTrigger = MoveTrigger.Walk;
 

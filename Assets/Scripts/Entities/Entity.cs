@@ -71,6 +71,7 @@ public class Entity : MonoBehaviour, IVisitable
 
 		movement = MovementLogic.CreateMovementLogic(GetComponent<Rigidbody>());
 		movement.SetSpeed(speed);
+		movement.SetAcceleration(acceleration);
 
 		movement.MoveToDirection(Vector3.forward);
 
