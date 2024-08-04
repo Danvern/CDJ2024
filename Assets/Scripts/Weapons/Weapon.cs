@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-	public float LastAttackTime { get;  set; } = -999;
+	public float LastAttackTime { get; set; } = -999;
 	[SerializeField] private WeaponData data;
 	private Attack[] attacks = new Attack[0];
 	private Entity owner;
@@ -79,10 +79,24 @@ public class Weapon : MonoBehaviour
 		//void At(IState from, IState to, TriggerPredicate trigger) => stateMachine.AddTransition(from, to, trigger);
 
 		AttackCooldown cooldown = new AttackCooldown(this, logic.GetCooldown());
-		AttackCombo combo = new AttackCombo(this, data.AttackDefinitions, data.MaxCombo);
+		AttackCombo combo = new AttackCombo(this, data.GetComboDefinitions(), data.MaxCombo);
 
-		Af(cooldown, combo, () => cooldown.Finished && active);
-		Af(combo, cooldown, () => true);
+		AttackDefinition[] chargeDefinitions = data.GetChargeDefinitions();
+		if (chargeDefinitions.Length > 0) //TODO: Make this more versatile
+		{
+			AttackHold charge = new AttackHold(this, chargeDefinitions[0], data.MaxCombo);
+
+			Af(cooldown, charge, () => cooldown.Finished && active);
+			Af(charge, combo, () => charge.Status == ComboState.Failed && !active);
+			Af(charge, cooldown, () => (charge.Status == ComboState.Perfect || charge.Status == ComboState.Successful) && !active);
+			Af(combo, cooldown, () => true);
+		}
+		else
+		{
+			Af(cooldown, combo, () => cooldown.Finished && active);
+			Af(combo, cooldown, () => true);
+		}
+
 
 		stateMachine.SetState(cooldown);
 	}

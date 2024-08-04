@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class ChargeState : IState
+public class AttackHold : IState
 {
 	public ComboState Status { get; private set; } = ComboState.Failed;
 	private Weapon weapon;
 	private IComboDefinition comboData;
 	private float chargeStartTime;
 
-	public ChargeState(Weapon weapon, IComboDefinition comboData, int maxCombo)
+	public AttackHold(Weapon weapon, IComboDefinition comboData, int maxCombo)
 	{
 		this.weapon = weapon;
 		this.comboData = comboData;
