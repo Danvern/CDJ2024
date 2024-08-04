@@ -61,14 +61,14 @@ public class MovementLogic : IVisitable, IMovementLogic
 
 	public void Dash(float power, float slideTime)
 	{
-
 		moveTrigger = MoveTrigger.Dash;
 		dashState.UpdateParameters(power, slideTime);
 	}
 
+
 	public void Update()
 	{
-
+		stateMachine.FrameUpdate();
 
 	}
 
@@ -79,10 +79,11 @@ public class MovementLogic : IVisitable, IMovementLogic
 		//void At(IState from, IState to, TriggerPredicate trigger) => stateMachine.AddTransition(from, to, trigger);
 
 		MoveWalk walk = new MoveWalk(this, speed);
-		MoveDash dash = new MoveDash(this, speed * DEFAULT_DASH_MULTIPLIER);
+		dashState = new MoveDash(this, speed * DEFAULT_DASH_MULTIPLIER);
+		dashState.Finish += () => moveTrigger = MoveTrigger.Walk;
 
-		Af(walk, dash, () => moveTrigger == MoveTrigger.Dash);
-		Af(dash, walk, () => dash.Finished);
+		Af(walk, dashState, () => moveTrigger == MoveTrigger.Dash);
+		Af(dashState, walk, () => dashState.Finished);
 
 		stateMachine.SetState(walk);
 	}

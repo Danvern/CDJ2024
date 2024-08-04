@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering;
@@ -5,6 +6,7 @@ using UnityEngine.Rendering;
 public class MoveDash : IState
 {
 	public bool Finished { get; private set; } = true;
+	public Action Finish;
 	private IMovementLogic movement;
 	private float moveSpeed = 2f;
 	private float slideTime = 1f;
@@ -35,6 +37,7 @@ public class MoveDash : IState
 	public void OnExit()
 	{
 		Finished = true;
+		Finish?.Invoke();
 		movement.SetSpeed(previousSpeed);
 	}
 
