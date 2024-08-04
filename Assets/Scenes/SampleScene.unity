@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7228374
 Transform:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 146097037}
   - component: {fileID: 146097036}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1490,7 +1490,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45, type: 3}
-  cooldown: 8
+  cooldown: 6
+  cooldownRandomization: 4
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,7 +1586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45, type: 3}
-  cooldown: 8
+  cooldown: 6
+  cooldownRandomization: 4
 --- !u!1 &1091602608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,7 +1739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45, type: 3}
-  cooldown: 8
+  cooldown: 6
+  cooldownRandomization: 4
 --- !u!1 &1232686578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,7 +1786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45, type: 3}
-  cooldown: 8
+  cooldown: 6
+  cooldownRandomization: 4
 --- !u!1 &1415697804
 GameObject:
   m_ObjectHideFlags: 0
@@ -4309,7 +4313,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45, type: 3}
-  cooldown: 8
+  cooldown: 6
+  cooldownRandomization: 4
 --- !u!1 &1679790805
 GameObject:
   m_ObjectHideFlags: 3
@@ -7813,7 +7818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45, type: 3}
-  cooldown: 8
+  cooldown: 6
+  cooldownRandomization: 4
 --- !u!1 &2069762265
 GameObject:
   m_ObjectHideFlags: 0
@@ -7859,7 +7865,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45, type: 3}
-  cooldown: 8
+  cooldown: 6
+  cooldownRandomization: 4
 --- !u!1 &2104098695
 GameObject:
   m_ObjectHideFlags: 0
@@ -7905,7 +7912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45, type: 3}
-  cooldown: 8
+  cooldown: 6
+  cooldownRandomization: 4
 --- !u!1001 &1227830611628977203
 PrefabInstance:
   m_ObjectHideFlags: 0
