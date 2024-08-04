@@ -79,7 +79,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		entity.Accept(this);
 	}
 
-	public void Visit(MovementLogic visitable) { }
+	public void Visit(IMovementLogic visitable) { }
 
 	public void Visit(EntityHealthLogic visitable)
 	{
