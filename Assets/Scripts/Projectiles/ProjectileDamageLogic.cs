@@ -12,11 +12,13 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private float collisionRadius = 3;
 	private float collisionArc = 0;
 	private Vector3 impactPosition = Vector3.zero;
+	private ProjectileDamageData data;
 
 	private Dictionary<Transform, float> entityCollisions = new Dictionary<Transform, float>();
 
 	public ProjectileDamageLogic(ProjectileDamageData data)
 	{
+		this.data = data;
 		lifetime = data.Lifetime;
 		damageMax = data.DamageMax;
 		damageMin = data.DamageMin;
@@ -70,6 +72,10 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 				entityCollisions.Add(collider.transform, Time.time);
 				DecreasePierce(1);
 				DoEntityEffect(entity);
+				if (!data.SmallKillSFX.IsNull && entity.IsDead)
+					AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
+				else
+					AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
 				if (piercing < 0)
 				{
 					kill = true;

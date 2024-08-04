@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ProjectileDamageData", menuName = "GameplayDefinitions/DamageData", order = 1)]
@@ -9,4 +10,6 @@ public class ProjectileDamageData : ScriptableObject
 	public int Piercing = 0;
 	public float CollisionRadius = 1;
 	public float CollisionArc = 360;
+	public EventReference SmallKillSFX;
+	public EventReference DamageSFX;
 }
