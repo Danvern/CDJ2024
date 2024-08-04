@@ -18,4 +18,6 @@ public interface IProjectileDamageLogic : IVisitor
 	public abstract float GetCollisionRadius();
 
 	public abstract float GetCollisionArc();
+	public abstract float GetKnockback();
+	public abstract float GetKnockbackDelay();
 }
