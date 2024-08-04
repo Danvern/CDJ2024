@@ -10,6 +10,7 @@ public interface IMovementLogic
 	float GetSpeed();
 	void SetSpeed(float speed);
 	Vector3 GetTargetDirection();
+	Vector3 GetFacingDirection();
 	void Dash(float power, float slideTime);
 	Rigidbody GetRigidbody();
 	void Update();
@@ -24,6 +25,7 @@ public class MovementLogic : IVisitable, IMovementLogic
 	private MoveTrigger moveTrigger = MoveTrigger.Walk;
 	private Rigidbody rb;
 	private Vector3 targetDirection = Vector3.zero;
+	private Vector3 facingDirection = Vector3.forward;
 	private float speed = 100f;
 	private float dashAcceleration = 100f;
 	private float dashDuration = 0.5f;
@@ -33,6 +35,7 @@ public class MovementLogic : IVisitable, IMovementLogic
 	public float GetSpeed() { return speed; }
 	public void SetSpeed(float speed) { this.speed = speed; }
 	public Vector3 GetTargetDirection() { return targetDirection; }
+	public Vector3 GetFacingDirection() { return facingDirection; }
 	public Rigidbody GetRigidbody() { return rb; }
 
 	public void Accept(IVisitor visitor) { visitor.Visit(this); }
@@ -51,6 +54,8 @@ public class MovementLogic : IVisitable, IMovementLogic
 	// Change movement direction.
 	public void MoveToDirection(Vector3 direction)
 	{
+		if (direction != Vector3.zero)
+			facingDirection = direction;
 		targetDirection = direction;
 	}
 
