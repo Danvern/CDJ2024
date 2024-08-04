@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
 	{
 		if (Instance != null)
 		{
-			Debug.LogError("Found more than one AudioManager in the scene.");
+			Debug.LogError("!Found more than one AudioManager in the scene.");
 		}
 		Instance = this;
 	}

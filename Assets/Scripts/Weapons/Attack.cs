@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.Rendering;
@@ -39,6 +40,7 @@ public class Attack : MonoBehaviour
 	[SerializeField] GameObject projectile;
 	[SerializeField] bool melee = false;
 	[SerializeField] Object[] effectData = new Object[0];
+	[SerializeField] private EventReference attackSFX;
 	IAttackEffect[] effects = new IAttackEffect[0];
 	private ParticleSystem particles;
 	private Entity owner;
@@ -53,6 +55,8 @@ public class Attack : MonoBehaviour
 	{
 		if (particles != null)
 			particles.Play();
+		if (!attackSFX.IsNull)
+			AudioManager.Instance.PlayOneShot(attackSFX, transform.position);
 
 		if (melee)
 			ProjectileManager.Instance.GenerateProjectile(projectile, transform.position, transform.rotation, transform, owner);
