@@ -19,12 +19,16 @@ public interface IMovementLogic
 public class MovementLogic : IVisitable, IMovementLogic
 {
 	enum MoveTrigger { Walk, Dash, }
+	public const float DEFAULT_DASH_MULTIPLIER = 5f;
 	public float Speed { get { return speed; } set { speed = Mathf.Max(0, value); } }
 	private MoveTrigger moveTrigger = MoveTrigger.Walk;
 	private Rigidbody rb;
 	private Vector3 targetDirection = Vector3.zero;
-	private float speed = 100;
+	private float speed = 100f;
+	private float dashAcceleration = 100f;
+	private float dashDuration = 0.5f;
 	private StateMachine stateMachine;
+	private MoveDash dashState;
 
 	public float GetSpeed() { return speed; }
 	public void SetSpeed(float speed) { this.speed = speed; }
@@ -54,6 +58,7 @@ public class MovementLogic : IVisitable, IMovementLogic
 	{
 
 		moveTrigger = MoveTrigger.Dash;
+		dashState.UpdateParameters(power, slideTime);
 	}
 
 	public void Update()
@@ -69,7 +74,7 @@ public class MovementLogic : IVisitable, IMovementLogic
 		//void At(IState from, IState to, TriggerPredicate trigger) => stateMachine.AddTransition(from, to, trigger);
 
 		MoveWalk walk = new MoveWalk(this, speed);
-		MoveDash dash = new MoveDash(this, speed);
+		MoveDash dash = new MoveDash(this, speed * DEFAULT_DASH_MULTIPLIER);
 
 		Af(walk, dash, () => moveTrigger == MoveTrigger.Dash);
 		Af(dash, walk, () => dash.Finished);
