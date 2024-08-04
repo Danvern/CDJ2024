@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public enum ComboState { Perfect, Successful, Failed };
+public enum ComboState { Perfect, Successful, Failed, Pending };
 public interface IComboDefinition
 {
 	public float GetCooldown();
@@ -27,6 +27,7 @@ public class AttackCombo : IState
 
 	public void OnEnter()
 	{
+		Status = ComboState.Pending;
 		UpdateCombo();
 		Debug.Log("Activated Attack Timing: " + (Time.time - weapon.LastAttackTime) + "s");
 

@@ -16,6 +16,7 @@ public class AttackHold : IState
 
 	public void OnEnter()
 	{
+		Status = ComboState.Pending;
 		chargeStartTime = Time.time;
 
 		//AudioManager.Instance.PlayOneShot(!_gun.GunCycle.IsNull ? _gun.GunCycle : FModEvents.Instance.GunshotGenericCycle, _soundOrigin.position);
@@ -23,24 +24,6 @@ public class AttackHold : IState
 
 	public void OnExit()
 	{
-		EvaluateCharge();
-	}
-
-	public void FrameUpdate()
-	{
-	}
-
-	public void PhysicsUpdate() { }
-
-	private void EvaluateCharge()
-	{
-		if ((Time.time - chargeStartTime) == comboData.GetIdealTiming())
-			Status = ComboState.Perfect;
-		else if (Mathf.Abs(Time.time - chargeStartTime - comboData.GetIdealTiming()) <= comboData.GetIdealTimingWindow())
-			Status = ComboState.Successful;
-		else
-			Status = ComboState.Failed;
-
 		// Evaluate combo success
 		if (Status == ComboState.Successful || Status == ComboState.Perfect)
 		{
@@ -54,5 +37,22 @@ public class AttackHold : IState
 		{
 			Debug.Log("Failed Hold Attack Timing: " + (Time.time - chargeStartTime) + "s");
 		}
+	}
+
+	public void FrameUpdate()
+	{
+		EvaluateCharge();
+	}
+
+	public void PhysicsUpdate() { }
+
+	private void EvaluateCharge()
+	{
+		if ((Time.time - chargeStartTime) == comboData.GetIdealTiming())
+			Status = ComboState.Perfect;
+		else if (Mathf.Abs(Time.time - chargeStartTime - comboData.GetIdealTiming()) <= comboData.GetIdealTimingWindow())
+			Status = ComboState.Successful;
+		else
+			Status = ComboState.Failed;		
 	}
 }

@@ -87,8 +87,8 @@ public class Weapon : MonoBehaviour
 			AttackHold charge = new AttackHold(this, chargeDefinitions[0], data.MaxCombo);
 
 			Af(cooldown, charge, () => cooldown.Finished && active);
-			Af(charge, combo, () => charge.Status == ComboState.Failed && !active);
 			Af(charge, cooldown, () => (charge.Status == ComboState.Perfect || charge.Status == ComboState.Successful) && !active);
+			Af(charge, combo, () => charge.Status == ComboState.Failed && !active);
 			Af(combo, cooldown, () => true);
 		}
 		else
