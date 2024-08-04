@@ -11,11 +11,14 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private int piercing = 0;
 	private float collisionRadius = 3;
 	private float collisionArc = 0;
+	private Vector3 impactPosition = Vector3.zero;
+	private ProjectileDamageData data;
 
 	private Dictionary<Transform, float> entityCollisions = new Dictionary<Transform, float>();
 
 	public ProjectileDamageLogic(ProjectileDamageData data)
 	{
+		this.data = data;
 		lifetime = data.Lifetime;
 		damageMax = data.DamageMax;
 		damageMin = data.DamageMin;
@@ -40,6 +43,10 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public float GetCollisionArc() { return collisionArc; }
 
+	public float GetKnockback() { return 50; }
+
+	public float GetKnockbackDelay() { return 0.1f; }
+
 	public bool CheckCollisons(Transform transform, Entity owner)
 	{
 		bool kill = false;
@@ -47,6 +54,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 		if (potentialCollisions.Length == 0) return false;
 
+		impactPosition = transform.position;
 		foreach (Collider collider in potentialCollisions)
 		{
 			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, transform.position, transform.forward, GetCollisionArc()))
@@ -64,6 +72,10 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 				entityCollisions.Add(collider.transform, Time.time);
 				DecreasePierce(1);
 				DoEntityEffect(entity);
+				if (!data.SmallKillSFX.IsNull && entity.IsDead)
+					AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
+				else
+					AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
 				if (piercing < 0)
 				{
 					kill = true;
@@ -79,7 +91,10 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		entity.Accept(this);
 	}
 
-	public void Visit(MovementLogic visitable) { }
+	public void Visit(IMovementLogic visitable) 
+	{
+		visitable.KnockbackStun(GetKnockback(), GetKnockbackDelay(), (visitable.GetRigidbody().position - impactPosition).normalized);
+	}
 
 	public void Visit(EntityHealthLogic visitable)
 	{

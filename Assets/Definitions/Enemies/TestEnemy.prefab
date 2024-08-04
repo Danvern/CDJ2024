@@ -169,7 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthData: {fileID: 11400000, guid: 50e6c4619d0195e4e909bb85aeaf22a6, type: 2}
-  speed: 100
+  speed: 0.1
+  acceleration: 20
   primaryWeapon: {fileID: 1866503540634442642}
   secondaryWeapon: {fileID: 0}
   isEnemy: 1

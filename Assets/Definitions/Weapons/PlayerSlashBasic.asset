@@ -18,3 +18,17 @@ MonoBehaviour:
   Piercing: 16
   CollisionRadius: 2
   CollisionArc: 120
+  SmallKillSFX:
+    Guid:
+      Data1: -1270556339
+      Data2: 1281282887
+      Data3: 1356075148
+      Data4: 1693779105
+    Path: event:/player/Slash_kill
+  DamageSFX:
+    Guid:
+      Data1: 1692161532
+      Data2: 1173672863
+      Data3: -1067571063
+      Data4: -266698099
+    Path: event:/player/Slash_dmg

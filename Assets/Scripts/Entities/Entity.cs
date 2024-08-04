@@ -8,11 +8,12 @@ public class Entity : MonoBehaviour, IVisitable
 	public bool IsDead { get; private set; } = false;
 	public bool IsEnemy { get { return isEnemy; } private set { isEnemy = value; } }
 	[SerializeField] private EntityHealthData healthData;
-	[SerializeField] private float speed = 100;
+	[SerializeField] private float speed = 10;
+	[SerializeField] private float acceleration = 100;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
 	[SerializeField] private bool isEnemy = true;
-	private MovementLogic movement;
+	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private const float deletionDelay = 1f;
 
@@ -30,6 +31,12 @@ public class Entity : MonoBehaviour, IVisitable
 			visitor.Visit(health);
 		if (movement != null)
 			visitor.Visit(movement);
+	}
+
+	public void DashToAim(float power, float slideTime, bool fullStun = true)
+	{
+		movement.MoveToDirection(transform.forward);
+		movement.Dash(power, slideTime);
 	}
 
 	public void MoveToDirection(Vector3 direction)
@@ -62,7 +69,9 @@ public class Entity : MonoBehaviour, IVisitable
 			health.entityKilled += (killer) => { Kill(); };
 		}
 
-		movement = new MovementLogic(GetComponent<Rigidbody>(), speed);
+		movement = MovementLogic.CreateMovementLogic(GetComponent<Rigidbody>());
+		movement.SetSpeed(speed);
+		movement.SetAcceleration(acceleration);
 
 		movement.MoveToDirection(Vector3.forward);
 
@@ -75,9 +84,8 @@ public class Entity : MonoBehaviour, IVisitable
 	// Update is called once per frame
 	private void FixedUpdate()
 	{
-
 		if (movement != null)
-			movement.Update(Time.deltaTime);
+			movement.Update();
 	}
 
 	private void Kill()

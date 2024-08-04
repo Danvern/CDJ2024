@@ -11,7 +11,7 @@ public class BillboardPlane : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
 		transform.rotation = Camera.main.transform.rotation;
         
