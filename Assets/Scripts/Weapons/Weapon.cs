@@ -79,7 +79,7 @@ public class Weapon : MonoBehaviour
 		//void At(IState from, IState to, TriggerPredicate trigger) => stateMachine.AddTransition(from, to, trigger);
 
 		AttackCooldown cooldown = new AttackCooldown(this, logic.GetCooldown());
-		AttackCombo combo = new AttackCombo(this, data.AttackDefinitions);
+		AttackCombo combo = new AttackCombo(this, data.AttackDefinitions, data.MaxCombo);
 
 		Af(cooldown, combo, () => cooldown.Finished && active);
 		Af(combo, cooldown, () => true);

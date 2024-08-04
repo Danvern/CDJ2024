@@ -25,3 +25,8 @@ MonoBehaviour:
     cooldown: 1
     idealTiming: 1
     idealTimingWindow: 1
+  - id: 3
+    cooldown: 1
+    idealTiming: 1
+    idealTimingWindow: 1
+  MaxCombo: 2

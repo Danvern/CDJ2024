@@ -15,11 +15,13 @@ public class AttackCombo : IState
 	public int ComboStage { get; private set; } = 0;
 	private Weapon weapon;
 	private IComboDefinition[] comboData;
+	private int maxCombo = 0;
 
-	public AttackCombo(Weapon weapon, IComboDefinition[] comboData)
+	public AttackCombo(Weapon weapon, IComboDefinition[] comboData, int maxCombo)
 	{
 		this.weapon = weapon;
 		this.comboData = comboData;
+		this.maxCombo = maxCombo;
 	}
 
 	public void OnEnter()
@@ -34,7 +36,7 @@ public class AttackCombo : IState
 		// Evaluate combo success
 		if (Status == ComboState.Successful || Status == ComboState.Perfect)
 		{
-			ComboStage = (ComboStage + 1) % comboData.Length;
+			ComboStage = (ComboStage + 1) % Mathf.Min(comboData.Length, maxCombo);
 		}
 		else if (Status == ComboState.Failed)
 		{
@@ -42,7 +44,7 @@ public class AttackCombo : IState
 		}
 		weapon.ActivateAttack(comboData[ComboStage].GetIndex());
 		weapon.UpdateTrackedAttack(comboData[ComboStage].GetIndex());
-		
+
 		Debug.Log("Activated Attack Timing: " + (Time.time - weapon.LastAttackTime) + "s");
 
 		//AudioManager.Instance.PlayOneShot(!_gun.GunCycle.IsNull ? _gun.GunCycle : FModEvents.Instance.GunshotGenericCycle, _soundOrigin.position);

@@ -20,5 +20,6 @@ public class AttackDefinition : IComboDefinition
 [CreateAssetMenu(fileName = "WeaponData", menuName = "GameplayDefinitions/WeaponData", order = 1)]
 public class WeaponData : ScriptableObject
 {
-	public AttackDefinition[] AttackDefinitions = new AttackDefinition[0];	
+	public AttackDefinition[] AttackDefinitions = new AttackDefinition[0];
+	public int MaxCombo = 0;
 }
