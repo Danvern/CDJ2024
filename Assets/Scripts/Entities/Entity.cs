@@ -12,7 +12,7 @@ public class Entity : MonoBehaviour, IVisitable
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
 	[SerializeField] private bool isEnemy = true;
-	private MovementLogic movement;
+	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private const float deletionDelay = 1f;
 
@@ -69,7 +69,7 @@ public class Entity : MonoBehaviour, IVisitable
 		}
 
 		movement = MovementLogic.CreateMovementLogic(GetComponent<Rigidbody>());
-		movement.Speed = speed;
+		movement.SetSpeed(speed);
 
 		movement.MoveToDirection(Vector3.forward);
 
@@ -83,7 +83,7 @@ public class Entity : MonoBehaviour, IVisitable
 	private void FixedUpdate()
 	{
 		if (movement != null)
-			movement.Update(Time.deltaTime);
+			movement.Update();
 	}
 
 	private void Kill()

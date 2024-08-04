@@ -10,7 +10,9 @@ public interface IMovementLogic
 	float GetSpeed();
 	void SetSpeed(float speed);
 	Vector3 GetTargetDirection();
+	void Dash(float power, float slideTime);
 	Rigidbody GetRigidbody();
+	void Update();
 
 }
 
@@ -23,7 +25,6 @@ public class MovementLogic : IVisitable, IMovementLogic
 	private Vector3 targetDirection = Vector3.zero;
 	private float speed = 100;
 	private StateMachine stateMachine;
-	private IPredicate dashTrigger;
 
 	public float GetSpeed() { return speed; }
 	public void SetSpeed(float speed) { this.speed = speed; }
@@ -55,7 +56,7 @@ public class MovementLogic : IVisitable, IMovementLogic
 		moveTrigger = MoveTrigger.Dash;
 	}
 
-	public void Update(float deltaTime)
+	public void Update()
 	{
 
 
