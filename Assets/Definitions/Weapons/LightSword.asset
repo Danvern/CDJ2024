@@ -28,7 +28,7 @@ MonoBehaviour:
     idealTiming: 1
     idealTimingWindow: 1
     chargeAttack: 0
-  - id: 2
+  - id: 3
     cooldown: 1
     idealTiming: 0.75
     idealTimingWindow: 0.25

@@ -38,7 +38,7 @@ public class Attack : MonoBehaviour
 {
 	[SerializeField] GameObject projectile;
 	[SerializeField] bool melee = false;
-	IAttackEffectData[] effectData = new IAttackEffectData[0];
+	[SerializeField] Object[] effectData = new Object[0];
 	IAttackEffect[] effects = new IAttackEffect[0];
 	private ParticleSystem particles;
 	private Entity owner;
@@ -82,9 +82,9 @@ public class Attack : MonoBehaviour
 		List<IAttackEffect> newEffects = new();
 		foreach (var effect in effectData)
 		{
-			if (effect != null)
+			if (effect != null && effect is IAttackEffectData)
 			{
-				newEffects.Add(effect.CreateEffect());
+				newEffects.Add(((IAttackEffectData)effect).CreateEffect());
 			}
 		}
 		effects = newEffects.ToArray();
