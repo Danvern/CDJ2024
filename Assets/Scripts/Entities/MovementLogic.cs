@@ -9,6 +9,8 @@ public interface IMovementLogic
 	void MoveToDirection(Vector3 direction);
 	float GetSpeed();
 	void SetSpeed(float speed);
+	float GetAcceleration();
+	void SetAcceleration(float acceleration);
 	Vector3 GetTargetDirection();
 	Vector3 GetFacingDirection();
 	void Dash(float power, float slideTime);
@@ -26,12 +28,15 @@ public class MovementLogic : IVisitable, IMovementLogic
 	private Rigidbody rb;
 	private Vector3 targetDirection = Vector3.zero;
 	private Vector3 facingDirection = Vector3.forward;
-	private float speed = 100f;
+	private float speed = 10f;
+	private float acceleration = 100f;
 	private float dashAcceleration = 100f;
 	private float dashDuration = 0.5f;
 	private StateMachine stateMachine;
 	private MoveDash dashState;
 
+	public float GetAcceleration() { return acceleration; }
+	public void SetAcceleration(float acceleration) { this.acceleration = acceleration; }
 	public float GetSpeed() { return speed; }
 	public void SetSpeed(float speed) { this.speed = speed; }
 	public Vector3 GetTargetDirection() { return targetDirection; }

@@ -5,12 +5,14 @@ public class MoveWalk : IState
 {
 	private IMovementLogic movement;
 	private float moveSpeed;
+	private float acceleration;
 	private float previousSpeed;
 
-	public MoveWalk(IMovementLogic movement, float moveSpeed)
+	public MoveWalk(IMovementLogic movement, float moveSpeed, float acceleration = 100f)
 	{
 		this.movement = movement;
 		this.moveSpeed = moveSpeed;
+		this.acceleration = acceleration;
 	}
 
 	public void OnEnter()
@@ -31,7 +33,7 @@ public class MoveWalk : IState
 			return;
 
 		movement.GetRigidbody().velocity = Vector3.zero;
-		movement.GetRigidbody().AddForce(movement.GetTargetDirection() * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
+		movement.GetRigidbody().AddForce(movement.GetTargetDirection() * acceleration * Time.deltaTime, ForceMode.VelocityChange);
 	}
 
 	public void PhysicsUpdate() { }

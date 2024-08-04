@@ -8,7 +8,8 @@ public class Entity : MonoBehaviour, IVisitable
 	public bool IsDead { get; private set; } = false;
 	public bool IsEnemy { get { return isEnemy; } private set { isEnemy = value; } }
 	[SerializeField] private EntityHealthData healthData;
-	[SerializeField] private float speed = 100;
+	[SerializeField] private float speed = 10;
+	[SerializeField] private float acceleration = 100;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
 	[SerializeField] private bool isEnemy = true;
