@@ -24,8 +24,6 @@ public class AttackHold : IState
 	public void OnExit()
 	{
 		EvaluateCharge();
-
-		weapon.DeactivateAttack(comboData.GetIndex());
 	}
 
 	public void FrameUpdate()
@@ -49,6 +47,7 @@ public class AttackHold : IState
 			weapon.ActivateAttack(comboData.GetIndex());
 			weapon.UpdateTrackedAttack(comboData.GetIndex());
 			weapon.LastAttackTime = Time.time;
+			weapon.DeactivateAttack(comboData.GetIndex());
 		}
 		else if (Status == ComboState.Failed)
 		{
