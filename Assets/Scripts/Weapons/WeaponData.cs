@@ -10,6 +10,7 @@ public class AttackDefinition : IComboDefinition
 	[SerializeField] private float cooldown = 1;
 	[SerializeField] private float idealTiming = 1;
 	[SerializeField] private float idealTimingWindow = 1;
+	[SerializeField] private bool chargeAttack = false;
 
 	public float GetCooldown() { return cooldown; }
 	public float GetIdealTiming() { return idealTiming; }
