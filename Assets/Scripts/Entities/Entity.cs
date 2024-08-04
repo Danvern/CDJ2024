@@ -32,6 +32,12 @@ public class Entity : MonoBehaviour, IVisitable
 			visitor.Visit(movement);
 	}
 
+	public void PushTowardsAim(float power, float slideTime, bool fullStun = true)
+	{
+		movement.MoveToDirection(transform.forward);
+		movement.Dash(power, slideTime);
+	}
+
 	public void MoveToDirection(Vector3 direction)
 	{
 		movement.MoveToDirection(direction);
@@ -62,7 +68,8 @@ public class Entity : MonoBehaviour, IVisitable
 			health.entityKilled += (killer) => { Kill(); };
 		}
 
-		movement = new MovementLogic(GetComponent<Rigidbody>(), speed);
+		movement = MovementLogic.CreateMovementLogic(GetComponent<Rigidbody>());
+		movement.Speed = speed;
 
 		movement.MoveToDirection(Vector3.forward);
 
@@ -75,7 +82,6 @@ public class Entity : MonoBehaviour, IVisitable
 	// Update is called once per frame
 	private void FixedUpdate()
 	{
-
 		if (movement != null)
 			movement.Update(Time.deltaTime);
 	}

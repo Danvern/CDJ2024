@@ -1,12 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public interface IAttackEffect
 {
-	void Activate();
+	void Activate(Entity owner);
 
-	void Deactivate();
+	void Deactivate(Entity owner);
+}
+
+public class DashEffect : IAttackEffect
+{
+	float power;
+	float slideTime;
+	bool controlled = true;
+
+	DashEffect(float power, float slideTime, bool controlled)
+	{
+		this.power = power;
+		this.slideTime = slideTime;
+		this.controlled = controlled;
+	}
+
+	public void Activate(Entity owner)
+	{
+		owner.PushTowardsAim(power, slideTime, fullStun: !controlled);
+	}
+
+	public void Deactivate(Entity owner)
+	{
+	}
 }
 
 public class Attack : MonoBehaviour
@@ -35,7 +59,7 @@ public class Attack : MonoBehaviour
 
 		foreach (IAttackEffect effect in effects)
 		{
-			effect.Activate();
+			effect.Activate(owner);
 		}
 	}
 
@@ -46,7 +70,7 @@ public class Attack : MonoBehaviour
 
 		foreach (IAttackEffect effect in effects)
 		{
-			effect.Activate();
+			effect.Activate(owner);
 		}
 	}
 
