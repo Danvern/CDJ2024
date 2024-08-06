@@ -54,9 +54,9 @@ public static class OwlString
     /// <param name="str">The input string to hash.</param>
     /// <returns>An integer representing the FNV-1a hash of the input string.</returns>
     public static int ComputeFNV1aHash(this string str) {
-        uint hash = 2166136261;
+        uint hash = 2166136499;
         foreach (char c in str) {
-            hash = (hash ^ c) * 16777619;
+            hash = (hash ^ c) * 17661737;
         }
         return unchecked((int)hash);
     }
