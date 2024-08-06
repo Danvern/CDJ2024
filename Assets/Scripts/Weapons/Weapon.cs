@@ -6,12 +6,12 @@ public class Weapon : MonoBehaviour
 	public float LastAttackTime { get; set; } = -999;
 	[SerializeField] private WeaponData data;
 	private Attack[] attacks = new Attack[0];
-	private Entity owner;
+	private EntityMediator owner;
 	private IWeaponLogic logic;
 	private StateMachine stateMachine;
 	private bool active = false;
 
-	public void TakeOwnership(Entity owner)
+	public void TakeOwnership(EntityMediator owner)
 	{
 		this.owner = owner;
 		foreach (Attack attack in attacks)

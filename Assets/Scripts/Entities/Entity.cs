@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityServiceLocator;
 
 
 public class Entity : MonoBehaviour, IVisitable
@@ -15,6 +17,7 @@ public class Entity : MonoBehaviour, IVisitable
 	[SerializeField] private bool isEnemy = true;
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
+	private EntityMediator mediator;
 	private const float deletionDelay = 1f;
 
 
@@ -27,10 +30,6 @@ public class Entity : MonoBehaviour, IVisitable
 	public void Accept(IVisitor visitor)
 	{
 		visitor.Visit(this);
-		if (health != null)
-			visitor.Visit(health);
-		if (movement != null)
-			visitor.Visit(movement);
 	}
 
 	public void DashToAim(float power, float slideTime, bool fullStun = true)
@@ -60,25 +59,31 @@ public class Entity : MonoBehaviour, IVisitable
 			primaryWeapon.Deactivate();
 	}
 
-	// Start is called before the first frame update
-	private void Start()
+	private void Awake()
 	{
 		if (healthData != null)
 		{
 			health = new EntityHealthLogic(healthData);
-			health.entityKilled += (killer) => { Kill(); };
+			health.entityKilled += (killer) => { Kill(); }; // Use a Builder
 		}
 
-		movement = MovementLogic.CreateMovementLogic(GetComponent<Rigidbody>());
+		movement = EntityMovementLogic.CreateMovementLogic(GetComponent<Rigidbody>());
 		movement.SetSpeed(speed);
 		movement.SetAcceleration(acceleration);
+		movement.MoveToDirection(Vector3.forward); // Use a Builder
 
-		movement.MoveToDirection(Vector3.forward);
+		this.GetOrAddComponent<ServiceLocator>();
+		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement));
 
 		if (primaryWeapon != null)
-			primaryWeapon.TakeOwnership(this);
+			primaryWeapon.TakeOwnership(mediator);
 		if (secondaryWeapon != null)
-			secondaryWeapon.TakeOwnership(this);
+			secondaryWeapon.TakeOwnership(mediator);
+	}
+
+	// Start is called before the first frame update
+	private void Start()
+	{
 	}
 
 	// Update is called once per frame

@@ -7,9 +7,9 @@ using UnityEngine.Rendering;
 
 public interface IAttackEffect
 {
-	void Activate(Entity owner);
+	void Activate(EntityMediator owner);
 
-	void Deactivate(Entity owner);
+	void Deactivate(EntityMediator owner);
 }
 
 public class DashEffect : IAttackEffect
@@ -25,12 +25,12 @@ public class DashEffect : IAttackEffect
 		this.controlled = controlled;
 	}
 
-	public void Activate(Entity owner)
+	public void Activate(EntityMediator owner)
 	{
 		owner.DashToAim(power, slideTime, fullStun: !controlled);
 	}
 
-	public void Deactivate(Entity owner)
+	public void Deactivate(EntityMediator owner)
 	{
 	}
 }
@@ -43,9 +43,9 @@ public class Attack : MonoBehaviour
 	[SerializeField] private EventReference attackSFX;
 	IAttackEffect[] effects = new IAttackEffect[0];
 	private ParticleSystem particles;
-	private Entity owner;
+	private EntityMediator owner;
 
-	public void TakeOwnership(Entity owner)
+	public void TakeOwnership(EntityMediator owner)
 	{
 		this.owner = owner;
 

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using UnityEditor;
 using UnityEngine;
+using UnityServiceLocator;
 
 public class ProjectileDamageLogic : IProjectileDamageLogic
 {
@@ -47,7 +48,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public float GetKnockbackDelay() { return 0.1f; }
 
-	public bool CheckCollisons(Transform transform, Entity owner)
+	public bool CheckCollisons(Transform transform, EntityMediator owner)
 	{
 		bool kill = false;
 		Collider[] potentialCollisions = Physics.OverlapSphere(transform.position, GetCollisionRadius());
@@ -60,19 +61,21 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, transform.position, transform.forward, GetCollisionArc()))
 				continue;
 			Entity entity = collider.transform.GetComponent<Entity>();
-			if (entity == null || entity.IsDead) 
+			if (entity == null)
 				continue;
+			EntityMediator entityMediator = ServiceLocator.For(entity).Get<EntityMediator>();
 
 			if (entityCollisions.ContainsKey(collider.transform))
 			{
 
 			}
-			else if (owner == null || owner.IsHostile(entity))
+			else if (entityMediator.IsDead()) {}
+			else if (owner == null || owner.IsHostile(entityMediator))
 			{
 				entityCollisions.Add(collider.transform, Time.time);
 				DecreasePierce(1);
-				DoEntityEffect(entity);
-				if (!data.SmallKillSFX.IsNull && entity.IsDead)
+				DoEntityEffect(entityMediator);
+				if (!data.SmallKillSFX.IsNull && entityMediator.IsDead())
 					AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
 				else
 					AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
@@ -86,7 +89,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		return kill;
 	}
 
-	public void DoEntityEffect(Entity entity)
+	public void DoEntityEffect(EntityMediator entity)
 	{
 		entity.Accept(this);
 	}

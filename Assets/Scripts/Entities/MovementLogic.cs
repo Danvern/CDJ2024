@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public interface IMovementLogic
+public interface IMovementLogic : IVisitable
 {
 	void MoveToDirection(Vector3 direction);
 	float GetSpeed();
@@ -17,7 +17,7 @@ public interface IMovementLogic
 
 }
 
-public class MovementLogic : IVisitable, IMovementLogic
+public class EntityMovementLogic : IMovementLogic
 {
 	enum MoveTrigger { Walk, Dash, Stun }
 	public const float DEFAULT_DASH_MULTIPLIER = 5f;
@@ -44,15 +44,15 @@ public class MovementLogic : IVisitable, IMovementLogic
 
 	public void Accept(IVisitor visitor) { visitor.Visit(this); }
 
-	public MovementLogic(Rigidbody rb)
+	public EntityMovementLogic(Rigidbody rb)
 	{
 		this.rb = rb;
 		SetupStateMachine();
 	}
 
-	public static MovementLogic CreateMovementLogic(Rigidbody rb)
+	public static EntityMovementLogic CreateMovementLogic(Rigidbody rb)
 	{
-		return new MovementLogic(rb);
+		return new EntityMovementLogic(rb);
 	}
 
 	// Change movement direction.

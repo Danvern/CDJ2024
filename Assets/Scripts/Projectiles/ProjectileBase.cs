@@ -10,11 +10,11 @@ public class ProjectileBase : MonoBehaviour
 	ProjectileDamageLogic damageLogic;
 	private bool active = true;
 	private float timeCreated;
-	private Entity owner;
+	private EntityMediator owner;
 	private Transform anchor;
 	private const float deletionDelay = 1f;
 
-	public void TakeOwnership(Entity owner)
+	public void TakeOwnership(EntityMediator owner)
 	{
 		this.owner = owner;
 	}
