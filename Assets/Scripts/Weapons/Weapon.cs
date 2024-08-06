@@ -1,4 +1,5 @@
 using UnityEngine;
+// using Blackboard; No do a mediator
 
 public class Weapon : MonoBehaviour
 {
