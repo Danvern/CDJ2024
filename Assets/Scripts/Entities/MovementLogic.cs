@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityServiceLocator;
 
 public interface IMovementLogic : IVisitable
 {
@@ -59,8 +60,8 @@ public class EntityMovementLogic : IMovementLogic
 	public void MoveToDirection(Vector3 direction)
 	{
 		if (direction != Vector3.zero && moveTrigger != MoveTrigger.Stun)
-			facingDirection = direction;
-		targetDirection = direction;
+			facingDirection = direction.normalized;
+		targetDirection = direction.normalized;
 	}
 
 	public void Dash(float power, float slideTime)
@@ -79,7 +80,6 @@ public class EntityMovementLogic : IMovementLogic
 	public void Update()
 	{
 		stateMachine.FrameUpdate();
-
 	}
 
 	public void SetupStateMachine()

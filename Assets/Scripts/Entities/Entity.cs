@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityServiceLocator;
 
 
@@ -77,6 +78,7 @@ public class Entity : MonoBehaviour, IVisitable
 		this.GetOrAddComponent<ServiceLocator>();
 		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement));
 
+
 		if (agentFactory != null)
 			agent = agentFactory.CreateAgent(mediator);
 
@@ -95,8 +97,9 @@ public class Entity : MonoBehaviour, IVisitable
 	private void FixedUpdate()
 	{
 		agent?.Update();
-		if (movement != null)
-			movement.Update();
+		movement?.Update();
+		if (agent != null)
+			ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
 	}
 
 	private void Kill()

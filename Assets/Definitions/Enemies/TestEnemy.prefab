@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7493684135216324028}
   - component: {fileID: 2323100123299470348}
-  - component: {fileID: 7660666530092230164}
   - component: {fileID: 5679653210685707626}
   - component: {fileID: 3266164025402180312}
   - component: {fileID: 8673893375300058649}
@@ -176,18 +175,6 @@ MonoBehaviour:
   primaryWeapon: {fileID: 1866503540634442642}
   secondaryWeapon: {fileID: 0}
   isEnemy: 1
---- !u!114 &7660666530092230164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5556580978140358341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f93844e53d0ca3842b2d6a5cf8f458d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &5679653210685707626
 Rigidbody:
   m_ObjectHideFlags: 0
