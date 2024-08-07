@@ -24,11 +24,20 @@ public class AudioManager : MonoBehaviour
 
 	private void Start()
 	{
-		if (!Music.IsNull)
-		{
-			musicLoop = CreateInstance(Instance.Music);
-			musicLoop.start();
-		}
+		if (!Music.IsNull) PlayMusic(Music);
+	}
+
+	public void PlayMusic(EventReference music)
+	{
+		musicLoop = CreateInstance(music);
+		musicLoop.start();
+	}
+
+	public float GetMusicBeat()
+	{
+		float ping;
+		RuntimeManager.StudioSystem.getParameterByName("flipper", out ping);
+		return ping;
 	}
 
 	public void PlayOneShot(EventReference sound, Vector3 origin)
@@ -54,6 +63,7 @@ public class AudioManager : MonoBehaviour
 
 	private void Update()
 	{
+		Debug.Log("Ping: " + GetMusicBeat());
 	}
 
 	private void OnDestroy()
