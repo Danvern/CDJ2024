@@ -17953,6 +17953,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5596dda353e3991419b25dd072594287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Music>k__BackingField:
+    Guid:
+      Data1: -1839395177
+      Data2: 1121766514
+      Data3: -271711555
+      Data4: -768554084
+    Path: event:/mus/MUSIC
 --- !u!4 &146097037
 Transform:
   m_ObjectHideFlags: 0
@@ -19078,7 +19085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &501755104
 Grid:
   m_ObjectHideFlags: 0

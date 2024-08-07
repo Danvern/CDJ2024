@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+	[field: Header("Music")]
+	[field: SerializeField] public EventReference Music { get; private set; }
 	public static AudioManager Instance { get; private set; }
 	private LinkedList<EventInstance> activeInstances = new();
 	public float MusicVolume { get; set; }
+	private EventInstance musicLoop;
 
 
 	private void Awake()
@@ -17,6 +20,15 @@ public class AudioManager : MonoBehaviour
 			Debug.LogError("!Found more than one AudioManager in the scene.");
 		}
 		Instance = this;
+	}
+
+	private void Start()
+	{
+		if (!Music.IsNull)
+		{
+			musicLoop = CreateInstance(Instance.Music);
+			musicLoop.start();
+		}
 	}
 
 	public void PlayOneShot(EventReference sound, Vector3 origin)
