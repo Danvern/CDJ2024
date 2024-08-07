@@ -37975,10 +37975,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4367716056636723878, guid: 89a346df7fe37f049982877c7fbbee45,
+        type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45,
         type: 3}
       propertyPath: m_Name
       value: TestEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563226195089484693, guid: 89a346df7fe37f049982877c7fbbee45,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7493684135216324028, guid: 89a346df7fe37f049982877c7fbbee45,
         type: 3}
@@ -38098,6 +38108,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 2482074444872821145, guid: 01d5121a8260a3a468676ce1624b8d56,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4737439951036461151, guid: 01d5121a8260a3a468676ce1624b8d56,
         type: 3}
       propertyPath: m_Name

@@ -29,14 +29,16 @@ public class EntityMediator : IVisitable
 		navigator.updatePosition = false;
 		navigator.updateRotation = false;
 	}
-	public void SetNavigatorTarget(Vector3 targetPosition)
+	public void SetNavigatorTarget(Vector2 targetPosition)
 	{
-		navigator.SetDestination(targetPosition.With(y: 0)); // Always level planes
-		MoveToDirection(navigator.steeringTarget);
+//		navigator.SetDestination(targetPosition.With(y: 0)); // Always level planes
+//		MoveToDirection(navigator.steeringTarget);
+		MoveToDirection(targetPosition);
 	}
-	public bool IsNavigating() => navigator.pathPending;
-	public void UpdateNavigatorPosition(Vector3 position) => navigator.nextPosition = position;
-	public float GetRemainingTravelDistance() => navigator.remainingDistance;
+	public bool IsNavigating() => true; //navigator.pathPending;
+	public void UpdateNavigatorPosition(Vector3 position) {} //navigator.nextPosition = position;
+	public float GetRemainingTravelDistance() => 1f;
+//	public float GetRemainingTravelDistance() => navigator.remainingDistance;
 
 	public void Accept(IVisitor visitor)
 	{
