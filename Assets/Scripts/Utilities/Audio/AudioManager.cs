@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
 
 		SetCombatActive(true);
 		SetLowHealth(1);
+		SetPing(15);
 	}
 
 	public void PlayMusic(EventReference music)
@@ -39,12 +40,15 @@ public class AudioManager : MonoBehaviour
 	public void SetBossActive(bool active) => RuntimeManager.StudioSystem.setParameterByName("boss", active ? 1 : 0);
 	public void SetCombatActive(bool active) => RuntimeManager.StudioSystem.setParameterByName("combat", active ? 1 : 0);
 	public void SetLowHealth(float percent) => RuntimeManager.StudioSystem.setParameterByName("lowhealth", percent);
+	public void SetPing(float percent) => RuntimeManager.StudioSystem.setParameterByName("ping", percent);
 
 	public float GetMusicPing()
 	{
 		float ping;
 		// RuntimeManager.StudioSystem.getParameterByName("ping", out ping);
 		musicLoop.getParameterByName("ping", out ping);
+		RuntimeManager.CoreSystem.getMasterChannelGroup(out FMOD.ChannelGroup masterCG);
+		//masterCG.getGroup()
 		return ping;
 	}
 
@@ -71,6 +75,11 @@ public class AudioManager : MonoBehaviour
 
 	private void Update()
 	{
+		float ping;
+		// RuntimeManager.StudioSystem.getParameterByName("ping", out ping);
+		RuntimeManager.StudioSystem.getParameterByName("testparam", out ping);
+
+		Debug.Log("Test: " + ping);
 		Debug.Log("Ping: " + GetMusicPing());
 	}
 
