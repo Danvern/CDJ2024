@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 5679653210685707626}
   - component: {fileID: 3266164025402180312}
   - component: {fileID: 8673893375300058649}
+  - component: {fileID: 2006010728388214129}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -168,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2a65817ec2bef43bb5ad16b4d760b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentFactory: {fileID: 0}
+  agentFactory: {fileID: 11400000, guid: 900d5b91f28183d40be4de9882f34be4, type: 2}
   healthData: {fileID: 11400000, guid: 50e6c4619d0195e4e909bb85aeaf22a6, type: 2}
   speed: 0.1
   acceleration: 20
@@ -245,6 +246,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2006010728388214129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556580978140358341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd77df56ac0db44689023cd9792e796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackboardData: {fileID: 11400000, guid: 2fd2134e275201844a25ae4d0b847999, type: 2}
 --- !u!1001 &7991785447649799333
 PrefabInstance:
   m_ObjectHideFlags: 0

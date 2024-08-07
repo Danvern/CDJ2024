@@ -3,15 +3,6 @@ using Pathfinding.BehaviourTrees;
 using UnityEngine;
 using UnityServiceLocator;
 
-[CreateAssetMenu(fileName = "AgentSkirmish", menuName = "GameplayDefinitions/AIAgent/Skirmish", order = 1)]
-public class AgentSkirmishFactory : IAgentFactory
-{
-	public override IAgent CreateAgent(EntityMediator entity) { return new AgentSkirmish(entity); }
-	[SerializeField] float minimumRange;
-	[SerializeField] float maximumRange;
-
-}
-
 public class AgentSkirmish : IAgent
 {
 	private EntityMediator entity;
