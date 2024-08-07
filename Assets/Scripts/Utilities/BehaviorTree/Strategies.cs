@@ -97,7 +97,7 @@ namespace Pathfinding.BehaviourTrees
 
 		public Node.Status Process()
 		{
-			entity.SetNavigatorTarget(entity.GetTransform().position.Add(x: Random.Range(-patrolRadius, patrolRadius), z: Random.Range(-patrolRadius, patrolRadius)));
+			entity.SetNavigatorTarget(entity.GetTransform().position.Add(x: Random.Range(-patrolRadius, patrolRadius), y: Random.Range(-patrolRadius, patrolRadius)));
 
 			if (isPathCalculated && entity.GetRemainingTravelDistance() < 0.1f)
 			{
