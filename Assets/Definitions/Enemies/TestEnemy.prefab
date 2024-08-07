@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2a65817ec2bef43bb5ad16b4d760b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 11400000, guid: 17a3af56db23a4540ae41e321b6e94c3, type: 2}
   healthData: {fileID: 11400000, guid: 50e6c4619d0195e4e909bb85aeaf22a6, type: 2}
   speed: 0.1
   acceleration: 20

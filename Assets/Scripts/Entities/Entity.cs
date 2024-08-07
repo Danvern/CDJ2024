@@ -9,6 +9,7 @@ public class Entity : MonoBehaviour, IVisitable
 {
 	public bool IsDead { get; private set; } = false;
 	public bool IsEnemy { get { return isEnemy; } private set { isEnemy = value; } }
+	[SerializeField] private IAgentFactory agent;
 	[SerializeField] private EntityHealthData healthData;
 	[SerializeField] private float speed = 10;
 	[SerializeField] private float acceleration = 100;
