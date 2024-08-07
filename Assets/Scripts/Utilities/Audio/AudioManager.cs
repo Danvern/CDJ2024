@@ -43,7 +43,8 @@ public class AudioManager : MonoBehaviour
 	public float GetMusicPing()
 	{
 		float ping;
-		RuntimeManager.StudioSystem.getParameterByName("ping", out ping);
+		// RuntimeManager.StudioSystem.getParameterByName("ping", out ping);
+		musicLoop.getParameterByName("ping", out ping);
 		return ping;
 	}
 
