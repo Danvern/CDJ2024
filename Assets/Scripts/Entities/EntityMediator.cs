@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityServiceLocator;
 
 
 public class EntityMediator : IVisitable
@@ -8,6 +11,7 @@ public class EntityMediator : IVisitable
 	private Entity entity;
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
+	private NavMeshAgent navigator;
 
 	public EntityMediator(Entity entity, EntityHealthLogic health, IMovementLogic movement)
 	{
@@ -15,9 +19,16 @@ public class EntityMediator : IVisitable
 		this.health = health;
 		this.movement = movement;
 	}
-
+	public ServiceLocator GetServiceLocator() => ServiceLocator.For(entity);
 	public bool IsHostile(EntityMediator mediator) => mediator.entity != entity && mediator.entity.IsEnemy != entity.IsEnemy;
 	public bool IsDead() => entity.IsDead;
+	public Transform GetTransform() => entity?.transform;
+	public void SetNavigatorTarget(Vector3 targetPosition)
+	{
+		navigator.SetDestination(targetPosition);
+	}
+	public bool IsNavigating() => navigator.pathPending;
+	public float GetRemainingTravelDistance() => navigator.remainingDistance;
 
 	public void Accept(IVisitor visitor)
 	{

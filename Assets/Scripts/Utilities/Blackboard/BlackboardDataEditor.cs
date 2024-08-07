@@ -60,6 +60,10 @@ namespace BlackboardSystem
 						var vec3Value = value.FindPropertyRelative("vector3Value");
 						EditorGUI.PropertyField(valueRect, vec3Value, GUIContent.none);
 						break;
+					case AnyValue.ValueType.Transform:
+						var transValue = value.FindPropertyRelative("transformValue");
+						EditorGUI.PropertyField(valueRect, transValue, GUIContent.none);
+						break;
 					default:
 						throw new ArgumentOutOfRangeException();
 				}
