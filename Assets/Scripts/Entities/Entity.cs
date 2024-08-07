@@ -94,7 +94,7 @@ public class Entity : MonoBehaviour, IVisitable
 	// Update is called once per frame
 	private void FixedUpdate()
 	{
-		agent.Update();
+		agent?.Update();
 		if (movement != null)
 			movement.Update();
 	}
