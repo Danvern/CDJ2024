@@ -26,9 +26,9 @@ public class AudioManager : MonoBehaviour
 	{
 		if (!Music.IsNull) PlayMusic(Music);
 
-		SetCombatActive(true);
-		SetLowHealth(1);
-		SetPing(15);
+		// SetCombatActive(true);
+		// SetLowHealth(1);
+		// SetPing(15);
 	}
 
 	public void PlayMusic(EventReference music)
@@ -44,10 +44,12 @@ public class AudioManager : MonoBehaviour
 
 	public float GetMusicPing()
 	{
-		float ping;
 		// RuntimeManager.StudioSystem.getParameterByName("ping", out ping);
-		musicLoop.getParameterByName("ping", out ping);
-		RuntimeManager.CoreSystem.getMasterChannelGroup(out FMOD.ChannelGroup masterCG);
+		musicLoop.getDescription(out EventDescription eventDescription);
+		eventDescription.getParameterDescriptionByName("ping", out PARAMETER_DESCRIPTION parameterDescription);
+
+		Debug.Log(musicLoop.getParameterByID(parameterDescription.id, out float ping) == FMOD.RESULT.OK ? "success" : "failure");
+		//RuntimeManager.CoreSystem.getMasterChannelGroup(out FMOD.ChannelGroup masterCG);
 		//masterCG.getGroup()
 		return ping;
 	}
@@ -75,12 +77,13 @@ public class AudioManager : MonoBehaviour
 
 	private void Update()
 	{
-		float ping;
 		// RuntimeManager.StudioSystem.getParameterByName("ping", out ping);
-		RuntimeManager.StudioSystem.getParameterByName("testparam", out ping);
+		//RuntimeManager.StudioSystem.getParameterByName("testparam", out float ping);
 
-		Debug.Log("Test: " + ping);
-		Debug.Log("Ping: " + GetMusicPing());
+		// Debug.Log("Test: " + ping);
+		// Debug.Log("Ping: " + GetMusicPing());
+		// musicLoop.getTimelinePosition(out int timelinePosition);
+   		// Debug.Log("Timeline Position: " + timelinePosition);
 	}
 
 	private void OnDestroy()
