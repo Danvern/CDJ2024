@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
 		if (!Music.IsNull) PlayMusic(Music);
 
 		SetCombatActive(true);
+		SetLowHealth(1);
 	}
 
 	public void PlayMusic(EventReference music)
