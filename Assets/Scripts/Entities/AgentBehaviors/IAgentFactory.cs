@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IAgentFactory : ScriptableObject
+public abstract class IAgentFactory : ScriptableObject
 {
-	IAgent CreateAgent() { return new AgentSkirmish(); }
+	public abstract IAgent CreateAgent(EntityMediator entity);
 }

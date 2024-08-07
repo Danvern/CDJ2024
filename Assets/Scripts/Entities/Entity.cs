@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour, IVisitable
 {
 	public bool IsDead { get; private set; } = false;
 	public bool IsEnemy { get { return isEnemy; } private set { isEnemy = value; } }
-	[SerializeField] private IAgentFactory agent;
+	[SerializeField] private IAgentFactory agentFactory;
 	[SerializeField] private EntityHealthData healthData;
 	[SerializeField] private float speed = 10;
 	[SerializeField] private float acceleration = 100;
@@ -19,6 +19,7 @@ public class Entity : MonoBehaviour, IVisitable
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private EntityMediator mediator;
+	private IAgent agent;
 	private const float deletionDelay = 1f;
 
 
@@ -76,6 +77,9 @@ public class Entity : MonoBehaviour, IVisitable
 		this.GetOrAddComponent<ServiceLocator>();
 		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement));
 
+		if (agentFactory != null)
+			agent = agentFactory.CreateAgent(mediator);
+
 		if (primaryWeapon != null)
 			primaryWeapon.TakeOwnership(mediator);
 		if (secondaryWeapon != null)
@@ -90,6 +94,7 @@ public class Entity : MonoBehaviour, IVisitable
 	// Update is called once per frame
 	private void FixedUpdate()
 	{
+		agent.Update();
 		if (movement != null)
 			movement.Update();
 	}
