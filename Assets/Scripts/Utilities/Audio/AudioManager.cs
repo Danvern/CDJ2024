@@ -7,11 +7,14 @@ public class AudioManager : MonoBehaviour
 {
 	[field: Header("Music")]
 	[field: SerializeField] public EventReference Music { get; private set; }
+	[field: SerializeField, Range(0, 1)] float onBeatThreshold = 0.75f;
+	[field: SerializeField, Range(0, 1)] float onBeatThresholdPerfect = 0.9f;
 	public static AudioManager Instance { get; private set; }
 	private LinkedList<EventInstance> activeInstances = new();
 	public float MusicVolume { get; set; }
 	private EventInstance musicLoop;
 	private PARAMETER_ID musicBeatID;
+
 
 	private void Awake()
 	{
@@ -51,10 +54,13 @@ public class AudioManager : MonoBehaviour
 		
 
 		Debug.Log(musicLoop.getParameterByID(musicBeatID, out float pingInitial, out float ping) == FMOD.RESULT.OK ? "success" : "failure");
+
 		//RuntimeManager.CoreSystem.getMasterChannelGroup(out FMOD.ChannelGroup masterCG);
 		//masterCG.getGroup()
 		return ping;
 	}
+	public bool IsOnPerfectBeat() => GetMusicPing() >= onBeatThresholdPerfect;
+	public bool IsOnBeat() => GetMusicPing() >= onBeatThreshold;
 
 	public void PlayOneShot(EventReference sound, Vector3 origin)
 	{
