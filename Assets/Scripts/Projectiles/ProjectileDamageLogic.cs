@@ -12,7 +12,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private int piercing = 0;
 	private float collisionRadius = 3;
 	private float collisionArc = 0;
-	private Vector3 impactPosition = Vector3.zero;
+	private Vector2 impactPosition = Vector2.zero;
 	private ProjectileDamageData data;
 
 	private Dictionary<Transform, float> entityCollisions = new Dictionary<Transform, float>();
@@ -51,12 +51,12 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	public bool CheckCollisons(Transform transform, EntityMediator owner)
 	{
 		bool kill = false;
-		Collider[] potentialCollisions = Physics.OverlapSphere(transform.position, GetCollisionRadius());
+		Collider2D[] potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius());
 
 		if (potentialCollisions.Length == 0) return false;
 
 		impactPosition = transform.position;
-		foreach (Collider collider in potentialCollisions)
+		foreach (Collider2D collider in potentialCollisions)
 		{
 			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, transform.position, transform.forward, GetCollisionArc()))
 				continue;

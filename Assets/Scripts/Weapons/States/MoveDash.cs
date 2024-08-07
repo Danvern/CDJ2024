@@ -51,7 +51,7 @@ public class MoveDash : IState
 		if (movement.GetRigidbody() == null)
 			return;
 
-		movement.GetRigidbody().AddForce(movement.GetFacingDirection() * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
+		movement.GetRigidbody().AddForce(movement.GetFacingDirection() * moveSpeed * Time.deltaTime, ForceMode2D.Force);
 	}
 
 	public void PhysicsUpdate() { }

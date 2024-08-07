@@ -53,7 +53,7 @@ public class MoveStun : IState
 		if (movement.GetRigidbody() == null)
 			return;
 
-		movement.GetRigidbody().AddForce(stunnedDirection * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
+		movement.GetRigidbody().AddForce(stunnedDirection * moveSpeed * Time.deltaTime, ForceMode2D.Force);
 	}
 
 	public void PhysicsUpdate() { }

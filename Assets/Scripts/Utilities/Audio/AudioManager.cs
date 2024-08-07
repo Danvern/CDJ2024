@@ -89,7 +89,7 @@ public class AudioManager : MonoBehaviour
 		//RuntimeManager.StudioSystem.getParameterByName("testparam", out float ping);
 
 		// Debug.Log("Test: " + ping);
-		Debug.Log("Ping: " + GetMusicPing());
+		//Debug.Log("Ping: " + GetMusicPing());
 		// musicLoop.getTimelinePosition(out int timelinePosition);
    		// Debug.Log("Timeline Position: " + timelinePosition);
 	}

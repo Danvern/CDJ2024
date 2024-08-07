@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
-	private Vector3 moveDirection = Vector2.zero;
+	private Vector2 moveDirection = Vector2.zero;
 	private Entity entity;
 	private float trackingRadius = 5;
 	private Vector3 aimPosition = Vector3.zero;
@@ -75,7 +75,8 @@ public class PlayerControl : MonoBehaviour
 		if (entity == null)
 			return;
 
-		entity.MoveToDirection(new Vector3(moveDirection.x, 0, moveDirection.y));
+		entity.MoveToDirection(new Vector3(moveDirection.x, moveDirection.y, 0));
+		Debug.Log(moveDirection);
 		TargetCursor();
 		entity.FacePosition(aimPosition);
 	}

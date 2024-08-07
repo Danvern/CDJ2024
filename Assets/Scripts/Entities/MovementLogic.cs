@@ -13,7 +13,7 @@ public interface IMovementLogic : IVisitable
 	Vector3 GetFacingDirection();
 	void Dash(float power, float slideTime);
 	void KnockbackStun(float power, float slideTime, Vector3 direction);
-	Rigidbody GetRigidbody();
+	Rigidbody2D GetRigidbody();
 	void Update();
 
 }
@@ -24,7 +24,7 @@ public class EntityMovementLogic : IMovementLogic
 	public const float DEFAULT_DASH_MULTIPLIER = 5f;
 	public float Speed { get { return speed; } set { speed = Mathf.Max(0, value); } }
 	private MoveTrigger moveTrigger = MoveTrigger.Walk;
-	private Rigidbody rb;
+	private Rigidbody2D rb;
 	private Vector3 targetDirection = Vector3.zero;
 	private Vector3 facingDirection = Vector3.forward;
 	private float speed = 10f;
@@ -41,17 +41,17 @@ public class EntityMovementLogic : IMovementLogic
 	public void SetSpeed(float speed) { this.speed = speed; }
 	public Vector3 GetTargetDirection() { return targetDirection; }
 	public Vector3 GetFacingDirection() { return facingDirection; }
-	public Rigidbody GetRigidbody() { return rb; }
+	public Rigidbody2D GetRigidbody() { return rb; }
 
 	public void Accept(IVisitor visitor) { visitor.Visit(this); }
 
-	public EntityMovementLogic(Rigidbody rb)
+	public EntityMovementLogic(Rigidbody2D rb)
 	{
 		this.rb = rb;
 		SetupStateMachine();
 	}
 
-	public static EntityMovementLogic CreateMovementLogic(Rigidbody rb)
+	public static EntityMovementLogic CreateMovementLogic(Rigidbody2D rb)
 	{
 		return new EntityMovementLogic(rb);
 	}
