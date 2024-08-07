@@ -31,11 +31,11 @@ public class AttackHold : IState
 			weapon.UpdateTrackedAttack(comboData.GetIndex());
 			weapon.LastAttackTime = Time.time;
 			weapon.DeactivateAttack(comboData.GetIndex());
-			Debug.Log("Activated Hold Attack Timing: " + (Time.time - chargeStartTime) + "s");
+			//Debug.Log("Activated Hold Attack Timing: " + (Time.time - chargeStartTime) + "s");
 		}
 		else if (Status == ComboState.Failed)
 		{
-			Debug.Log("Failed Hold Attack Timing: " + (Time.time - chargeStartTime) + "s");
+			//Debug.Log("Failed Hold Attack Timing: " + (Time.time - chargeStartTime) + "s");
 		}
 	}
 

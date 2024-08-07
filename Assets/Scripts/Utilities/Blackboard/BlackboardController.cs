@@ -13,9 +13,9 @@ namespace BlackboardSystem
 
 		void Awake()
 		{
-			ServiceLocator.Global.Register(this);
+			ServiceLocator.For(this).Register(this);
 			blackboardData.SetValuesOnBlackboard(blackboard);
-			blackboard.Debug();
+			//blackboard.Debug();
 		}
 
 		public Blackboard GetBlackboard() => blackboard;
