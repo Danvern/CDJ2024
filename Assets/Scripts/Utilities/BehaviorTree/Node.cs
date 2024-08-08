@@ -134,7 +134,7 @@ namespace Pathfinding.BehaviourTrees {
             this.strategy = strategy;
         }
         
-        public override Status Process() => strategy.Process();
+        public override Status Process() {Debug.Log(ToString()); return strategy.Process();}
 
         public override void Reset() => strategy.Reset();
     }
@@ -163,6 +163,8 @@ namespace Pathfinding.BehaviourTrees {
                 child.Reset();
             }
         }
+
+		public override string ToString() => name;
     }
     
     public interface IPolicy {

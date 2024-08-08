@@ -65,18 +65,18 @@ public class AgentSkirmish : IAgent
 		PrioritySelector actions = new PrioritySelector("Agent Logic");
 
 		Sequence runToSafetySeq = new Sequence("RunToSafety", 100);
-		bool IsRetreating()
-		{
-			if (blackboard.TryGetValue(isRetreatingKey, out bool isSafe))
-			{
-				if (!isSafe)
-				{
-					runToSafetySeq.Reset();
-					return true;
-				}
-			}
-			return false;
-		}
+		// bool IsRetreating()
+		// {
+		// 	if (blackboard.TryGetValue(isRetreatingKey, out bool isSafe))
+		// 	{
+		// 		if (!isSafe)
+		// 		{
+		// 			runToSafetySeq.Reset();
+		// 			return true;
+		// 		}
+		// 	}
+		// 	return false;
+		// }
 		EntityMediator GetTarget()
 		{
 			if (blackboard.TryGetValue(targetKey, out EntityMediator target))

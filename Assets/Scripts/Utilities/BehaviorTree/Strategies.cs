@@ -130,12 +130,14 @@ namespace Pathfinding.BehaviourTrees
 		readonly EntityMediator entity;
 		readonly Func<Vector3> target;
 		bool isLookingForward;
+		bool interruptable;
 
-		public MoveToTarget(EntityMediator entity, Func<Vector3> target, bool isLookingForward = true)
+		public MoveToTarget(EntityMediator entity, Func<Vector3> target, bool isLookingForward = true, bool interruptable = true)
 		{
 			this.entity = entity;
 			this.target = target;
 			this.isLookingForward = isLookingForward;
+			this.interruptable = interruptable;
 		}
 
 		public Node.Status Process()
@@ -151,7 +153,10 @@ namespace Pathfinding.BehaviourTrees
 			if (isLookingForward)
 				entity.FacePosition(target() - entity.GetTransform().position);
 
-			return Node.Status.Running;
+			if (interruptable)
+				return Node.Status.Success;
+			else
+				return Node.Status.Running;
 		}
 
 		public void Reset() { }
@@ -206,14 +211,18 @@ namespace Pathfinding.BehaviourTrees
 				return Node.Status.Success;
 			}
 
-			if (Time.time - lastCalcTime > 1f)
+			if (!isPathCalculated)
 			{
 				entity.NavigatePathTo(target().position);
 				lastCalcTime = Time.time;
 			}
+			if (Time.time - lastCalcTime > 1f && !entity.IsNavigatorCalculating())
+			{
+				return Node.Status.Success;
+			}
 			//entity.LookAt(target.position.With(y:entity.position.y));
 
-			isPathCalculated = entity.IsNavigating();
+			isPathCalculated = entity.IsNavigatorActive();
 			return Node.Status.Running;
 		}
 

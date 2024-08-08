@@ -39,7 +39,8 @@ public class EntityMediator : IVisitable
 	}
 	public void CancelPath() => movement.CancelPath(navigator);
 	public bool IsNavigating() => movement.IsFollowingPath(); //navigator.pathPending;
-	public bool IsNavigatorActive() => movement.IsPathPending(); //navigator.pathPending;
+	public bool IsNavigatorActive() => movement.IsPathPending() || movement.IsFollowingPath(); //navigator.pathPending;
+	public bool IsNavigatorCalculating() => movement.IsPathPending(); //navigator.pathPending;
 	//public void UpdateNavigatorPosition(Vector3 position) {} //navigator.nextPosition = position;
 	public float GetRemainingTravelDistance() => movement.RemainingPathDistance();
 	public float GetWaypointCloseness() => entity.GetWaypointCloseness();

@@ -81,7 +81,7 @@ public class EntityMovementLogic : IMovementLogic
 	public Vector3 GetFacingDirection() { return facingDirection; }
 	public Rigidbody2D GetRigidbody() { return rb; }
 	public bool IsFollowingPath() { return isOnPath; }
-	public bool IsPathPending() { return isOnPath || isPathCalculating; }
+	public bool IsPathPending() { return isPathCalculating; }
 	public void CalculatePath(Seeker navigator, Vector3 position, Vector3 target)
 	{
 		currentPath = navigator.StartPath(position, target, onPathComplete); // Always level planes
@@ -93,6 +93,8 @@ public class EntityMovementLogic : IMovementLogic
 	{
 		navigator.CancelCurrentPathRequest();
 		isPathCalculating = false;
+		isOnPath = false;
+		currentPath = null;
 		pathRemaining = 0;
 
 	}
