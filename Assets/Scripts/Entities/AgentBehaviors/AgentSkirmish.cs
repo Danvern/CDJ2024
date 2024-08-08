@@ -101,7 +101,7 @@ public class AgentSkirmish : IAgent
 		Sequence goDirectly = new Sequence("ApproachPlayer");
 		goDirectly.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null)));
 		goDirectly.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < SensingRange)));
-		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTargetAction(entity, ()=>(GetTarget()?.GetTransform()))));
+		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTargetFunction(entity, ()=>(GetTarget()?.GetTransform()))));
 		//goDirectly.AddChild(new Leaf("PickUpTreasure1", new ActionStrategy(() => treasure.SetActive(false))));
 		goToPlayer.AddChild(goDirectly);
 		actions.AddChild(goToPlayer);

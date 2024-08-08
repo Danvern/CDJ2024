@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
@@ -153,14 +154,14 @@ namespace Pathfinding.BehaviourTrees
 		public void Reset() => isPathCalculated = false;
 	}
 
-	public class MoveToTargetAction : IStrategy
+	public class MoveToTargetFunction : IStrategy
 	{
 		readonly EntityMediator entity;
 		readonly Func<Transform> target;
 		bool isPathCalculated;
 		float lastCalcTime = 0f;
 
-		public MoveToTargetAction(EntityMediator entity, Func<Transform> target)
+		public MoveToTargetFunction(EntityMediator entity, Func<Transform> target)
 		{
 			this.entity = entity;
 			this.target = target;
@@ -185,5 +186,37 @@ namespace Pathfinding.BehaviourTrees
 		}
 
 		public void Reset() => isPathCalculated = false;
+	}
+
+	public class AttackTowardsDirection : IStrategy
+	{
+		readonly EntityMediator entity;
+		readonly Func<Vector3> target;
+		bool primary = true;
+		bool fired = false;
+		float lastCalcTime = 0f;
+
+		public AttackTowardsDirection(EntityMediator entity, Func<Vector3> target, bool primary = true)
+		{
+			this.entity = entity;
+			this.target = target;
+			this.primary = primary;
+		}
+
+		public Node.Status Process()
+		{
+			entity.FacePosition(target() - entity.GetPosition());
+			entity.PrimaryFire(!fired);
+			fired = true;
+			//entity.LookAt(target.position.With(y:entity.position.y));
+
+			if (fired)
+			{
+				return Node.Status.Success;
+			}
+			return Node.Status.Running;
+		}
+
+		public void Reset() => fired = false;
 	}
 }
