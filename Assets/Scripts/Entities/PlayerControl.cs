@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityServiceLocator;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class PlayerControl : MonoBehaviour
 	private void Awake()
 	{
 		entity = GetComponent<Entity>();
+	}
+
+	private void Start()
+	{
+		ServiceLocator.Global.Get<AgentDirector>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
 	}
 
 	public void OnMove(InputValue value)
