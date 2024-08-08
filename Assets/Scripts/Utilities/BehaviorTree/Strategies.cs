@@ -83,9 +83,11 @@ namespace Pathfinding.BehaviourTrees
 
 	public class RandomPatrolStrategy : IStrategy
 	{
+		float lastCalcTime = 0;
 		readonly EntityMediator entity;
 		readonly List<Transform> patrolPoints;
 		readonly float patrolRadius;
+		readonly float boredTime = 3f;
 		int currentIndex;
 		bool isPathCalculated;
 
@@ -97,8 +99,11 @@ namespace Pathfinding.BehaviourTrees
 
 		public Node.Status Process()
 		{
-			if (!isPathCalculated)
+			if (!isPathCalculated || Time.time - lastCalcTime > boredTime)
+			{
 				entity.NavigatePathTo(entity.GetTransform().position.Add(x: Random.Range(-patrolRadius, patrolRadius), y: Random.Range(-patrolRadius, patrolRadius)));
+				lastCalcTime = Time.time;
+			}
 
 			if (!entity.IsNavigatorActive() && entity.GetRemainingTravelDistance() < entity.GetWaypointCloseness())
 			{

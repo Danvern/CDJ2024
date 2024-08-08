@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+sA3l7rXQIAABcFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzqVjXD6G3lqHkB6SMKGZXHxRpDXWIEsefQRIhv/elWxjh0xPiN23T+/trvxBhLI1MKfN2gh+rzmQnyMSzuTbqE/ewZHutNqKd+gwL4K7MoBoxDxRJzTGJ6HM6gqcEeyX2skATjDolSi0qVZ8B5m2zmK4oNICpox2oVph6GNEjvgzXoaSE57SRTi942mZjM54ZKAcmB7aAceLFtfAvGKSVjXwoLlHp9MW3rIpdNMiku/pLPBrKYVt1RB3qqPbjNbWoxcEcEHRXZQQzJYgdqUL1MPix6Kw4Fp5hp5uhMEmNazkt246V1G7b6S9UenDPelsHmU1pPdf8uNJTBdGV3fdvZMk3OFKwfZP9MSodYPWDsM3n4V7daByT18lvJSgHvTaaK84Jp3xodRbSG/6vxdrWQls38cbqVdBX38dUDfH4OEc3R8zKarX2PppE9hKHfsdxw8Gh/MHBcflsC0FRoOKZwt/6W64RW3iVhjrMNW6VEHeq/YmQMkq9iy48S7TRoEZMtSgqHSnDfK46xle5f5fdUvDg2lvb3PdO7gqieEenyRXqY0+XKZlS324B1s+eieFgr7VIfGAjcq0Us2KDS11ZVtvCsoGZTsv+OfdIstkvpj8mCxnLEkXs4SPkxnji3nBOEyTFGYFicsnFPqkctMIbduDY1M9ucJF674jo7WhdVx3buhhLd4rbXukUIXeMgOgHhuGi3AweAm+TL7iAhu0BeeEigMnHzmRmu2B5xeiPDpdHZ2hec+Sk1q8aRciOcnihyMnIXxZ5o2BNwGHcHlHdibnf1BLAwQUAAAICAAAmJ/r57N4220AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kqWBmbmhsaGlabKBkbmpQYqugWlyirlZWnJKqomBUappmlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/rAN5e610CAAAXBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/r57N4220AAAB4AAAACQAkAAAAAAAAAAAAAACqAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGIDAAAAAA==
+    dataString: UEsDBBQAAAgIAACYn+uDLhURXQIAABcFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzqVjaICht9YQ0gMJE5rJxRchrbEGWfLoI0Ay/PeuZBs7ZHpCvH27em935Q8ilK2AOW1WRvC15kB+Dkg4k2+DLvgAJ7rXaiveoeW8Cu6KQKKR80yd0IiPQprVJTgj2C+1l4GcIOiVyLUpl3wPqbbOIpxTaQFDRruQrRD6GJAT/gznIeWMp/EsnN7xNE8GFzwyUA5MR22Jw1nDq2leMUnLCnjQ3LHn04beVFPopmEk38eTUF9LKWyjhrhzFd2mtLIevSCBC4ruooRgtgCxL1xQ2k9+ynMLrpFn6HkhDDaprkp+67pzJbWHWtoblT7cM55Mo6y66PpLfDiK4dzo8qG9d5SEO1wh2OGZnhm1rtfaPrz4LNyrI5UHupPwWoB61CujveIYdMaHVG9hvOj+Xq2lBbBDh9dSb0BffR1QO8fg4RLdn1Ipyl1s/V0NbKWO/Y7jB4PD+YOC43LYpgSiQcWLhb9039+iJnAvjHUYalyqIG+nvQlUsow9C268S7VRYPoVKlBUuvMG67jbGd7E/p91T8ODaW5vYu07uEmJcMdPkpvQRh+v07KFPq7BFk/eSaGga3UIPGKjUq1UvWJ9S23a1pucsl7a3gv+ebfIPJnORj9G8wlLxrNJwofJhPHZNGcc7pIxTHISl08o9EnlphbatAfHprriChet/Y4MVoZWcd25oceVeC+17ZhC5XrLDIB6qitchYPBS/Bl8iUX2KAtOCdUHDj5yIjU7AA8uxbKotPlyRmadVUyUok37QKSkTR+ODIS4Osybwy8CTiGy9tiF3L5B1BLAwQUAAAICAAAmJ/r57N4220AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kqWBmbmhsaGlabKBkbmpQYqugWlyirlZWnJKqomBUappmlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/rgy4VEV0CAAAXBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/r57N4220AAAB4AAAACQAkAAAAAAAAAAAAAACqAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGIDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -37189,6 +37189,47 @@ MonoBehaviour:
   enemy: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45, type: 3}
   cooldown: 6
   cooldownRandomization: 4
+--- !u!1 &1303760559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45,
+    type: 3}
+  m_PrefabInstance: {fileID: 1227830611628977203}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1303760572
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303760559}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &1513688139
 GameObject:
   m_ObjectHideFlags: 0
@@ -38043,6 +38084,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4367716056636723878, guid: 89a346df7fe37f049982877c7fbbee45,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367716056636723878, guid: 89a346df7fe37f049982877c7fbbee45,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367716056636723878, guid: 89a346df7fe37f049982877c7fbbee45,
+        type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45,
         type: 3}
       propertyPath: m_Name
@@ -38101,7 +38157,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5556580978140358341, guid: 89a346df7fe37f049982877c7fbbee45,
+        type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1303760572}
   m_SourcePrefab: {fileID: 100100000, guid: 89a346df7fe37f049982877c7fbbee45, type: 3}
 --- !u!1001 &5938051182706076619
 PrefabInstance:
