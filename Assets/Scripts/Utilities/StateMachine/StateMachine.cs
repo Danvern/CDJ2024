@@ -108,7 +108,7 @@ public class StateMachine
 	private static List<ITransition> EmptyTransitions = new();
 	public bool LogState = false;
 
-	public void FrameUpdate()
+	public void Update()
 	{
 		if (_currentState == null)
 			return;

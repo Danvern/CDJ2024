@@ -113,7 +113,7 @@ public class EntityMovementLogic : IMovementLogic
 	{
 		UpdatePathLogic();
 
-		stateMachine.FrameUpdate();
+		stateMachine.Update();
 	}
 
 	public void SetupStateMachine()
@@ -132,6 +132,7 @@ public class EntityMovementLogic : IMovementLogic
 		Aaf(stunState, () => moveTrigger == MoveTrigger.Stun);
 		Af(walk, dashState, () => moveTrigger == MoveTrigger.Dash);
 		Af(dashState, walk, () => dashState.Finished);
+		Af(stunState, walk, () => stunState.Finished);
 
 		stateMachine.SetState(walk);
 	}

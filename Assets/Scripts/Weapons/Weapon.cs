@@ -104,7 +104,7 @@ public class Weapon : MonoBehaviour
 
 	void Update()
 	{
-		stateMachine.FrameUpdate();
+		stateMachine.Update();
 	}
 
 	void FixedUpdate()
