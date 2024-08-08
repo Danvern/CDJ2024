@@ -107,6 +107,8 @@ public class Entity : MonoBehaviour, IVisitable
 
 	private void Kill()
 	{
+		//TODO: Temp music switch
+		AudioManager.Instance.SetCombatActive(true);
 		if (IsDead) return;
 
 		IsDead = true;
