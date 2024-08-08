@@ -257,7 +257,7 @@ namespace Pathfinding.BehaviourTrees
 
 		public Node.Status Process()
 		{
-			entity.FacePosition(target() - entity.GetPosition());
+			entity.FacePosition(target());
 			entity.PrimaryFire(!fired);
 			fired = !fired;
 			// entity.LookAt(target.position.With(y:entity.position.y));
