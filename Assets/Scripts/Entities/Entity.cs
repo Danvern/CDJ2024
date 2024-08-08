@@ -73,10 +73,10 @@ public class Entity : MonoBehaviour, IVisitable
 			health.entityKilled += (killer) => { Kill(); }; // Use a Builder
 		}
 
-		movement = EntityMovementLogic.CreateMovementLogic(GetComponent<Rigidbody2D>());
-		movement.SetSpeed(speed);
-		movement.SetAcceleration(acceleration);
-		movement.MoveToDirection(Vector3.forward); // Use a Builder
+		movement = new EntityMovementLogic.Builder(GetComponent<Rigidbody2D>())
+			.WithSpeed(speed)
+			.WithAcceleration(acceleration)
+			.Build();
 
 		this.GetOrAddComponent<ServiceLocator>();
 		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement));

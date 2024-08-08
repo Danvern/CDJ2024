@@ -27,13 +27,39 @@ public interface IMovementLogic : IVisitable
 
 public class EntityMovementLogic : IMovementLogic
 {
+	public class Builder
+	{
+		private Rigidbody2D rb;
+		private float speed;
+		private float acceleration;
+		public Builder(Rigidbody2D rb) {
+			this.rb = rb;
+		}
+		public Builder WithSpeed(float speed){
+			this.speed = speed;
+			return this;
+		}
+		public Builder WithAcceleration(float acceleration){
+			this.acceleration = acceleration;
+			return this;
+		}
+		public EntityMovementLogic Build(){
+			var logic = new EntityMovementLogic(rb)
+			{
+				acceleration = acceleration,
+				speed = speed
+			};
+			logic.SetupStateMachine();
+			return logic;
+		}
+	}
 	enum MoveTrigger { Walk, Dash, Stun }
 	public const float DEFAULT_DASH_MULTIPLIER = 5f;
 	public float Speed { get { return speed; } set { speed = Mathf.Max(0, value); } }
 	private MoveTrigger moveTrigger = MoveTrigger.Walk;
 	private Rigidbody2D rb;
 	private Vector3 targetDirection = Vector3.zero;
-	private Vector3 facingDirection = Vector3.forward;
+	private Vector3 facingDirection = Vector3.right;
 	private float speed = 10f;
 	private float acceleration = 100f;
 	private float dashAcceleration = 100f;
@@ -77,15 +103,9 @@ public class EntityMovementLogic : IMovementLogic
 
 	public void Accept(IVisitor visitor) { visitor.Visit(this); }
 
-	public EntityMovementLogic(Rigidbody2D rb)
+	private EntityMovementLogic(Rigidbody2D rb)
 	{
 		this.rb = rb;
-		SetupStateMachine();
-	}
-
-	public static EntityMovementLogic CreateMovementLogic(Rigidbody2D rb)
-	{
-		return new EntityMovementLogic(rb);
 	}
 
 	// Change movement direction.
