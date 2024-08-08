@@ -73,7 +73,7 @@ public class AgentSkirmish : IAgent
 				return target;
 			return null;
 		}
-		
+
 		runToSafetySeq.AddChild(new Leaf("IsRetreating?", new Condition(IsRetreating)));
 		runToSafetySeq.AddChild(new Leaf("Go To Safety", new MoveToTarget(entity, GetTarget())));
 		actions.AddChild(runToSafetySeq);
@@ -93,10 +93,16 @@ public class AgentSkirmish : IAgent
 		tree.AddChild(actions);
 	}
 
-	public int GetInsistence(Blackboard blackboard) => 0;
+	public int GetInsistence(Blackboard blackboard) => blackboard.TryGetValue(targetKey, out Transform target) ? 0 : 10;
 	public void Execute(Blackboard blackboard)
 	{
-
+		blackboard.AddAction(() =>
+		{
+			if (blackboard.TryGetValue(targetKey, out bool target))
+			{
+				blackboard.SetValue(targetKey, ServiceLocator.Global.Get<AgentDirector>().GetPrimaryPlayer());
+			}
+		});
 	}
 	public void Update() => tree.Process(); //TODO: should be unified running of the behavior tree + a bootstrapping function
 }
