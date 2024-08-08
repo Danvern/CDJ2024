@@ -69,16 +69,22 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 			{
 
 			}
-			else if (entityMediator.IsDead()) {}
+			else if (entityMediator.IsDead()) { }
 			else if (owner == null || owner.IsHostile(entityMediator))
 			{
 				entityCollisions.Add(collider.transform, Time.time);
 				DecreasePierce(1);
 				DoEntityEffect(entityMediator);
-				if (!data.SmallKillSFX.IsNull && entityMediator.IsDead())
-					AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
+				if (entityMediator.IsDead())
+				{
+					if (!data.SmallKillSFX.IsNull)
+						AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
+				}
 				else
-					AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
+				{
+					if (!data.DamageSFX.IsNull)
+						AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
+				}
 				if (piercing < 0)
 				{
 					kill = true;
@@ -94,7 +100,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		entity.Accept(this);
 	}
 
-	public void Visit(IMovementLogic visitable) 
+	public void Visit(IMovementLogic visitable)
 	{
 		visitable.KnockbackStun(GetKnockback(), GetKnockbackDelay(), (visitable.GetRigidbody().position - impactPosition).normalized);
 	}
