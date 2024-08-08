@@ -101,8 +101,11 @@ namespace Pathfinding.BehaviourTrees
 		{
 			if (!isPathCalculated || Time.time - lastCalcTime > boredTime)
 			{
+				if (currentIndex > 0)
+					return Node.Status.Success;
 				entity.NavigatePathTo(entity.GetTransform().position.Add(x: Random.Range(-patrolRadius, patrolRadius), y: Random.Range(-patrolRadius, patrolRadius)));
 				lastCalcTime = Time.time;
+				currentIndex++;
 			}
 
 			if (!entity.IsNavigatorActive() && entity.GetRemainingTravelDistance() < entity.GetWaypointCloseness())
@@ -141,6 +144,40 @@ namespace Pathfinding.BehaviourTrees
 			}
 
 			entity.NavigatePathTo(target.position);
+			//entity.LookAt(target.position.With(y:entity.position.y));
+
+			isPathCalculated = entity.IsNavigating();
+			return Node.Status.Running;
+		}
+
+		public void Reset() => isPathCalculated = false;
+	}
+
+	public class MoveToTargetAction : IStrategy
+	{
+		readonly EntityMediator entity;
+		readonly Func<Transform> target;
+		bool isPathCalculated;
+		float lastCalcTime = 0f;
+
+		public MoveToTargetAction(EntityMediator entity, Func<Transform> target)
+		{
+			this.entity = entity;
+			this.target = target;
+		}
+
+		public Node.Status Process()
+		{
+			if (Vector3.Distance(entity.GetTransform().position, target().position) < 1f)
+			{
+				return Node.Status.Success;
+			}
+
+			if (Time.time - lastCalcTime > 1f)
+			{
+				entity.NavigatePathTo(target().position);
+				lastCalcTime = Time.time;
+			}
 			//entity.LookAt(target.position.With(y:entity.position.y));
 
 			isPathCalculated = entity.IsNavigating();

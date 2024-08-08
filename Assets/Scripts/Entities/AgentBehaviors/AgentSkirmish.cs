@@ -67,38 +67,37 @@ public class AgentSkirmish : IAgent
 			}
 			return false;
 		}
-		Transform GetTarget()
+		EntityMediator GetTarget()
 		{
-			if (blackboard.TryGetValue(targetKey, out Transform target))
+			if (blackboard.TryGetValue(targetKey, out EntityMediator target))
 				return target;
 			return null;
 		}
 
-		runToSafetySeq.AddChild(new Leaf("IsRetreating?", new Condition(IsRetreating)));
-		runToSafetySeq.AddChild(new Leaf("Go To Safety", new MoveToTarget(entity, GetTarget())));
-		actions.AddChild(runToSafetySeq);
+		// runToSafetySeq.AddChild(new Leaf("IsRetreating?", new Condition(IsRetreating)));
+		// runToSafetySeq.AddChild(new Leaf("Go To Safety", new MoveToTarget(entity, GetTarget())));
+		// actions.AddChild(runToSafetySeq);
 
-		Selector goToPlayer = new RandomSelector("GoToTreasure", 50);
-		Sequence goDirectly = new Sequence("GetTreasure1");
-		goDirectly.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget().OrNull() != null)));
-		goDirectly.AddChild(new Leaf("GoToTarget", new MoveToTarget(entity, GetTarget())));
+		Selector goToPlayer = new RandomSelector("GoToPlayer", 50);
+		Sequence goDirectly = new Sequence("ApproachPlayer");
+		goDirectly.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null)));
+		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTargetAction(entity, ()=>(GetTarget()?.GetTransform()))));
 		//goDirectly.AddChild(new Leaf("PickUpTreasure1", new ActionStrategy(() => treasure.SetActive(false))));
 		goToPlayer.AddChild(goDirectly);
-
 		actions.AddChild(goToPlayer);
 
 		Leaf patrol = new Leaf("Patrol", new RandomPatrolStrategy(entity));
-		actions.AddChild(patrol);
+		//actions.AddChild(patrol);
 
 		tree.AddChild(actions);
 	}
 
-	public int GetInsistence(Blackboard blackboard) => blackboard.TryGetValue(targetKey, out Transform target) ? 0 : 10;
+	public int GetInsistence(Blackboard blackboard) => !blackboard.TryGetValue(targetKey, out EntityMediator target) ? 10 : 0;
 	public void Execute(Blackboard blackboard)
 	{
 		blackboard.AddAction(() =>
 		{
-			if (blackboard.TryGetValue(targetKey, out bool target))
+			if (!blackboard.TryGetValue(targetKey, out EntityMediator target) || target == null)
 			{
 				blackboard.SetValue(targetKey, ServiceLocator.Global.Get<AgentDirector>().GetPrimaryPlayer());
 			}

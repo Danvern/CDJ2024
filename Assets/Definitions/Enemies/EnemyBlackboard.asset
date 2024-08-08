@@ -12,13 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66df40451f754c14599ef37ccff9b323, type: 3}
   m_Name: EnemyBlackboard
   m_EditorClassIdentifier: 
-  entries:
-  - keyName: test
-    valueType: 2
-    value:
-      type: 2
-      intValue: 0
-      floatValue: 0
-      boolValue: 1
-      stringValue: 
-      vector3Value: {x: 0, y: 0, z: 0}
+  entries: []

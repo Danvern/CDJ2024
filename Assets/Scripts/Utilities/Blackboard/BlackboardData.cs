@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace BlackboardSystem {
@@ -33,6 +34,7 @@ namespace BlackboardSystem {
             { AnyValue.ValueType.String, (blackboard, key, anyValue) => blackboard.SetValue<string>(key, anyValue) },
             { AnyValue.ValueType.Vector3, (blackboard, key, anyValue) => blackboard.SetValue<Vector3>(key, anyValue) },
             { AnyValue.ValueType.Transform, (blackboard, key, anyValue) => blackboard.SetValue<Transform>(key, anyValue) },
+            { AnyValue.ValueType.EntityMediator, (blackboard, key, anyValue) => blackboard.SetValue<EntityMediator>(key, anyValue) },
         };
         
         public void OnBeforeSerialize() { }
@@ -41,7 +43,7 @@ namespace BlackboardSystem {
 
     [Serializable]
     public struct AnyValue {
-        public enum ValueType { Int, Float, Bool, String, Vector3, Transform }
+        public enum ValueType { Int, Float, Bool, String, Vector3, Transform, EntityMediator }
         public ValueType type;
         
         // Storage for different types of values
@@ -51,6 +53,7 @@ namespace BlackboardSystem {
         public string stringValue;
         public Vector3 vector3Value;
 		public Transform transformValue;
+		public EntityMediator entityValue;
         // Add more types as needed, but remember to add them to the dispatch table above and the custom Editor
         
         // Implicit conversion operators to convert AnyValue to different types
@@ -60,6 +63,7 @@ namespace BlackboardSystem {
         public static implicit operator string(AnyValue value) => value.ConvertValue<string>();
         public static implicit operator Vector3(AnyValue value) => value.ConvertValue<Vector3>();
         public static implicit operator Transform(AnyValue value) => value.ConvertValue<Transform>();
+        public static implicit operator EntityMediator(AnyValue value) => value.ConvertValue<EntityMediator>();
 
         T ConvertValue<T>() {
             return type switch {
@@ -69,6 +73,7 @@ namespace BlackboardSystem {
                 ValueType.String => (T)(object)stringValue,
                 ValueType.Vector3 => AsVector3<T>(vector3Value),
                 ValueType.Transform => AsTransform<T>(transformValue),
+                ValueType.EntityMediator => AsEntity<T>(entityValue),
                 _ => throw new NotSupportedException($"Not supported value type: {typeof(T)}")
             };
         }
@@ -79,5 +84,6 @@ namespace BlackboardSystem {
         T AsFloat<T>(float value) => typeof(T) == typeof(float) && value is T correctType ? correctType : default;
         T AsVector3<T>(Vector3 value) => typeof(T) == typeof(Vector3) && value is T correctType ? correctType : default;
         T AsTransform<T>(Transform value) => typeof(T) == typeof(Transform) && value is T correctType ? correctType : default;
+        T AsEntity<T>(EntityMediator value) => typeof(T) == typeof(EntityMediator) && value is T correctType ? correctType : default;
     }
 }
