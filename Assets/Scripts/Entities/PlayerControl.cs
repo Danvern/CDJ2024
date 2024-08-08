@@ -82,7 +82,7 @@ public class PlayerControl : MonoBehaviour
 			return;
 
 		entity.MoveToDirection(new Vector3(moveDirection.x, moveDirection.y, 0));
-		Debug.Log(moveDirection);
+		// Debug.Log(moveDirection);
 		TargetCursor();
 		entity.FacePosition(aimPosition);
 	}

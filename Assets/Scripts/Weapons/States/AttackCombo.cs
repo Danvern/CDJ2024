@@ -29,7 +29,7 @@ public class AttackCombo : IState
 	{
 		Status = ComboState.Pending;
 		UpdateCombo();
-		Debug.Log("Activated Attack Timing: " + (Time.time - weapon.LastAttackTime) + "s");
+		// Debug.Log("Activated Attack Timing: " + (Time.time - weapon.LastAttackTime) + "s");
 
 		//AudioManager.Instance.PlayOneShot(!_gun.GunCycle.IsNull ? _gun.GunCycle : FModEvents.Instance.GunshotGenericCycle, _soundOrigin.position);
 	}

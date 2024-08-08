@@ -83,25 +83,27 @@ public class AgentSkirmish : IAgent
 		}
 
 
+
 		// runToSafetySeq.AddChild(new Leaf("IsRetreating?", new Condition(IsRetreating)));
 		// runToSafetySeq.AddChild(new Leaf("Go To Safety", new MoveToTarget(entity, GetTarget())));
 		// actions.AddChild(runToSafetySeq);
 		Sequence attackTarget = new Sequence("AttackTarget", 100);
 		attackTarget.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null)));
 		attackTarget.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < MaximumRange)));
-		attackTarget.AddChild(new Leaf("AttackPlayer", new ActionStrategy(()=>{
-			entity.PrimaryFire(true);
-		})));
-		attackTarget.AddChild(new Leaf("AttackPlayer", new ActionStrategy(()=>{
-			entity.PrimaryFire(false);
-		})));
+		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTarget().GetPosition())));
+		// attackTarget.AddChild(new Leaf("AttackPlayer", new ActionStrategy(()=>{
+		// 	entity.PrimaryFire(true);
+		// })));
+		// attackTarget.AddChild(new Leaf("AttackPlayer", new ActionStrategy(()=>{
+		// 	entity.PrimaryFire(false);
+		// })));
 		actions.AddChild(attackTarget);
 
 		Selector goToPlayer = new RandomSelector("GoToPlayer", 50);
 		Sequence goDirectly = new Sequence("ApproachPlayer");
 		goDirectly.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null)));
 		goDirectly.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < SensingRange)));
-		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTargetFunction(entity, ()=>(GetTarget()?.GetTransform()))));
+		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTargetFunction(entity, () => (GetTarget()?.GetTransform()))));
 		//goDirectly.AddChild(new Leaf("PickUpTreasure1", new ActionStrategy(() => treasure.SetActive(false))));
 		goToPlayer.AddChild(goDirectly);
 		actions.AddChild(goToPlayer);
