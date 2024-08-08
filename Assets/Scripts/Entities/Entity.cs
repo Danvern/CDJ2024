@@ -51,8 +51,8 @@ public class Entity : MonoBehaviour, IVisitable
 
 	public void FacePosition(Vector3 position)
 	{
-		Vector3 forward = new Vector3(position.x - transform.position.x, 0, position.z - transform.position.z);
-		transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
+		Vector2 forward = Quaternion.Euler(0, 0, 0f) * new Vector2(position.x - transform.position.x, position.y - transform.position.y);
+		transform.rotation = Quaternion.LookRotation(Vector3.forward, forward);
 	}
 
 	public void PrimaryFire(bool pressed)

@@ -44,7 +44,7 @@ public class PlayerControl : MonoBehaviour
 
 		if (Physics.Raycast(ray, out hitData, 1000f, groundMask))
 		{
-			aimPosition = new(hitData.point.x, 0f, hitData.point.z);
+			aimPosition = new(hitData.point.x, hitData.point.y, 0);
 		}
 
 		if (Physics.Raycast(entityRay, out hitData, 1000f, entityMask))
