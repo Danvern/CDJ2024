@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbec7cac99f6d4a4fb7a7a8a5378e406, type: 3}
   m_Name: AgentSkirmisherFactory
   m_EditorClassIdentifier: 
-  minimumRange: 0
-  maximumRange: 0
+  minimumRange: 4
+  maximumRange: 8
