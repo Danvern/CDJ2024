@@ -62546,10 +62546,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hachi
       objectReference: {fileID: 0}
+    - target: {fileID: 5556580978140358341, guid: dd390a37fe529e247a0149c3146be9cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7493684135216324028, guid: dd390a37fe529e247a0149c3146be9cc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.62
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 7493684135216324028, guid: dd390a37fe529e247a0149c3146be9cc,
         type: 3}
