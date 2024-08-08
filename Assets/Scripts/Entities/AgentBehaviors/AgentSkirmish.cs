@@ -12,12 +12,14 @@ public class AgentSkirmish : IAgent
 
 	public float MinimumRange { get; set; } = 0;
 	public float MaximumRange { get; set; } = 0;
+	public float SensingRange { get; set; } = 0;
 
 	public class Builder
 	{
 		private EntityMediator entity;
-		private float maxRange;
-		private float minRange;
+		private float maxRange = 8;
+		private float minRange = 4;
+		private float senseRange = 16;
 		public Builder(EntityMediator entity)
 		{
 			this.entity = entity;
@@ -32,11 +34,17 @@ public class AgentSkirmish : IAgent
 			minRange = min;
 			return this;
 		}
+		public Builder WithSenseRange(float sense)
+		{
+			senseRange = sense;
+			return this;
+		}
 		public AgentSkirmish Build()
 		{
 			var agent = new AgentSkirmish(entity);
 			agent.MaximumRange = maxRange;
 			agent.MinimumRange = minRange;
+			agent.SensingRange = senseRange;
 			return agent;
 		}
 	}
@@ -77,17 +85,22 @@ public class AgentSkirmish : IAgent
 		// runToSafetySeq.AddChild(new Leaf("IsRetreating?", new Condition(IsRetreating)));
 		// runToSafetySeq.AddChild(new Leaf("Go To Safety", new MoveToTarget(entity, GetTarget())));
 		// actions.AddChild(runToSafetySeq);
+		Sequence attackTarget = new Sequence("AttackTarget");
+		attackTarget.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null)));
+		attackTarget.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < SensingRange)));
+		attackTarget.AddChild(new Leaf("GoToPlayer", new MoveToTargetAction(entity, ()=>(GetTarget()?.GetTransform()))));
 
 		Selector goToPlayer = new RandomSelector("GoToPlayer", 50);
 		Sequence goDirectly = new Sequence("ApproachPlayer");
 		goDirectly.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null)));
+		goDirectly.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < SensingRange)));
 		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTargetAction(entity, ()=>(GetTarget()?.GetTransform()))));
 		//goDirectly.AddChild(new Leaf("PickUpTreasure1", new ActionStrategy(() => treasure.SetActive(false))));
 		goToPlayer.AddChild(goDirectly);
 		actions.AddChild(goToPlayer);
 
 		Leaf patrol = new Leaf("Patrol", new RandomPatrolStrategy(entity));
-		//actions.AddChild(patrol);
+		actions.AddChild(patrol);
 
 		tree.AddChild(actions);
 	}
