@@ -58,7 +58,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		impactPosition = transform.position;
 		foreach (Collider2D collider in potentialCollisions)
 		{
-			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, transform.position, transform.forward, GetCollisionArc()))
+			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, transform.position, transform.up, GetCollisionArc()))
 				continue;
 			Entity entity = collider.transform.GetComponent<Entity>();
 			if (entity == null)
@@ -106,9 +106,9 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	}
 
-	private bool IsColliderInsideArc(Vector3 colliderPosition, Vector3 position, Vector3 forward, float arc)
+	private bool IsColliderInsideArc(Vector2 colliderPosition, Vector2 position, Vector2 forward, float arc)
 	{
-		return Vector3.Angle(forward, colliderPosition - position) <= arc;
+		return Vector2.Angle(forward, colliderPosition - position) <= arc;
 	}
 
 	public void Visit(Entity visitable) { }

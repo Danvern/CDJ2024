@@ -63,10 +63,10 @@ public class ProjectileBase : MonoBehaviour
 			rayLength = damageLogic.GetCollisionRadius();
 			rayArc = damageLogic.GetCollisionArc();
 		}
-		Gizmos.DrawRay(transform.position, transform.forward * rayLength);
+		Gizmos.DrawRay(transform.position, transform.up * rayLength);
 		Gizmos.color = Color.red;
-		Gizmos.DrawRay(transform.position, Quaternion.Euler(0, rayArc / 2, 0) * transform.rotation * Vector3.forward * rayLength);
-		Gizmos.DrawRay(transform.position, Quaternion.Euler(0, -rayArc / 2, 0) * transform.rotation * Vector3.forward * rayLength);
+		Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, rayArc / 2) * transform.rotation * Vector3.up * rayLength);
+		Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, -rayArc / 2) * transform.rotation * Vector3.up * rayLength);
 
 	}
 
