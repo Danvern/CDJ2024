@@ -46,7 +46,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public float GetKnockback() { return 50; }
 
-	public float GetKnockbackDelay() { return 0.1f; }
+	public float GetKnockbackDelay() { return 0.02f; }
 
 	public bool CheckCollisons(Transform transform, EntityMediator owner)
 	{

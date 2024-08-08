@@ -24,6 +24,7 @@ public class MoveStun : IState
 	{
 		moveSpeed = power;
 		slideTime = time;
+		movement.GetRigidbody().AddForce(stunnedDirection * power, ForceMode2D.Impulse);
 	}
 
 	public void OnEnter()
@@ -55,7 +56,7 @@ public class MoveStun : IState
 		if (movement.GetRigidbody() == null)
 			return;
 
-		movement.GetRigidbody().AddForce(stunnedDirection * moveSpeed * Time.deltaTime, ForceMode2D.Force);
+		// movement.GetRigidbody().AddForce(stunnedDirection * moveSpeed * Time.deltaTime, ForceMode2D.Force);
 	}
 
 	public void PhysicsUpdate() { }
