@@ -13,6 +13,8 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private float collisionRadius = 3;
 	private float collisionArc = 0;
 	private float speed = 1;
+	private float knockback = 10;
+	private float KnockbackStun = .25f;
 	private Vector2 impactPosition = Vector2.zero;
 	private ProjectileDamageData data;
 
@@ -45,9 +47,9 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public float GetCollisionArc() { return collisionArc; }
 
-	public float GetKnockback() { return 50; }
+	public float GetKnockback() { return knockback; }
 
-	public float GetKnockbackDelay() { return 0.02f; }
+	public float GetKnockbackDelay() { return KnockbackStun; }
 	public float GetSpeed() { return speed; }
 
 	public bool CheckCollisons(Transform transform, EntityMediator owner)
