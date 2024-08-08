@@ -206,6 +206,8 @@ namespace Pathfinding.BehaviourTrees
 
 		public Node.Status Process()
 		{
+			if (entity.GetTransform() == null)
+				return Node.Status.Failure;
 			if (Vector3.Distance(entity.GetTransform().position, target().position) < 1f)
 			{
 				return Node.Status.Success;
