@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityServiceLocator;
@@ -24,7 +25,7 @@ public class EntityMediator : IVisitable
 	public ServiceLocator GetServiceLocator() => ServiceLocator.For(entity);
 	public bool IsHostile(EntityMediator mediator) => mediator.entity != entity && mediator.entity.IsEnemy != entity.IsEnemy;
 	public bool IsDead() => entity.IsDead;
-	public Transform GetTransform() => entity?.transform;
+	public Transform GetTransform() => entity.OrNull() != null ? entity.transform : null;
 	public Vector3 GetPosition() => entity.transform.position;
 	public void ActivateGuidanceMode()
 	{

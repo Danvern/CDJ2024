@@ -9,6 +9,7 @@ public class AgentSkirmish : IAgent
 	private BehaviourTree tree;
 	BlackboardKey isRetreatingKey;
 	BlackboardKey targetKey;
+	BlackboardKey targetPosition;
 
 	public float MinimumRange { get; set; } = 0;
 	public float MaximumRange { get; set; } = 0;
@@ -58,6 +59,7 @@ public class AgentSkirmish : IAgent
 
 		isRetreatingKey = blackboard.GetOrRegisterKey("IsRetreating");
 		targetKey = blackboard.GetOrRegisterKey("Target");
+		targetPosition = blackboard.GetOrRegisterKey("TargetPosition");
 
 		tree = new BehaviourTree("Skirmisher");
 		PrioritySelector actions = new PrioritySelector("Agent Logic");
@@ -81,9 +83,15 @@ public class AgentSkirmish : IAgent
 				return target;
 			return null;
 		}
+		Vector3 GetTargetPosition()
+		{
+			if (blackboard.TryGetValue(targetPosition, out Vector3 target))
+				return target;
+			return Vector3.zero;
+		}
 		bool IsInSight(EntityMediator targetEntity)
 		{
-			var ray = targetEntity.GetPosition() - entity.GetPosition();
+			var ray = GetTargetPosition() - entity.GetPosition();
 			return !Physics2D.Raycast(entity.GetPosition(), direction: ray.normalized, distance: ray.magnitude, layerMask: LayerMask.GetMask("EnviromentObstacles") );
 		}
 
@@ -91,9 +99,9 @@ public class AgentSkirmish : IAgent
 		// runToSafetySeq.AddChild(new Leaf("Go To Safety", new MoveToTarget(entity, GetTarget())));
 		// actions.AddChild(runToSafetySeq);
 		Sequence attackTarget = new Sequence("AttackTarget", 100);
-		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()) && Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < MaximumRange)));
+		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()) && Vector2.Distance(GetTargetPosition(), entity.GetPosition()) < MaximumRange)));
 		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
-		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTarget().GetPosition())));
+		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition())));
 		// attackTarget.AddChild(new Leaf("AttackPlayer", new ActionStrategy(()=>{
 		// 	entity.PrimaryFire(true);
 		// })));
@@ -105,13 +113,13 @@ public class AgentSkirmish : IAgent
 		Selector goToPlayer = new Selector("GoToPlayer", 50);
 		Sequence goDirectly = new Sequence("ApproachPlayerDirectly");
 		goDirectly.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()))));
-		goDirectly.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < SensingRange)));
-		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTarget(entity, () => GetTarget().GetPosition())));
+		goDirectly.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTargetPosition(), entity.GetPosition()) < SensingRange)));
+		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTarget(entity, () => GetTargetPosition())));
 		goToPlayer.AddChild(goDirectly);
 
 		Sequence goPathing = new Sequence("ApproachPlayerPathing");
 		goPathing.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null)));
-		goPathing.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < SensingRange)));
+		goPathing.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTargetPosition(), entity.GetPosition()) < SensingRange)));
 		goPathing.AddChild(new Leaf("GoToPlayer", new NavigateToTargetDynamic(entity, () => (GetTarget()?.GetTransform()))));
 		goToPlayer.AddChild(goPathing);
 		//goDirectly.AddChild(new Leaf("PickUpTreasure1", new ActionStrategy(() => treasure.SetActive(false))));
@@ -123,14 +131,18 @@ public class AgentSkirmish : IAgent
 		tree.AddChild(actions);
 	}
 
-	public int GetInsistence(Blackboard blackboard) => !blackboard.TryGetValue(targetKey, out EntityMediator target) ? 10 : 0;
+	public int GetInsistence(Blackboard blackboard) => blackboard.TryGetValue(targetKey, out EntityMediator target) ? 25 : 10;
 	public void Execute(Blackboard blackboard)
 	{
 		blackboard.AddAction(() =>
 		{
-			if (!blackboard.TryGetValue(targetKey, out EntityMediator target) || target == null)
+			if (!blackboard.TryGetValue(targetKey, out EntityMediator target) || target == null || target.GetTransform().OrNull() == null)
 			{
 				blackboard.SetValue(targetKey, ServiceLocator.Global.Get<AgentDirector>().GetPrimaryPlayer());
+			}
+			else
+			{
+				blackboard.SetValue(targetPosition, target.GetPosition());
 			}
 		});
 	}
