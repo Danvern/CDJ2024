@@ -125,6 +125,36 @@ namespace Pathfinding.BehaviourTrees
 		}
 	}
 
+	public class MoveToTarget : IStrategy
+	{
+		readonly EntityMediator entity;
+		readonly Transform target;
+		bool isLookingForward;
+
+		public MoveToTarget(EntityMediator entity, Transform target, bool isLookingForward = true)
+		{
+			this.entity = entity;
+			this.target = target;
+			this.isLookingForward = isLookingForward;
+		}
+
+		public Node.Status Process()
+		{
+			if (Vector3.Distance(entity.GetTransform().position, target.position) < 1f)
+			{
+				return Node.Status.Success;
+			}
+
+			entity.MoveToDirection(target.position - entity.GetTransform().position);
+			if (isLookingForward)
+				entity.FacePosition(target.position - entity.GetTransform().position);
+
+			return Node.Status.Running;
+		}
+
+		public void Reset() {}
+	}
+
 	public class NavigateToTarget : IStrategy
 	{
 		readonly EntityMediator entity;
@@ -203,7 +233,7 @@ namespace Pathfinding.BehaviourTrees
 			return Node.Status.Success;
 		}
 
-		public void Reset() {}
+		public void Reset() { }
 	}
 
 	public class AttackTowardsDirection : IStrategy
