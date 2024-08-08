@@ -81,14 +81,17 @@ public class AgentSkirmish : IAgent
 				return target;
 			return null;
 		}
-
-
+		bool IsInSight(EntityMediator targetEntity)
+		{
+			var ray = targetEntity.GetPosition() - entity.GetPosition();
+			return !Physics2D.Raycast(entity.GetPosition(), direction: ray.normalized, distance: ray.magnitude, layerMask: LayerMask.GetMask("EnviromentObstacles") );
+		}
 
 		// runToSafetySeq.AddChild(new Leaf("IsRetreating?", new Condition(IsRetreating)));
 		// runToSafetySeq.AddChild(new Leaf("Go To Safety", new MoveToTarget(entity, GetTarget())));
 		// actions.AddChild(runToSafetySeq);
 		Sequence attackTarget = new Sequence("AttackTarget", 100);
-		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < MaximumRange)));
+		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()) && Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < MaximumRange)));
 		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTarget().GetPosition())));
 		// attackTarget.AddChild(new Leaf("AttackPlayer", new ActionStrategy(()=>{
