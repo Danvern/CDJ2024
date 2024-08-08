@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96ac5387efbb804ab5b893a795ba7da, type: 3}
-  m_Name: PlayerSlashCircular
+  m_Script: {fileID: 11500000, guid: b5a2ce0c2aa5380409f53d22ab3a85df, type: 3}
+  m_Name: PlayerMeleeEffectRush
   m_EditorClassIdentifier: 
-  Lifetime: 0.5
-  DamageMax: 7
-  DamageMin: 10
-  Piercing: 64
-  CollisionRadius: 2.2
-  CollisionArc: 360
+  power: 800
+  slideTime: 0.1
+  controlled: 1

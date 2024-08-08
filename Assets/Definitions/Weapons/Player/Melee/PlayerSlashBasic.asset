@@ -16,8 +16,11 @@ MonoBehaviour:
   DamageMax: 5
   DamageMin: 8
   Piercing: 16
+  Knockback: 1
+  KnockbackStun: 0.4
   CollisionRadius: 2
   CollisionArc: 120
+  StartingVelocity: 0
   SmallKillSFX:
     Guid:
       Data1: -1270556339

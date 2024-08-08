@@ -260,8 +260,8 @@ namespace Pathfinding.BehaviourTrees
 			entity.FacePosition(target() - entity.GetPosition());
 			entity.PrimaryFire(!fired);
 			fired = !fired;
-			//entity.LookAt(target.position.With(y:entity.position.y));
-			Debug.Log("Fired: " + fired);
+			// entity.LookAt(target.position.With(y:entity.position.y));
+			// Debug.Log("Fired: " + fired);
 
 			if (!fired)
 			{
