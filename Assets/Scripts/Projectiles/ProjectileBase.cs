@@ -85,6 +85,12 @@ public class ProjectileBase : MonoBehaviour
 		if (!active) return;
 
 		active = false;
+		if (rb != null)
+			rb.velocity = Vector3.zero;
+		foreach (SpriteRenderer item in GetComponentsInChildren<SpriteRenderer>())
+		{
+			item.color = Color.clear;	
+		}
 		StartCoroutine(DestroyAfterDelay(deletionDelay));
 	}
 
