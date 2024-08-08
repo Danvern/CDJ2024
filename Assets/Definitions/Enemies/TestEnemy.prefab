@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5353153818644219821}
   - component: {fileID: 6518360089558669627}
   - component: {fileID: 2532057923281369954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 5563226195089484693}
   - component: {fileID: 4367716056636723878}
   - component: {fileID: 3752208349402694709}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentFactory: {fileID: 11400000, guid: 900d5b91f28183d40be4de9882f34be4, type: 2}
   healthData: {fileID: 11400000, guid: 50e6c4619d0195e4e909bb85aeaf22a6, type: 2}
+  waypointCloseness: 0.75
   speed: 2
   acceleration: 2000
   primaryWeapon: {fileID: 1866503540634442642}
@@ -225,7 +226,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 5556580978140358341}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ebce689a2c6b5e64e877e5c25b368db9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -250,7 +251,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.5
 --- !u!114 &3752208349402694709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,10 +288,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7493684135216324028}
     m_Modifications:
+    - target: {fileID: 5021179338169028108, guid: d43d1b0101bb2194c8679b0ad7a61c84,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8014940007499789419, guid: d43d1b0101bb2194c8679b0ad7a61c84,
         type: 3}
       propertyPath: m_Name
       value: Dagger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014940007499789419, guid: d43d1b0101bb2194c8679b0ad7a61c84,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9216537538314358824, guid: d43d1b0101bb2194c8679b0ad7a61c84,
         type: 3}

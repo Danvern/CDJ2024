@@ -12,6 +12,7 @@ public class Entity : MonoBehaviour, IVisitable
 	public bool IsEnemy { get { return isEnemy; } private set { isEnemy = value; } }
 	[SerializeField] private IAgentFactory agentFactory;
 	[SerializeField] private EntityHealthData healthData;
+	[SerializeField] private float waypointCloseness = 0.75f;
 	[SerializeField] private float speed = 10;
 	[SerializeField] private float acceleration = 100;
 	[SerializeField] private Weapon primaryWeapon;
@@ -23,6 +24,8 @@ public class Entity : MonoBehaviour, IVisitable
 	private IAgent agent;
 	private const float deletionDelay = 1f;
 
+
+	public float GetWaypointCloseness() => waypointCloseness;
 
 	public bool IsHostile(Entity entity)
 	{

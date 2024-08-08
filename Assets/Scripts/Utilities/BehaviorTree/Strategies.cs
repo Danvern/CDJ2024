@@ -100,7 +100,7 @@ namespace Pathfinding.BehaviourTrees
 			if (!isPathCalculated)
 				entity.NavigatePathTo(entity.GetTransform().position.Add(x: Random.Range(-patrolRadius, patrolRadius), y: Random.Range(-patrolRadius, patrolRadius)));
 
-			if (!entity.IsNavigatorActive() && entity.GetRemainingTravelDistance() < 0.5f)
+			if (!entity.IsNavigatorActive() && entity.GetRemainingTravelDistance() < entity.GetWaypointCloseness())
 			{
 				return Node.Status.Success;
 			}

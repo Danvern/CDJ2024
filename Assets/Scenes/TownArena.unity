@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7228374
 Transform:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+ub3CoNbwIAACkFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMtymzAU/RWP1rUHiB/j7lriOF048cTNZMNGkS5GYyExkojtZPzvvRJgqMMGcc59nPsQX0QoWwFz2qyN4BvNgfwcEX8mP0Y9+QgnutdqJz6hs3kT3BXeiAabF+qERjz2blaX4Ixgv9ReeuMIwVqJXJtyxfeQausswjmVFpAy2nlvhdDXiJzwNV56lzOekoU/feJpGY0ueGSgHJjetDMczydL/0xb83E8SWbxIkqS1TiaB9daMUnLCrivo4+wnLch2gwKK2wtfDVMSylsK4+4cxXKT2llaywODbigWG7QFE/uEChA7AvnxQ/dn/PcgmsVG3q+Fwb71sQlv3XTzJLaQ6Psg8raZ0pmjfgm6OYbP44DnRtdPnZ548jncIVghxd6ZtS6QbeH8P1AemjQkcoDfZfwVoB60muja8WRdKb2rrWF5L7/vJaWFsAOPd5IvQHr6vvMouusRpdLqP6USlG+e2oybYCd1KHjYSPA4Gz+oOCwL7YNgahX8WrhL90PF6slHoSxDqm2SuXlvevaeFOyCj3z1dQu1UZBgFvRFSgq3XmLYdztCG+4Qdob5oH6K9Qmb7nuZty4BLi3j6IbaquP12HZQh83YIvn2kmhoBftiSfsU6qVajZs2JPObVebnLKB274W/P/VIstovojv4uWMRcliFvFxNGN8Mc8Zh2mUwCwnYfeEwjqp3DZC2/bg1FQfXOGedX+W0drQKmw7N/S4Fp+lHrRcqFzvmAFQz02Eq3AwmATvJV9xgQ3agXNChXmTr4xIzQ7As2ugLFS6OjlDsz5KRirxoZ1HMpKGX0lGPHzd5a2BDwFHn7wLdiGXf1BLAwQUAAAICAAAmJ/r57N4220AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kqWBmbmhsaGlabKBkbmpQYqugWlyirlZWnJKqomBUappmlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/rm9wqDW8CAAApBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/r57N4220AAAB4AAAACQAkAAAAAAAAAAAAAAC8AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAHQDAAAAAA==
+    dataString: UEsDBBQAAAgIAACYn+sA3l7rXQIAABcFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzqVjXD6G3lqHkB6SMKGZXHxRpDXWIEsefQRIhv/elWxjh0xPiN23T+/trvxBhLI1MKfN2gh+rzmQnyMSzuTbqE/ewZHutNqKd+gwL4K7MoBoxDxRJzTGJ6HM6gqcEeyX2skATjDolSi0qVZ8B5m2zmK4oNICpox2oVph6GNEjvgzXoaSE57SRTi942mZjM54ZKAcmB7aAceLFtfAvGKSVjXwoLlHp9MW3rIpdNMiku/pLPBrKYVt1RB3qqPbjNbWoxcEcEHRXZQQzJYgdqUL1MPix6Kw4Fp5hp5uhMEmNazkt246V1G7b6S9UenDPelsHmU1pPdf8uNJTBdGV3fdvZMk3OFKwfZP9MSodYPWDsM3n4V7daByT18lvJSgHvTaaK84Jp3xodRbSG/6vxdrWQls38cbqVdBX38dUDfH4OEc3R8zKarX2PppE9hKHfsdxw8Gh/MHBcflsC0FRoOKZwt/6W64RW3iVhjrMNW6VEHeq/YmQMkq9iy48S7TRoEZMtSgqHSnDfK46xle5f5fdUvDg2lvb3PdO7gqieEenyRXqY0+XKZlS324B1s+eieFgr7VIfGAjcq0Us2KDS11ZVtvCsoGZTsv+OfdIstkvpj8mCxnLEkXs4SPkxnji3nBOEyTFGYFicsnFPqkctMIbduDY1M9ucJF674jo7WhdVx3buhhLd4rbXukUIXeMgOgHhuGi3AweAm+TL7iAhu0BeeEigMnHzmRmu2B5xeiPDpdHZ2hec+Sk1q8aRciOcnihyMnIXxZ5o2BNwGHcHlHdibnf1BLAwQUAAAICAAAmJ/r57N4220AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kqWBmbmhsaGlabKBkbmpQYqugWlyirlZWnJKqomBUappmlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/rAN5e610CAAAXBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/r57N4220AAAB4AAAACQAkAAAAAAAAAAAAAACqAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGIDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -354,7 +354,39 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
@@ -439,7 +471,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5.890625
+  orthographic size: 7.171875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -28653,6 +28685,11 @@ PrefabInstance:
       propertyPath: m_TileOrientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7864861429701140704, guid: 72e186c395643f1468794e7970d2cddc,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 40c7a630ff2d7564597f23fbe73165eb, type: 2}
     - target: {fileID: 7864861429701140704, guid: 72e186c395643f1468794e7970d2cddc,
         type: 3}
       propertyPath: m_ColliderPaths.Array.size
