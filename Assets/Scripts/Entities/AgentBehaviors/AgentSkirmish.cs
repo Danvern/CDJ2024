@@ -88,8 +88,8 @@ public class AgentSkirmish : IAgent
 		// runToSafetySeq.AddChild(new Leaf("Go To Safety", new MoveToTarget(entity, GetTarget())));
 		// actions.AddChild(runToSafetySeq);
 		Sequence attackTarget = new Sequence("AttackTarget", 100);
-		attackTarget.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null)));
-		attackTarget.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < MaximumRange)));
+		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < MaximumRange)));
+		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTarget().GetPosition())));
 		// attackTarget.AddChild(new Leaf("AttackPlayer", new ActionStrategy(()=>{
 		// 	entity.PrimaryFire(true);
@@ -103,7 +103,7 @@ public class AgentSkirmish : IAgent
 		Sequence goDirectly = new Sequence("ApproachPlayer");
 		goDirectly.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null)));
 		goDirectly.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTarget().GetPosition(), entity.GetPosition()) < SensingRange)));
-		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTargetFunction(entity, () => (GetTarget()?.GetTransform()))));
+		goDirectly.AddChild(new Leaf("GoToPlayer", new NavigateToTargetDynamic(entity, () => (GetTarget()?.GetTransform()))));
 		//goDirectly.AddChild(new Leaf("PickUpTreasure1", new ActionStrategy(() => treasure.SetActive(false))));
 		goToPlayer.AddChild(goDirectly);
 		actions.AddChild(goToPlayer);

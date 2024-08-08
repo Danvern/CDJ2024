@@ -125,13 +125,13 @@ namespace Pathfinding.BehaviourTrees
 		}
 	}
 
-	public class MoveToTarget : IStrategy
+	public class NavigateToTarget : IStrategy
 	{
 		readonly EntityMediator entity;
 		readonly Transform target;
 		bool isPathCalculated;
 
-		public MoveToTarget(EntityMediator entity, Transform target)
+		public NavigateToTarget(EntityMediator entity, Transform target)
 		{
 			this.entity = entity;
 			this.target = target;
@@ -154,14 +154,14 @@ namespace Pathfinding.BehaviourTrees
 		public void Reset() => isPathCalculated = false;
 	}
 
-	public class MoveToTargetFunction : IStrategy
+	public class NavigateToTargetDynamic : IStrategy
 	{
 		readonly EntityMediator entity;
 		readonly Func<Transform> target;
 		bool isPathCalculated;
 		float lastCalcTime = 0f;
 
-		public MoveToTargetFunction(EntityMediator entity, Func<Transform> target)
+		public NavigateToTargetDynamic(EntityMediator entity, Func<Transform> target)
 		{
 			this.entity = entity;
 			this.target = target;
@@ -186,6 +186,24 @@ namespace Pathfinding.BehaviourTrees
 		}
 
 		public void Reset() => isPathCalculated = false;
+	}
+	public class StopMoving : IStrategy
+	{
+		readonly EntityMediator entity;
+
+		public StopMoving(EntityMediator entity)
+		{
+			this.entity = entity;
+		}
+
+		public Node.Status Process()
+		{
+			entity.MoveToDirection(Vector3.zero);
+
+			return Node.Status.Success;
+		}
+
+		public void Reset() {}
 	}
 
 	public class AttackTowardsDirection : IStrategy
