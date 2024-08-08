@@ -18,6 +18,7 @@ public interface IMovementLogic : IVisitable
 	void Dash(float power, float slideTime);
 	void KnockbackStun(float power, float slideTime, Vector3 direction);
 	public void CalculatePath(Seeker navigator, Vector3 position, Vector3 target);
+	public void CancelPath(Seeker navigator);
 	public Vector2 GetNextPathNode(float stoppingDistance);
 	Rigidbody2D GetRigidbody();
 	void Update();
@@ -60,6 +61,13 @@ public class EntityMovementLogic : IMovementLogic
 		currentPath = navigator.StartPath(position, target, onPathComplete); // Always level planes
 		isPathCalculating = true;
 		pathRemaining = Vector2.Distance(target, rb.position);
+
+	}
+	public void CancelPath(Seeker navigator)
+	{
+		navigator.CancelCurrentPathRequest();
+		isPathCalculating = false;
+		pathRemaining = 0;
 
 	}
 	public float RemainingPathDistance()

@@ -140,6 +140,8 @@ namespace Pathfinding.BehaviourTrees
 
 		public Node.Status Process()
 		{
+			if (entity.IsNavigating())
+				entity.CancelPath();
 			if (Vector3.Distance(entity.GetTransform().position, target.position) < 1f)
 			{
 				return Node.Status.Success;
@@ -152,7 +154,7 @@ namespace Pathfinding.BehaviourTrees
 			return Node.Status.Running;
 		}
 
-		public void Reset() {}
+		public void Reset() { }
 	}
 
 	public class NavigateToTarget : IStrategy
@@ -228,6 +230,8 @@ namespace Pathfinding.BehaviourTrees
 
 		public Node.Status Process()
 		{
+			if (entity.IsNavigating())
+				entity.CancelPath();
 			entity.MoveToDirection(Vector3.zero);
 
 			return Node.Status.Success;

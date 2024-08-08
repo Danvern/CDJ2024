@@ -36,6 +36,7 @@ public class EntityMediator : IVisitable
 //		MoveToDirection(navigator.steeringTarget);
 		MoveToDirection(targetPosition);
 	}
+	public void CancelPath() => movement.CancelPath(navigator);
 	public bool IsNavigating() => movement.IsFollowingPath(); //navigator.pathPending;
 	public bool IsNavigatorActive() => movement.IsPathPending(); //navigator.pathPending;
 	//public void UpdateNavigatorPosition(Vector3 position) {} //navigator.nextPosition = position;
