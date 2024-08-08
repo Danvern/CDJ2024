@@ -10,8 +10,39 @@ public class AgentSkirmish : IAgent
 	BlackboardKey isRetreatingKey;
 	BlackboardKey targetKey;
 
+	public float MinimumRange { get; set; } = 0;
+	public float MaximumRange { get; set; } = 0;
 
-	public AgentSkirmish(EntityMediator entity) => this.entity = entity;
+	public class Builder
+	{
+		private EntityMediator entity;
+		private float maxRange;
+		private float minRange;
+		public Builder(EntityMediator entity)
+		{
+			this.entity = entity;
+		}
+		public Builder WithMaxRange(float max)
+		{
+			maxRange = max;
+			return this;
+		}
+		public Builder WithMinRange(float min)
+		{
+			minRange = min;
+			return this;
+		}
+		public AgentSkirmish Build()
+		{
+			var agent = new AgentSkirmish(entity);
+			agent.MaximumRange = maxRange;
+			agent.MinimumRange = minRange;
+			return agent;
+		}
+	}
+
+
+	private AgentSkirmish(EntityMediator entity) => this.entity = entity;
 	public void BootstrapBehaviorTree()
 	{
 		Blackboard blackboard = entity.GetServiceLocator().Get<BlackboardController>().GetBlackboard();

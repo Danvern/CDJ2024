@@ -8,7 +8,10 @@ public class AgentSkirmishFactory : IAgentFactory
 {
 	public override IAgent CreateAgent(EntityMediator entity)
 	{
-		var agent = new AgentSkirmish(entity);
+		var agent = new AgentSkirmish.Builder(entity)
+			.WithMinRange(minimumRange)
+			.WithMaxRange(maximumRange)
+			.Build();
 		agent.BootstrapBehaviorTree();
 		return agent;
 	}

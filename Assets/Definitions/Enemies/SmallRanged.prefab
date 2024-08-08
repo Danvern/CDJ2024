@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 7921322582954264698}
   - component: {fileID: 3752208349402694709}
   m_Layer: 7
-  m_Name: TestEnemy
+  m_Name: SmallRanged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2a65817ec2bef43bb5ad16b4d760b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentFactory: {fileID: 11400000, guid: 900d5b91f28183d40be4de9882f34be4, type: 2}
+  agentFactory: {fileID: 11400000, guid: 763b735b8e740cc4195a81c050bcb0ba, type: 2}
   healthData: {fileID: 11400000, guid: 50e6c4619d0195e4e909bb85aeaf22a6, type: 2}
   waypointCloseness: 0.75
   speed: 2
