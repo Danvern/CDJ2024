@@ -5,6 +5,7 @@ public class MoveWalk : IState
 {
 	private IMovementLogic movement;
 	private float previousSpeed;
+	private float stoppingDistance = 0.1f;
 
 	public MoveWalk(IMovementLogic movement)
 	{
@@ -27,6 +28,8 @@ public class MoveWalk : IState
 		if (movement.GetRigidbody() == null)
 			return;
 
+		if (movement.IsFollowingPath())
+			movement.MoveToDirection(movement.GetNextPathNode(stoppingDistance));
 		movement.GetRigidbody().velocity = movement.GetTargetDirection() * movement.GetRigidbody().velocity.magnitude; // Sharp Turns
 		movement.GetRigidbody().AddForce(movement.GetTargetDirection() * movement.GetAcceleration() * Time.deltaTime, ForceMode2D.Force);
 		if (movement.GetRigidbody().velocity.magnitude > movement.GetSpeed())

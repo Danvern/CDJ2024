@@ -1,18 +1,24 @@
 using System;
+using Pathfinding;
 using UnityEngine;
 using UnityServiceLocator;
 
 public interface IMovementLogic : IVisitable
 {
-	void MoveToDirection(Vector3 direction);
+	void MoveToDirection(Vector2 direction);
 	float GetSpeed();
 	void SetSpeed(float speed);
 	float GetAcceleration();
 	void SetAcceleration(float acceleration);
 	Vector3 GetTargetDirection();
 	Vector3 GetFacingDirection();
+	public bool IsFollowingPath();
+	public bool IsPathPending();
+	public float RemainingPathDistance();
 	void Dash(float power, float slideTime);
 	void KnockbackStun(float power, float slideTime, Vector3 direction);
+	public void CalculatePath(Seeker navigator, Vector3 position, Vector3 target);
+	public Vector2 GetNextPathNode(float stoppingDistance);
 	Rigidbody2D GetRigidbody();
 	void Update();
 
@@ -34,6 +40,11 @@ public class EntityMovementLogic : IMovementLogic
 	private StateMachine stateMachine;
 	private MoveDash dashState;
 	private MoveStun stunState;
+	private bool isOnPath = false;
+	private bool isPathCalculating = false;
+	private int currentWaypoint = 0;
+	private float pathRemaining = 0;
+	private Path currentPath;
 
 	public float GetAcceleration() { return acceleration; }
 	public void SetAcceleration(float acceleration) { this.acceleration = acceleration; }
@@ -42,6 +53,19 @@ public class EntityMovementLogic : IMovementLogic
 	public Vector3 GetTargetDirection() { return targetDirection; }
 	public Vector3 GetFacingDirection() { return facingDirection; }
 	public Rigidbody2D GetRigidbody() { return rb; }
+	public bool IsFollowingPath() { return isOnPath; }
+	public bool IsPathPending() { return isOnPath || isPathCalculating; }
+	public void CalculatePath(Seeker navigator, Vector3 position, Vector3 target)
+	{
+		currentPath = navigator.StartPath(position, target, onPathComplete); // Always level planes
+		isPathCalculating = true;
+		pathRemaining = Vector2.Distance(target, rb.position);
+
+	}
+	public float RemainingPathDistance()
+	{
+		return pathRemaining;
+	}
 
 	public void Accept(IVisitor visitor) { visitor.Visit(this); }
 
@@ -57,9 +81,9 @@ public class EntityMovementLogic : IMovementLogic
 	}
 
 	// Change movement direction.
-	public void MoveToDirection(Vector3 direction)
+	public void MoveToDirection(Vector2 direction)
 	{
-		if (direction != Vector3.zero && moveTrigger != MoveTrigger.Stun)
+		if (direction != Vector2.zero && moveTrigger != MoveTrigger.Stun)
 			facingDirection = direction.normalized;
 		targetDirection = direction.normalized;
 	}
@@ -79,6 +103,8 @@ public class EntityMovementLogic : IMovementLogic
 
 	public void Update()
 	{
+		UpdatePathLogic();
+
 		stateMachine.FrameUpdate();
 	}
 
@@ -100,5 +126,43 @@ public class EntityMovementLogic : IMovementLogic
 		Af(dashState, walk, () => dashState.Finished);
 
 		stateMachine.SetState(walk);
+	}
+
+	void UpdatePathLogic()
+	{
+		if (currentPath == null) return;
+
+		if (currentWaypoint >= currentPath.vectorPath.Count)
+		{
+			isOnPath = false;
+			pathRemaining = 0;
+		}
+		else
+			isOnPath = true;
+
+		pathRemaining = currentPath.GetTotalLength();
+	}
+
+	public Vector2 GetNextPathNode(float stoppingDistance)
+	{
+		Vector2 direction = ((Vector2)currentPath.vectorPath[currentWaypoint] - rb.position).normalized;
+
+		float distance = Vector2.Distance(currentPath.vectorPath[currentWaypoint], rb.position);
+		if (distance < stoppingDistance)
+			currentWaypoint++;
+
+		return direction;
+	}
+
+	void onPathComplete(Path path)
+	{
+		if (!path.error)
+		{
+			currentPath = path;
+			currentWaypoint = 0;
+		}
+		else
+		pathRemaining = 0;
+		isPathCalculating = false;
 	}
 }

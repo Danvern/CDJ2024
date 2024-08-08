@@ -98,8 +98,8 @@ public class Entity : MonoBehaviour, IVisitable
 	{
 		agent?.Update();
 		movement?.Update();
-		if (agent != null)
-			ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
+		// if (agent != null)
+			// ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
 	}
 
 	private void Kill()

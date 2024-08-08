@@ -65,14 +65,14 @@ namespace Pathfinding.BehaviourTrees
 			if (currentIndex == patrolPoints.Count) return Node.Status.Success;
 
 			var target = patrolPoints[currentIndex];
-			entity.SetNavigatorTarget(target.position);
+			entity.NavigatePathTo(target.position);
 
 			if (isPathCalculated && entity.GetRemainingTravelDistance() < 0.1f)
 			{
 				currentIndex++;
 				isPathCalculated = false;
 			}
-			
+
 			isPathCalculated = entity.IsNavigating();
 
 			return Node.Status.Running;
@@ -97,19 +97,23 @@ namespace Pathfinding.BehaviourTrees
 
 		public Node.Status Process()
 		{
-			entity.SetNavigatorTarget(entity.GetTransform().position.Add(x: Random.Range(-0, 0), y: Random.Range(-patrolRadius, patrolRadius)));
+			if (!isPathCalculated)
+				entity.NavigatePathTo(entity.GetTransform().position.Add(x: Random.Range(-patrolRadius, patrolRadius), y: Random.Range(-patrolRadius, patrolRadius)));
 
-			if (isPathCalculated && entity.GetRemainingTravelDistance() < 0.1f)
+			if (!entity.IsNavigatorActive() && entity.GetRemainingTravelDistance() < 0.5f)
 			{
 				return Node.Status.Success;
 			}
-			
-			isPathCalculated = entity.IsNavigating();
+
+			isPathCalculated = entity.IsNavigatorActive();
 
 			return Node.Status.Running;
 		}
 
-		public void Reset() => currentIndex = 0;
+		public void Reset()
+		{
+			currentIndex = 0;
+		}
 	}
 
 	public class MoveToTarget : IStrategy
@@ -131,7 +135,7 @@ namespace Pathfinding.BehaviourTrees
 				return Node.Status.Success;
 			}
 
-			entity.SetNavigatorTarget(target.position);
+			entity.NavigatePathTo(target.position);
 			//entity.LookAt(target.position.With(y:entity.position.y));
 
 			isPathCalculated = entity.IsNavigating();
