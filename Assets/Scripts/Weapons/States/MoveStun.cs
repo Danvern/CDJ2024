@@ -38,8 +38,9 @@ public class MoveStun : IState
 
 	public void OnExit()
 	{
+		if (!Finished)
+			Finish?.Invoke();
 		Finished = true;
-		Finish?.Invoke();
 		movement.SetSpeed(previousSpeed);
 	}
 
@@ -48,6 +49,7 @@ public class MoveStun : IState
 		if (Time.time - startTime > slideTime)
 		{
 			Finished = true;
+			Finish?.Invoke();
 			return;
 		}
 		if (movement.GetRigidbody() == null)
