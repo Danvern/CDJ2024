@@ -128,10 +128,10 @@ namespace Pathfinding.BehaviourTrees
 	public class MoveToTarget : IStrategy
 	{
 		readonly EntityMediator entity;
-		readonly Transform target;
+		readonly Func<Vector3> target;
 		bool isLookingForward;
 
-		public MoveToTarget(EntityMediator entity, Transform target, bool isLookingForward = true)
+		public MoveToTarget(EntityMediator entity, Func<Vector3> target, bool isLookingForward = true)
 		{
 			this.entity = entity;
 			this.target = target;
@@ -142,14 +142,14 @@ namespace Pathfinding.BehaviourTrees
 		{
 			if (entity.IsNavigating())
 				entity.CancelPath();
-			if (Vector3.Distance(entity.GetTransform().position, target.position) < 1f)
+			if (Vector3.Distance(entity.GetTransform().position, target()) < 1f)
 			{
 				return Node.Status.Success;
 			}
 
-			entity.MoveToDirection(target.position - entity.GetTransform().position);
+			entity.MoveToDirection(target() - entity.GetTransform().position);
 			if (isLookingForward)
-				entity.FacePosition(target.position - entity.GetTransform().position);
+				entity.FacePosition(target() - entity.GetTransform().position);
 
 			return Node.Status.Running;
 		}
