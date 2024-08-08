@@ -12,6 +12,7 @@ public class ProjectileBase : MonoBehaviour
 	private float timeCreated;
 	private EntityMediator owner;
 	private Transform anchor;
+	private Rigidbody2D rb;
 	private const float deletionDelay = 1f;
 
 	public void TakeOwnership(EntityMediator owner)
@@ -24,12 +25,21 @@ public class ProjectileBase : MonoBehaviour
 		this.anchor = anchor;
 	}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        damageLogic = new ProjectileDamageLogic(projectileDamageData);
+	public void Propell(Vector3 velocity)
+	{
+		if (rb == null)
+			return;
+		rb.AddForce(velocity, ForceMode2D.Impulse);
+	}
+
+	// Start is called before the first frame update
+	void Start()
+	{
+		damageLogic = new ProjectileDamageLogic(projectileDamageData);
 		timeCreated = Time.time;
-    }
+		rb = GetComponent<Rigidbody2D>();
+		Propell(transform.up * damageLogic.GetSpeed());
+	}
 
 	void Update()
 	{
@@ -37,12 +47,12 @@ public class ProjectileBase : MonoBehaviour
 			transform.position = anchor.position;
 	}
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
+	// Update is called once per frame
+	void FixedUpdate()
+	{
 		if (!active) return;
 
-        if (damageLogic.CheckCollisons(transform, owner))
+		if (damageLogic.CheckCollisons(transform, owner))
 		{
 			Kill();
 		}
@@ -51,7 +61,7 @@ public class ProjectileBase : MonoBehaviour
 		{
 			Kill();
 		}
-    }
+	}
 
 	void OnDrawGizmos()
 	{

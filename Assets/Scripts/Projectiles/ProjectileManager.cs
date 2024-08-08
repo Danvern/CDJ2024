@@ -14,7 +14,12 @@ public class ProjectileManager : MonoBehaviour
 
 	public void GenerateProjectile(GameObject prefab, Vector3 position, Quaternion rotation, EntityMediator owner)
 	{
-		GenerateProjectile(prefab, position, rotation, transform, owner);
+		GameObject instance = Instantiate(prefab, position, rotation, transform);
+		ProjectileBase projectile = instance.GetComponent<ProjectileBase>();
+		if (projectile != null)
+		{
+			projectile.TakeOwnership(owner);
+		}
 	}
 
 	public void GenerateProjectile(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent, EntityMediator owner)
