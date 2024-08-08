@@ -29,6 +29,9 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		piercing = data.Piercing;
 		collisionRadius = data.CollisionRadius;
 		collisionArc = data.CollisionArc;
+		speed = data.StartingVelocity;
+		knockback = data.Knockback;
+		KnockbackStun = data.KnockbackStun;
 	}
 
 	public float GetLifetime() { return lifetime; }

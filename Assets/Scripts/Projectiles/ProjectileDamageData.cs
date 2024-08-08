@@ -8,8 +8,11 @@ public class ProjectileDamageData : ScriptableObject
     public float DamageMax = 0;
     public float DamageMin = 1;
 	public int Piercing = 0;
+	public float Knockback = 1;
+	public float KnockbackStun = 0.25f;
 	public float CollisionRadius = 1;
 	public float CollisionArc = 360;
+	public float StartingVelocity = 10f;
 	public EventReference SmallKillSFX;
 	public EventReference DamageSFX;
 }
