@@ -158,8 +158,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentFactory: {fileID: 0}
   healthData: {fileID: 11400000, guid: 6bec09d09d4562e44be4e45d7d450e5f, type: 2}
+  waypointCloseness: 0.75
   speed: 5
-  acceleration: 5000
+  acceleration: 80
   primaryWeapon: {fileID: 8890011804488458781}
   secondaryWeapon: {fileID: 0}
   isEnemy: 0

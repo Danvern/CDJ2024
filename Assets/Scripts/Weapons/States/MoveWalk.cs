@@ -33,7 +33,7 @@ public class MoveWalk : IState
 		movement.GetRigidbody().velocity = movement.GetTargetDirection() * movement.GetRigidbody().velocity.magnitude; // Sharp Turns
 
 		if (movement.GetTargetDirection() != Vector3.zero)
-			movement.GetRigidbody().AddForce(movement.GetTargetDirection() * movement.GetAcceleration() * Time.deltaTime, ForceMode2D.Force);
+			movement.GetRigidbody().AddForce(movement.GetTargetDirection() * movement.GetAcceleration(), ForceMode2D.Force);
 		if (movement.GetRigidbody().velocity.magnitude > movement.GetSpeed())
 			movement.GetRigidbody().velocity = movement.GetRigidbody().velocity.normalized * movement.GetSpeed();
 	}
