@@ -54,8 +54,8 @@ public class EntityMediator : IVisitable
 	}
 
 	public void DashToAim(float power, float slideTime, bool fullStun = true) => entity?.DashToAim(power, slideTime, fullStun);
-	public void MoveToDirection(Vector3 direction) => movement?.MoveToDirection(direction);
-	public void FacePosition(Vector3 position) => entity?.FacePosition(position);
+	public void MoveToDirection(Vector2 direction) => movement?.MoveToDirection(direction);
+	public void FacePosition(Vector2 position) => entity?.FacePosition(position);
 	public void PrimaryFire(bool pressed) => entity?.PrimaryFire(pressed);
 
 	

@@ -125,6 +125,53 @@ namespace Pathfinding.BehaviourTrees
 		}
 	}
 
+	public class ChargeToTarget : IStrategy
+	{
+		readonly EntityMediator entity;
+		readonly Func<Vector2> target;
+		bool isLookingForward;
+		float clearDistance = 1f;
+		bool interruptable;
+		Vector2? initialDirection;
+
+		public ChargeToTarget(EntityMediator entity, Func<Vector2> target, bool isLookingForward = true, bool interruptable = true)
+		{
+			this.entity = entity;
+			this.target = target;
+			this.isLookingForward = isLookingForward;
+			this.interruptable = interruptable;
+		}
+
+		public Node.Status Process()
+		{
+			if (entity.IsNavigating())
+				entity.CancelPath();
+			Vector2 ray = target() - entity.GetPosition();
+			bool clearPath = !Physics2D.Raycast(entity.GetPosition(), direction: ray.normalized, distance: clearDistance, layerMask: LayerMask.GetMask("EnviromentObstacles"));
+			if (initialDirection == null)
+				initialDirection = ray.normalized;
+			// if (Vector3.Distance(entity.GetPosition(), target()) < 1f)
+			// {
+			// 	return Node.Status.Success;
+			// }
+			if (!clearPath)
+			{
+				return Node.Status.Failure;
+			}
+
+			entity.MoveToDirection(initialDirection ?? Vector2.zero);
+			if (isLookingForward)
+				entity.FacePosition(initialDirection ?? Vector2.zero);
+
+			// if (interruptable)
+			// 	return Node.Status.Success;
+			// else
+			return Node.Status.Running;
+		}
+
+		public void Reset() { initialDirection = null; }
+	}
+
 	public class MoveToTarget : IStrategy
 	{
 		readonly EntityMediator entity;
