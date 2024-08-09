@@ -19,6 +19,7 @@ MonoBehaviour:
   Knockback: 1
   KnockbackStun: 0.25
   IsIndescriminate: 1
+  IsExplosion: 1
   CollisionRadius: 2
   CollisionArc: 360
   StartingVelocity: 10

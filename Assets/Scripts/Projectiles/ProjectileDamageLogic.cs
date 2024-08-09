@@ -17,6 +17,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private float KnockbackStun = .25f;
 	private Vector2 impactPosition = Vector2.zero;
 	private bool isIndescriminate = false;
+	private bool isExplosion = false;
 	private ProjectileDamageData data;
 
 	private Dictionary<Transform, float> entityCollisions = new Dictionary<Transform, float>();
@@ -34,6 +35,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		knockback = data.Knockback;
 		KnockbackStun = data.KnockbackStun;
 		isIndescriminate = data.IsIndescriminate;
+		isExplosion = data.IsExplosion;
 	}
 
 	public float GetLifetime() { return lifetime; }
@@ -57,6 +59,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	public float GetKnockbackDelay() { return KnockbackStun; }
 	public float GetSpeed() { return speed; }
 	public bool IsIndescriminate() { return isIndescriminate; }
+	public bool IsExplosion() { return isExplosion; }
 
 	public bool CheckCollisons(Transform transform, EntityMediator owner)
 	{
@@ -95,7 +98,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 					if (!data.DamageSFX.IsNull)
 						AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
 				}
-				if (piercing < 0)
+				if (piercing < 0 && !IsExplosion())
 				{
 					kill = true;
 					break;

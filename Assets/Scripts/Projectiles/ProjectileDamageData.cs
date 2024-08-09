@@ -11,6 +11,7 @@ public class ProjectileDamageData : ScriptableObject
 	public float Knockback = 1;
 	public float KnockbackStun = 0.25f;
 	public bool IsIndescriminate = false;
+	public bool IsExplosion = false;
 	public float CollisionRadius = 1;
 	public float CollisionArc = 360;
 	public float StartingVelocity = 10f;
