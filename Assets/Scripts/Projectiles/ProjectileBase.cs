@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Jobs;
+using Debug = UnityEngine.Debug;
 
 public class ProjectileBase : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class ProjectileBase : MonoBehaviour
 	public void TakeOwnership(EntityMediator owner)
 	{
 		this.owner = owner;
+		if (owner == null)
+			Debug.LogWarning("unowned projectile generated somehow");
 	}
 
 	public void TrackTransform(Transform anchor)
@@ -89,7 +93,7 @@ public class ProjectileBase : MonoBehaviour
 			rb.velocity = Vector3.zero;
 		foreach (SpriteRenderer item in GetComponentsInChildren<SpriteRenderer>())
 		{
-			item.color = Color.clear;	
+			item.color = Color.clear;
 		}
 		StartCoroutine(DestroyAfterDelay(deletionDelay));
 	}

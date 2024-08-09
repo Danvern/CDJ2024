@@ -84,10 +84,6 @@ public class Entity : MonoBehaviour, IVisitable
 
 
 
-		if (primaryWeapon != null)
-			primaryWeapon.TakeOwnership(mediator);
-		if (secondaryWeapon != null)
-			secondaryWeapon.TakeOwnership(mediator);
 	}
 
 	// Start is called before the first frame update
@@ -95,6 +91,10 @@ public class Entity : MonoBehaviour, IVisitable
 	{
 		if (agentFactory != null)
 			agent = agentFactory.CreateAgent(mediator);
+		if (primaryWeapon != null)
+			primaryWeapon.TakeOwnership(mediator);
+		if (secondaryWeapon != null)
+			secondaryWeapon.TakeOwnership(mediator);			
 	}
 
 	// Update is called once per frame
