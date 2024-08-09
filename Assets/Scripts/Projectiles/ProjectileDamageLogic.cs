@@ -83,7 +83,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 			}
 			else if (entityMediator.IsDead()) { }
-			else if (owner == null || owner.IsHostile(entityMediator) || IsIndescriminate())
+			else if (owner == null || owner.IsHostile(entityMediator) || (IsIndescriminate() && (owner != entityMediator || IsExplosion())))
 			{
 				entityCollisions.Add(collider.transform, Time.time);
 				DecreasePierce(1);
