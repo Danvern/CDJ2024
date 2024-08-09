@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1706586082, guid: e704e7e71166f2e47920705fefb5b4b2, type: 3}
+  m_Sprite: {fileID: -1575423117, guid: 7fc6edafee8a4c44c97e9c7f1d6ab965, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +108,7 @@ Animator:
   m_GameObject: {fileID: 1096697423094475702}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d0609315f1575cc408242fed555d77a1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7f6906c97148fab43ade1cda04299651, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 7921322582954264698}
   - component: {fileID: 3752208349402694709}
   - component: {fileID: 2506023371486337117}
+  - component: {fileID: 4657740781432693990}
   m_Layer: 7
   m_Name: Hachi
   m_TagString: Untagged
@@ -329,6 +330,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494c309ae2746334b810e115a52971df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4657740781432693990
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556580978140358341}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84cf9a16fcfc64a4081b3ecb5a300d77, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &5776261663025956934
 PrefabInstance:
   m_ObjectHideFlags: 0
