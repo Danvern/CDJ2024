@@ -181,7 +181,7 @@ namespace Pathfinding.BehaviourTrees
 
 		public override Status Process()
 		{
-			Debug.Log(ToString());
+			//Debug.Log(ToString());
 			return strategy.Process();
 		}
 
