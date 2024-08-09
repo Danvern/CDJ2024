@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EntitySpawnerLogic : MonoBehaviour
+public class EntitySpawnerLogic
 {
 	[SerializeField] GameObject enemy;
 	[SerializeField] float cooldown = 10f;
@@ -66,12 +66,12 @@ public class EntitySpawnerLogic : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	public void Update()
+	public void Update(Transform transform)
 	{
 		if (Time.time - lastSpawnTime > cooldown)
 		{
 			if (spawnChance > 0 && Random.value >= spawnChance)
-				Instantiate(enemy, transform.position, transform.rotation);
+				GameObject.Instantiate(enemy, transform.position, transform.rotation);
 			lastSpawnTime = Time.time + Random.value * cooldownRandomization - cooldownRandomization / 2;
 		}
 	}

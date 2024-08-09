@@ -17,7 +17,7 @@ public class EntitySpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		logic.Update();
+		logic.Update(transform);
 	}
 #if UNITY_EDITOR
 	void OnDrawGizmos()
