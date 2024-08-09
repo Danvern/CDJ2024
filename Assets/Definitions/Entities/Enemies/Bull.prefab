@@ -152,7 +152,7 @@ MonoBehaviour:
   agentFactory: {fileID: 11400000, guid: 7411211d03d27ed4883088af02107a3d, type: 2}
   healthData: {fileID: 11400000, guid: 2ce45800ee4275d409d4918f0a0abfe4, type: 2}
   waypointCloseness: 0.75
-  speed: 3
+  speed: 8
   acceleration: 500
   primaryWeapon: {fileID: 7044530788235946140}
   secondaryWeapon: {fileID: 0}

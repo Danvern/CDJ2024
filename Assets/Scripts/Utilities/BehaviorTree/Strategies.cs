@@ -146,10 +146,9 @@ namespace Pathfinding.BehaviourTrees
 		{
 			if (entity.IsNavigating())
 				entity.CancelPath();
-			Vector2 ray = target() - entity.GetPosition();
-			bool clearPath = !Physics2D.Raycast(entity.GetPosition(), direction: ray.normalized, distance: clearDistance, layerMask: LayerMask.GetMask("EnviromentObstacles"));
 			if (initialDirection == null)
-				initialDirection = ray.normalized;
+				initialDirection = (target() - entity.GetPosition()).normalized;
+			bool clearPath = !Physics2D.Raycast(entity.GetPosition(), direction: initialDirection ?? Vector2.right, distance: clearDistance, layerMask: LayerMask.GetMask("EnviromentObstacles"));
 			// if (Vector3.Distance(entity.GetPosition(), target()) < 1f)
 			// {
 			// 	return Node.Status.Success;
