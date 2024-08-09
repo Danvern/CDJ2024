@@ -75,9 +75,9 @@ public class AgentCharger : IAgent
 		}
 		Vector2 GetTargetPosition()
 		{
-			if (blackboard.TryGetValue(targetPosition, out Vector3 target))
+			if (blackboard.TryGetValue(targetPosition, out Vector2 target))
 				return target;
-			return Vector3.zero;
+			return Vector2.zero;
 		}
 		bool IsInSight(EntityMediator targetEntity)
 		{
