@@ -82,8 +82,7 @@ public class Entity : MonoBehaviour, IVisitable
 		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement));
 
 
-		if (agentFactory != null)
-			agent = agentFactory.CreateAgent(mediator);
+
 
 		if (primaryWeapon != null)
 			primaryWeapon.TakeOwnership(mediator);
@@ -94,6 +93,8 @@ public class Entity : MonoBehaviour, IVisitable
 	// Start is called before the first frame update
 	private void Start()
 	{
+		if (agentFactory != null)
+			agent = agentFactory.CreateAgent(mediator);
 	}
 
 	// Update is called once per frame
