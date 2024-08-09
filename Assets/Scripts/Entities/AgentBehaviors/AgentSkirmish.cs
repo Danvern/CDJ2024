@@ -42,10 +42,12 @@ public class AgentSkirmish : IAgent
 		}
 		public AgentSkirmish Build()
 		{
-			var agent = new AgentSkirmish(entity);
-			agent.MaximumRange = maxRange;
-			agent.MinimumRange = minRange;
-			agent.SensingRange = senseRange;
+			var agent = new AgentSkirmish(entity)
+			{
+				MaximumRange = maxRange,
+				MinimumRange = minRange,
+				SensingRange = senseRange
+			};
 			return agent;
 		}
 	}
@@ -65,18 +67,6 @@ public class AgentSkirmish : IAgent
 		PrioritySelector actions = new PrioritySelector("Agent Logic");
 
 		Sequence runToSafetySeq = new Sequence("RunToSafety", 100);
-		// bool IsRetreating()
-		// {
-		// 	if (blackboard.TryGetValue(isRetreatingKey, out bool isSafe))
-		// 	{
-		// 		if (!isSafe)
-		// 		{
-		// 			runToSafetySeq.Reset();
-		// 			return true;
-		// 		}
-		// 	}
-		// 	return false;
-		// }
 		EntityMediator GetTarget()
 		{
 			if (blackboard.TryGetValue(targetKey, out EntityMediator target))
@@ -100,19 +90,10 @@ public class AgentSkirmish : IAgent
 			return distance < MaximumRange;
 		}
 
-		// runToSafetySeq.AddChild(new Leaf("IsRetreating?", new Condition(IsRetreating)));
-		// runToSafetySeq.AddChild(new Leaf("Go To Safety", new MoveToTarget(entity, GetTarget())));
-		// actions.AddChild(runToSafetySeq);
 		Sequence attackTarget = new Sequence("AttackTarget", 100);
 		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()) && IsInRange(GetTargetPosition()))));
 		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition())));
-		// attackTarget.AddChild(new Leaf("AttackPlayer", new ActionStrategy(()=>{
-		// 	entity.PrimaryFire(true);
-		// })));
-		// attackTarget.AddChild(new Leaf("AttackPlayer", new ActionStrategy(()=>{
-		// 	entity.PrimaryFire(false);
-		// })));
 		actions.AddChild(attackTarget);
 
 		Selector goToPlayer = new Selector("GoToPlayer", 50);
