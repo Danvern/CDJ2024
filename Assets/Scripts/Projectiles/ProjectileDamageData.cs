@@ -10,6 +10,7 @@ public class ProjectileDamageData : ScriptableObject
 	public int Piercing = 0;
 	public float Knockback = 1;
 	public float KnockbackStun = 0.25f;
+	public bool IsIndescriminate = false;
 	public float CollisionRadius = 1;
 	public float CollisionArc = 360;
 	public float StartingVelocity = 10f;
