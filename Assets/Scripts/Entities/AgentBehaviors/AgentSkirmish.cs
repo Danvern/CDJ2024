@@ -83,7 +83,7 @@ public class AgentSkirmish : IAgent
 				return target;
 			return null;
 		}
-		Vector3 GetTargetPosition()
+		Vector2 GetTargetPosition()
 		{
 			if (blackboard.TryGetValue(targetPosition, out Vector3 target))
 				return target;
@@ -91,15 +91,20 @@ public class AgentSkirmish : IAgent
 		}
 		bool IsInSight(EntityMediator targetEntity)
 		{
-			var ray = GetTargetPosition() - entity.GetPosition();
-			return !Physics2D.Raycast(entity.GetPosition(), direction: ray.normalized, distance: ray.magnitude, layerMask: LayerMask.GetMask("EnviromentObstacles") );
+			Vector2 ray = GetTargetPosition() - entity.GetPosition();
+			return !Physics2D.Raycast(entity.GetPosition(), direction: ray.normalized, distance: ray.magnitude, layerMask: LayerMask.GetMask("EnviromentObstacles"));
+		}
+		bool IsInRange(Vector2 targetPosition)
+		{
+			float distance = Vector3.Distance(targetPosition, entity.GetPosition());
+			return distance < MaximumRange;
 		}
 
 		// runToSafetySeq.AddChild(new Leaf("IsRetreating?", new Condition(IsRetreating)));
 		// runToSafetySeq.AddChild(new Leaf("Go To Safety", new MoveToTarget(entity, GetTarget())));
 		// actions.AddChild(runToSafetySeq);
 		Sequence attackTarget = new Sequence("AttackTarget", 100);
-		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()) && Vector2.Distance(GetTargetPosition(), entity.GetPosition()) < MaximumRange)));
+		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()) && IsInRange(GetTargetPosition()))));
 		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition())));
 		// attackTarget.AddChild(new Leaf("AttackPlayer", new ActionStrategy(()=>{

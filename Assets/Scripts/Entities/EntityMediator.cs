@@ -26,7 +26,7 @@ public class EntityMediator : IVisitable
 	public bool IsHostile(EntityMediator mediator) => mediator.entity != entity && mediator.entity.IsEnemy != entity.IsEnemy;
 	public bool IsDead() => entity.IsDead;
 	public Transform GetTransform() => entity.OrNull() != null ? entity.transform : null;
-	public Vector3 GetPosition() => entity.transform.position;
+	public Vector2 GetPosition() => entity.transform.position;
 	public void ActivateGuidanceMode()
 	{
 		// Bootstrap seeker

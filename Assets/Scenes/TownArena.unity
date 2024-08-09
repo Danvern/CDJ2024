@@ -424,8 +424,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5556580978140358341, guid: c9a7ac065a0107a4ab53c09fc68fd2a9,
         type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556580978140358341, guid: c9a7ac065a0107a4ab53c09fc68fd2a9,
+        type: 3}
       propertyPath: m_Name
       value: Lantern
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556580978140358341, guid: c9a7ac065a0107a4ab53c09fc68fd2a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7493684135216324028, guid: c9a7ac065a0107a4ab53c09fc68fd2a9,
         type: 3}
@@ -538,6 +548,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556580978140358341, guid: 84d32112b994ba34397f5bc3105213e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7493684135216324028, guid: 84d32112b994ba34397f5bc3105213e7,
         type: 3}
@@ -62617,7 +62632,7 @@ PrefabInstance:
     - target: {fileID: 5556580978140358341, guid: dd390a37fe529e247a0149c3146be9cc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7493684135216324028, guid: dd390a37fe529e247a0149c3146be9cc,
         type: 3}
