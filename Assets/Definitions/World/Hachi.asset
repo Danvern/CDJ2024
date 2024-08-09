@@ -15,5 +15,5 @@ MonoBehaviour:
   enemy: {fileID: 5556580978140358341, guid: dd390a37fe529e247a0149c3146be9cc, type: 3}
   cooldown: 15
   cooldownRandomization: 10
-  cooldownInitial: 5
+  cooldownInitial: -5
   spawnChance: 0.5
