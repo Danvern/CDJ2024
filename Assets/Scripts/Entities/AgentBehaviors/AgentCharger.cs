@@ -95,12 +95,10 @@ public class AgentCharger : IAgent
 		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 
 
-		var chargeLoop = new UntilFail("KeepCharging");
+		var chargeLoop = new UntilFailAll("KeepCharging");
 		attackTarget.AddChild(chargeLoop);
-		Sequence chargeSequence = new Sequence("ChargeSequence");
-		chargeSequence.AddChild(new Leaf("AttackPlayer", new ChargeToTarget(entity, () => GetTargetPosition())));
-		chargeSequence.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition())));
-		chargeLoop.AddChild(chargeSequence);
+		chargeLoop.AddChild(new Leaf("AttackPlayer", new ChargeToTarget(entity, () => GetTargetPosition())));
+		chargeLoop.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition())));
 		attackTarget.AddChild(chargeLoop);
 		actions.AddChild(attackTarget);
 

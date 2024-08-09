@@ -21,6 +21,25 @@ namespace Pathfinding.BehaviourTrees
 			return Status.Running;
 		}
 	}
+	public class UntilFailAll : Node
+	{
+		public UntilFailAll(string name) : base(name) { }
+
+		public override Status Process()
+		{
+			if (children[0].Process() == Status.Failure)
+			{
+				Reset();
+				return Status.Failure;
+			}
+			else
+			{
+				children.Skip(1).ToList().ForEach((node) => node.Process());
+			}
+
+			return Status.Running;
+		}
+	}
 	public class UntilFail : Node
 	{
 		public UntilFail(string name) : base(name) { }
@@ -162,7 +181,7 @@ namespace Pathfinding.BehaviourTrees
 
 		public override Status Process()
 		{
-			Debug.Log(ToString()); 
+			Debug.Log(ToString());
 			return strategy.Process();
 		}
 
