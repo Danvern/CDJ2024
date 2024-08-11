@@ -2469,7 +2469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconBank:
-  - {fileID: 0}
+  - {fileID: -450392953, guid: b3e2eb02b18554142bcb6820f8b23589, type: 3}
   - {fileID: -169021874, guid: b3e2eb02b18554142bcb6820f8b23589, type: 3}
   - {fileID: -72225187, guid: b3e2eb02b18554142bcb6820f8b23589, type: 3}
 --- !u!1 &1134560524
