@@ -103,9 +103,20 @@ public class Entity : EntitySubject, IVisitable
 				MaxHealth = health.GetHealthMax(),
 				CurrentMana = health.GetHealthCurrent(),
 			};
-			NotifyObservers(data
-			);
+			NotifyObservers(data);
 		};
+		NotifyObservers(GetData());
+	}
+
+	EntityData GetData()
+	{
+		var data = new EntityData
+		{
+			CurrentHealth = health.GetHealthCurrent(),
+			MaxHealth = health.GetHealthMax(),
+			CurrentMana = health.GetHealthCurrent(),
+		};
+		return data;
 	}
 
 	// Update is called once per frame

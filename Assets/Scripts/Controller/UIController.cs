@@ -16,7 +16,10 @@ public class UIController : MonoBehaviour, IEntityObserver
 		ServiceLocator.Global.Register(this);
 	}
 
-	void Start() => healthIconBar = ServiceLocator.Global.Get<HealthIconBar>();
+	void Start()
+	{
+		healthIconBar = ServiceLocator.Global.Get<HealthIconBar>();
+	}
 
 	public void OnNotify(EntityData data)
 	{
