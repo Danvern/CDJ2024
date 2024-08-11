@@ -20,7 +20,7 @@ public struct EntityData
 {
 	enum UpdateType {Health}
 
-	float currentHealth;
-	float currentMana;
+	public float CurrentHealth;
+	public float CurrentMana;
 
 }

@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityServiceLocator;
 
-
-public class Entity : MonoBehaviour, IVisitable
+public class Entity : EntitySubject, IVisitable
 {
 	public bool IsDead { get; private set; } = false;
 	public bool IsEnemy { get { return isEnemy; } private set { isEnemy = value; } }
@@ -94,7 +93,13 @@ public class Entity : MonoBehaviour, IVisitable
 		if (primaryWeapon != null)
 			primaryWeapon.TakeOwnership(mediator);
 		if (secondaryWeapon != null)
-			secondaryWeapon.TakeOwnership(mediator);			
+			secondaryWeapon.TakeOwnership(mediator);
+
+		health.entityDamaged += (damage, source) => NotifyObservers(
+			new EntityData()
+
+			
+		);
 	}
 
 	// Update is called once per frame

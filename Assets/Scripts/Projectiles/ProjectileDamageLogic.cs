@@ -121,7 +121,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	public void Visit(EntityHealthLogic visitable)
 	{
 		visitable.DoDamage(GetDamageRandom());
-		Debug.Log(visitable.ToString());
+		//Debug.Log(visitable.ToString());
 
 	}
 
