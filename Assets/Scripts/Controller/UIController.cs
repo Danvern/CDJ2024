@@ -27,8 +27,12 @@ public class UIController : MonoBehaviour, IEntityObserver
 		DisplayHealthMax = data.MaxHealth;
 
 		Debug.Log("CurrentPlayerHope:" + DisplayHealth);
+		if (healthIconBar != null)
+		{
 		healthIconBar.UpdateDisplayValue(DisplayHealth);
 		healthIconBar.UpdateDisplayValueMax(DisplayHealthMax);
+
+		}
 
 	}
 
