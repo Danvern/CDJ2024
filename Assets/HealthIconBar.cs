@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
+using UnityServiceLocator;
 
 public class HealthIconBar : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class HealthIconBar : MonoBehaviour
 	float displayValueMax;
 
 	public float UpdateDisplayValue(float value) => displayValue = value;
+	public float UpdateDisplayValueMax(float value) => displayValueMax = value;
+
+	void Awake() => ServiceLocator.Global.Register(this);
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +32,8 @@ public class HealthIconBar : MonoBehaviour
 		int index = 0;
         iconBehaviors.ForEach((container) => 
 		{
-			int choiceIndex = Mathf.FloorToInt(((displayValue / HealthPerIcon()) % HealthPerIcon()) * (iconBank.Count - 1));
-			container.sprite = iconBank[index];
+			int choiceIndex = Mathf.Clamp(Mathf.FloorToInt((displayValue - index * HealthPerIcon()) / HealthPerIcon() * (iconBank.Count - 1)), 0, iconBank.Count - 1);
+			container.sprite = iconBank[choiceIndex];
 			index++;
 		});
     }

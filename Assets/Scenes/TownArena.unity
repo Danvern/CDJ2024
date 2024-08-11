@@ -2064,7 +2064,7 @@ GameObject:
   - component: {fileID: 954312916}
   - component: {fileID: 954312920}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2426,6 +2426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1083340578}
+  - component: {fileID: 1083340579}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2455,6 +2456,22 @@ RectTransform:
   m_AnchoredPosition: {x: 56, y: -16}
   m_SizeDelta: {x: 48, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1083340579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083340577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0c8b1805240e940aa75a5f63a3aba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconBank:
+  - {fileID: 0}
+  - {fileID: -169021874, guid: b3e2eb02b18554142bcb6820f8b23589, type: 3}
+  - {fileID: -72225187, guid: b3e2eb02b18554142bcb6820f8b23589, type: 3}
 --- !u!1 &1134560524
 GameObject:
   m_ObjectHideFlags: 0

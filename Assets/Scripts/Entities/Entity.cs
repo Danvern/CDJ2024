@@ -95,11 +95,17 @@ public class Entity : EntitySubject, IVisitable
 		if (secondaryWeapon != null)
 			secondaryWeapon.TakeOwnership(mediator);
 
-		health.entityDamaged += (damage, source) => NotifyObservers(
-			new EntityData()
-
-			
-		);
+		health.entityDamaged += (damage, source) =>
+		{
+			var data = new EntityData
+			{
+				CurrentHealth = health.GetHealthCurrent(),
+				MaxHealth = health.GetHealthMax(),
+				CurrentMana = health.GetHealthCurrent(),
+			};
+			NotifyObservers(data
+			);
+		};
 	}
 
 	// Update is called once per frame
@@ -108,7 +114,7 @@ public class Entity : EntitySubject, IVisitable
 		agent?.Update();
 		movement?.Update();
 		// if (agent != null)
-			// ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
+		// ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
 	}
 
 	private void Kill()

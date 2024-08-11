@@ -6,6 +6,7 @@ using UnityServiceLocator;
 public class UIController : MonoBehaviour, IEntityObserver
 {
 	public float DisplayHealth { get; set; } = 0;
+	public float DisplayHealthMax { get; set; } = 0;
 	HealthIconBar healthIconBar;
 	public void SetPrimaryPlayer(EntityMediator targetPlayer) => targetPlayer.AddObserver(this);
 
@@ -15,12 +16,16 @@ public class UIController : MonoBehaviour, IEntityObserver
 		ServiceLocator.Global.Register(this);
 	}
 
+	void Start() => healthIconBar = ServiceLocator.Global.Get<HealthIconBar>();
+
 	public void OnNotify(EntityData data)
 	{
 		DisplayHealth = data.CurrentHealth;
+		DisplayHealthMax = data.MaxHealth;
 
 		Debug.Log("CurrentPlayerHope:" + DisplayHealth);
 		healthIconBar.UpdateDisplayValue(DisplayHealth);
+		healthIconBar.UpdateDisplayValueMax(DisplayHealthMax);
 
 	}
 

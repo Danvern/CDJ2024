@@ -21,6 +21,8 @@ public struct EntityData
 	enum UpdateType {Health}
 
 	public float CurrentHealth;
+	public float MaxHealth;
 	public float CurrentMana;
+	public float MaxMana;
 
 }
