@@ -53,7 +53,8 @@ public class AudioManager : MonoBehaviour
 		// RuntimeManager.StudioSystem.getParameterByName("ping", out ping);
 		
 
-		Debug.Log(musicLoop.getParameterByID(musicBeatID, out float pingInitial, out float ping) == FMOD.RESULT.OK ? "success" : "failure");
+		musicLoop.getParameterByID(musicBeatID, out float pingInitial, out float ping);
+		//Debug.Log(ping) == FMOD.RESULT.OK ? "success" : "failure");
 
 		//RuntimeManager.CoreSystem.getMasterChannelGroup(out FMOD.ChannelGroup masterCG);
 		//masterCG.getGroup()
