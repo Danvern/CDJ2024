@@ -202,7 +202,6 @@ GameObject:
   - component: {fileID: 86185870}
   - component: {fileID: 86185869}
   - component: {fileID: 86185872}
-  - component: {fileID: 86185873}
   m_Layer: 5
   m_Name: Pips
   m_TagString: Untagged
@@ -300,21 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2842450b6f8d5941ba8677f975e01be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!111 &86185873
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86185867}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &106418145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,7 +3499,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2}
+  m_AnchoredPosition: {x: 0, y: -16}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1588468697
