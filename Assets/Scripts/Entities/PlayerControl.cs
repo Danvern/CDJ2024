@@ -20,6 +20,7 @@ public class PlayerControl : MonoBehaviour
 	private void Start()
 	{
 		ServiceLocator.Global.Get<AgentDirector>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
+		ServiceLocator.Global.Get<UIController>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
 	}
 
 	public void OnMove(InputValue value)

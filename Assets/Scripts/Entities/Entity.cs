@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityServiceLocator;
 
-
-public class Entity : MonoBehaviour, IVisitable
+public class Entity : EntitySubject, IVisitable
 {
 	public bool IsDead { get; private set; } = false;
 	public bool IsEnemy { get { return isEnemy; } private set { isEnemy = value; } }
@@ -94,7 +93,30 @@ public class Entity : MonoBehaviour, IVisitable
 		if (primaryWeapon != null)
 			primaryWeapon.TakeOwnership(mediator);
 		if (secondaryWeapon != null)
-			secondaryWeapon.TakeOwnership(mediator);			
+			secondaryWeapon.TakeOwnership(mediator);
+
+		health.entityDamaged += (damage, source) =>
+		{
+			var data = new EntityData
+			{
+				CurrentHealth = health.GetHealthCurrent(),
+				MaxHealth = health.GetHealthMax(),
+				CurrentMana = health.GetHealthCurrent(),
+			};
+			NotifyObservers(data);
+		};
+		NotifyObservers(GetData());
+	}
+
+	EntityData GetData()
+	{
+		var data = new EntityData
+		{
+			CurrentHealth = health.GetHealthCurrent(),
+			MaxHealth = health.GetHealthMax(),
+			CurrentMana = health.GetHealthCurrent(),
+		};
+		return data;
 	}
 
 	// Update is called once per frame
@@ -103,7 +125,7 @@ public class Entity : MonoBehaviour, IVisitable
 		agent?.Update();
 		movement?.Update();
 		// if (agent != null)
-			// ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
+		// ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
 	}
 
 	private void Kill()

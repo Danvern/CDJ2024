@@ -45,6 +45,8 @@ public class EntityMediator : IVisitable
 	public float GetRemainingTravelDistance() => movement.RemainingPathDistance();
 	public float GetWaypointCloseness() => entity.GetWaypointCloseness();
 //	public float GetRemainingTravelDistance() => navigator.remainingDistance;
+public void AddObserver(IEntityObserver observer) => entity?.AddObserver(observer);
+public void RemoveObserver(IEntityObserver observer) => entity?.RemoveObserver(observer);
 
 	public void Accept(IVisitor visitor)
 	{
