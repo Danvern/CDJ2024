@@ -16,7 +16,12 @@ public class HealthIconBar : MonoBehaviour
 	public float UpdateDisplayValue(float value) => displayValue = value;
 	public float UpdateDisplayValueMax(float value) => displayValueMax = value;
 
-	void Awake() => ServiceLocator.Global.Register(this);
+	void Awake()
+	{
+	ServiceLocator.Global.Register(this);
+	iconBehaviors = GetComponentsInChildren<Image>().ToList();
+
+	}
 
     // Start is called before the first frame update
     void Start()

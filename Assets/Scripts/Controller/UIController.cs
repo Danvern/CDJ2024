@@ -23,6 +23,22 @@ public class UIController : MonoBehaviour, IEntityObserver
 	{
 		healthIconBar = ServiceLocator.Global.Get<HealthIconBar>();
 		manaBar = ServiceLocator.Global.Get<ManaBar>();
+		UpdateElements();
+	}
+
+	void UpdateElements()
+	{
+		if (healthIconBar != null)
+		{
+			healthIconBar.UpdateDisplayValue(DisplayHealth);
+			healthIconBar.UpdateDisplayValueMax(DisplayHealthMax);
+		}
+		if (manaBar != null)
+		{
+			manaBar.UpdateDisplayValue(DisplayManaMax);
+			manaBar.UpdateDisplayValueMax(DisplayManaMax);
+
+		}
 	}
 
 	public void OnNotify(EntityData data)
@@ -33,21 +49,13 @@ public class UIController : MonoBehaviour, IEntityObserver
 		DisplayManaMax = data.MaxMana;
 
 		Debug.Log("CurrentPlayerHope:" + DisplayHealth);
-		if (healthIconBar != null)
-		{
-		healthIconBar.UpdateDisplayValue(DisplayHealth);
-		healthIconBar.UpdateDisplayValueMax(DisplayHealthMax);
-
-		manaBar.UpdateDisplayValue(DisplayManaMax);
-		manaBar.UpdateDisplayValueMax(DisplayManaMax);
-
-		}
-
+		UpdateElements();
 	}
 
 
+
 	// Update is called once per frame
-	void Update()
+	void LateUpdate()
 	{
 
 	}
