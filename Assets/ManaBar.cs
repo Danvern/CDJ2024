@@ -18,6 +18,8 @@ public class ManaBar : MonoBehaviour
 
 	void Awake()
 	{
+		activeBar.material = new Material(activeBar.material);
+		activeMaterial = activeBar.material;
 		ServiceLocator.Global.Register(this);
 
 	}
@@ -25,7 +27,6 @@ public class ManaBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		activeMaterial = activeBar.materialForRendering;
     }
 
     // Update is called once per frame

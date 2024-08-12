@@ -3778,6 +3778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1863254000}
+  - component: {fileID: 1863254001}
   m_Layer: 5
   m_Name: ManaBar
   m_TagString: Untagged
@@ -3809,6 +3810,19 @@ RectTransform:
   m_AnchoredPosition: {x: 64, y: -8}
   m_SizeDelta: {x: 96, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1863254001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863253999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83073808e0575794dabb994b9dfddc8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeBar: {fileID: 911238853}
 --- !u!1 &1887664514
 GameObject:
   m_ObjectHideFlags: 0
