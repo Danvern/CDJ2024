@@ -125,11 +125,14 @@ public class Entity : EntitySubject, IVisitable
 	{
 		agent?.Update();
 		movement?.Update();
-		mediator.SetAnimationFloat("Speed", movement.GetSpeed());
+		mediator.SetAnimationFloat("Speed", movement.GetCurrentSpeed());
 		mediator.SetAnimationBool("IsMovingLeft", movement.IsMovingLeft());
-		if (movement.IsMovingLeft() && animator != null)
+		if (animator != null)
 		{
-			animator.transform.localScale = transform.localScale.With(x: -1);
+			if (movement.IsMovingLeft())
+				animator.transform.localScale = transform.localScale.With(x: -1);
+			else if (movement.GetCurrentSpeed() > 0)
+				animator.transform.localScale = transform.localScale.With(x: 1);
 		}
 		// if (agent != null)
 		// ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
