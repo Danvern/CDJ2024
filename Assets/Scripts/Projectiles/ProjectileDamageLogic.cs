@@ -137,6 +137,11 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		//Debug.Log(visitable.ToString());
 
 	}
+	public void Visit(EntityMediator visitable)
+	{
+		//Debug.Log(visitable.ToString());
+
+	}
 
 	private bool IsColliderInsideArc(Vector2 colliderPosition, Vector2 position, Vector2 forward, float arc)
 	{

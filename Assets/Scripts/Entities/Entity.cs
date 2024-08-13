@@ -18,6 +18,7 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private Weapon secondaryWeapon;
 	[SerializeField] private Weapon dashWeapon;
 	[SerializeField] private bool isEnemy = true;
+	[SerializeField] private bool isUsingPickups = false;
 	[SerializeField] private Animator animator;
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
@@ -25,7 +26,7 @@ public class Entity : EntitySubject, IVisitable
 	private IAgent agent;
 	private const float deletionDelay = 1f;
 
-
+	public bool IsUsingPickups() => isUsingPickups;
 	public float GetWaypointCloseness() => waypointCloseness;
 
 	public bool IsHostile(Entity entity)

@@ -91,10 +91,3 @@ public class DropController : MonoBehaviour
 		}
 	}
 }
-
-public interface IOwnedEntity
-{
-	EntityMediator GetOwner();
-}
-
-

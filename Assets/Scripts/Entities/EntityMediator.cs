@@ -26,6 +26,16 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	}
 	public float GetHealth() { return health.GetHealthCurrent();}
 	public float GetHealthMax() { return GetHealthMax();}
+	public void AddHealth(float value) {
+		health.Heal(value);
+
+	}
+	public void AddShield(float shield) {
+		return;
+
+	}
+	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) {}
+	public bool IsUsingPickups() => entity.IsUsingPickups();
 	public int GetAmmo(AmmoType type) { return 0;}
 	public int GetAmmoMax(AmmoType type) { return 0;}
 	public IUpgradeStats GetUpgradeStats() {return null;}

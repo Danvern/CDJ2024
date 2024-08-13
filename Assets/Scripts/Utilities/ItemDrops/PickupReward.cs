@@ -75,5 +75,6 @@ public abstract class GenericPickup : ScriptableObject, IPickup
 	public virtual void Visit(Entity visitable) { }
 	public virtual void Visit(EntityHealthLogic visitable) { }
 	public virtual void Visit(IMovementLogic visitable) { }
+	public virtual void Visit(EntityMediator visitable) { }
 	public void Consume() => OnPickupUsed?.Invoke();
 }

@@ -18,7 +18,7 @@ public class AmmoBundle
 	public int energyAmount = 0;
 	public int fuelAmount = 0;
 
-	public void AddToInventory(AmmoInventory inventory, float multiplier = 1f, float maxMultiplier = 1f)
+	public void AddToInventory(IAmmunitionSource inventory, float multiplier = 1f, float maxMultiplier = 1f)
 	{
 		inventory.AddAmmo(AmmoType.Bullet, (int)(bulletAmount * multiplier), maxMultiplier);
 		inventory.AddAmmo(AmmoType.Explosive, (int)(explosiveAmount * multiplier), maxMultiplier);

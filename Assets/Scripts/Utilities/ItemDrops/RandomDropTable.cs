@@ -105,23 +105,3 @@ public class RandomDropTable : ScriptableObject
 		}
 	}
 }
-
-public interface ILootMediator
-{
-	IUpgradeStats GetUpgradeStats();
-	IAffinity GetAffinity();
-}
-
-public interface IUpgradeStats
-{
-	float GetHealthDropBonus();
-	float GetAmmoDropBonus();
-
-}
-
-public interface IAffinity
-{
-	float GetHealthDropRate();
-	float GetAmmoDropRate();
-
-}

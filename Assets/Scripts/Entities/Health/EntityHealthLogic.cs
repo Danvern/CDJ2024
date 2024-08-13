@@ -23,6 +23,12 @@ public class EntityHealthLogic : IEntityHealthLogic
 	
 	public float GetHealthCurrent() { return healthCurrent; }
 
+	public void Heal(float value)
+	{
+		healthCurrent = Mathf.Max(healthMax, healthCurrent + value);
+		EntityDamaged?.Invoke(-value, null);
+	}
+
 	public void DoDamage(float damage) 
 	{ 
 		DoDamage(damage, null);
