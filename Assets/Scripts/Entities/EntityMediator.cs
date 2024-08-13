@@ -61,6 +61,12 @@ public class EntityMediator : IVisitable
 
 		animator?.SetFloat(valueName, value);
 	}
+	public void SetAnimationInt(string valueName, int value)
+	{
+		if (animator == null) return;
+
+		animator?.SetInteger(valueName, value);
+	}
 	public void SetAnimationBool(string valueName, bool value)
 	{
 		if (animator == null) return;

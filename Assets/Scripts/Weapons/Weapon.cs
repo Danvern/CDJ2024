@@ -11,6 +11,8 @@ public class Weapon : MonoBehaviour
 	private StateMachine stateMachine;
 	private bool active = false;
 
+	public EntityMediator GetOwner() => owner;
+
 	public void TakeOwnership(EntityMediator owner)
 	{
 		this.owner = owner;
@@ -50,6 +52,7 @@ public class Weapon : MonoBehaviour
 			return;
 
 		attacks[index].Activate();
+		GetOwner().SetAnimationBool("IsAttacking", true);
 	}
 
 	public void DeactivateAttack(int index)
@@ -58,6 +61,7 @@ public class Weapon : MonoBehaviour
 			return;
 
 		attacks[index].Deactivate();
+		GetOwner().SetAnimationBool("IsAttacking", false);
 	}
 
 	public float GetCooldown()
