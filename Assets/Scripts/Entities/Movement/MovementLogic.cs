@@ -89,7 +89,15 @@ public class EntityMovementLogic : IMovementLogic
 	public bool IsMovingLeft() { return rb.velocity.x < 0; }
 	public void SetPhasing(bool phase)
 	{
-
+		Collider2D[] colliders = new Collider2D[0];
+		rb.GetAttachedColliders(colliders);
+		foreach (Collider2D collider in colliders)
+		{
+			if (phase)
+				collider.excludeLayers = LayerMask.NameToLayer("Entities");
+			else
+				collider.excludeLayers = 0;
+		}
 	}
 	public void CalculatePath(Seeker navigator, Vector3 position, Vector3 target)
 	{

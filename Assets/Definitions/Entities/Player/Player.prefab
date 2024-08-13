@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1095384416363560359}
   - component: {fileID: 823151034335380100}
   - component: {fileID: 2482074444872821145}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 6015873393188155633}
   - component: {fileID: 3524695282051441720}
   - component: {fileID: 5487468954803287456}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,10 +294,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 85225908731264414}
     m_Modifications:
+    - target: {fileID: 5021179338169028108, guid: 30d522d61e2250d47848e571aff92e2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8014940007499789419, guid: 30d522d61e2250d47848e571aff92e2c,
         type: 3}
       propertyPath: m_Name
       value: PlayerStarWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014940007499789419, guid: 30d522d61e2250d47848e571aff92e2c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9216537538314358824, guid: 30d522d61e2250d47848e571aff92e2c,
         type: 3}
@@ -380,6 +390,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 85225908731264414}
     m_Modifications:
+    - target: {fileID: 40906762719520729, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747969469246421616, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054120091597940814, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4259843638334728764, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -395,10 +420,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4758878082390341933, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5283588714837828921, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
         type: 3}
       propertyPath: m_Name
       value: Katana
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283588714837828921, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7838214671550040248, guid: 309d0e77e069b3a4e8099a1a6b3c0e7e,
         type: 3}
@@ -481,10 +516,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 85225908731264414}
     m_Modifications:
+    - target: {fileID: 467808712499828796, guid: 1eefa50526d16f149b1f202156def3c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6299663426832582517, guid: 1eefa50526d16f149b1f202156def3c0,
         type: 3}
       propertyPath: m_Name
       value: Dash
+      objectReference: {fileID: 0}
+    - target: {fileID: 6299663426832582517, guid: 1eefa50526d16f149b1f202156def3c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8284683518910753524, guid: 1eefa50526d16f149b1f202156def3c0,
         type: 3}
