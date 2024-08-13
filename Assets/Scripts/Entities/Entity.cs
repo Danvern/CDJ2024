@@ -117,7 +117,11 @@ public class Entity : EntitySubject, IVisitable
 		if (dashWeapon != null)
 			dashWeapon.TakeOwnership(mediator);
 
-		health.entityDamaged += (damage, source) =>
+		DropController drops = GetComponent<DropController>();
+		if (drops != null)
+			health.EntityKilled += drops.DropReward;
+
+		health.EntityDamaged += (damage, source) =>
 		{
 			var data = new EntityData
 			{

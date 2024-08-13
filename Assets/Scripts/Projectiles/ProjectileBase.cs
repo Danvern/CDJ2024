@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Jobs;
 using Debug = UnityEngine.Debug;
 
-public class ProjectileBase : MonoBehaviour
+public class ProjectileBase : MonoBehaviour, IOwnedEntity
 {
 	[SerializeField] ProjectileDamageData projectileDamageData;
 	ProjectileDamageLogic damageLogic;
@@ -29,6 +29,8 @@ public class ProjectileBase : MonoBehaviour
 		if (owner == null)
 			Debug.LogWarning("unowned projectile generated somehow");
 	}
+
+	public EntityMediator GetOwner() => owner;
 
 	public void TrackTransform(Transform anchor)
 	{

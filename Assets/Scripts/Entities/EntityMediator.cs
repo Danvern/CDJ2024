@@ -8,7 +8,7 @@ using UnityEngine.AI;
 using UnityServiceLocator;
 
 
-public class EntityMediator : IVisitable
+public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHealth
 {
 	private Entity entity;
 	private IMovementLogic movement;
@@ -24,6 +24,12 @@ public class EntityMediator : IVisitable
 		navigator = entity.GetComponent<Seeker>();
 		this.animator = animator;
 	}
+	public float GetHealth() { return health.GetHealthCurrent();}
+	public float GetHealthMax() { return GetHealthMax();}
+	public int GetAmmo(AmmoType type) { return 0;}
+	public int GetAmmoMax(AmmoType type) { return 0;}
+	public IUpgradeStats GetUpgradeStats() {return null;}
+	public IAffinity GetAffinity() {return null;}
 	public ServiceLocator GetServiceLocator() => ServiceLocator.For(entity);
 	public bool IsHostile(EntityMediator mediator) => mediator.entity != entity && mediator.entity.IsEnemy != entity.IsEnemy;
 	public bool IsDead() => entity.IsDead;

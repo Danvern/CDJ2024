@@ -7,7 +7,7 @@ public delegate void DamageNotification(float damage, ProjectileBase source);
 public class EntityHealthLogic : IEntityHealthLogic
 {
 	public event KillNotification EntityKilled;
-	public event DamageNotification entityDamaged;
+	public event DamageNotification EntityDamaged;
 	private float healthCurrent = 0;
 	private float healthMax = 0;
 
@@ -31,7 +31,7 @@ public class EntityHealthLogic : IEntityHealthLogic
 	public void DoDamage(float damage, ProjectileBase source) 
 	{ 
 		healthCurrent = Mathf.Max(0, healthCurrent - damage);
-		entityDamaged?.Invoke(damage, source);
+		EntityDamaged?.Invoke(damage, source);
 		if (healthCurrent <= 0)
 			EntityKilled?.Invoke(source);
 	}
