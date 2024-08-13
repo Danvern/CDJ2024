@@ -18,6 +18,9 @@ MonoBehaviour:
   Piercing: 16
   Knockback: 1
   KnockbackStun: 0.4
+  IsIndescriminate: 0
+  IsExplosion: 0
+  IsProjectileDestroyer: 1
   CollisionRadius: 2
   CollisionArc: 120
   StartingVelocity: 0
