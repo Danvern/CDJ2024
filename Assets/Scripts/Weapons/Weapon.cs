@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-	public float LastAttackTime { get; set; } = -999;
 	[SerializeField] private WeaponData data;
 	private Attack[] attacks = new Attack[0];
 	private EntityMediator owner;
 	private IWeaponLogic logic;
 	private StateMachine stateMachine;
-	private bool active = false;
+	private bool triggerPressed = false;
 
 	public EntityMediator GetOwner() => owner;
 
@@ -31,7 +30,7 @@ public class Weapon : MonoBehaviour
 		// {
 		// 	attack.Activate();
 		// }
-		active = true;
+		triggerPressed = true;
 		logic.ResetCooldown();
 	}
 
@@ -43,7 +42,16 @@ public class Weapon : MonoBehaviour
 		// {
 		// 	attack.Deactivate();
 		// }
-		active = false;
+		triggerPressed = false;
+	}
+
+	public void ResetCooldown()
+	{
+		logic.ResetCooldown();
+	}
+	public float GetCooldown()
+	{
+		return logic.GetCooldown();
 	}
 
 	public void ActivateAttack(int index)
@@ -63,12 +71,7 @@ public class Weapon : MonoBehaviour
 		attacks[index].Deactivate();
 		GetOwner().SetAnimationBool("IsAttacking", false);
 	}
-
-	public float GetCooldown()
-	{
-		return logic.GetCooldown();
-	}
-
+	public float GetLastAttackTime() => logic.GetLastAttackTime();
 	public void UpdateTrackedAttack(int index)
 	{
 		logic.SetTrackedAttack(index);
@@ -91,14 +94,14 @@ public class Weapon : MonoBehaviour
 		{
 			AttackHold charge = new AttackHold(this, chargeDefinitions[0], data.MaxCombo);
 
-			Af(cooldown, charge, () => cooldown.Finished && active);
-			Af(charge, cooldown, () => (charge.Status == ComboState.Perfect || charge.Status == ComboState.Successful) && !active);
-			Af(charge, combo, () => charge.Status == ComboState.Failed && !active);
+			Af(cooldown, charge, () => cooldown.Finished && triggerPressed);
+			Af(charge, cooldown, () => (charge.Status == ComboState.Perfect || charge.Status == ComboState.Successful) && !triggerPressed);
+			Af(charge, combo, () => charge.Status == ComboState.Failed && !triggerPressed);
 			Af(combo, cooldown, () => true);
 		}
 		else
 		{
-			Af(cooldown, combo, () => cooldown.Finished && active);
+			Af(cooldown, combo, () => cooldown.Finished && triggerPressed);
 			Af(combo, cooldown, () => true);
 		}
 

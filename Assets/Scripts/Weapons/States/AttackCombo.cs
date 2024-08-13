@@ -29,14 +29,14 @@ public class AttackCombo : IState
 	{
 		Status = ComboState.Pending;
 		UpdateCombo();
-		// Debug.Log("Activated Attack Timing: " + (Time.time - weapon.LastAttackTime) + "s");
+		// Debug.Log("Activated Attack Timing: " + (Time.time - weapon.GetLastAttackTime()) + "s");
 
 		//AudioManager.Instance.PlayOneShot(!_gun.GunCycle.IsNull ? _gun.GunCycle : FModEvents.Instance.GunshotGenericCycle, _soundOrigin.position);
 	}
 
 	public void OnExit()
 	{
-		weapon.LastAttackTime = Time.time;
+		weapon.ResetCooldown();
 
 		weapon.DeactivateAttack(comboData[ComboStage].GetIndex());
 	}
@@ -49,9 +49,9 @@ public class AttackCombo : IState
 
 	private void UpdateCombo()
 	{
-		if ((Time.time - weapon.LastAttackTime) == comboData[ComboStage].GetIdealTiming())
+		if ((Time.time - weapon.GetLastAttackTime()) == comboData[ComboStage].GetIdealTiming())
 			Status = ComboState.Perfect;
-		else if (Mathf.Abs(Time.time - weapon.LastAttackTime - comboData[ComboStage].GetIdealTiming()) <= comboData[ComboStage].GetIdealTimingWindow())
+		else if (Mathf.Abs(Time.time - weapon.GetLastAttackTime() - comboData[ComboStage].GetIdealTiming()) <= comboData[ComboStage].GetIdealTimingWindow())
 			Status = ComboState.Successful;
 		else
 			Status = ComboState.Failed;

@@ -35,4 +35,5 @@ public class WeaponLogic : IWeaponLogic
 	}
 
 	public void ResetCooldown() { lastAttackTime = Time.time; }
+	public float GetLastAttackTime() { return lastAttackTime; }
 }

@@ -29,7 +29,7 @@ public class AttackHold : IState
 		{
 			weapon.ActivateAttack(comboData.GetIndex());
 			weapon.UpdateTrackedAttack(comboData.GetIndex());
-			weapon.LastAttackTime = Time.time;
+			weapon.ResetCooldown();
 			weapon.DeactivateAttack(comboData.GetIndex());
 			//Debug.Log("Activated Hold Attack Timing: " + (Time.time - chargeStartTime) + "s");
 		}

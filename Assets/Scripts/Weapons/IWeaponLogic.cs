@@ -9,6 +9,7 @@ public interface IWeaponLogic
 	bool IsAttackReady();
 
 	float GetCooldown();
+	float GetLastAttackTime();
 
 	void ResetCooldown();
 }
