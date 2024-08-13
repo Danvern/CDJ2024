@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5a2ce0c2aa5380409f53d22ab3a85df, type: 3}
-  m_Name: PlayerMeleeEffectRush
+  m_Script: {fileID: 11500000, guid: d670d1e933167e9409e1a47e4cd70cca, type: 3}
+  m_Name: PlayerDashLight
   m_EditorClassIdentifier: 
-  power: 800
-  slideTime: 0.5
-  controlled: 1
+  AttackDefinitions:
+  - id: 0
+    cooldown: 0.75
+    idealTiming: 1
+    idealTimingWindow: 1
+    chargeAttack: 0
+  MaxCombo: 1

@@ -16,6 +16,7 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private float acceleration = 100;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
+	[SerializeField] private Weapon dashWeapon;
 	[SerializeField] private bool isEnemy = true;
 	[SerializeField] private Animator animator;
 	private IMovementLogic movement;
@@ -73,6 +74,15 @@ public class Entity : EntitySubject, IVisitable
 		else
 			secondaryWeapon.Deactivate();
 	}
+	public void DashActivate(bool pressed)
+	{
+		if (dashWeapon == null) return;
+
+		if (pressed)
+			dashWeapon.Activate();
+		else
+			dashWeapon.Deactivate();
+	}
 
 	private void Awake()
 	{
@@ -104,6 +114,8 @@ public class Entity : EntitySubject, IVisitable
 			primaryWeapon.TakeOwnership(mediator);
 		if (secondaryWeapon != null)
 			secondaryWeapon.TakeOwnership(mediator);
+		if (dashWeapon != null)
+			dashWeapon.TakeOwnership(mediator);
 
 		health.entityDamaged += (damage, source) =>
 		{

@@ -38,6 +38,11 @@ public class PlayerControl : MonoBehaviour
 	{
 		entity.SecondaryFire(value.isPressed);
 	}
+	
+	public void OnDash(InputValue value)
+	{
+		entity.DashActivate(value.isPressed);
+	}
 
 	/// <summary>
 	/// Update the position of the targeting cursor as well as the hovered target.
