@@ -64,6 +64,15 @@ public class Entity : EntitySubject, IVisitable
 		else
 			primaryWeapon.Deactivate();
 	}
+	public void SecondaryFire(bool pressed)
+	{
+		if (secondaryWeapon == null) return;
+
+		if (pressed)
+			secondaryWeapon.Activate();
+		else
+			secondaryWeapon.Deactivate();
+	}
 
 	private void Awake()
 	{

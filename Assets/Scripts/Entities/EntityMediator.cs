@@ -85,6 +85,7 @@ public class EntityMediator : IVisitable
 	public void MoveToDirection(Vector2 direction) => movement?.MoveToDirection(direction);
 	public void FacePosition(Vector2 position) => entity?.FacePosition(position);
 	public void PrimaryFire(bool pressed) => entity?.PrimaryFire(pressed);
+	public void SecondaryFire(bool pressed) => entity?.SecondaryFire(pressed);
 
 
 }

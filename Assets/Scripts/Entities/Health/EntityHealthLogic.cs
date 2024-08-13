@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public delegate void KillNotification(ProjectileBase killer);
 public delegate void DamageNotification(float damage, ProjectileBase source);
+[Serializable]
 public class EntityHealthLogic : IEntityHealthLogic
 {
 	public event KillNotification EntityKilled;

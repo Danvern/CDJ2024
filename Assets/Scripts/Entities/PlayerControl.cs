@@ -34,6 +34,11 @@ public class PlayerControl : MonoBehaviour
 		entity.PrimaryFire(value.isPressed);
 	}
 
+	public void OnFireSecondary(InputValue value)
+	{
+		entity.SecondaryFire(value.isPressed);
+	}
+
 	/// <summary>
 	/// Update the position of the targeting cursor as well as the hovered target.
 	/// </summary>
