@@ -70,7 +70,7 @@ public class Entity : EntitySubject, IVisitable
 		if (healthData != null)
 		{
 			health = new EntityHealthLogic(healthData);
-			health.entityKilled += (killer) => { Kill(); }; // Use a Builder
+			health.EntityKilled += (killer) => { Kill(); }; // Use a Builder
 		}
 
 		movement = new EntityMovementLogic.Builder(GetComponent<Rigidbody2D>())
@@ -140,10 +140,11 @@ public class Entity : EntitySubject, IVisitable
 
 	private void Kill()
 	{
-		//TODO: Temp music switch
-		AudioManager.Instance.SetCombatActive(true);
 		if (IsDead) return;
 
+		//TODO: Temp music switch
+		AudioManager.Instance.SetCombatActive(true);
+		mediator.SetAnimationBool("IsDead", true);
 		IsDead = true;
 		StartCoroutine(DestroyAfterDelay(deletionDelay));
 	}

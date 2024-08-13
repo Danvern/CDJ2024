@@ -4,7 +4,7 @@ public delegate void KillNotification(ProjectileBase killer);
 public delegate void DamageNotification(float damage, ProjectileBase source);
 public class EntityHealthLogic : IEntityHealthLogic
 {
-	public event KillNotification entityKilled;
+	public event KillNotification EntityKilled;
 	public event DamageNotification entityDamaged;
 	private float healthCurrent = 0;
 	private float healthMax = 0;
@@ -31,7 +31,7 @@ public class EntityHealthLogic : IEntityHealthLogic
 		healthCurrent = Mathf.Max(0, healthCurrent - damage);
 		entityDamaged?.Invoke(damage, source);
 		if (healthCurrent <= 0)
-			entityKilled?.Invoke(source);
+			EntityKilled?.Invoke(source);
 	}
 
 	public override string ToString() { return "" + GetHealthCurrent() + "/" + GetHealthMax(); }
