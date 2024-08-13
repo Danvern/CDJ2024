@@ -17,6 +17,7 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
 	[SerializeField] private bool isEnemy = true;
+	[SerializeField] private Animator animator;
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private EntityMediator mediator;
@@ -78,7 +79,7 @@ public class Entity : EntitySubject, IVisitable
 			.Build();
 
 		this.GetOrAddComponent<ServiceLocator>();
-		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement));
+		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement, animator));
 
 
 
@@ -124,6 +125,12 @@ public class Entity : EntitySubject, IVisitable
 	{
 		agent?.Update();
 		movement?.Update();
+		mediator.SetAnimationFloat("Speed", movement.GetSpeed());
+		mediator.SetAnimationBool("IsMovingLeft", movement.IsMovingLeft());
+		if (movement.IsMovingLeft() && animator != null)
+		{
+			animator.transform.localScale = transform.localScale.With(x: -1);
+		}
 		// if (agent != null)
 		// ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
 	}

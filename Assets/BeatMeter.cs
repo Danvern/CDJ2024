@@ -33,7 +33,7 @@ public class BeatMeter : MonoBehaviour
 		else
 			frameTime = (1.25f - timing * 0.625f) % 1f;
 		animator.SetFloat("PlaybackTime", frameTime);
-		Debug.Log(frameTime + " vs " + timing);
+		//Debug.Log(frameTime + " vs " + timing);
 		//animator.StopPlayback();
 		lastPing = timing;
 	}

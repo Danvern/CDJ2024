@@ -12,6 +12,8 @@ public interface IMovementLogic : IVisitable
 	void SetAcceleration(float acceleration);
 	Vector3 GetTargetDirection();
 	Vector3 GetFacingDirection();
+	float GetCurrentSpeed();
+	bool IsMovingLeft();
 	public bool IsFollowingPath();
 	public bool IsPathPending();
 	public float RemainingPathDistance();
@@ -82,6 +84,8 @@ public class EntityMovementLogic : IMovementLogic
 	public Rigidbody2D GetRigidbody() { return rb; }
 	public bool IsFollowingPath() { return isOnPath; }
 	public bool IsPathPending() { return isPathCalculating; }
+	public float GetCurrentSpeed() { return rb.velocity.magnitude; }
+	public bool IsMovingLeft() { return rb.velocity.x < 0; }
 	public void CalculatePath(Seeker navigator, Vector3 position, Vector3 target)
 	{
 		currentPath = navigator.StartPath(position, target, onPathComplete); // Always level planes

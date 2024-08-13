@@ -164,6 +164,7 @@ MonoBehaviour:
   primaryWeapon: {fileID: 8890011804488458781}
   secondaryWeapon: {fileID: 0}
   isEnemy: 0
+  animator: {fileID: 5487468954803287456}
 --- !u!114 &5791097860434604426
 MonoBehaviour:
   m_ObjectHideFlags: 0
