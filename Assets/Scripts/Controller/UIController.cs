@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityServiceLocator;
 
 public class UIController : MonoBehaviour, IEntityObserver
@@ -16,6 +17,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 	// Start is called before the first frame update
 	void Awake()
 	{
+		if (!ServiceLocator.Global.TryGet<UIController>(out _))
 		ServiceLocator.Global.Register(this);
 	}
 
@@ -50,6 +52,12 @@ public class UIController : MonoBehaviour, IEntityObserver
 
 		Debug.Log("CurrentPlayerHope:" + DisplayHealth);
 		UpdateElements();
+	}
+
+	public void RestartLevel()
+	{
+	SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
 	}
 
 

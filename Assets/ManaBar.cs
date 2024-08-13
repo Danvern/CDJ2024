@@ -20,6 +20,7 @@ public class ManaBar : MonoBehaviour
 	{
 		activeBar.material = new Material(activeBar.material);
 		activeMaterial = activeBar.material;
+		if (!ServiceLocator.Global.TryGet<ManaBar>(out _))
 		ServiceLocator.Global.Register(this);
 
 	}
