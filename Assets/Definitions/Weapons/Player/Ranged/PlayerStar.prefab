@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5104343759367833536}
   - component: {fileID: 7818734453364324759}
   - component: {fileID: 2444641116318182366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: May Wei Projectile_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 1469519840091783576}
   - component: {fileID: 7487155657527644523}
   - component: {fileID: -6860166085497808460}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerStar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
