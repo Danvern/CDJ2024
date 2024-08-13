@@ -8,6 +8,7 @@ public interface IMovementLogic : IVisitable
 	void MoveToDirection(Vector2 direction);
 	float GetSpeed();
 	void SetSpeed(float speed);
+	void SetPhasing(bool phasing);
 	float GetAcceleration();
 	void SetAcceleration(float acceleration);
 	Vector3 GetTargetDirection();
@@ -86,6 +87,10 @@ public class EntityMovementLogic : IMovementLogic
 	public bool IsPathPending() { return isPathCalculating; }
 	public float GetCurrentSpeed() { return rb.velocity.magnitude; }
 	public bool IsMovingLeft() { return rb.velocity.x < 0; }
+	public void SetPhasing(bool phase)
+	{
+
+	}
 	public void CalculatePath(Seeker navigator, Vector3 position, Vector3 target)
 	{
 		currentPath = navigator.StartPath(position, target, onPathComplete); // Always level planes
