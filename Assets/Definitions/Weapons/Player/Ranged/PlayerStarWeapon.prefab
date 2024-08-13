@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 9216537538314358824}
   - component: {fileID: 8579253459437172535}
   m_Layer: 0
-  m_Name: HachiStarWeapon
+  m_Name: PlayerStarWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,4 +100,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbdaff270f0c33498c60d8d61b5ba6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: ba619727ac57a624c9cf429bf8a27350, type: 2}
+  data: {fileID: 11400000, guid: c5ac7df1dea931a49bb6f7c99f461e6d, type: 2}
