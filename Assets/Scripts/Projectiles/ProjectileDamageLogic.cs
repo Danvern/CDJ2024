@@ -18,6 +18,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private Vector2 impactPosition = Vector2.zero;
 	private bool isIndescriminate = false;
 	private bool isExplosion = false;
+	private bool isProjectileDestroyer = false;
 	private ProjectileDamageData data;
 
 	private Dictionary<Transform, float> entityCollisions = new Dictionary<Transform, float>();
@@ -36,6 +37,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		KnockbackStun = data.KnockbackStun;
 		isIndescriminate = data.IsIndescriminate;
 		isExplosion = data.IsExplosion;
+		isProjectileDestroyer = data.IsProjectileDestroyer;
 	}
 
 	public float GetLifetime() { return lifetime; }
@@ -74,34 +76,45 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 			if (GetCollisionArc() != 0 && !IsColliderInsideArc(collider.transform.position, transform.position, transform.up, GetCollisionArc()))
 				continue;
 			Entity entity = collider.transform.GetComponent<Entity>();
-			if (entity == null)
-				continue;
-			EntityMediator entityMediator = ServiceLocator.For(entity).Get<EntityMediator>();
-
-			if (entityCollisions.ContainsKey(collider.transform))
+			ProjectileBase projectile = collider.transform.GetComponent<ProjectileBase>();
+			if (projectile != null)
 			{
+				if (projectile.CanCollideWith(owner) && isProjectileDestroyer)
+				{
+					projectile.KillNext();
+
+				}
 
 			}
-			else if (entityMediator.IsDead()) { }
-			else if (owner == null || owner.IsHostile(entityMediator) || (IsIndescriminate() && (owner != entityMediator || IsExplosion())))
+			else if (entity != null)
 			{
-				entityCollisions.Add(collider.transform, Time.time);
-				DecreasePierce(1);
-				DoEntityEffect(entityMediator);
-				if (entityMediator.IsDead())
+				EntityMediator entityMediator = ServiceLocator.For(entity).Get<EntityMediator>();
+
+				if (entityCollisions.ContainsKey(collider.transform))
 				{
-					if (!data.SmallKillSFX.IsNull)
-						AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
+
 				}
-				else
+				else if (entityMediator.IsDead()) { }
+				else if (owner == null || owner.IsHostile(entityMediator) || (IsIndescriminate() && (owner != entityMediator || IsExplosion())))
 				{
-					if (!data.DamageSFX.IsNull)
-						AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
-				}
-				if (piercing < 0 && !IsExplosion())
-				{
-					kill = true;
-					break;
+					entityCollisions.Add(collider.transform, Time.time);
+					DecreasePierce(1);
+					DoEntityEffect(entityMediator);
+					if (entityMediator.IsDead())
+					{
+						if (!data.SmallKillSFX.IsNull)
+							AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
+					}
+					else
+					{
+						if (!data.DamageSFX.IsNull)
+							AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
+					}
+					if (piercing < 0 && !IsExplosion())
+					{
+						kill = true;
+						break;
+					}
 				}
 			}
 		}
