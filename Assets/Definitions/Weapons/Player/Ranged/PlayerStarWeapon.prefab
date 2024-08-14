@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416fbbeddf8a5494093b33b5f936c648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 8009197107927425177, guid: 0d87cc4b0d863e4478ce05c9f8875153,
+  projectile: {fileID: 8009197107927425177, guid: 8ad0cf6201b96e94394f98727a00d51c,
     type: 3}
   melee: 0
   effectData: []
