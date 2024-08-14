@@ -100,10 +100,6 @@ public class Entity : EntitySubject, IVisitable
 
 		this.GetOrAddComponent<ServiceLocator>();
 		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement, animator, new AmmoInventory()));
-
-
-
-
 	}
 
 	// Start is called before the first frame update
