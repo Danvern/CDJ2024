@@ -160,10 +160,16 @@ public class Entity : EntitySubject, IVisitable
 		//mediator.SetAnimationBool("IsMovingLeft", movement.IsMovingLeft());
 		if (animator != null)
 		{
+			bool isLookingLeft = transform.rotation.eulerAngles.z > 0f && transform.rotation.eulerAngles.z  < 180f;
 			if (movement.IsMovingLeft())
-				animator.transform.localScale = transform.localScale.With(x: -1);
+			animator.transform.localScale = transform.localScale.With(x: -1);
 			else if (movement.GetCurrentSpeed() > 0)
 				animator.transform.localScale = transform.localScale.With(x: 1);
+			else if (isLookingLeft)
+				animator.transform.localScale = transform.localScale.With(x: -1);
+			else
+				animator.transform.localScale = transform.localScale.With(x: 1);
+
 		}
 		// if (agent != null)
 		// ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
