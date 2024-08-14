@@ -618,7 +618,7 @@ MonoBehaviour:
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 1
+  showNavGraphs: 0
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
@@ -50579,8 +50579,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logic:
-    lifeMinimumChance: 1
-    lifeMaximumChance: 1
+    lifeMinimumChance: 0.25
+    lifeMaximumChance: 0.05
     lifeDropCurve:
       serializedVersion: 2
       m_Curve:
@@ -50605,8 +50605,8 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    ammoMinimumChance: 1
-    ammoMaximumChance: 1
+    ammoMinimumChance: 0.25
+    ammoMaximumChance: 0.05
     ammoDropCurve:
       serializedVersion: 2
       m_Curve:
