@@ -151,5 +151,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b10a90eb4704a146aebc9a75f548c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileDamageData: {fileID: 11400000, guid: 5f7778f53d630b74bb69c3cc5c099260,
+  projectileDamageData: {fileID: 11400000, guid: cdc08869c1efad14088ca2c13d5f1d35,
     type: 2}

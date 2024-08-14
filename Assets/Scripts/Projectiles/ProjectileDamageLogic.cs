@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using UnityEditor;
 using UnityEngine;
 using UnityServiceLocator;
 
@@ -62,11 +60,25 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	public float GetSpeed() { return speed; }
 	public bool IsIndescriminate() { return isIndescriminate; }
 	public bool IsExplosion() { return isExplosion; }
+	public void DoDeathEffect(Transform transform, EntityMediator owner)
+	{
+		if (GetDeathEffect())
+			ProjectileManager.Instance.GenerateProjectile(GetDeathEffect(), transform.position, GetDeathEffect().transform.rotation, owner);
+
+	}
+
+	public GameObject GetHitEffect() { return data.HitEffect; }
+	public GameObject GetDeathEffect() { return data.DeathEffect; }
 
 	public bool CheckCollisons(Transform transform, EntityMediator owner)
 	{
 		bool kill = false;
-		Collider2D[] potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius());
+		if (GetCollisionRadius() == 0) return false;
+
+		LayerMask entityMask = LayerMask.GetMask("Entities");
+		LayerMask environmentMask = LayerMask.GetMask("EnvironmentObstacles");
+		LayerMask projectileMask = LayerMask.GetMask("ProjectileVulnerable");
+		Collider2D[] potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius(), layerMask: entityMask|projectileMask);
 
 		if (potentialCollisions.Length == 0) return false;
 
@@ -100,6 +112,10 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 					entityCollisions.Add(collider.transform, Time.time);
 					DecreasePierce(1);
 					DoEntityEffect(entityMediator);
+					if (GetHitEffect() && (piercing >= 0 || !data.IsHitEffectOnlyOnPierce))
+						ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), impactPosition, GetHitEffect().transform.rotation, owner);
+						//ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), collider.ClosestPoint(impactPosition), transform.rotation, owner);
+
 					if (entityMediator.IsDead())
 					{
 						if (!data.SmallKillSFX.IsNull)
@@ -117,6 +133,9 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 					}
 				}
 			}
+			potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius(), layerMask: environmentMask);
+			if (data.IsBlockedByWorld && potentialCollisions.Length > 0)
+				kill = true;
 		}
 		return kill;
 	}

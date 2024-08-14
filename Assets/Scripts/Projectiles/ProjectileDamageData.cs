@@ -13,9 +13,15 @@ public class ProjectileDamageData : ScriptableObject
 	public bool IsIndescriminate = false;
 	public bool IsExplosion = false;
 	public bool IsProjectileDestroyer = false;
+	public bool IsHitEffectOnlyOnPierce = false;
+	public bool IsBlockedByWorld = false;
+	public bool DetachOnDeath = false;
 	public float CollisionRadius = 1;
 	public float CollisionArc = 360;
 	public float StartingVelocity = 10f;
+
+	public GameObject HitEffect;
+	public GameObject DeathEffect;
 	public EventReference SmallKillSFX;
 	public EventReference DamageSFX;
 }

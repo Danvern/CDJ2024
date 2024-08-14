@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackDefinitions:
   - id: 0
-    cooldown: 0.75
+    cooldown: 1.25
     idealTiming: 1
     idealTimingWindow: 1
     chargeAttack: 0

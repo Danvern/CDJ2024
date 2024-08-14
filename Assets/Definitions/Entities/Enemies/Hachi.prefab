@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 3752208349402694709}
   - component: {fileID: 2506023371486337117}
   - component: {fileID: 4657740781432693990}
+  - component: {fileID: 392319204623625739}
   m_Layer: 7
   m_Name: Hachi
   m_TagString: Untagged
@@ -179,7 +180,10 @@ MonoBehaviour:
   acceleration: 80
   primaryWeapon: {fileID: 2821160958969626481}
   secondaryWeapon: {fileID: 0}
+  dashWeapon: {fileID: 0}
   isEnemy: 1
+  isUsingPickups: 0
+  animator: {fileID: 0}
 --- !u!114 &2006010728388214129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +355,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &392319204623625739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556580978140358341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c0f5b114f952847b21848ebbcd782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - {fileID: 11400000, guid: 24b100452b12d2649adcf8733430ca40, type: 2}
+  IsInstant: 0
+  MaxPickups: 1
+  SpreadDistance: 2.5
+  generationDelay: 0.5
 --- !u!1001 &5776261663025956934
 PrefabInstance:
   m_ObjectHideFlags: 0

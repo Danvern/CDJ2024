@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityServiceLocator;
 
 public class Entity : EntitySubject, IVisitable
@@ -20,7 +18,6 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private bool isEnemy = true;
 	[SerializeField] private bool isUsingPickups = false;
 	[SerializeField] private Animator animator;
-	[SerializeField] private AmmoInventory ammunition;
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private EntityMediator mediator;
@@ -41,11 +38,13 @@ public class Entity : EntitySubject, IVisitable
 		visitor.Visit(this);
 	}
 
-	public void DashToAim(float power, float slideTime, bool fullStun = true)
+	public void DashToAim(float power, float slideTime, bool invulnerable = false)
 	{
 		movement.MoveToDirection(transform.forward);
 		movement.Dash(power, slideTime);
+		mediator.SetInvulnerable(invulnerable, InvincibilitySource.Dashing);
 	}
+
 
 	public void MoveToDirection(Vector3 direction)
 	{
@@ -100,11 +99,12 @@ public class Entity : EntitySubject, IVisitable
 			.Build();
 
 		this.GetOrAddComponent<ServiceLocator>();
-		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement, animator, ammunition));
+		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement, animator, new AmmoInventory()));
 
-
-
-
+		movement.DashFinished += (movement, arguments) =>
+		{
+			mediator.SetInvulnerable(false, InvincibilitySource.Dashing);
+		};
 	}
 
 	// Start is called before the first frame update
@@ -152,6 +152,7 @@ public class Entity : EntitySubject, IVisitable
 	{
 		agent?.Update();
 		movement?.Update();
+		health?.Update();
 		mediator.SetAnimationFloat("Speed", movement.GetCurrentSpeed());
 		mediator.SetAnimationBool("IsMovingLeft", movement.IsMovingLeft());
 		if (animator != null)

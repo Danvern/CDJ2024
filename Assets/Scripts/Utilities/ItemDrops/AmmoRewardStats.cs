@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Concurrent;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AmmoReward", menuName = "Pickups/Ammo")]

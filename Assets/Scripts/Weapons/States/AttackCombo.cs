@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public enum ComboState { Perfect, Successful, Failed, Pending };
 public interface IComboDefinition
@@ -49,9 +48,9 @@ public class AttackCombo : IState
 
 	private void UpdateCombo()
 	{
-		if ((Time.time - weapon.GetLastAttackTime()) == comboData[ComboStage].GetIdealTiming())
+		if ((Time.time - weapon.GetLastAttackTime()) == comboData[ComboStage].GetIdealTiming() && AudioManager.Instance.IsOnPerfectBeat())
 			Status = ComboState.Perfect;
-		else if (Mathf.Abs(Time.time - weapon.GetLastAttackTime() - comboData[ComboStage].GetIdealTiming()) <= comboData[ComboStage].GetIdealTimingWindow())
+		else if (Mathf.Abs(Time.time - weapon.GetLastAttackTime() - comboData[ComboStage].GetIdealTiming()) <= comboData[ComboStage].GetIdealTimingWindow() && AudioManager.Instance.IsOnBeat())
 			Status = ComboState.Successful;
 		else
 			Status = ComboState.Failed;

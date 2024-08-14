@@ -130,7 +130,7 @@ public class AgentCharger : IAgent
 		{
 			if (!blackboard.TryGetValue(targetKey, out EntityMediator target) || target == null || target.GetTransform().OrNull() == null)
 			{
-				blackboard.SetValue(targetKey, ServiceLocator.Global.Get<AgentDirector>().GetPrimaryPlayer());
+				blackboard.SetValue(targetKey, ServiceLocator.ForSceneOf(entity.GetEntity()).Get<AgentDirector>().GetPrimaryPlayer());
 			}
 			else
 			{

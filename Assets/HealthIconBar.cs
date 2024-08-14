@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityServiceLocator;
@@ -18,8 +16,7 @@ public class HealthIconBar : MonoBehaviour
 
 	void Awake()
 	{
-		if (!ServiceLocator.Global.TryGet<HealthIconBar>(out _))
-	ServiceLocator.Global.Register(this);
+	ServiceLocator.ForSceneOf(this).Register(this);
 	iconBehaviors = GetComponentsInChildren<Image>().ToList();
 
 	}
