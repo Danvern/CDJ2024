@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: PlayerStar
   m_EditorClassIdentifier: 
   Lifetime: 2
-  DamageMax: 5
-  DamageMin: 3
+  DamageMax: 6
+  DamageMin: 6
   Piercing: 0
   Knockback: 1
   KnockbackStun: 0.25
   IsIndescriminate: 0
   IsExplosion: 0
+  IsProjectileDestroyer: 0
   CollisionRadius: 0.5
   CollisionArc: 360
   StartingVelocity: 10
