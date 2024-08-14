@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: -6860166085497808460}
   - component: {fileID: 3289503712241421628}
   m_Layer: 9
-  m_Name: EnemyHitEffect
+  m_Name: PlayerStarHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

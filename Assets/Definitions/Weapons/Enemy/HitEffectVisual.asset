@@ -12,15 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96ac5387efbb804ab5b893a795ba7da, type: 3}
   m_Name: HitEffectVisual
   m_EditorClassIdentifier: 
-  Lifetime: 2
-  DamageMax: 2
-  DamageMin: 1.5
+  Lifetime: 1
+  DamageMax: 0
+  DamageMin: 0
   Piercing: 0
-  Knockback: 1
-  KnockbackStun: 0.25
-  CollisionRadius: 0.5
-  CollisionArc: 360
-  StartingVelocity: 10
+  Knockback: 0
+  KnockbackStun: 0
+  IsIndescriminate: 0
+  IsExplosion: 0
+  IsProjectileDestroyer: 0
+  DetachOnDeath: 0
+  CollisionRadius: 0
+  CollisionArc: 0
+  StartingVelocity: 0
+  HitEffect: {fileID: 0}
+  DeathEffect: {fileID: 0}
   SmallKillSFX:
     Guid:
       Data1: 0
