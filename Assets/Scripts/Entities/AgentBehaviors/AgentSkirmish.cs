@@ -89,8 +89,11 @@ public class AgentSkirmish : IAgent
 			float distance = Vector3.Distance(targetPosition, entity.GetPosition());
 			return distance < MaximumRange;
 		}
+		Condition isAlive = new Condition(() => !entity.IsDead());
+		Condition isDead = new Condition(() => entity.IsDead());
 
 		Sequence attackTarget = new Sequence("AttackTarget", 100);
+		attackTarget.AddChild(new Leaf("IsAlive?", isAlive));
 		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()) && IsInRange(GetTargetPosition()))));
 		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition())));
@@ -98,12 +101,14 @@ public class AgentSkirmish : IAgent
 
 		Selector goToPlayer = new Selector("GoToPlayer", 50);
 		Sequence goDirectly = new Sequence("ApproachPlayerDirectly");
+		goDirectly.AddChild(new Leaf("IsAlive?", isAlive));
 		goDirectly.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()))));
 		goDirectly.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTargetPosition(), entity.GetPosition()) < SensingRange)));
 		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTarget(entity, () => GetTargetPosition())));
 		goToPlayer.AddChild(goDirectly);
 
 		Sequence goPathing = new Sequence("ApproachPlayerPathing");
+		goPathing.AddChild(new Leaf("IsAlive?", isAlive));
 		goPathing.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null)));
 		goPathing.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTargetPosition(), entity.GetPosition()) < SensingRange)));
 		goPathing.AddChild(new Leaf("GoToPlayer", new NavigateToTargetDynamic(entity, () => (GetTarget()?.GetTransform()))));
@@ -111,8 +116,14 @@ public class AgentSkirmish : IAgent
 		//goDirectly.AddChild(new Leaf("PickUpTreasure1", new ActionStrategy(() => treasure.SetActive(false))));
 		actions.AddChild(goToPlayer);
 
+		Sequence goPatrol = new Sequence("GoPatrol");
+		attackTarget.AddChild(new Leaf("IsAlive?", isAlive));
 		Leaf patrol = new Leaf("Patrol", new RandomPatrolStrategy(entity));
-		actions.AddChild(patrol);
+		goPatrol.AddChild(patrol);
+		actions.AddChild(goPatrol);
+
+		Sequence perish = new Sequence("Perish");
+		perish.AddChild(new Leaf("Dying", isDead));
 
 		tree.AddChild(actions);
 	}
