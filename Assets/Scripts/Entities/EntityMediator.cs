@@ -33,7 +33,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	}
 	public float GetHealth() { return health.GetHealthCurrent(); }
 	public float GetHealthMax() { return health.GetHealthMax(); }
-	public void SetInvulnerable(bool invulnerable) { health.SetInvulnerable(invulnerable); }
+	public void SetInvulnerable(bool invulnerable, InvincibilitySource source) { health.SetInvulnerable(invulnerable, source); }
 	public void AddHealth(float value)
 	{
 		health.Heal(value);

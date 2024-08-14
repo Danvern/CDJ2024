@@ -44,7 +44,7 @@ public class Entity : EntitySubject, IVisitable
 	{
 		movement.MoveToDirection(transform.forward);
 		movement.Dash(power, slideTime);
-		mediator.SetInvulnerable(invulnerable);
+		mediator.SetInvulnerable(invulnerable, InvincibilitySource.Dashing);
 	}
 
 
@@ -105,7 +105,7 @@ public class Entity : EntitySubject, IVisitable
 
 		movement.DashFinished += (movement, arguments) =>
 		{
-			mediator.SetInvulnerable(false);
+			mediator.SetInvulnerable(false, InvincibilitySource.Dashing);
 		};
 	}
 
