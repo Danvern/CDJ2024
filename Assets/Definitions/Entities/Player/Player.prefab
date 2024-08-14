@@ -522,6 +522,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2478733732295326540, guid: 1eefa50526d16f149b1f202156def3c0,
+        type: 3}
+      propertyPath: melee
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6299663426832582517, guid: 1eefa50526d16f149b1f202156def3c0,
         type: 3}
       propertyPath: m_Name
