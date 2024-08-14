@@ -17,17 +17,19 @@ public class DashEffect : IAttackEffect
 	float power;
 	float slideTime;
 	bool controlled = true;
+	bool invulnerable = true;
 
-	public DashEffect(float power, float slideTime, bool controlled)
+	public DashEffect(float power, float slideTime, bool controlled, bool invulnerable)
 	{
 		this.power = power;
 		this.slideTime = slideTime;
 		this.controlled = controlled;
+		this.invulnerable = invulnerable;
 	}
 
 	public void Activate(EntityMediator owner)
 	{
-		owner.DashToAim(power, slideTime, fullStun: !controlled);
+		owner.DashToAim(power, slideTime, invulnerable);
 	}
 
 	public void Deactivate(EntityMediator owner)

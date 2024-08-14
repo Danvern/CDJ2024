@@ -15,3 +15,4 @@ MonoBehaviour:
   power: 1200
   slideTime: 0.2
   controlled: 1
+  invulnerable: 1

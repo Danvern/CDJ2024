@@ -40,11 +40,13 @@ public class Entity : EntitySubject, IVisitable
 		visitor.Visit(this);
 	}
 
-	public void DashToAim(float power, float slideTime, bool fullStun = true)
+	public void DashToAim(float power, float slideTime, bool invulnerable = false)
 	{
 		movement.MoveToDirection(transform.forward);
 		movement.Dash(power, slideTime);
+		mediator.SetInvulnerable(invulnerable);
 	}
+
 
 	public void MoveToDirection(Vector3 direction)
 	{
@@ -100,6 +102,11 @@ public class Entity : EntitySubject, IVisitable
 
 		this.GetOrAddComponent<ServiceLocator>();
 		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement, animator, new AmmoInventory()));
+
+		movement.DashFinished += (movement, arguments) =>
+		{
+			mediator.SetInvulnerable(false);
+		};
 	}
 
 	// Start is called before the first frame update

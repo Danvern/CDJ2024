@@ -5,6 +5,7 @@ using UnityServiceLocator;
 
 public interface IMovementLogic : IVisitable
 {
+	event EventHandler DashFinished;
 	void MoveToDirection(Vector2 direction);
 	float GetSpeed();
 	void SetSpeed(float speed);
@@ -28,8 +29,14 @@ public interface IMovementLogic : IVisitable
 
 }
 
+public class MovementEvent : EventArgs
+{
+
+}
+
 public class EntityMovementLogic : IMovementLogic
 {
+	public event EventHandler DashFinished;
 	public class Builder
 	{
 		private Rigidbody2D rb;
@@ -166,6 +173,7 @@ public class EntityMovementLogic : IMovementLogic
 		dashState = new MoveDash(this, speed * DEFAULT_DASH_MULTIPLIER);
 		stunState = new MoveStun(this, speed * DEFAULT_DASH_MULTIPLIER);
 		dashState.Finish += () => moveTrigger = MoveTrigger.Walk;
+		dashState.Finish += () => DashFinished?.Invoke(dashState, new MovementEvent());
 		stunState.Finish += () => moveTrigger = MoveTrigger.Walk;
 
 		Aaf(stunState, () => moveTrigger == MoveTrigger.Stun);

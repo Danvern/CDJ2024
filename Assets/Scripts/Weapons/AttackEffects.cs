@@ -6,10 +6,11 @@ public class DashEffectData : ScriptableObject, IAttackEffectData
 	[SerializeField] float power;
 	[SerializeField] float slideTime;
 	[SerializeField] bool controlled = true;
+	[SerializeField] bool invulnerable = false;
 
 	public IAttackEffect CreateEffect()
 	{
-		DashEffect effect = new DashEffect(power, slideTime, controlled);
+		DashEffect effect = new DashEffect(power, slideTime, controlled, invulnerable);
  		return effect;
 	}
 }

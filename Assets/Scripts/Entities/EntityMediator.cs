@@ -108,7 +108,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		visitor.Visit(this);
 	}
 
-	public void DashToAim(float power, float slideTime, bool fullStun = true) => entity?.DashToAim(power, slideTime, fullStun);
+	public void DashToAim(float power, float slideTime, bool invulnerable = false) => entity?.DashToAim(power, slideTime, invulnerable);
 	public void MoveToDirection(Vector2 direction) => movement?.MoveToDirection(direction);
 	public void FacePosition(Vector2 position) => entity?.FacePosition(position);
 	public void PrimaryFire(bool pressed) => entity?.PrimaryFire(pressed);
