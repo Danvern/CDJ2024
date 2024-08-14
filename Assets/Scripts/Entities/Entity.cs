@@ -20,6 +20,7 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private bool isEnemy = true;
 	[SerializeField] private bool isUsingPickups = false;
 	[SerializeField] private Animator animator;
+	[SerializeField] private AmmoInventory ammunition;
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private EntityMediator mediator;
@@ -99,7 +100,7 @@ public class Entity : EntitySubject, IVisitable
 			.Build();
 
 		this.GetOrAddComponent<ServiceLocator>();
-		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement, animator));
+		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement, animator, ammunition));
 
 
 

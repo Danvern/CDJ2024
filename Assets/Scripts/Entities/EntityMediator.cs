@@ -15,17 +15,19 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	private EntityHealthLogic health;
 	private Seeker navigator;
 	private Animator animator;
+	private AmmoInventory ammunition;
 
-	public EntityMediator(Entity entity, EntityHealthLogic health, IMovementLogic movement, Animator animator)
+	public EntityMediator(Entity entity, EntityHealthLogic health, IMovementLogic movement, Animator animator, AmmoInventory ammo)
 	{
 		this.entity = entity;
 		this.health = health;
 		this.movement = movement;
 		navigator = entity.GetComponent<Seeker>();
 		this.animator = animator;
+		ammunition = ammo;
 	}
 	public float GetHealth() { return health.GetHealthCurrent();}
-	public float GetHealthMax() { return GetHealthMax();}
+	public float GetHealthMax() { return health.GetHealthMax();}
 	public void AddHealth(float value) {
 		health.Heal(value);
 
@@ -34,10 +36,10 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		return;
 
 	}
-	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) {}
+	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) {ammunition.AddAmmo(type, amount, maxMultiplier);}
 	public bool IsUsingPickups() => entity.IsUsingPickups();
-	public int GetAmmo(AmmoType type) { return 0;}
-	public int GetAmmoMax(AmmoType type) { return 0;}
+	public int GetAmmo(AmmoType type) { return ammunition.GetAmmo(type);}
+	public int GetAmmoMax(AmmoType type) { return ammunition.GetAmmoMax(type);}
 	public IUpgradeStats GetUpgradeStats() {return null;}
 	public IAffinity GetAffinity() {return null;}
 	public ServiceLocator GetServiceLocator() => ServiceLocator.For(entity);
@@ -95,6 +97,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		entity?.Accept(visitor);
 		health?.Accept(visitor);
 		movement?.Accept(visitor);
+		visitor.Visit(this);
 	}
 
 	public void DashToAim(float power, float slideTime, bool fullStun = true) => entity?.DashToAim(power, slideTime, fullStun);
