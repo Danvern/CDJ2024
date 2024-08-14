@@ -15,17 +15,17 @@ MonoBehaviour:
   AttackDefinitions:
   - id: 0
     cooldown: 0.75
-    idealTiming: 1
-    idealTimingWindow: 2.28
+    idealTiming: 0.75
+    idealTimingWindow: 1
     chargeAttack: 0
   - id: 1
     cooldown: 0.4
-    idealTiming: 0.8
-    idealTimingWindow: 0.25
+    idealTiming: 0.75
+    idealTimingWindow: 1
     chargeAttack: 0
   - id: 2
     cooldown: 1
-    idealTiming: 1
+    idealTiming: 0.75
     idealTimingWindow: 1
     chargeAttack: 0
   MaxCombo: 3
