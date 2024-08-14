@@ -427,8 +427,8 @@ MonoBehaviour:
       Data3: -271711555
       Data4: -768554084
     Path: event:/mus/MUSIC
-  onBeatThreshold: 0.75
-  onBeatThresholdPerfect: 0.9
+  onBeatThreshold: 0.5
+  onBeatThresholdPerfect: 0.8
 --- !u!4 &146097037
 Transform:
   m_ObjectHideFlags: 0
