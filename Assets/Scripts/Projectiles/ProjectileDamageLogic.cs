@@ -75,7 +75,10 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		bool kill = false;
 		if (GetCollisionRadius() == 0) return false;
 
-		Collider2D[] potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius());
+		LayerMask entityMask = LayerMask.GetMask("Entities");
+		LayerMask environmentMask = LayerMask.GetMask("EnvironmentObstacles");
+		LayerMask projectileMask = LayerMask.GetMask("ProjectileVulnerable");
+		Collider2D[] potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius(), layerMask: entityMask|projectileMask);
 
 		if (potentialCollisions.Length == 0) return false;
 
@@ -129,6 +132,9 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 					}
 				}
 			}
+			potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius(), layerMask: environmentMask);
+			if (data.IsBlockedByWorld && potentialCollisions.Length > 0)
+				kill = true;
 		}
 		return kill;
 	}

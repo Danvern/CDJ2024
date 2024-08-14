@@ -22,6 +22,7 @@ MonoBehaviour:
   IsExplosion: 0
   IsProjectileDestroyer: 0
   IsHitEffectOnlyOnPierce: 1
+  IsBlockedByWorld: 1
   DetachOnDeath: 0
   CollisionRadius: 0.5
   CollisionArc: 360
