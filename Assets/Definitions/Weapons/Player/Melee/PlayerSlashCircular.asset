@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96ac5387efbb804ab5b893a795ba7da, type: 3}
   m_Name: PlayerSlashCircular
   m_EditorClassIdentifier: 
-  Lifetime: 0.5
+  Lifetime: 1
   DamageMax: 7
   DamageMin: 10
   Piercing: 64
