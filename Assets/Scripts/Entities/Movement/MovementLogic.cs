@@ -151,7 +151,7 @@ public class EntityMovementLogic : IMovementLogic
 	{
 		moveTrigger = MoveTrigger.Stun;
 		facingDirection = direction;
-		stunState.UpdateParameters(power, slideTime);
+		stunState.UpdateParameters(power, slideTime, direction);
 	}
 
 	public void Update()

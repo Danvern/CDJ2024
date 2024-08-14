@@ -18,16 +18,17 @@ public class MoveStun : IState
 		this.moveSpeed = moveSpeed;
 	}
 
-	public void UpdateParameters(float power, float time)
+	public void UpdateParameters(float power, float time, Vector3 direction)
 	{
 		moveSpeed = power;
 		slideTime = time;
+		stunnedDirection = direction;
 		movement.GetRigidbody().AddForce(stunnedDirection * power, ForceMode2D.Impulse);
+		Debug.Log(movement.GetRigidbody().velocity.magnitude);
 	}
 
 	public void OnEnter()
 	{
-		stunnedDirection = movement.GetFacingDirection();
 		Finished = false;
 		previousSpeed = movement.GetSpeed();
 		movement.SetSpeed(moveSpeed);
