@@ -19,3 +19,4 @@ MonoBehaviour:
     idealTimingWindow: 2.28
     chargeAttack: 0
   MaxCombo: 1
+  FireDelay: 0.3

@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
 		{
 
 			GetOwner().SetAnimationBool(GetAnimationTag()+"Started", true);
-			TriggerAfterDelay(true, data.FireDelay);
+			StartCoroutine(TriggerAfterDelay(true, data.FireDelay));
 
 		}
 		else
@@ -56,14 +56,14 @@ public class Weapon : MonoBehaviour
 		if (data.FireDelay > 0)
 		{
 			GetOwner().SetAnimationBool(GetAnimationTag()+"Started", false);
-			TriggerAfterDelay(false, data.FireDelay);
+			StartCoroutine(TriggerAfterDelay(false, data.FireDelay));
 
 		}
 		else
 			triggerPressed = false;
 	}
 
-	IEnumerable TriggerAfterDelay(bool pressed, float seconds)
+	IEnumerator TriggerAfterDelay(bool pressed, float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
 		triggerPressed = pressed;
