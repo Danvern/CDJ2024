@@ -17,13 +17,14 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	private Animator animator;
 	private AmmoInventory ammunition;
 
-	public EntityMediator(Entity entity, EntityHealthLogic health, IMovementLogic movement, Animator animator)
+	public EntityMediator(Entity entity, EntityHealthLogic health, IMovementLogic movement, Animator animator, AmmoInventory ammo)
 	{
 		this.entity = entity;
 		this.health = health;
 		this.movement = movement;
 		navigator = entity.GetComponent<Seeker>();
 		this.animator = animator;
+		ammunition = ammo;
 	}
 	public float GetHealth() { return health.GetHealthCurrent();}
 	public float GetHealthMax() { return GetHealthMax();}

@@ -53,7 +53,7 @@ public class AmmoInventory : IAmmunitionSource
 	private class AmmoPair
 	{
 		public int Current;
-		public int Max = 64;
+		public int Max = 20;
 
 		public AmmoPair(int current)
 		{
