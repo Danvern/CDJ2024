@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityServiceLocator;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -31,6 +32,16 @@ public class PlayerControl : MonoBehaviour
 	public void OnFire(InputValue value)
 	{
 		entity.PrimaryFire(value.isPressed);
+	}
+
+	public void OnFireSecondary(InputValue value)
+	{
+		entity.SecondaryFire(value.isPressed);
+	}
+	
+	public void OnDash(InputValue value)
+	{
+		entity.DashActivate(value.isPressed);
 	}
 
 	/// <summary>
@@ -77,12 +88,13 @@ public class PlayerControl : MonoBehaviour
 		return targetEnemy;
 	}
 
-	private void Update()
+	private void FixedUpdate()
 	{
 		if (entity == null)
 			return;
 
 		entity.MoveToDirection(new Vector3(moveDirection.x, moveDirection.y, 0));
+
 		// Debug.Log(moveDirection);
 		TargetCursor();
 		entity.FacePosition(aimPosition);

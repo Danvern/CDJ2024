@@ -23,7 +23,7 @@ public class AttackCooldown : IState
 
 	public void OnExit() 
 	{
-		Finished = false;
+		Finished = true;
 		countdown.Expired -= FinishCycle;
 		countdown = null;
 	}

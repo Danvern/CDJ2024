@@ -30,7 +30,9 @@ public class MoveDash : IState
 		Finished = false;
 		previousSpeed = movement.GetSpeed();
 		movement.SetSpeed(moveSpeed);
+		movement.SetPhasing(true);
 		startTime = Time.time;
+		movement.GetRigidbody().AddForce(movement.GetFacingDirection() * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
 		//AudioManager.Instance.PlayOneShot(!_gun.GunCycle.IsNull ? _gun.GunCycle : FModEvents.Instance.GunshotGenericCycle, _soundOrigin.position);
 	}
 
@@ -39,6 +41,7 @@ public class MoveDash : IState
 		Finished = true;
 		Finish?.Invoke();
 		movement.SetSpeed(previousSpeed);
+		movement.SetPhasing(false);
 	}
 
 	public void FrameUpdate()
@@ -51,7 +54,6 @@ public class MoveDash : IState
 		if (movement.GetRigidbody() == null)
 			return;
 
-		movement.GetRigidbody().AddForce(movement.GetFacingDirection() * moveSpeed * Time.deltaTime, ForceMode2D.Force);
 	}
 
 	public void PhysicsUpdate() { }

@@ -16,14 +16,17 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private float acceleration = 100;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
+	[SerializeField] private Weapon dashWeapon;
 	[SerializeField] private bool isEnemy = true;
+	[SerializeField] private bool isUsingPickups = false;
+	[SerializeField] private Animator animator;
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private EntityMediator mediator;
 	private IAgent agent;
 	private const float deletionDelay = 1f;
 
-
+	public bool IsUsingPickups() => isUsingPickups;
 	public float GetWaypointCloseness() => waypointCloseness;
 
 	public bool IsHostile(Entity entity)
@@ -63,13 +66,31 @@ public class Entity : EntitySubject, IVisitable
 		else
 			primaryWeapon.Deactivate();
 	}
+	public void SecondaryFire(bool pressed)
+	{
+		if (secondaryWeapon == null) return;
+
+		if (pressed)
+			secondaryWeapon.Activate();
+		else
+			secondaryWeapon.Deactivate();
+	}
+	public void DashActivate(bool pressed)
+	{
+		if (dashWeapon == null) return;
+
+		if (pressed)
+			dashWeapon.Activate();
+		else
+			dashWeapon.Deactivate();
+	}
 
 	private void Awake()
 	{
 		if (healthData != null)
 		{
 			health = new EntityHealthLogic(healthData);
-			health.entityKilled += (killer) => { Kill(); }; // Use a Builder
+			health.EntityKilled += (killer) => { Kill(); }; // Use a Builder
 		}
 
 		movement = new EntityMovementLogic.Builder(GetComponent<Rigidbody2D>())
@@ -78,7 +99,7 @@ public class Entity : EntitySubject, IVisitable
 			.Build();
 
 		this.GetOrAddComponent<ServiceLocator>();
-		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement));
+		ServiceLocator.For(this).Register(mediator = new EntityMediator(this, health, movement, animator));
 
 
 
@@ -94,8 +115,14 @@ public class Entity : EntitySubject, IVisitable
 			primaryWeapon.TakeOwnership(mediator);
 		if (secondaryWeapon != null)
 			secondaryWeapon.TakeOwnership(mediator);
+		if (dashWeapon != null)
+			dashWeapon.TakeOwnership(mediator);
 
-		health.entityDamaged += (damage, source) =>
+		DropController drops = GetComponent<DropController>();
+		if (drops != null)
+			health.EntityKilled += drops.DropReward;
+
+		health.EntityDamaged += (damage, source) =>
 		{
 			var data = new EntityData
 			{
@@ -124,16 +151,26 @@ public class Entity : EntitySubject, IVisitable
 	{
 		agent?.Update();
 		movement?.Update();
+		mediator.SetAnimationFloat("Speed", movement.GetCurrentSpeed());
+		mediator.SetAnimationBool("IsMovingLeft", movement.IsMovingLeft());
+		if (animator != null)
+		{
+			if (movement.IsMovingLeft())
+				animator.transform.localScale = transform.localScale.With(x: -1);
+			else if (movement.GetCurrentSpeed() > 0)
+				animator.transform.localScale = transform.localScale.With(x: 1);
+		}
 		// if (agent != null)
 		// ServiceLocator.For(this).Get<EntityMediator>().UpdateNavigatorPosition(transform.position);
 	}
 
 	private void Kill()
 	{
-		//TODO: Temp music switch
-		AudioManager.Instance.SetCombatActive(true);
 		if (IsDead) return;
 
+		//TODO: Temp music switch
+		AudioManager.Instance.SetCombatActive(true);
+		mediator.SetAnimationBool("IsDead", true);
 		IsDead = true;
 		StartCoroutine(DestroyAfterDelay(deletionDelay));
 	}

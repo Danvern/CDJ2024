@@ -8,10 +8,13 @@ public interface IMovementLogic : IVisitable
 	void MoveToDirection(Vector2 direction);
 	float GetSpeed();
 	void SetSpeed(float speed);
+	void SetPhasing(bool phasing);
 	float GetAcceleration();
 	void SetAcceleration(float acceleration);
 	Vector3 GetTargetDirection();
 	Vector3 GetFacingDirection();
+	float GetCurrentSpeed();
+	bool IsMovingLeft();
 	public bool IsFollowingPath();
 	public bool IsPathPending();
 	public float RemainingPathDistance();
@@ -82,6 +85,20 @@ public class EntityMovementLogic : IMovementLogic
 	public Rigidbody2D GetRigidbody() { return rb; }
 	public bool IsFollowingPath() { return isOnPath; }
 	public bool IsPathPending() { return isPathCalculating; }
+	public float GetCurrentSpeed() { return rb.velocity.magnitude; }
+	public bool IsMovingLeft() { return rb.velocity.x < 0; }
+	public void SetPhasing(bool phase)
+	{
+		Collider2D[] colliders = new Collider2D[0];
+		rb.GetAttachedColliders(colliders);
+		foreach (Collider2D collider in colliders)
+		{
+			if (phase)
+				collider.excludeLayers = LayerMask.NameToLayer("Entities");
+			else
+				collider.excludeLayers = 0;
+		}
+	}
 	public void CalculatePath(Seeker navigator, Vector3 position, Vector3 target)
 	{
 		currentPath = navigator.StartPath(position, target, onPathComplete); // Always level planes

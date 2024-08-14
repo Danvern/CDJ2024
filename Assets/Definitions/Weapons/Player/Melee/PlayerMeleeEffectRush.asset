@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerMeleeEffectRush
   m_EditorClassIdentifier: 
   power: 800
-  slideTime: 0.1
+  slideTime: 0.5
   controlled: 1

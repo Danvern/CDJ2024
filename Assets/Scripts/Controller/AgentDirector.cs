@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityServiceLocator;
 
@@ -13,7 +14,8 @@ public class AgentDirector : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        ServiceLocator.Global.Register(this);
+		if (!ServiceLocator.Global.TryGet<AgentDirector>(out _))
+        	ServiceLocator.Global.Register(this);
     }
 
 

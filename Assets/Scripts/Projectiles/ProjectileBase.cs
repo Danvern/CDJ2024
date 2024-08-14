@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Jobs;
 using Debug = UnityEngine.Debug;
 
-public class ProjectileBase : MonoBehaviour
+public class ProjectileBase : MonoBehaviour, IOwnedEntity
 {
 	[SerializeField] ProjectileDamageData projectileDamageData;
 	ProjectileDamageLogic damageLogic;
@@ -16,6 +16,12 @@ public class ProjectileBase : MonoBehaviour
 	private Transform anchor;
 	private Rigidbody2D rb;
 	private const float deletionDelay = 1f;
+	bool tryKill = false;
+
+	public bool CanCollideWith(EntityMediator projectileOwner)
+	{
+		return owner != projectileOwner && gameObject.layer == LayerMask.NameToLayer("ProjectileVulnerable");
+	}
 
 	public void TakeOwnership(EntityMediator owner)
 	{
@@ -23,6 +29,8 @@ public class ProjectileBase : MonoBehaviour
 		if (owner == null)
 			Debug.LogWarning("unowned projectile generated somehow");
 	}
+
+	public EntityMediator GetOwner() => owner;
 
 	public void TrackTransform(Transform anchor)
 	{
@@ -34,6 +42,12 @@ public class ProjectileBase : MonoBehaviour
 		if (rb == null)
 			return;
 		rb.AddForce(velocity, ForceMode2D.Impulse);
+	}
+
+	public void KillNext()
+	{
+		tryKill = true;
+
 	}
 
 	// Start is called before the first frame update
@@ -55,13 +69,18 @@ public class ProjectileBase : MonoBehaviour
 	void FixedUpdate()
 	{
 		if (!active) return;
+		if (tryKill)
+		{
+			Kill();
 
-		if (damageLogic.CheckCollisons(transform, owner))
+		}
+
+		else if (damageLogic.CheckCollisons(transform, owner))
 		{
 			Kill();
 		}
 
-		if (Time.time - timeCreated > damageLogic.GetLifetime())
+		else if (Time.time - timeCreated > damageLogic.GetLifetime())
 		{
 			Kill();
 		}
