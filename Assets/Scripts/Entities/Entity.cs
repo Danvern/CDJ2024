@@ -61,6 +61,7 @@ public class Entity : EntitySubject, IVisitable
 	{
 		if (primaryWeapon == null) return;
 
+		primaryWeapon.SetAnimationTag("IsAttacking");
 		if (pressed)
 			primaryWeapon.Activate();
 		else
@@ -70,6 +71,7 @@ public class Entity : EntitySubject, IVisitable
 	{
 		if (secondaryWeapon == null) return;
 
+		secondaryWeapon.SetAnimationTag("IsAttackingSecondary");
 		if (pressed)
 			secondaryWeapon.Activate();
 		else

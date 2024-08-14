@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 // using Blackboard; No do a mediator
 
@@ -9,6 +10,7 @@ public class Weapon : MonoBehaviour
 	private IWeaponLogic logic;
 	private StateMachine stateMachine;
 	private bool triggerPressed = false;
+	private string animationTag = "IsAttacking";
 
 	public EntityMediator GetOwner() => owner;
 
@@ -53,6 +55,8 @@ public class Weapon : MonoBehaviour
 	{
 		return logic.GetCooldown();
 	}
+	public string GetAnimationTag() => animationTag;
+	public void SetAnimationTag(string value) => animationTag = value;
 
 	public void ActivateAttack(int index)
 	{
@@ -60,7 +64,7 @@ public class Weapon : MonoBehaviour
 			return;
 
 		attacks[index].Activate();
-		GetOwner().SetAnimationBool("IsAttacking", true);
+		GetOwner().SetAnimationBool(GetAnimationTag(), true);
 	}
 
 	public void DeactivateAttack(int index)
@@ -69,7 +73,7 @@ public class Weapon : MonoBehaviour
 			return;
 
 		attacks[index].Deactivate();
-		GetOwner().SetAnimationBool("IsAttacking", false);
+		GetOwner().SetAnimationBool(GetAnimationTag(), false);
 	}
 	public float GetLastAttackTime() => logic.GetLastAttackTime();
 	public void UpdateTrackedAttack(int index)
