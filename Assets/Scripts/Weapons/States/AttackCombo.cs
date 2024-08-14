@@ -64,7 +64,8 @@ public class AttackCombo : IState
 		{
 			ComboStage = 0;
 		}
-		weapon.GetOwner().SetAnimationInt("ComboStage", ComboStage);
+		if (maxCombo > 1)
+			weapon.GetOwner().SetAnimationInt("ComboStage", ComboStage);
 		weapon.ActivateAttack(comboData[ComboStage].GetIndex());
 		weapon.UpdateTrackedAttack(comboData[ComboStage].GetIndex());
 	}
