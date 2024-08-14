@@ -27,7 +27,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		ammunition = ammo;
 	}
 	public float GetHealth() { return health.GetHealthCurrent();}
-	public float GetHealthMax() { return GetHealthMax();}
+	public float GetHealthMax() { return health.GetHealthMax();}
 	public void AddHealth(float value) {
 		health.Heal(value);
 
