@@ -108,6 +108,8 @@ public class ProjectileBase : MonoBehaviour, IOwnedEntity
 		if (!active) return;
 
 		active = false;
+		if (projectileDamageData.DetachOnDeath)
+			anchor = null;
 		if (rb != null)
 			rb.velocity = Vector3.zero;
 		foreach (SpriteRenderer item in GetComponentsInChildren<SpriteRenderer>())
