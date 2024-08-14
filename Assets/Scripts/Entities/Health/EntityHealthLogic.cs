@@ -10,6 +10,7 @@ public class EntityHealthLogic : IEntityHealthLogic
 	public event DamageNotification EntityDamaged;
 	private float healthCurrent = 0;
 	private float healthMax = 0;
+	private bool invulnerable = false;
 
 	public EntityHealthLogic(EntityHealthData data)
 	{
@@ -20,8 +21,10 @@ public class EntityHealthLogic : IEntityHealthLogic
 	public void Accept(IVisitor visitor) { visitor.Visit(this); }
 
 	public float GetHealthMax() { return healthMax; }
-	
+
 	public float GetHealthCurrent() { return healthCurrent; }
+
+	public void SetInvulnerable(bool invulnerable) { this.invulnerable = invulnerable; }
 
 	public void Heal(float value)
 	{
@@ -29,13 +32,15 @@ public class EntityHealthLogic : IEntityHealthLogic
 		EntityDamaged?.Invoke(-value, null);
 	}
 
-	public void DoDamage(float damage) 
-	{ 
+	public void DoDamage(float damage)
+	{
 		DoDamage(damage, null);
 	}
 
-	public void DoDamage(float damage, ProjectileBase source) 
-	{ 
+	public void DoDamage(float damage, ProjectileBase source)
+	{
+		if (invulnerable) return;
+
 		healthCurrent = Mathf.Max(0, healthCurrent - damage);
 		EntityDamaged?.Invoke(damage, source);
 		if (healthCurrent <= 0)

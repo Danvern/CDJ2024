@@ -26,26 +26,30 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		this.animator = animator;
 		ammunition = ammo;
 	}
-	public Entity GetEntity() {
-	return entity;
+	public Entity GetEntity()
+	{
+		return entity;
 
 	}
-	public float GetHealth() { return health.GetHealthCurrent();}
-	public float GetHealthMax() { return health.GetHealthMax();}
-	public void AddHealth(float value) {
+	public float GetHealth() { return health.GetHealthCurrent(); }
+	public float GetHealthMax() { return health.GetHealthMax(); }
+	public void SetInvulnerable(bool invulnerable) { health.SetInvulnerable(invulnerable); }
+	public void AddHealth(float value)
+	{
 		health.Heal(value);
 
 	}
-	public void AddShield(float shield) {
+	public void AddShield(float shield)
+	{
 		return;
 
 	}
-	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) {ammunition.AddAmmo(type, amount, maxMultiplier);}
+	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) { ammunition.AddAmmo(type, amount, maxMultiplier); }
 	public bool IsUsingPickups() => entity.IsUsingPickups();
-	public int GetAmmo(AmmoType type) { return ammunition.GetAmmo(type);}
-	public int GetAmmoMax(AmmoType type) { return ammunition.GetAmmoMax(type);}
-	public IUpgradeStats GetUpgradeStats() {return null;}
-	public IAffinity GetAffinity() {return null;}
+	public int GetAmmo(AmmoType type) { return ammunition.GetAmmo(type); }
+	public int GetAmmoMax(AmmoType type) { return ammunition.GetAmmoMax(type); }
+	public IUpgradeStats GetUpgradeStats() { return null; }
+	public IAffinity GetAffinity() { return null; }
 	public ServiceLocator GetServiceLocator() => ServiceLocator.For(entity);
 	public bool IsHostile(EntityMediator mediator) => mediator.entity != entity && mediator.entity.IsEnemy != entity.IsEnemy;
 	public bool IsDead() => entity.IsDead;
