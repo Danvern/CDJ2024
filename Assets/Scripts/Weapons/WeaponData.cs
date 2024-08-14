@@ -23,6 +23,7 @@ public class WeaponData : ScriptableObject
 {
 	public AttackDefinition[] AttackDefinitions = new AttackDefinition[0];
 	public int MaxCombo = 0;
+	public float FireDelay = 0f;
 
 	public AttackDefinition[] GetComboDefinitions()
 	{
