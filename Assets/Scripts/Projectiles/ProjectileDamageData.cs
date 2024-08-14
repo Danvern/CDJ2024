@@ -17,6 +17,8 @@ public class ProjectileDamageData : ScriptableObject
 	public float CollisionRadius = 1;
 	public float CollisionArc = 360;
 	public float StartingVelocity = 10f;
+	public GameObject HitEffect;
+	public GameObject DeathEffect;
 	public EventReference SmallKillSFX;
 	public EventReference DamageSFX;
 }

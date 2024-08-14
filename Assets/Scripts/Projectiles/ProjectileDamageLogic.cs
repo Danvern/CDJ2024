@@ -61,6 +61,8 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	public bool IsIndescriminate() { return isIndescriminate; }
 	public bool IsExplosion() { return isExplosion; }
 
+	public GameObject GetHitEffect() { return data.HitEffect; }
+
 	public bool CheckCollisons(Transform transform, EntityMediator owner)
 	{
 		bool kill = false;
@@ -98,6 +100,9 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 					entityCollisions.Add(collider.transform, Time.time);
 					DecreasePierce(1);
 					DoEntityEffect(entityMediator);
+					if (GetHitEffect())
+						ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), collider.ClosestPoint(impactPosition), transform.rotation, owner);
+					
 					if (entityMediator.IsDead())
 					{
 						if (!data.SmallKillSFX.IsNull)
