@@ -117,9 +117,8 @@ public class AgentSkirmish : IAgent
 		actions.AddChild(goToPlayer);
 
 		Sequence goPatrol = new Sequence("GoPatrol");
-		attackTarget.AddChild(new Leaf("IsAlive?", isAlive));
-		Leaf patrol = new Leaf("Patrol", new RandomPatrolStrategy(entity));
-		goPatrol.AddChild(patrol);
+		goPatrol.AddChild(new Leaf("IsAlive?", isAlive));
+		goPatrol.AddChild(new Leaf("Patrol", new RandomPatrolStrategy(entity)));
 		actions.AddChild(goPatrol);
 
 		Sequence perish = new Sequence("Perish");
