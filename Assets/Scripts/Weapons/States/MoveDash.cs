@@ -53,7 +53,7 @@ public class MoveDash : IState
 			return;
 
 		if (movement.GetRigidbody().velocity.magnitude > moveSpeed)
-			movement.GetRigidbody().AddForce(movement.GetRigidbody().velocity.normalized * (moveSpeed - movement.GetRigidbody().velocity.magnitude) * movement.GetRigidbody().mass, ForceMode2D.Impulse);
+			movement.GetRigidbody().AddForce(movement.GetRigidbody().velocity.normalized * (moveSpeed - movement.GetRigidbody().velocity.magnitude) * movement.GetRigidbody().mass, ForceMode2D.Force);
 
 	}
 
