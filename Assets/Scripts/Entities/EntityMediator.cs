@@ -15,6 +15,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	private EntityHealthLogic health;
 	private Seeker navigator;
 	private Animator animator;
+	private AmmoInventory ammunition;
 
 	public EntityMediator(Entity entity, EntityHealthLogic health, IMovementLogic movement, Animator animator)
 	{
@@ -34,10 +35,10 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		return;
 
 	}
-	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) {}
+	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) {ammunition.AddAmmo(type, amount, maxMultiplier);}
 	public bool IsUsingPickups() => entity.IsUsingPickups();
-	public int GetAmmo(AmmoType type) { return 0;}
-	public int GetAmmoMax(AmmoType type) { return 0;}
+	public int GetAmmo(AmmoType type) { return ammunition.GetAmmo(type);}
+	public int GetAmmoMax(AmmoType type) { return ammunition.GetAmmoMax(type);}
 	public IUpgradeStats GetUpgradeStats() {return null;}
 	public IAffinity GetAffinity() {return null;}
 	public ServiceLocator GetServiceLocator() => ServiceLocator.For(entity);

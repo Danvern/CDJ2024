@@ -11,7 +11,7 @@ public class RandomDropTable : ScriptableObject
 	{
 		[field: SerializeField] public GameObject Reward { get; set; }
 		[field: SerializeField] public DropScaling Scaling { get; set; } = DropScaling.Health;
-		[field: SerializeField] public AmmoType Category { get; set; } = AmmoType.Bullet;
+		[field: SerializeField] public AmmoType Category { get; set; } = AmmoType.Magic;
 		[field: SerializeField][field: Range(0f, 20f)] public float Chance { get; set; } = 1f;
 
 		public GameObject Generate(Vector3 position, Quaternion rotation, Transform parent)

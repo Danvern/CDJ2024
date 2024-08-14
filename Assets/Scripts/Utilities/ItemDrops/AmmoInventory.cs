@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum AmmoType
 {
-	Bullet,
+	Magic,
 	Explosive,
 	Energy,
 	Fuel,
@@ -13,14 +13,14 @@ public enum AmmoType
 [Serializable]
 public class AmmoBundle
 {
-	public int bulletAmount = 0;
+	public int magicAmount = 0;
 	public int explosiveAmount = 0;
 	public int energyAmount = 0;
 	public int fuelAmount = 0;
 
 	public void AddToInventory(IAmmunitionSource inventory, float multiplier = 1f, float maxMultiplier = 1f)
 	{
-		inventory.AddAmmo(AmmoType.Bullet, (int)(bulletAmount * multiplier), maxMultiplier);
+		inventory.AddAmmo(AmmoType.Magic, (int)(magicAmount * multiplier), maxMultiplier);
 		inventory.AddAmmo(AmmoType.Explosive, (int)(explosiveAmount * multiplier), maxMultiplier);
 		inventory.AddAmmo(AmmoType.Energy, (int)(energyAmount * multiplier), maxMultiplier);
 		inventory.AddAmmo(AmmoType.Fuel, (int)(fuelAmount * multiplier), maxMultiplier);
@@ -30,18 +30,18 @@ public class AmmoBundle
 [Serializable]
 public class AmmoParameters
 {
-	public Vector2Int bulletAmount = new(0, 0);
+	public Vector2Int magicAmount = new(0, 0);
 	public Vector2Int explosiveAmount = new(0, 0);
 	public Vector2Int energyAmount = new(0, 0);
 	public Vector2Int fuelAmount = new(0, 0);
 
 	public void AddToInventory(AmmoInventory inventory)
 	{
-		inventory.SetAmmoMax(AmmoType.Bullet, bulletAmount.y);
+		inventory.SetAmmoMax(AmmoType.Magic, magicAmount.y);
 		inventory.SetAmmoMax(AmmoType.Explosive, explosiveAmount.y);
 		inventory.SetAmmoMax(AmmoType.Energy, energyAmount.y);
 		inventory.SetAmmoMax(AmmoType.Fuel, fuelAmount.y);
-		inventory.AddAmmo(AmmoType.Bullet, bulletAmount.x);
+		inventory.AddAmmo(AmmoType.Magic, magicAmount.x);
 		inventory.AddAmmo(AmmoType.Explosive, explosiveAmount.x);
 		inventory.AddAmmo(AmmoType.Energy, energyAmount.x);
 		inventory.AddAmmo(AmmoType.Fuel, fuelAmount.x);
