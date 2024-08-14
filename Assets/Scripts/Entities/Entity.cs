@@ -157,7 +157,7 @@ public class Entity : EntitySubject, IVisitable
 		movement?.Update();
 		health?.Update();
 		mediator.SetAnimationFloat("Speed", movement.GetCurrentSpeed());
-		mediator.SetAnimationBool("IsMovingLeft", movement.IsMovingLeft());
+		//mediator.SetAnimationBool("IsMovingLeft", movement.IsMovingLeft());
 		if (animator != null)
 		{
 			if (movement.IsMovingLeft())
