@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Rendering;
 
 public class MoveDash : IState
 {
@@ -53,6 +51,9 @@ public class MoveDash : IState
 		}
 		if (movement.GetRigidbody() == null)
 			return;
+
+		if (movement.GetRigidbody().velocity.magnitude > moveSpeed)
+			movement.GetRigidbody().AddForce(movement.GetRigidbody().velocity.normalized * (moveSpeed - movement.GetRigidbody().velocity.magnitude) * movement.GetRigidbody().mass, ForceMode2D.Impulse);
 
 	}
 

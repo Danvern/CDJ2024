@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Jobs;
 using Debug = UnityEngine.Debug;
 
 public class ProjectileBase : MonoBehaviour, IOwnedEntity
@@ -108,6 +104,8 @@ public class ProjectileBase : MonoBehaviour, IOwnedEntity
 		if (!active) return;
 
 		active = false;
+		if (projectileDamageData.DetachOnDeath)
+			anchor = null;
 		if (rb != null)
 			rb.velocity = Vector3.zero;
 		foreach (SpriteRenderer item in GetComponentsInChildren<SpriteRenderer>())

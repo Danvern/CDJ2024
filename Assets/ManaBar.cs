@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityServiceLocator;
@@ -20,8 +16,7 @@ public class ManaBar : MonoBehaviour
 	{
 		activeBar.material = new Material(activeBar.material);
 		activeMaterial = activeBar.material;
-		if (!ServiceLocator.Global.TryGet<ManaBar>(out _))
-		ServiceLocator.Global.Register(this);
+		ServiceLocator.ForSceneOf(this).Register(this);
 
 	}
 

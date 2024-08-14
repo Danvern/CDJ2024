@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class MoveWalk : IState
 {
@@ -35,7 +34,7 @@ public class MoveWalk : IState
 		if (movement.GetTargetDirection() != Vector3.zero)
 			movement.GetRigidbody().AddForce(movement.GetTargetDirection() * movement.GetAcceleration(), ForceMode2D.Force);
 		if (movement.GetRigidbody().velocity.magnitude > movement.GetSpeed())
-			movement.GetRigidbody().velocity = movement.GetRigidbody().velocity.normalized * movement.GetSpeed();
+			movement.GetRigidbody().AddForce(movement.GetRigidbody().velocity.normalized * (movement.GetSpeed() - movement.GetRigidbody().velocity.magnitude) * movement.GetRigidbody().mass, ForceMode2D.Impulse);
 	}
 
 	public void PhysicsUpdate() { }

@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Pathfinding;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityServiceLocator;
 
 
@@ -26,22 +21,30 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		this.animator = animator;
 		ammunition = ammo;
 	}
-	public float GetHealth() { return health.GetHealthCurrent();}
-	public float GetHealthMax() { return health.GetHealthMax();}
-	public void AddHealth(float value) {
+	public Entity GetEntity()
+	{
+		return entity;
+
+	}
+	public float GetHealth() { return health.GetHealthCurrent(); }
+	public float GetHealthMax() { return health.GetHealthMax(); }
+	public void SetInvulnerable(bool invulnerable, InvincibilitySource source) { health.SetInvulnerable(invulnerable, source); }
+	public void AddHealth(float value)
+	{
 		health.Heal(value);
 
 	}
-	public void AddShield(float shield) {
+	public void AddShield(float shield)
+	{
 		return;
 
 	}
-	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) {ammunition.AddAmmo(type, amount, maxMultiplier);}
+	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) { ammunition.AddAmmo(type, amount, maxMultiplier); }
 	public bool IsUsingPickups() => entity.IsUsingPickups();
-	public int GetAmmo(AmmoType type) { return ammunition.GetAmmo(type);}
-	public int GetAmmoMax(AmmoType type) { return ammunition.GetAmmoMax(type);}
-	public IUpgradeStats GetUpgradeStats() {return null;}
-	public IAffinity GetAffinity() {return null;}
+	public int GetAmmo(AmmoType type) { return ammunition.GetAmmo(type); }
+	public int GetAmmoMax(AmmoType type) { return ammunition.GetAmmoMax(type); }
+	public IUpgradeStats GetUpgradeStats() { return null; }
+	public IAffinity GetAffinity() { return null; }
 	public ServiceLocator GetServiceLocator() => ServiceLocator.For(entity);
 	public bool IsHostile(EntityMediator mediator) => mediator.entity != entity && mediator.entity.IsEnemy != entity.IsEnemy;
 	public bool IsDead() => entity.IsDead;
@@ -100,7 +103,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		visitor.Visit(this);
 	}
 
-	public void DashToAim(float power, float slideTime, bool fullStun = true) => entity?.DashToAim(power, slideTime, fullStun);
+	public void DashToAim(float power, float slideTime, bool invulnerable = false) => entity?.DashToAim(power, slideTime, invulnerable);
 	public void MoveToDirection(Vector2 direction) => movement?.MoveToDirection(direction);
 	public void FacePosition(Vector2 position) => entity?.FacePosition(position);
 	public void PrimaryFire(bool pressed) => entity?.PrimaryFire(pressed);

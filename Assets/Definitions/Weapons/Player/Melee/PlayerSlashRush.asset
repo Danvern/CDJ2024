@@ -10,31 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b96ac5387efbb804ab5b893a795ba7da, type: 3}
-  m_Name: PlayerStar
+  m_Name: PlayerSlashRush
   m_EditorClassIdentifier: 
-  Lifetime: 2
-  DamageMax: 6
-  DamageMin: 6
-  Piercing: 0
+  Lifetime: 0.23
+  DamageMax: 5
+  DamageMin: 8
+  Piercing: 16
   Knockback: 1
-  KnockbackStun: 0.25
+  KnockbackStun: 0.4
   IsIndescriminate: 0
   IsExplosion: 0
   IsProjectileDestroyer: 0
-  CollisionRadius: 0.5
-  CollisionArc: 360
-  StartingVelocity: 10
+  DetachOnDeath: 1
+  CollisionRadius: 1
+  CollisionArc: 120
+  StartingVelocity: 0
   SmallKillSFX:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1270556339
+      Data2: 1281282887
+      Data3: 1356075148
+      Data4: 1693779105
+    Path: event:/player/Slash_kill
   DamageSFX:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1692161532
+      Data2: 1173672863
+      Data3: -1067571063
+      Data4: -266698099
+    Path: event:/player/Slash_dmg

@@ -1,38 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
-using UnityEngine.Android;
-using UnityEngine.Rendering;
 
 public interface IAttackEffect
 {
 	void Activate(EntityMediator owner);
 
 	void Deactivate(EntityMediator owner);
-}
-
-public class DashEffect : IAttackEffect
-{
-	float power;
-	float slideTime;
-	bool controlled = true;
-
-	public DashEffect(float power, float slideTime, bool controlled)
-	{
-		this.power = power;
-		this.slideTime = slideTime;
-		this.controlled = controlled;
-	}
-
-	public void Activate(EntityMediator owner)
-	{
-		owner.DashToAim(power, slideTime, fullStun: !controlled);
-	}
-
-	public void Deactivate(EntityMediator owner)
-	{
-	}
 }
 
 public class Attack : MonoBehaviour

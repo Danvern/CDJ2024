@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Rendering.Universal.Internal;
 using UnityServiceLocator;
 
 public class LootDirector : MonoBehaviour

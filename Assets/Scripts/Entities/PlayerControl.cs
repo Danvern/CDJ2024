@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityServiceLocator;
 using Vector3 = UnityEngine.Vector3;
@@ -20,8 +17,8 @@ public class PlayerControl : MonoBehaviour
 
 	private void Start()
 	{
-		ServiceLocator.Global.Get<AgentDirector>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
-		ServiceLocator.Global.Get<UIController>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
+		ServiceLocator.ForSceneOf(this).Get<AgentDirector>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
+		ServiceLocator.ForSceneOf(this).Get<UIController>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
 	}
 
 	public void OnMove(InputValue value)
