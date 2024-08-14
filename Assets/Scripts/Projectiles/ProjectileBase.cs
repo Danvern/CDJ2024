@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -103,6 +104,7 @@ public class ProjectileBase : MonoBehaviour, IOwnedEntity
 	{
 		if (!active) return;
 
+		damageLogic.DoDeathEffect(transform, GetOwner());
 		active = false;
 		if (projectileDamageData.DetachOnDeath)
 			anchor = null;

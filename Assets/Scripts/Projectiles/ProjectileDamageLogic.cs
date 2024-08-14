@@ -60,14 +60,21 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	public float GetSpeed() { return speed; }
 	public bool IsIndescriminate() { return isIndescriminate; }
 	public bool IsExplosion() { return isExplosion; }
+	public void DoDeathEffect(Transform transform, EntityMediator owner)
+	{
+		if (GetDeathEffect())
+			ProjectileManager.Instance.GenerateProjectile(GetDeathEffect(), transform.position, transform.rotation, owner);
+
+	}
 
 	public GameObject GetHitEffect() { return data.HitEffect; }
+	public GameObject GetDeathEffect() { return data.DeathEffect; }
 
 	public bool CheckCollisons(Transform transform, EntityMediator owner)
 	{
 		bool kill = false;
 		if (GetCollisionRadius() == 0) return false;
-		
+
 		Collider2D[] potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius());
 
 		if (potentialCollisions.Length == 0) return false;
@@ -102,9 +109,9 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 					entityCollisions.Add(collider.transform, Time.time);
 					DecreasePierce(1);
 					DoEntityEffect(entityMediator);
-					if (GetHitEffect())
+					if (GetHitEffect() && (piercing >= 0 || !data.IsHitEffectOnlyOnPierce))
 						ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), collider.ClosestPoint(impactPosition), transform.rotation, owner);
-					
+
 					if (entityMediator.IsDead())
 					{
 						if (!data.SmallKillSFX.IsNull)
