@@ -113,7 +113,8 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 					DecreasePierce(1);
 					DoEntityEffect(entityMediator);
 					if (GetHitEffect() && (piercing >= 0 || !data.IsHitEffectOnlyOnPierce))
-						ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), collider.ClosestPoint(impactPosition), transform.rotation, owner);
+						ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), impactPosition, transform.rotation, owner);
+						//ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), collider.ClosestPoint(impactPosition), transform.rotation, owner);
 
 					if (entityMediator.IsDead())
 					{
