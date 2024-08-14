@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96ac5387efbb804ab5b893a795ba7da, type: 3}
   m_Name: PlayerSlashRush
   m_EditorClassIdentifier: 
-  Lifetime: 0.2
+  Lifetime: 0.23
   DamageMax: 5
   DamageMin: 8
   Piercing: 16
@@ -21,6 +21,7 @@ MonoBehaviour:
   IsIndescriminate: 0
   IsExplosion: 0
   IsProjectileDestroyer: 0
+  DetachOnDeath: 1
   CollisionRadius: 1
   CollisionArc: 120
   StartingVelocity: 0
