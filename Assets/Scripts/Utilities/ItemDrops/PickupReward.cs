@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityServiceLocator;
 
 public class PickupReward : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class PickupReward : MonoBehaviour
 		stats.OnPickupUsed -= consumptionFunction;
 	}
 
-	void OnTriggerEnter(Collider collision)
+	void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (stats == null)
 		{
@@ -53,11 +54,9 @@ public class PickupReward : MonoBehaviour
 			return;
 		}
 
-		var visitable = collision.gameObject.GetComponents<IVisitable>();
-		foreach (IVisitable component in visitable)
-		{
-			component.Accept(stats);
-		}
+		var visitable = collision.gameObject.GetComponent<Entity>();
+		if (visitable)
+			ServiceLocator.For(visitable).Get<EntityMediator>().Accept(stats);
 	}
 }
 

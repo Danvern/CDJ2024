@@ -61,6 +61,7 @@ MonoBehaviour:
   secondaryWeapon: {fileID: 7482461504137651058}
   dashWeapon: {fileID: 163678050197324590}
   isEnemy: 0
+  isUsingPickups: 1
   animator: {fileID: 5487468954803287456}
 --- !u!114 &5791097860434604426
 MonoBehaviour:

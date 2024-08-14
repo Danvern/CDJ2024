@@ -95,6 +95,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		entity?.Accept(visitor);
 		health?.Accept(visitor);
 		movement?.Accept(visitor);
+		visitor.Visit(this);
 	}
 
 	public void DashToAim(float power, float slideTime, bool fullStun = true) => entity?.DashToAim(power, slideTime, fullStun);
