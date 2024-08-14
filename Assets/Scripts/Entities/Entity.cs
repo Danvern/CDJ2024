@@ -81,6 +81,7 @@ public class Entity : EntitySubject, IVisitable
 	{
 		if (dashWeapon == null) return;
 
+		dashWeapon.SetAnimationTag("IsAttackingDash");
 		if (pressed)
 			dashWeapon.Activate();
 		else
