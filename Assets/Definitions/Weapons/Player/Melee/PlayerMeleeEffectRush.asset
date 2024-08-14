@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a2ce0c2aa5380409f53d22ab3a85df, type: 3}
   m_Name: PlayerMeleeEffectRush
   m_EditorClassIdentifier: 
-  power: 600
-  slideTime: 0.4
+  power: 1200
+  slideTime: 0.2
   controlled: 1
