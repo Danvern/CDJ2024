@@ -14,8 +14,7 @@ public class AgentDirector : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-		if (!ServiceLocator.Global.TryGet<AgentDirector>(out _))
-        	ServiceLocator.Global.Register(this);
+ServiceLocator.ForSceneOf(this).Register(this);        	
     }
 
 

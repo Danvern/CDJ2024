@@ -26,6 +26,10 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		this.animator = animator;
 		ammunition = ammo;
 	}
+	public Entity GetEntity() {
+	return entity;
+
+	}
 	public float GetHealth() { return health.GetHealthCurrent();}
 	public float GetHealthMax() { return health.GetHealthMax();}
 	public void AddHealth(float value) {

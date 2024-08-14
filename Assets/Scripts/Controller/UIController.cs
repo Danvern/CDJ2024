@@ -17,14 +17,13 @@ public class UIController : MonoBehaviour, IEntityObserver
 	// Start is called before the first frame update
 	void Awake()
 	{
-		if (!ServiceLocator.Global.TryGet<UIController>(out _))
-		ServiceLocator.Global.Register(this);
-	}
+ServiceLocator.ForSceneOf(this).Register(this);	
+}
 
 	void Start()
 	{
-		healthIconBar = ServiceLocator.Global.Get<HealthIconBar>();
-		manaBar = ServiceLocator.Global.Get<ManaBar>();
+		healthIconBar = ServiceLocator.ForSceneOf(this).Get<HealthIconBar>();
+		manaBar = ServiceLocator.ForSceneOf(this).Get<ManaBar>();
 		UpdateElements();
 	}
 
