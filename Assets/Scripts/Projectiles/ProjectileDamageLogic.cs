@@ -66,6 +66,8 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	public bool CheckCollisons(Transform transform, EntityMediator owner)
 	{
 		bool kill = false;
+		if (GetCollisionRadius() == 0) return false;
+		
 		Collider2D[] potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius());
 
 		if (potentialCollisions.Length == 0) return false;
