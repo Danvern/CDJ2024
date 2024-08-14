@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Jobs;
 using Debug = UnityEngine.Debug;
 
 public class ProjectileBase : MonoBehaviour, IOwnedEntity

@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Rendering;
 
 public class MoveDash : IState
 {

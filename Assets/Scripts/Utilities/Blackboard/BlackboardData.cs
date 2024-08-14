@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using UnityEngine;
 
-namespace BlackboardSystem {
-    [CreateAssetMenu(fileName = "New Blackboard Data", menuName = "Blackboard/Blackboard Data")]
+namespace BlackboardSystem
+{
+	[CreateAssetMenu(fileName = "New Blackboard Data", menuName = "Blackboard/Blackboard Data")]
     public class BlackboardData : ScriptableObject {
         public List<BlackboardEntryData> entries = new();
 

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public delegate void CountdownNotification();
 
 public class OwlCountdown

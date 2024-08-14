@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public enum ComboState { Perfect, Successful, Failed, Pending };
 public interface IComboDefinition

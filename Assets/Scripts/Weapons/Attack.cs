@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
-using UnityEngine.Android;
-using UnityEngine.Rendering;
 
 public interface IAttackEffect
 {

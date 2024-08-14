@@ -1,7 +1,6 @@
 using System;
 using Pathfinding;
 using UnityEngine;
-using UnityServiceLocator;
 
 public interface IMovementLogic : IVisitable
 {

@@ -1,7 +1,4 @@
-using BlackboardSystem;
-using Pathfinding.BehaviourTrees;
 using UnityEngine;
-using UnityServiceLocator;
 
 [CreateAssetMenu(fileName = "AgentCharger", menuName = "GameplayDefinitions/AIAgent/Charger", order = 1)]
 public class AgentChargerFactory : IAgentFactory
