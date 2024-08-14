@@ -16,7 +16,7 @@ MonoBehaviour:
   DamageMax: 5
   DamageMin: 8
   Piercing: 16
-  Knockback: 20
+  Knockback: 14
   KnockbackStun: 0.4
   IsIndescriminate: 0
   IsExplosion: 0

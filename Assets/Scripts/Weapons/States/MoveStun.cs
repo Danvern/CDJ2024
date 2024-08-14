@@ -10,6 +10,7 @@ public class MoveStun : IState
 	private float slideTime = 1f;
 	private float previousSpeed;
 	private float startTime;
+	private float friction = 0.29f;
 	private Vector3 stunnedDirection;
 
 	public MoveStun(IMovementLogic movement, float moveSpeed)
@@ -54,6 +55,8 @@ public class MoveStun : IState
 		}
 		if (movement.GetRigidbody() == null)
 			return;
+
+		movement.GetRigidbody().AddForce(movement.GetRigidbody().velocity.normalized * (-movement.GetRigidbody().velocity.magnitude) * movement.GetSpeed() * friction, ForceMode2D.Force);
 
 		// movement.GetRigidbody().AddForce(stunnedDirection * moveSpeed * Time.deltaTime, ForceMode2D.Force);
 	}
