@@ -82,7 +82,8 @@ public class DropController : MonoBehaviour
 				}
 
 				drop.transform.position = OwlVector.PositionAroundPivot(transform.position, drop.transform.rotation, SpreadDistance, spreadAngle * index);
-				drop.transform.rotation = drop.transform.rotation * Quaternion.Euler(0, spreadAngle * index, 0);
+				drop.transform.rotation = Quaternion.identity;
+				//drop.transform.rotation = drop.transform.rotation * Quaternion.Euler(0, spreadAngle * index, 0);
 				index++;
 			}
 		}
