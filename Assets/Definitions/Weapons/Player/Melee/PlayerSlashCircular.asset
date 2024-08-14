@@ -21,9 +21,15 @@ MonoBehaviour:
   IsIndescriminate: 0
   IsExplosion: 0
   IsProjectileDestroyer: 1
+  IsHitEffectOnlyOnPierce: 0
+  IsBlockedByWorld: 0
+  DetachOnDeath: 0
   CollisionRadius: 2.2
   CollisionArc: 360
   StartingVelocity: 0
+  HitEffect: {fileID: 8009197107927425177, guid: 0266b55716e5f59459598896abb6f2be,
+    type: 3}
+  DeathEffect: {fileID: 0}
   SmallKillSFX:
     Guid:
       Data1: 0
