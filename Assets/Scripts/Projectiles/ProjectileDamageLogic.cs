@@ -63,7 +63,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	public void DoDeathEffect(Transform transform, EntityMediator owner)
 	{
 		if (GetDeathEffect())
-			ProjectileManager.Instance.GenerateProjectile(GetDeathEffect(), transform.position, transform.rotation, owner);
+			ProjectileManager.Instance.GenerateProjectile(GetDeathEffect(), transform.position, GetDeathEffect().transform.rotation, owner);
 
 	}
 
@@ -113,7 +113,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 					DecreasePierce(1);
 					DoEntityEffect(entityMediator);
 					if (GetHitEffect() && (piercing >= 0 || !data.IsHitEffectOnlyOnPierce))
-						ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), impactPosition, transform.rotation, owner);
+						ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), impactPosition, GetHitEffect().transform.rotation, owner);
 						//ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), collider.ClosestPoint(impactPosition), transform.rotation, owner);
 
 					if (entityMediator.IsDead())
