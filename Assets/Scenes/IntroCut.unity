@@ -287,11 +287,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Music>k__BackingField:
     Guid:
-      Data1: -1839395177
-      Data2: 1121766514
-      Data3: -271711555
-      Data4: -768554084
-    Path: event:/mus/MUSIC
+      Data1: 1426355602
+      Data2: 1167529700
+      Data3: -53233745
+      Data4: -543972894
+    Path: event:/mus/menu
   onBeatThreshold: 0.5
   onBeatThresholdPerfect: 0.8
 --- !u!4 &146097037
@@ -404,10 +404,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.15520833
+    x: 0
     y: 0
-    width: 0.33333334
-    height: 0.34444442
+    width: 1
+    height: 1
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -1095,6 +1095,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6265574054028800837}
+  - component: {fileID: 6265574054028800838}
   m_Layer: 5
   m_Name: TitleScreen
   m_TagString: Untagged
@@ -1243,6 +1244,49 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 320, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6265574054028800838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460035245679792623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d9fac9c026e9a42bcb7ae4d0db23cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images:
+  - {fileID: 21300000, guid: 58bfba646a5632f44bee691c111b2e82, type: 3}
+  - {fileID: 21300000, guid: 58bfba646a5632f44bee691c111b2e82, type: 3}
+  - {fileID: 21300000, guid: 907566b62407a194fb72b55bea3d334a, type: 3}
+  - {fileID: 21300000, guid: 907566b62407a194fb72b55bea3d334a, type: 3}
+  - {fileID: 21300000, guid: 907566b62407a194fb72b55bea3d334a, type: 3}
+  - {fileID: 21300000, guid: 907566b62407a194fb72b55bea3d334a, type: 3}
+  - {fileID: 21300000, guid: 907566b62407a194fb72b55bea3d334a, type: 3}
+  - {fileID: 21300000, guid: 4b98eb4476c58eb4582c348040919840, type: 3}
+  texts:
+  - Long ago, a peaceful, mountainside village was assailed by cruel demons.
+  - Too small to defend itself, and too remote to call for help, there was little
+    hope for salvation.
+  - One day, a lone traveller arrived at the village, and offered to save them from
+    their plight.
+  - 'The traveller sealed the demons inside papercrafts, folding their hatred and
+    grief into beauty. '
+  - The villagers hailed the traveller as a hero, and promised to remember her deeds
+    every 100 years with a festival.
+  - However, the hero knew that the demons' malice would stir during the celebrations,
+    and they would seek revenge.
+  - Thus, she made a promise.
+  - '"I vow, when the spirits of evil rise to disturb your peace, my descendants
+    will return to protect you forevermore."'
+  imageHolder: {fileID: 1066430899}
+  textHolder: {fileID: 2066798127}
+  textSpeed: 0.05
+  fadeDuration: 1
+  onCutsceneEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!223 &6472148232713579638
 Canvas:
   m_ObjectHideFlags: 0
