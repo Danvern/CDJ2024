@@ -50,11 +50,11 @@ MonoBehaviour:
   effectData: []
   attackSFX:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -44148317
+      Data2: 1316483315
+      Data3: 678611089
+      Data4: -1300080291
+    Path: event:/enemies/lanternwooshblow
 --- !u!1 &8014940007499789419
 GameObject:
   m_ObjectHideFlags: 0
