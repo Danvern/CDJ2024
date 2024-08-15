@@ -12,6 +12,7 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private float waypointCloseness = 0.75f;
 	[SerializeField] private float speed = 10;
 	[SerializeField] private float acceleration = 100;
+	[SerializeField] private int magicStorage = 10;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
 	[SerializeField] private Weapon dashWeapon;
@@ -128,6 +129,7 @@ public class Entity : EntitySubject, IVisitable
 			secondaryWeapon.TakeOwnership(mediator);
 		if (dashWeapon != null)
 			dashWeapon.TakeOwnership(mediator);
+		mediator.SetAmmoMax(AmmoType.Magic, magicStorage);
 
 		DropController drops = GetComponent<DropController>();
 		if (drops != null)
