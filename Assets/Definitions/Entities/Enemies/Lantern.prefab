@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 3752208349402694709}
   - component: {fileID: 607255452813073717}
   - component: {fileID: 8778059341502979018}
+  - component: {fileID: 5259414771656300649}
   m_Layer: 7
   m_Name: Lantern
   m_TagString: Untagged
@@ -329,6 +330,37 @@ MonoBehaviour:
   MaxPickups: 1
   SpreadDistance: 2.5
   generationDelay: 0.5
+--- !u!114 &5259414771656300649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556580978140358341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1889124820
+      Data2: 1092758345
+      Data3: 1955718784
+      Data4: 746616046
+    Path: event:/enemies/lanternfloat
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &4030839337447144834
 PrefabInstance:
   m_ObjectHideFlags: 0
