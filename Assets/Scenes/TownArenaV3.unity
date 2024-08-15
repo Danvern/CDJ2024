@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2684005452582c043bf7a0c4e99f4e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpawnDistance: 20
+  MaxSpawnDistance: 30
   MinSpawnDistance: 12
   LastBoss: {fileID: 0}
 --- !u!1 &40526350
