@@ -13,6 +13,7 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private float speed = 10;
 	[SerializeField] private float acceleration = 100;
 	[SerializeField] private int magicStorage = 10;
+	[SerializeField] private int scoreValue = 100;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
 	[SerializeField] private Weapon dashWeapon;
@@ -22,6 +23,7 @@ public class Entity : EntitySubject, IVisitable
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private EntityMediator mediator;
+	private int personalScore;
 	private IAgent agent;
 	private const float deletionDelay = 1f;
 
@@ -33,6 +35,10 @@ public class Entity : EntitySubject, IVisitable
 		return entity != this && IsEnemy != entity.IsEnemy;
 
 	}
+
+	public int GetScoreReward() => scoreValue;
+	public int GetPersonalScore() => personalScore;
+	public int AddPersonalScore(int score) => personalScore += score;
 
 	public void Accept(IVisitor visitor)
 	{
