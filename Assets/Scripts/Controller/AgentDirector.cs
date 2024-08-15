@@ -17,7 +17,7 @@ public class SpawningEntry
 }
 public class AgentDirector : MonoBehaviour
 {
-	[SerializeField] int currentWave = 0;
+	[SerializeField] int currentWave = -1;
 	[SerializeField] SpawningEntry[] SpawningEntries = new SpawningEntry[0];
 
 	[SerializeField] int[] scoreThresholds = new int[0];
@@ -55,9 +55,11 @@ public class AgentDirector : MonoBehaviour
 			lastSpawn = Time.time;
 			foreach (var spawningEntry in SpawningEntries)
 			{
+				if (spawningEntry.MinWave > currentWave || spawningEntry.MaxWave < currentWave)
+					continue;
 				spawner.SpawnEntities(spawningEntry.Entity, Random.Range(spawningEntry.MinAmount, spawningEntry.MaxAmount), spawningEntry.Category, GetPrimaryPlayer().GetTransform().position);
 				if (spawningEntry.Category == SpawnPointType.Boss)
-				SetPrimaryBoss(ServiceLocator.For(spawner.LastBoss.GetComponent<Entity>()).Get<EntityMediator>());
+					SetPrimaryBoss(ServiceLocator.For(spawner.LastBoss.GetComponent<Entity>()).Get<EntityMediator>());
 			}
 
 		}
