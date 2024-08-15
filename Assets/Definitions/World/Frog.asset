@@ -16,4 +16,4 @@ MonoBehaviour:
   cooldown: 15
   cooldownRandomization: 10
   cooldownInitial: 20
-  spawnChance: 0.7
+  spawnChance: 0.8
