@@ -171,7 +171,7 @@ public class Entity : EntitySubject, IVisitable
 		NotifyObservers(GetData());
 	}
 
-	EntityData GetData()
+	EntityData GetData(VoicePrompt voicePrompt = VoicePrompt.None)
 	{
 		var data = new EntityData
 		{
@@ -179,6 +179,7 @@ public class Entity : EntitySubject, IVisitable
 			MaxHealth = health.GetHealthMax(),
 			CurrentMana = mediator.GetAmmo(AmmoType.Magic),
 			MaxMana = mediator.GetAmmoMax(AmmoType.Magic),
+			Prompt = voicePrompt,
 		};
 		return data;
 	}

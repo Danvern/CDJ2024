@@ -25,5 +25,27 @@ public struct EntityData
 	public float CurrentMana;
 	public float MaxMana;
 	public int Score;
+	public VoicePrompt Prompt;
+
+}
+
+public enum VoicePrompt 
+{
+	None,
+	Idle,
+	Hurt,
+	HealingPickup,
+	MagicPickup,
+	Combo,
+	Dash,
+	Win,
+	Death,
+	Lose,
+	NextWave,
+	SpawningIn,
+	Boss1,
+	Boss2,
+	Boss3,
+
 
 }
