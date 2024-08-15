@@ -18,10 +18,11 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private bool isExplosion = false;
 	private bool isProjectileDestroyer = false;
 	private ProjectileDamageData data;
+	private ProjectileBase mediator;
 
 	private Dictionary<Transform, float> entityCollisions = new Dictionary<Transform, float>();
 
-	public ProjectileDamageLogic(ProjectileDamageData data)
+	public ProjectileDamageLogic(ProjectileDamageData data, ProjectileBase mediator)
 	{
 		this.data = data;
 		lifetime = data.Lifetime;
@@ -36,6 +37,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		isIndescriminate = data.IsIndescriminate;
 		isExplosion = data.IsExplosion;
 		isProjectileDestroyer = data.IsProjectileDestroyer;
+		this.mediator = mediator;
 	}
 
 	public float GetLifetime() { return lifetime; }
@@ -152,7 +154,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public void Visit(EntityHealthLogic visitable)
 	{
-		visitable.DoDamage(GetDamageRandom());
+		visitable.DoDamage(GetDamageRandom(), mediator);
 		//Debug.Log(visitable.ToString());
 
 	}

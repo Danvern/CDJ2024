@@ -50,7 +50,7 @@ public class ProjectileBase : MonoBehaviour, IOwnedEntity
 	// Start is called before the first frame update
 	void Start()
 	{
-		damageLogic = new ProjectileDamageLogic(projectileDamageData);
+		damageLogic = new ProjectileDamageLogic(projectileDamageData, this);
 		timeCreated = Time.time;
 		rb = GetComponent<Rigidbody2D>();
 		Propell(transform.up * damageLogic.GetSpeed());
