@@ -40,6 +40,10 @@ public class PlayerControl : MonoBehaviour
 	{
 		entity.DashActivate(value.isPressed);
 	}
+	public void OnPause(InputValue value)
+	{
+		ServiceLocator.ForSceneOf(this).Get<UIController>().TogglePause();
+	}
 
 	/// <summary>
 	/// Update the position of the targeting cursor as well as the hovered target.

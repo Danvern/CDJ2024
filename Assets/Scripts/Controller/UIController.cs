@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 	HealthIconBar healthIconBar;
 	ManaBar manaBar;
 
-	GameObject PauseScreen;
+	[SerializeField] GameObject PauseScreen;
 	bool paused = false;
 	public void SetPrimaryPlayer(EntityMediator targetPlayer) => targetPlayer.AddObserver(this);
 
@@ -77,6 +77,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 
 		PauseScreen.SetActive(true);
 		Time.timeScale = 0;
+		paused = true;
 
 
 	}
@@ -86,15 +87,16 @@ public class UIController : MonoBehaviour, IEntityObserver
 
 		PauseScreen.SetActive(false);
 		Time.timeScale = 1.0f;
+		paused = false;
 
 
 	}
 	public void TogglePause()
 	{
 		if (paused)
-		Unpause();
+			Unpause();
 		else
-		Pause();
+			Pause();
 	}
 
 	public void Lose()
