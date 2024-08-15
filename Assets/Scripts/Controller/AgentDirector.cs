@@ -36,6 +36,7 @@ public class AgentDirector : MonoBehaviour
 	void Awake()
 	{
 		ServiceLocator.ForSceneOf(this).Register(this);
+		lastSpawn = Time.time - timeBetweenSpawns;
 	}
 
 
