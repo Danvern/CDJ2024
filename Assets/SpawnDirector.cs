@@ -9,6 +9,7 @@ public class SpawnDirector : MonoBehaviour
 	public float MaxSpawnDistance = 20;
 	public float MinSpawnDistance = 12;
 	List<EntitySpawner> spawnPoints;
+	public GameObject LastBoss;
 
 	public bool SpawnEntities(GameObject entity, float amount, SpawnPointType type, Vector3? exclusionPoint = null)
 	{
@@ -24,7 +25,9 @@ public class SpawnDirector : MonoBehaviour
 					continue;
 				if (exclusionPoint != null && (Vector3.Distance(spawner.transform.position, (Vector3)exclusionPoint) < MinSpawnDistance))
 					continue;
-				Instantiate(entity, spawner.transform.position, entity.transform.rotation);
+				var created = Instantiate(entity, spawner.transform.position, entity.transform.rotation);
+				if (type == SpawnPointType.Boss)
+					LastBoss = created;
 				remaining--;
 			}
 			spawnPoints.Shuffle();

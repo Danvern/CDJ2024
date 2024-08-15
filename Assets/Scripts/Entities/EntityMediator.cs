@@ -42,6 +42,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 
 	}
 	public void AddScore(int score) => entity.AddPersonalScore(score);
+	public int GetScore() => entity.GetPersonalScore();
 	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) { ammunition.AddAmmo(type, amount, maxMultiplier); }
 	public bool IsUsingPickups() => entity.IsUsingPickups();
 	public int GetAmmo(AmmoType type) { return ammunition.GetAmmo(type); }
