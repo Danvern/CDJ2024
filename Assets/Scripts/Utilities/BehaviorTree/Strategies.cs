@@ -200,11 +200,6 @@ namespace Pathfinding.BehaviourTrees
 		public void Reset() { initialDirection = null; }
 	}
 
-	// public class Dash : DashFromTarget
-	// {
-		
-	// }
-
 	public class DashFromTarget : IStrategy
 	{
 		readonly EntityMediator entity;
@@ -213,8 +208,9 @@ namespace Pathfinding.BehaviourTrees
 		bool interruptable;
 		float power;
 		float duration;
+		IMovementStrategy movement;
 
-		public DashFromTarget(EntityMediator entity, Func<Vector3> target, float power, float duration, bool isLookingForward = false, bool interruptable = true)
+		public DashFromTarget(EntityMediator entity, Func<Vector3> target, float power, float duration, IMovementStrategy movement, bool isLookingForward = false, bool interruptable = true)
 		{
 			this.entity = entity;
 			this.target = target;
@@ -222,6 +218,7 @@ namespace Pathfinding.BehaviourTrees
 			this.interruptable = interruptable;
 			this.power = power;
 			this.duration = duration;
+			this.movement = movement;
 		}
 
 		public Node.Status Process()
@@ -243,9 +240,9 @@ namespace Pathfinding.BehaviourTrees
 				return Node.Status.Running;
 		}
 
-		protected Vector3 GetDirection(Vector3 position, Vector3 targetPosition)
+		private Vector3 GetDirection(Vector3 position, Vector3 targetPosition)
 		{
-			return position - targetPosition;
+			return movement.GetDirection(position, targetPosition);
 		}
 
 		public void Reset() { }

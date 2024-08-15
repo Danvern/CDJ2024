@@ -121,7 +121,7 @@ public class AgentSkirmish : IAgent
 		attackTarget.AddChild(new Leaf("IsAlive?", isAlive));
 		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()) && IsInRange(GetTargetPosition()))));
 		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition())));
-		attackTarget.AddChild(new Leaf("DashBack", new DashFromTarget(entity, () => GetTargetPosition(), DashPower, DashDuration)));
+		attackTarget.AddChild(new Leaf("DashBack", new DashFromTarget(entity, () => GetTargetPosition(), DashPower, DashDuration, new MovementStrategyBackwardsRandom())));
 		attackTarget.AddChild(new Leaf("Wait", new WaitStrategy(HoldAfterFire)));
 		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 
