@@ -8,11 +8,15 @@ public class AgentSkirmishFactory : IAgentFactory
 		var agent = new AgentSkirmish.Builder(entity)
 			.WithMinRange(minimumRange)
 			.WithMaxRange(maximumRange)
+			.WithDashPower(dashPower)
+			.WithDashDuration(dashDuration)
 			.Build();
 		agent.BootstrapBehaviorTree();
 		return agent;
 	}
 	[SerializeField] float minimumRange;
 	[SerializeField] float maximumRange;
+	[SerializeField] float dashPower;
+	[SerializeField] float dashDuration;
 
 }
