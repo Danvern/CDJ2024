@@ -152,7 +152,8 @@ public class Entity : EntitySubject, IVisitable
 		{
 			CurrentHealth = health.GetHealthCurrent(),
 			MaxHealth = health.GetHealthMax(),
-			CurrentMana = health.GetHealthCurrent(),
+			CurrentMana = mediator.GetAmmo(AmmoType.Magic),
+			MaxMana = mediator.GetAmmoMax(AmmoType.Magic),
 		};
 		return data;
 	}
