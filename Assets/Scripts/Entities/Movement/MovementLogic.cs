@@ -71,8 +71,8 @@ public class EntityMovementLogic : IMovementLogic
 	private Vector3 facingDirection = Vector3.right;
 	private float speed = 10f;
 	private float acceleration = 100f;
-	private float dashAcceleration = 100f;
-	private float dashDuration = 0.5f;
+	// private float dashAcceleration = 100f;
+	// private float dashDuration = 0.5f;
 	private StateMachine stateMachine;
 	private MoveDash dashState;
 	private MoveStun stunState;

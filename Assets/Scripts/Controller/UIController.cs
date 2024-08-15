@@ -56,7 +56,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 		DisplayManaMax = data.MaxMana;
 		DisplayScore = data.Score;
 
-		Debug.Log("CurrentPlayerHope:" + DisplayHealth);
+		//Debug.Log("CurrentPlayerHope:" + DisplayHealth);
 		UpdateElements();
 	}
 

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: StalkerAgent
   m_EditorClassIdentifier: 
   minimumRange: 0
-  maximumRange: 2.5
-  minimumRangeAlternate: 3
-  maximumRangeAlternate: 10
+  maximumRange: 4
+  minimumRangeAlternate: 4
+  maximumRangeAlternate: 12
   dashPower: 10
   dashDuration: 0.1
   holdAfterFire: 4

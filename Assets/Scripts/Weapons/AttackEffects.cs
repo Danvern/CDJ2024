@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine;
 
 [CreateAssetMenu(fileName = "DashEffect", menuName = "GameplayDefinitions/AttackEffect/DashEffect", order = 1)]
 public class DashEffectData : ScriptableObject, IAttackEffectData

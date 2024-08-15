@@ -103,11 +103,14 @@ namespace Pathfinding.BehaviourTrees
 				switch (child.Process())
 				{
 					case Status.Running:
+						Debug.Log(child.ToString()+" RUNNING");
 						return Status.Running;
 					case Status.Success:
 						Reset();
+						Debug.Log(child.ToString()+" SUCCESS");
 						return Status.Success;
 					default:
+						Debug.Log(child.ToString()+" FAILURE");
 						continue;
 				}
 			}
@@ -181,7 +184,7 @@ namespace Pathfinding.BehaviourTrees
 
 		public override Status Process()
 		{
-			//Debug.Log(ToString());
+			//			Debug.Log(ToString());
 			return strategy.Process();
 		}
 
@@ -206,7 +209,10 @@ namespace Pathfinding.BehaviourTrees
 
 		public void AddChild(Node child) => children.Add(child);
 
-		public virtual Status Process() => children[currentChild].Process();
+		public virtual Status Process()
+		{
+			return children[currentChild].Process();
+		}
 
 		public virtual void Reset()
 		{

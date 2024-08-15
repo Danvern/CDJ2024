@@ -25,7 +25,7 @@ public class MoveStun : IState
 		slideTime = time;
 		stunnedDirection = direction;
 		movement.GetRigidbody().AddForce(stunnedDirection * power, ForceMode2D.Impulse);
-		Debug.Log(movement.GetRigidbody().velocity.magnitude);
+		//Debug.Log(movement.GetRigidbody().velocity.magnitude);
 	}
 
 	public void OnEnter()

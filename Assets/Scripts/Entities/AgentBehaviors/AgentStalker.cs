@@ -28,7 +28,7 @@ public class AgentStalker : IAgent
 		private float minRange = 0;
 		private float maxRangeAlternate = 8;
 		private float minRangeAlternate = 4;
-		private float senseRange = 16;
+		private float senseRange = 32;
 		float power;
 		float duration;
 		float holdAfterFire;
@@ -148,7 +148,7 @@ public class AgentStalker : IAgent
 		actions.AddChild(attackTarget);
 
 
-		Sequence snipeTarget = new Sequence("AttackTarget", 150);
+		Sequence snipeTarget = new Sequence("SnipeTarget", 75);
 		snipeTarget.AddChild(new Leaf("IsAlive?", isAlive));
 		snipeTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInAlternateRange(GetTargetPosition()))));
 		snipeTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
