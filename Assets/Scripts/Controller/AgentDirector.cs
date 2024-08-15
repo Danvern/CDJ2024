@@ -25,6 +25,7 @@ public class AgentDirector : MonoBehaviour
 	private EntityMediator targetPlayer;
 	private EntityMediator targetBoss;
 	private int playerScore;
+	bool done = false;
 
 	public void SetPrimaryBoss(EntityMediator targetBoss) => this.targetBoss = targetBoss;
 	public EntityMediator GetPrimaryBoss() => targetBoss;
@@ -44,6 +45,11 @@ public class AgentDirector : MonoBehaviour
 	{
 		playerScore = targetPlayer.GetScore();
 
+		if (done)
+		{
+			return;
+		}
+
 		if (scoreThresholds.Length > currentWave && playerScore > scoreThresholds[currentWave])
 			currentWave++;
 
@@ -60,6 +66,8 @@ public class AgentDirector : MonoBehaviour
 				if (spawningEntry.Category == SpawnPointType.Boss)
 					SetPrimaryBoss(ServiceLocator.For(spawner.LastBoss.GetComponent<Entity>()).Get<EntityMediator>());
 			}
+			if (currentWave == scoreThresholds.Length - 1)
+				done = true;
 
 		}
 	}
