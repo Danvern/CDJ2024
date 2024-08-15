@@ -10,6 +10,7 @@ public class AgentSkirmishFactory : IAgentFactory
 			.WithMaxRange(maximumRange)
 			.WithDashPower(dashPower)
 			.WithDashDuration(dashDuration)
+			.WithHoldAfterFire(holdAfterFire)
 			.Build();
 		agent.BootstrapBehaviorTree();
 		return agent;
@@ -18,5 +19,6 @@ public class AgentSkirmishFactory : IAgentFactory
 	[SerializeField] float maximumRange;
 	[SerializeField] float dashPower;
 	[SerializeField] float dashDuration;
+	[SerializeField] float holdAfterFire;
 
 }

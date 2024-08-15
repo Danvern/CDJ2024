@@ -17,6 +17,7 @@ public class AgentSkirmish : IAgent
 
 	public float DashPower { get; set; } = 8;
 	public float DashDuration { get; set; } = 0.1f;
+	public float HoldAfterFire { get; set; }
 
 	public class Builder
 	{
@@ -26,6 +27,7 @@ public class AgentSkirmish : IAgent
 		private float senseRange = 16;
 		float power;
 		float duration;
+		float holdAfterFire;
 		public Builder(EntityMediator entity)
 		{
 			this.entity = entity;
@@ -55,6 +57,11 @@ public class AgentSkirmish : IAgent
 			this.duration = duration;
 			return this;
 		}
+		public Builder WithHoldAfterFire(float duration)
+		{
+			this.holdAfterFire = duration;
+			return this;
+		}
 		public AgentSkirmish Build()
 		{
 			var agent = new AgentSkirmish(entity)
@@ -64,6 +71,7 @@ public class AgentSkirmish : IAgent
 				SensingRange = senseRange,
 				DashPower = power,
 				DashDuration = duration,
+				HoldAfterFire = holdAfterFire,
 			};
 			return agent;
 		}
@@ -114,7 +122,7 @@ public class AgentSkirmish : IAgent
 		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()) && IsInRange(GetTargetPosition()))));
 		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition())));
 		attackTarget.AddChild(new Leaf("DashBack", new DashFromTarget(entity, () => GetTargetPosition(), DashPower, DashDuration)));
-		attackTarget.AddChild(new Leaf("Wait", new WaitStrategy(2f)));
+		attackTarget.AddChild(new Leaf("Wait", new WaitStrategy(HoldAfterFire)));
 		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 
 		actions.AddChild(attackTarget);
