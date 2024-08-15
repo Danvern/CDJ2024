@@ -140,6 +140,12 @@ public class Entity : EntitySubject, IVisitable
 		DropController drops = GetComponent<DropController>();
 		if (drops != null)
 			health.EntityKilled += drops.DropReward;
+		health.EntityKilled += (source) => {
+			var owner = source.GetOwner();
+			if (owner != null && !owner.IsDead())
+				source.GetOwner().AddScore(scoreValue);
+
+		};
 
 		health.EntityDamaged += (damage, source) =>
 		{
@@ -149,6 +155,7 @@ public class Entity : EntitySubject, IVisitable
 				MaxHealth = health.GetHealthMax(),
 				CurrentMana = mediator.GetAmmo(AmmoType.Magic),
 				MaxMana = mediator.GetAmmoMax(AmmoType.Magic),
+				Score = GetPersonalScore(),
 			};
 			NotifyObservers(data);
 		};

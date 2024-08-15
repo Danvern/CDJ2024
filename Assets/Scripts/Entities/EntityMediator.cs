@@ -39,6 +39,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		return;
 
 	}
+	public void AddScore(int score) => entity.AddPersonalScore(score);
 	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) { ammunition.AddAmmo(type, amount, maxMultiplier); }
 	public bool IsUsingPickups() => entity.IsUsingPickups();
 	public int GetAmmo(AmmoType type) { return ammunition.GetAmmo(type); }
@@ -49,7 +50,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	public IAffinity GetAffinity() { return null; }
 	public ServiceLocator GetServiceLocator() => ServiceLocator.For(entity);
 	public bool IsHostile(EntityMediator mediator) => mediator.entity != entity && mediator.entity.IsEnemy != entity.IsEnemy;
-	public bool IsDead() => entity.IsDead;
+	public bool IsDead() => entity.OrNull() == null || entity.IsDead;
 	public Transform GetTransform() => entity.OrNull() != null ? entity.transform : null;
 	public Vector2 GetPosition() => entity.transform.position;
 	public void ActivateGuidanceMode()
