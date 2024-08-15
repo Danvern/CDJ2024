@@ -32,7 +32,7 @@ public class ManaBar : MonoBehaviour
 			activeBar.value = (displayValue / displayValueMax);
 		else
 			activeBar.value = (0);
-		capImage.sprite = capSprites[Mathf.FloorToInt(activeBar.value * capSprites.Length)];
+		capImage.sprite = capSprites[Mathf.Min(Mathf.FloorToInt(activeBar.value * capSprites.Length), capSprites.Length - 1)];
     }	
 
 	int CapIndex() {
