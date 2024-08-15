@@ -27,12 +27,13 @@ public class Weapon : MonoBehaviour
 	public void Activate()
 	{
 		if (logic == null) return;
-		if (!logic.IsAttackReady()) return;
+		if (!logic.IsAttackReady() || owner.GetAmmo(AmmoType.Magic) < data.MagicCost) return;
 
 		// foreach (Attack attack in attacks)
 		// {
 		// 	attack.Activate();
 		// }
+		owner.AddAmmo(AmmoType.Magic, -data.MagicCost);
 		if (data.FireDelay > 0)
 		{
 
