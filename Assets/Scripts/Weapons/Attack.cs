@@ -35,7 +35,7 @@ public class Attack : MonoBehaviour
 
 		if (melee)
 			ProjectileManager.Instance.GenerateProjectile(projectile, transform.position, transform.rotation, transform, owner);
-		if (generateAtTarget)
+		else if (generateAtTarget)
 			ProjectileManager.Instance.GenerateProjectile(projectile, owner.GetAimTarget(), transform.rotation, owner);
 		else
 			ProjectileManager.Instance.GenerateProjectile(projectile, transform.position, transform.rotation, owner);
