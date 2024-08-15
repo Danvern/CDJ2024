@@ -25,4 +25,6 @@ public class ProjectileDamageData : ScriptableObject
 	public GameObject DeathEffect;
 	public EventReference SmallKillSFX;
 	public EventReference DamageSFX;
+	public EventReference HeavyKillSFX;
+	public EventReference HeavyDamageSFX;
 }

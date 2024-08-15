@@ -107,6 +107,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		movement?.Accept(visitor);
 		visitor.Visit(this);
 	}
+	public bool IsHeavy() => entity.IsHeavy();
 
 	public void DashToAim(float power, float slideTime, bool invulnerable = false) => entity?.DashToAim(power, slideTime, invulnerable);
 	public void DashToDirection(Vector3 direction, float power, float slideTime, bool invulnerable = false) => entity?.DashToDirection(direction, power, slideTime, invulnerable);

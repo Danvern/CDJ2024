@@ -120,12 +120,16 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 					if (entityMediator.IsDead())
 					{
-						if (!data.SmallKillSFX.IsNull)
+						if (!data.HeavyKillSFX.IsNull && entityMediator.IsHeavy())
+							AudioManager.Instance.PlayOneShot(data.HeavyKillSFX, transform.position);
+						else if (!data.SmallKillSFX.IsNull)
 							AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
 					}
 					else
 					{
-						if (!data.DamageSFX.IsNull)
+						if (!data.HeavyDamageSFX.IsNull && entityMediator.IsHeavy())
+							AudioManager.Instance.PlayOneShot(data.HeavyDamageSFX, transform.position);
+						else if (!data.DamageSFX.IsNull)
 							AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
 					}
 					if (piercing < 0 && !IsExplosion())

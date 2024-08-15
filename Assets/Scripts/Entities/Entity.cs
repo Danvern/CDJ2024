@@ -27,8 +27,10 @@ public class Entity : EntitySubject, IVisitable
 	private EntityMediator mediator;
 	private int personalScore;
 	private IAgent agent;
+	[SerializeField] bool isHeavy = false;
 	private const float deletionDelay = 1f;
 
+	public bool IsHeavy() => isHeavy;
 	public Vector2 GetAimTarget() => aimTarget;
 	public void SetAimTarget(Vector2 value) => aimTarget = value;
 

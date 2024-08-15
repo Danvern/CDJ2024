@@ -18,9 +18,18 @@ MonoBehaviour:
   Piercing: 0
   Knockback: 1
   KnockbackStun: 0.25
+  IsIndescriminate: 0
+  IsExplosion: 0
+  IsProjectileDestroyer: 0
+  IsHitEffectOnlyOnPierce: 0
+  IsBlockedByWorld: 0
+  IsInvisibleOnDeath: 1
+  DetachOnDeath: 0
   CollisionRadius: 1
   CollisionArc: 360
   StartingVelocity: 10
+  HitEffect: {fileID: 0}
+  DeathEffect: {fileID: 0}
   SmallKillSFX:
     Guid:
       Data1: 0
@@ -29,6 +38,20 @@ MonoBehaviour:
       Data4: 0
     Path: 
   DamageSFX:
+    Guid:
+      Data1: -1313066509
+      Data2: 1250949751
+      Data3: -451276904
+      Data4: -365446421
+    Path: event:/enemies/frog/froglurp 2
+  HeavyKillSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  HeavyDamageSFX:
     Guid:
       Data1: 0
       Data2: 0
