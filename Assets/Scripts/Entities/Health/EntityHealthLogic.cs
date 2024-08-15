@@ -37,7 +37,7 @@ public class EntityHealthLogic : IEntityHealthLogic
 
 	public void Heal(float value)
 	{
-		healthCurrent = Mathf.Max(healthMax, healthCurrent + value);
+		healthCurrent = Mathf.Min(healthMax, healthCurrent + value);
 		EntityDamaged?.Invoke(-value, null);
 	}
 
