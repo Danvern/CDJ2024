@@ -121,18 +121,737 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Pause Menu UI_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 244
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7873bffc71aa574fb3d9a73a1dc4e73
+      internalID: -1164826221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 241
+        width: 34
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec836e3a062957d41bd97ddd335b139e
+      internalID: 954548304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_2
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 241
+        width: 34
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f304a1bc40e8992468b717bfe1b6c648
+      internalID: -1252076681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_3
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 0
+        width: 99
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9bc70b370d792c47a34f0d6168263f9
+      internalID: 910144550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 228
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5a1a74e2cb288f4dbf166727355bcee
+      internalID: -743407699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_5
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 225
+        width: 48
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52ff3d547484cfb4a89bac3c85c1e50f
+      internalID: 545012300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_6
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 225
+        width: 48
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a0ef52e75c99334688429d9f353c41d
+      internalID: 1111596310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_7
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 209
+        width: 37
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3f2cd21b571304b9a0f40ecba4d83e
+      internalID: 472918640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 209
+        width: 37
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b46e3ee8326224b80a388749661210
+      internalID: -2050328058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_9
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 193
+        width: 45
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97543f70e5881fc49840df77f588c616
+      internalID: 1881566049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_10
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 193
+        width: 45
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c7eefca2b2f37045b6bc60b3626cf16
+      internalID: -2118867172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_11
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 207
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59d34aa8e80a0584f875f8034498855b
+      internalID: 1177678120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 177
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c0c63461ec45c4aa77a9dee25c3ee3
+      internalID: 1010222501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_13
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 177
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe38c8f1abd08ec4fa33c2d2cbfc243c
+      internalID: -1562368290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_14
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 191
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80552a24a541b2a439b99853ec47255f
+      internalID: -1139663093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_15
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 137
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ca57b58c3e89f64c8345883fd545dcf
+      internalID: 1910019534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_16
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 160
+        width: 48
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c6e0b69cbac274d9b7efb45f8fb3fb
+      internalID: 431766868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_17
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 139
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136df393a439a01478d37b6be49e407d
+      internalID: -1896444782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_18
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 227
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a0d50184ab792a4b90379e574ed8b9a
+      internalID: 1032708516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 139
+        width: 48
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47745210492ae3243b9cbd1f01d5a461
+      internalID: -783599177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_20
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 80
+        width: 7
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bcd173d79d0cd04e81cedf647b805bd
+      internalID: -1212350395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 7
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0045af5c69c73b043992d086aa238173
+      internalID: -1400611965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_22
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 113
+        width: 70
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f245e7c6a60cd043aa979a1aa17fc08
+      internalID: -1033397502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_23
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 239
+        width: 37
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 749ba3468b613d04ea3c1e40591342ec
+      internalID: -862914240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_24
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 222
+        width: 46
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30fd0f38abc57364cad85723927d27c3
+      internalID: 667850488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_25
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 97
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f729bc8c2cb1e647a2722f2db9a30ba
+      internalID: -648434025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_26
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 97
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0337d7f6e84c46c419e5a7456111a337
+      internalID: -83260003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_27
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 81
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 258d2d6c4ab20ab4c92d42a574d1aeb0
+      internalID: -1483307803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_28
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 81
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df6de7478bc13d54586152ea51ddc6e5
+      internalID: 1283949661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_30
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 18
+        width: 73
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40aa4a54b0bc8a04f88e791201f360ca
+      internalID: -1304600036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_35
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 16
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d0595046141eb148923ec03ba02fe02
+      internalID: 1675476360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Menu UI_29
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 182
+        width: 71
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16e020e364b179d4589ebc18257c0069
+      internalID: 460951673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 43cc3b8bc9fdc1643b0c74318a83ea32
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pause Menu UI_0: -1164826221
+      Pause Menu UI_1: 954548304
+      Pause Menu UI_10: -2118867172
+      Pause Menu UI_11: 1177678120
+      Pause Menu UI_12: 1010222501
+      Pause Menu UI_13: -1562368290
+      Pause Menu UI_14: -1139663093
+      Pause Menu UI_15: 1910019534
+      Pause Menu UI_16: 431766868
+      Pause Menu UI_17: -1896444782
+      Pause Menu UI_18: 1032708516
+      Pause Menu UI_19: -783599177
+      Pause Menu UI_2: -1252076681
+      Pause Menu UI_20: -1212350395
+      Pause Menu UI_21: -1400611965
+      Pause Menu UI_22: -1033397502
+      Pause Menu UI_23: -862914240
+      Pause Menu UI_24: 667850488
+      Pause Menu UI_25: -648434025
+      Pause Menu UI_26: -83260003
+      Pause Menu UI_27: -1483307803
+      Pause Menu UI_28: 1283949661
+      Pause Menu UI_29: 460951673
+      Pause Menu UI_3: 910144550
+      Pause Menu UI_30: -1304600036
+      Pause Menu UI_31: 397453976
+      Pause Menu UI_32: -998978461
+      Pause Menu UI_33: -1655031722
+      Pause Menu UI_34: 119821883
+      Pause Menu UI_35: 1675476360
+      Pause Menu UI_36: 891398334
+      Pause Menu UI_37: -182334018
+      Pause Menu UI_38: 1827882767
+      Pause Menu UI_39: 1019709948
+      Pause Menu UI_4: -743407699
+      Pause Menu UI_40: -487487899
+      Pause Menu UI_41: -506652883
+      Pause Menu UI_42: 947853033
+      Pause Menu UI_43: -1447183454
+      Pause Menu UI_44: 419025755
+      Pause Menu UI_45: -339956939
+      Pause Menu UI_46: -4899712
+      Pause Menu UI_5: 545012300
+      Pause Menu UI_6: 1111596310
+      Pause Menu UI_7: 472918640
+      Pause Menu UI_8: -2050328058
+      Pause Menu UI_9: 1881566049
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
