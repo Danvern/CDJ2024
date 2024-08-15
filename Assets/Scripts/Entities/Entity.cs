@@ -165,10 +165,11 @@ public class Entity : EntitySubject, IVisitable
 				CurrentMana = mediator.GetAmmo(AmmoType.Magic),
 				MaxMana = mediator.GetAmmoMax(AmmoType.Magic),
 				Score = GetPersonalScore(),
+				Prompt = VoicePrompt.Hurt,
 			};
 			NotifyObservers(data);
 		};
-		NotifyObservers(GetData());
+		NotifyObservers(GetData(VoicePrompt.SpawningIn));
 	}
 
 	EntityData GetData(VoicePrompt voicePrompt = VoicePrompt.None)

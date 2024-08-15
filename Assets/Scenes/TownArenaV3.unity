@@ -1098,10 +1098,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: -0.004166667
     y: 0
-    width: 1
-    height: 1
+    width: 0.16666667
+    height: 0.86851853
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -2001,6 +2001,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+--- !u!1 &971867220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 971867222}
+  - component: {fileID: 971867221}
+  m_Layer: 0
+  m_Name: VoiceController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &971867221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971867220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3da7f2d05fa794088a9dcfc298b244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtLines:
+    eventReferences:
+    - Guid:
+        Data1: -450251684
+        Data2: 1340389425
+        Data3: -562709083
+        Data4: 1196119053
+      Path: event:/voc/Meipain1
+    - Guid:
+        Data1: 430441048
+        Data2: 1182513469
+        Data3: -1458472769
+        Data4: 159906088
+      Path: event:/voc/Mei_crafts
+    weights: 0500000001000000
+  spawnLines:
+    eventReferences:
+    - Guid:
+        Data1: 923792858
+        Data2: 1294009648
+        Data3: 85410190
+        Data4: 49042044
+      Path: event:/voc/Mei_Icandothis
+    - Guid:
+        Data1: -371530074
+        Data2: 1108219919
+        Data3: -697623153
+        Data4: 1612836542
+      Path: event:/voc/Mei_thisisit
+    weights: 0300000002000000
+--- !u!4 &971867222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971867220}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1025438572
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,6 +3902,7 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 832575519}
   - {fileID: 2079960153}
+  - {fileID: 971867222}
   - {fileID: 1533749368}
   - {fileID: 40526353}
   - {fileID: 244318531}

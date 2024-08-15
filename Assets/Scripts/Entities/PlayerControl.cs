@@ -19,6 +19,7 @@ public class PlayerControl : MonoBehaviour
 	{
 		ServiceLocator.ForSceneOf(this).Get<AgentDirector>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
 		ServiceLocator.ForSceneOf(this).Get<UIController>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
+		ServiceLocator.ForSceneOf(this).Get<VoiceController>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
 	}
 
 	public void OnMove(InputValue value)
