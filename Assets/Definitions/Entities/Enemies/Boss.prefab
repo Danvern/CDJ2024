@@ -564,13 +564,15 @@ MonoBehaviour:
   speed: 2
   acceleration: 600
   magicStorage: 10
-  scoreValue: 2500
+  scoreValue: 10000
   primaryWeapon: {fileID: 7103224978435692418}
   secondaryWeapon: {fileID: 8203058651344869963}
+  isSecondaryTriggeredOnDeath: 0
   dashWeapon: {fileID: 0}
   isEnemy: 1
   isUsingPickups: 0
   animator: {fileID: 2549617594679255893}
+  isHeavy: 0
 --- !u!114 &2006010728388214129
 MonoBehaviour:
   m_ObjectHideFlags: 0
