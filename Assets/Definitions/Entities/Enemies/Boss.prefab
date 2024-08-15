@@ -521,6 +521,7 @@ GameObject:
   - component: {fileID: 3752208349402694709}
   - component: {fileID: 607255452813073717}
   - component: {fileID: 6434068746322974173}
+  - component: {fileID: -715615045513892784}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -741,6 +742,18 @@ MonoBehaviour:
   MaxPickups: 1
   SpreadDistance: 2.5
   generationDelay: 0.5
+--- !u!114 &-715615045513892784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556580978140358341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99168e2b2b726c4db6555903becb0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6116673901013708094
 GameObject:
   m_ObjectHideFlags: 0
