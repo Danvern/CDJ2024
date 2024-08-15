@@ -351,7 +351,7 @@ MonoBehaviour:
       Data4: 746616046
     Path: event:/enemies/lanternfloat
   Event: 
-  PlayEvent: 1
+  PlayEvent: 0
   StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
