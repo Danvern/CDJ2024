@@ -154,8 +154,7 @@ public class AgentStalker : IAgent
 		snipeTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 		snipeTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition(), primary: false)));
 		//snipeTarget.AddChild(new Leaf("DashForward", new DashFromTarget(entity, () => GetTargetPosition(), DashPower, DashDuration, new MovementStrategyBackwardsRandom())));
-		snipeTarget.AddChild(new Leaf("Wait", new WaitStrategy(HoldAfterFire)));
-		snipeTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
+		//snipeTarget.AddChild(new Leaf("Wait", new WaitStrategy(HoldAfterFire)));
 		actions.AddChild(snipeTarget);
 
 		Selector goToPlayer = new Selector("GoToPlayer", 50);
@@ -163,7 +162,7 @@ public class AgentStalker : IAgent
 		goDirectly.AddChild(new Leaf("IsAlive?", isAlive));
 		goDirectly.AddChild(new Leaf("isTarget?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()))));
 		goDirectly.AddChild(new Leaf("isNear?", new Condition(() => Vector2.Distance(GetTargetPosition(), entity.GetPosition()) < SensingRange)));
-		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTarget(entity, () => GetTargetPosition())));
+		goDirectly.AddChild(new Leaf("GoToPlayer", new MoveToTarget(entity, () => GetTargetPosition(), interruptable: true)));
 		goToPlayer.AddChild(goDirectly);
 
 		Sequence goPathing = new Sequence("ApproachPlayerPathing");
