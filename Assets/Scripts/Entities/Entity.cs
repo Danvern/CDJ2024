@@ -147,7 +147,8 @@ public class Entity : EntitySubject, IVisitable
 		DropController drops = GetComponent<DropController>();
 		if (drops != null)
 			health.EntityKilled += drops.DropReward;
-		health.EntityKilled += (source) => {
+		health.EntityKilled += (source) =>
+		{
 			if (source.OrNull() == null) return;
 			var owner = source.GetOwner();
 			if (owner != null && !owner.IsDead())
@@ -185,6 +186,8 @@ public class Entity : EntitySubject, IVisitable
 	// Update is called once per frame
 	private void FixedUpdate()
 	{
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		agent?.Update();
 		movement?.Update();
 		health?.Update();
@@ -192,9 +195,9 @@ public class Entity : EntitySubject, IVisitable
 		//mediator.SetAnimationBool("IsMovingLeft", movement.IsMovingLeft());
 		if (animator != null)
 		{
-			bool isLookingLeft = transform.rotation.eulerAngles.z > 0f && transform.rotation.eulerAngles.z  < 180f;
+			bool isLookingLeft = transform.rotation.eulerAngles.z > 0f && transform.rotation.eulerAngles.z < 180f;
 			if (movement.IsMovingLeft())
-			animator.transform.localScale = transform.localScale.With(x: -1);
+				animator.transform.localScale = transform.localScale.With(x: -1);
 			else if (movement.GetCurrentSpeed() > 0)
 				animator.transform.localScale = transform.localScale.With(x: 1);
 			else if (isLookingLeft)

@@ -23,21 +23,30 @@ public class PlayerControl : MonoBehaviour
 
 	public void OnMove(InputValue value)
 	{
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		moveDirection = value.Get<Vector2>();
 	}
 
 	public void OnFire(InputValue value)
+
 	{
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		entity.PrimaryFire(value.isPressed);
 	}
 
 	public void OnFireSecondary(InputValue value)
 	{
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		entity.SecondaryFire(value.isPressed);
 	}
-	
+
 	public void OnDash(InputValue value)
 	{
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		entity.DashActivate(value.isPressed);
 	}
 	public void OnPause(InputValue value)
@@ -94,6 +103,8 @@ public class PlayerControl : MonoBehaviour
 		if (entity == null)
 			return;
 
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		entity.MoveToDirection(new Vector3(moveDirection.x, moveDirection.y, 0));
 
 		// Debug.Log(moveDirection);
