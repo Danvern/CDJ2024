@@ -34,7 +34,7 @@ public class MoveWalk : IState
 		if (movement.GetTargetDirection() != Vector3.zero)
 			movement.GetRigidbody().AddForce(movement.GetTargetDirection() * movement.GetAcceleration(), ForceMode2D.Force);
 		if (movement.GetRigidbody().velocity.magnitude > movement.GetSpeed())
-			movement.GetRigidbody().AddForce(movement.GetRigidbody().velocity.normalized * ((movement.GetSpeed() - movement.GetRigidbody().velocity.magnitude) * movement.GetAcceleration()), ForceMode2D.Force);
+			movement.GetRigidbody().AddForce(movement.GetRigidbody().velocity.normalized * ((movement.GetSpeed() - movement.GetRigidbody().velocity.magnitude) * Mathf.Sqrt(movement.GetAcceleration())), ForceMode2D.Force);
 	}
 
 	public void PhysicsUpdate() { }

@@ -104,6 +104,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	}
 
 	public void DashToAim(float power, float slideTime, bool invulnerable = false) => entity?.DashToAim(power, slideTime, invulnerable);
+	public void DashToDirection(Vector3 direction, float power, float slideTime, bool invulnerable = false) => entity?.DashToDirection(direction, power, slideTime, invulnerable);
 	public void MoveToDirection(Vector2 direction) => movement?.MoveToDirection(direction);
 	public void FacePosition(Vector2 position) => entity?.FacePosition(position);
 	public void PrimaryFire(bool pressed) => entity?.PrimaryFire(pressed);

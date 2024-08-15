@@ -58,7 +58,7 @@ public class MoveStun : IState
 
 		movement.GetRigidbody().AddForce(movement.GetRigidbody().velocity.normalized * (-movement.GetRigidbody().velocity.magnitude) * movement.GetSpeed() * friction, ForceMode2D.Force);
 
-		// movement.GetRigidbody().AddForce(stunnedDirection * moveSpeed * Time.deltaTime, ForceMode2D.Force);
+		movement.GetRigidbody().AddForce(stunnedDirection * moveSpeed * Time.deltaTime, ForceMode2D.Force);
 	}
 
 	public void PhysicsUpdate() { }

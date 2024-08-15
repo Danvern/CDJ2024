@@ -121,6 +121,38 @@ namespace Pathfinding.BehaviourTrees
 			currentIndex = 0;
 		}
 	}
+	public class WaitStrategy : IStrategy
+	{
+		float lastCalcTime = 0;
+		float waitingTime;
+		bool isWaiting = false;
+		readonly EntityMediator entity;
+
+		public WaitStrategy(float waitTime = 1f)
+		{
+			this.waitingTime = waitTime;
+		}
+
+		public Node.Status Process()
+		{
+			if (!isWaiting)
+			{
+
+				lastCalcTime = Time.time;
+				isWaiting = true;
+			}
+			if (Time.time - lastCalcTime > waitingTime)
+			{
+				return Node.Status.Success;
+			}
+			return Node.Status.Running;
+		}
+
+		public void Reset()
+		{
+			isWaiting = false;
+		}
+	}
 
 	public class ChargeToTarget : IStrategy
 	{
@@ -168,6 +200,56 @@ namespace Pathfinding.BehaviourTrees
 		public void Reset() { initialDirection = null; }
 	}
 
+	// public class Dash : DashFromTarget
+	// {
+		
+	// }
+
+	public class DashFromTarget : IStrategy
+	{
+		readonly EntityMediator entity;
+		readonly Func<Vector3> target;
+		bool isLookingForward;
+		bool interruptable;
+		float power;
+		float duration;
+
+		public DashFromTarget(EntityMediator entity, Func<Vector3> target, float power, float duration, bool isLookingForward = false, bool interruptable = true)
+		{
+			this.entity = entity;
+			this.target = target;
+			this.isLookingForward = isLookingForward;
+			this.interruptable = interruptable;
+			this.power = power;
+			this.duration = duration;
+		}
+
+		public Node.Status Process()
+		{
+			if (entity.IsNavigating())
+				entity.CancelPath();
+			if (Vector3.Distance(entity.GetTransform().position, target()) < 1f)
+			{
+				return Node.Status.Success;
+			}
+
+			entity.DashToDirection(GetDirection(entity.GetTransform().position, target()), power, duration);
+			if (isLookingForward)
+				entity.FacePosition(target() - entity.GetTransform().position);
+
+			if (interruptable)
+				return Node.Status.Success;
+			else
+				return Node.Status.Running;
+		}
+
+		protected Vector3 GetDirection(Vector3 position, Vector3 targetPosition)
+		{
+			return position - targetPosition;
+		}
+
+		public void Reset() { }
+	}
 	public class MoveToTarget : IStrategy
 	{
 		readonly EntityMediator entity;

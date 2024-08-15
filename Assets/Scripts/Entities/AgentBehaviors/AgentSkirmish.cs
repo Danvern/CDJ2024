@@ -15,12 +15,19 @@ public class AgentSkirmish : IAgent
 	public float MaximumRange { get; set; } = 0;
 	public float SensingRange { get; set; } = 0;
 
+	public float DashPower { get; set; } = 8;
+	public float DashDuration { get; set; } = 0.1f;
+	public float HoldAfterFire { get; set; }
+
 	public class Builder
 	{
 		private EntityMediator entity;
 		private float maxRange = 8;
 		private float minRange = 4;
 		private float senseRange = 16;
+		float power;
+		float duration;
+		float holdAfterFire;
 		public Builder(EntityMediator entity)
 		{
 			this.entity = entity;
@@ -40,13 +47,31 @@ public class AgentSkirmish : IAgent
 			senseRange = sense;
 			return this;
 		}
+		public Builder WithDashPower(float power)
+		{
+			this.power = power;
+			return this;
+		}
+		public Builder WithDashDuration(float duration)
+		{
+			this.duration = duration;
+			return this;
+		}
+		public Builder WithHoldAfterFire(float duration)
+		{
+			this.holdAfterFire = duration;
+			return this;
+		}
 		public AgentSkirmish Build()
 		{
 			var agent = new AgentSkirmish(entity)
 			{
 				MaximumRange = maxRange,
 				MinimumRange = minRange,
-				SensingRange = senseRange
+				SensingRange = senseRange,
+				DashPower = power,
+				DashDuration = duration,
+				HoldAfterFire = holdAfterFire,
 			};
 			return agent;
 		}
@@ -95,8 +120,11 @@ public class AgentSkirmish : IAgent
 		Sequence attackTarget = new Sequence("AttackTarget", 100);
 		attackTarget.AddChild(new Leaf("IsAlive?", isAlive));
 		attackTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInSight(GetTarget()) && IsInRange(GetTargetPosition()))));
-		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition())));
+		attackTarget.AddChild(new Leaf("DashBack", new DashFromTarget(entity, () => GetTargetPosition(), DashPower, DashDuration)));
+		attackTarget.AddChild(new Leaf("Wait", new WaitStrategy(HoldAfterFire)));
+		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
+
 		actions.AddChild(attackTarget);
 
 		Selector goToPlayer = new Selector("GoToPlayer", 50);

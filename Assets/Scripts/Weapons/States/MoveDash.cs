@@ -30,7 +30,7 @@ public class MoveDash : IState
 		movement.SetSpeed(moveSpeed);
 		movement.SetPhasing(true);
 		startTime = Time.time;
-		movement.GetRigidbody().AddForce(movement.GetFacingDirection() * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
+		movement.GetRigidbody().AddForce(movement.GetFacingDirection() * moveSpeed, ForceMode2D.Impulse);
 		//AudioManager.Instance.PlayOneShot(!_gun.GunCycle.IsNull ? _gun.GunCycle : FModEvents.Instance.GunshotGenericCycle, _soundOrigin.position);
 	}
 
@@ -52,7 +52,7 @@ public class MoveDash : IState
 		if (movement.GetRigidbody() == null)
 			return;
 
-		if (movement.GetRigidbody().velocity.magnitude > moveSpeed)
+		if (movement.GetRigidbody().velocity.magnitude > moveSpeed * 3f)
 			movement.GetRigidbody().AddForce(movement.GetRigidbody().velocity.normalized * (moveSpeed - movement.GetRigidbody().velocity.magnitude) * movement.GetRigidbody().mass, ForceMode2D.Force);
 
 	}

@@ -45,6 +45,13 @@ public class Entity : EntitySubject, IVisitable
 		mediator.SetInvulnerable(invulnerable, InvincibilitySource.Dashing);
 	}
 
+	public void DashToDirection(Vector3 direction, float power, float slideTime, bool invulnerable = false)
+	{
+		movement.MoveToDirection(direction);
+		movement.Dash(power, slideTime);
+		mediator.SetInvulnerable(invulnerable, InvincibilitySource.Dashing);
+	}
+
 
 	public void MoveToDirection(Vector3 direction)
 	{
