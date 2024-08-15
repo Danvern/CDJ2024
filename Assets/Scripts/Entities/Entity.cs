@@ -12,6 +12,8 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private float waypointCloseness = 0.75f;
 	[SerializeField] private float speed = 10;
 	[SerializeField] private float acceleration = 100;
+	[SerializeField] private int magicStorage = 10;
+	[SerializeField] private int scoreValue = 100;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
 	[SerializeField] private Weapon dashWeapon;
@@ -21,6 +23,7 @@ public class Entity : EntitySubject, IVisitable
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private EntityMediator mediator;
+	private int personalScore;
 	private IAgent agent;
 	private const float deletionDelay = 1f;
 
@@ -32,6 +35,10 @@ public class Entity : EntitySubject, IVisitable
 		return entity != this && IsEnemy != entity.IsEnemy;
 
 	}
+
+	public int GetScoreReward() => scoreValue;
+	public int GetPersonalScore() => personalScore;
+	public int AddPersonalScore(int score) => personalScore += score;
 
 	public void Accept(IVisitor visitor)
 	{
@@ -128,10 +135,17 @@ public class Entity : EntitySubject, IVisitable
 			secondaryWeapon.TakeOwnership(mediator);
 		if (dashWeapon != null)
 			dashWeapon.TakeOwnership(mediator);
+		mediator.SetAmmoMax(AmmoType.Magic, magicStorage);
 
 		DropController drops = GetComponent<DropController>();
 		if (drops != null)
 			health.EntityKilled += drops.DropReward;
+		health.EntityKilled += (source) => {
+			var owner = source.GetOwner();
+			if (owner != null && !owner.IsDead())
+				source.GetOwner().AddScore(scoreValue);
+
+		};
 
 		health.EntityDamaged += (damage, source) =>
 		{
@@ -139,7 +153,9 @@ public class Entity : EntitySubject, IVisitable
 			{
 				CurrentHealth = health.GetHealthCurrent(),
 				MaxHealth = health.GetHealthMax(),
-				CurrentMana = health.GetHealthCurrent(),
+				CurrentMana = mediator.GetAmmo(AmmoType.Magic),
+				MaxMana = mediator.GetAmmoMax(AmmoType.Magic),
+				Score = GetPersonalScore(),
 			};
 			NotifyObservers(data);
 		};
@@ -152,7 +168,8 @@ public class Entity : EntitySubject, IVisitable
 		{
 			CurrentHealth = health.GetHealthCurrent(),
 			MaxHealth = health.GetHealthMax(),
-			CurrentMana = health.GetHealthCurrent(),
+			CurrentMana = mediator.GetAmmo(AmmoType.Magic),
+			MaxMana = mediator.GetAmmoMax(AmmoType.Magic),
 		};
 		return data;
 	}

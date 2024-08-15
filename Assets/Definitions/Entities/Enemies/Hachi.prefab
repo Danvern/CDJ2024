@@ -177,6 +177,8 @@ MonoBehaviour:
   waypointCloseness: 0.75
   speed: 1
   acceleration: 80
+  magicStorage: 10
+  scoreValue: 250
   primaryWeapon: {fileID: 2821160958969626481}
   secondaryWeapon: {fileID: 0}
   dashWeapon: {fileID: 0}

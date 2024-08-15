@@ -24,5 +24,6 @@ public struct EntityData
 	public float MaxHealth;
 	public float CurrentMana;
 	public float MaxMana;
+	public int Score;
 
 }

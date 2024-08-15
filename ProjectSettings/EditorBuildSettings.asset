@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Default.unity
+    path: Assets/Scenes/OldVersions/Default.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 0
-    path: Assets/Scenes/TownArena.unity
+    path: Assets/Scenes/OldVersions/TownArena.unity
     guid: 8a6c2111490b2174b9df37f1c05e3249
   - enabled: 1
-    path: Assets/Scenes/TownArenaV2 1.unity
+    path: Assets/Scenes/OldVersions/TownArenaV2 1.unity
     guid: 11949b8aebeb80349b8eade9d677c64e
   m_configObjects: {}
