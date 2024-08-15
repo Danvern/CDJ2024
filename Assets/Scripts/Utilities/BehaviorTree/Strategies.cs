@@ -121,6 +121,38 @@ namespace Pathfinding.BehaviourTrees
 			currentIndex = 0;
 		}
 	}
+	public class WaitStrategy : IStrategy
+	{
+		float lastCalcTime = 0;
+		float waitingTime;
+		bool isWaiting = false;
+		readonly EntityMediator entity;
+
+		public WaitStrategy(float waitTime = 1f)
+		{
+			this.waitingTime = waitTime;
+		}
+
+		public Node.Status Process()
+		{
+			if (!isWaiting)
+			{
+
+				lastCalcTime = Time.time;
+				isWaiting = true;
+			}
+			if (Time.time - lastCalcTime > waitingTime)
+			{
+				return Node.Status.Success;
+			}
+			return Node.Status.Running;
+		}
+
+		public void Reset()
+		{
+			isWaiting = false;
+		}
+	}
 
 	public class ChargeToTarget : IStrategy
 	{

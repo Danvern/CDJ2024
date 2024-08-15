@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumRange: 4
   maximumRange: 8
+  dashPower: 0
+  dashDuration: 0.1
