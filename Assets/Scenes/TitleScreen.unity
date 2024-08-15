@@ -568,6 +568,7 @@ GameObject:
   - component: {fileID: 460887343}
   - component: {fileID: 460887342}
   - component: {fileID: 460887345}
+  - component: {fileID: 460887346}
   m_Layer: 0
   m_Name: Quit
   m_TagString: Untagged
@@ -610,7 +611,19 @@ MonoBehaviour:
   hoverSprite: {fileID: 152576063, guid: b95498717ac423b4fa79698e8118cc43, type: 3}
   onClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 460887346}
+        m_TargetAssemblyTypeName: ExitApplication, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &460887343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -659,6 +672,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ee7078f977687c4283e100a9d688b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &460887346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460887340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71344322dab541429e4ccf9ce49a497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &670926563
@@ -1639,7 +1664,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8928530449826637752}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28e6ecb336a627e42bbb9d4e5f5dd49e, type: 3}
   m_Name: 
