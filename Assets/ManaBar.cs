@@ -5,6 +5,8 @@ using UnityServiceLocator;
 public class ManaBar : MonoBehaviour
 {
 	[SerializeField] Slider activeBar;
+	[SerializeField] Image capImage;
+	[SerializeField] Sprite[] capSprites;
 	Material activeMaterial;
 	float displayValue;
 	float displayValueMax;
@@ -30,6 +32,7 @@ public class ManaBar : MonoBehaviour
 			activeBar.value = (displayValue / displayValueMax);
 		else
 			activeBar.value = (0);
+		capImage.sprite = capSprites[Mathf.FloorToInt(activeBar.value * capSprites.Length)];
     }	
 
 	int CapIndex() {
