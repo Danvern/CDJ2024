@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityServiceLocator;
@@ -61,6 +62,15 @@ public class UIController : MonoBehaviour, IEntityObserver
 
 		//Debug.Log("CurrentPlayerHope:" + DisplayHealth);
 		UpdateElements();
+
+		if (data.Prompt == VoicePrompt.Lose)
+			Lose();
+	}
+
+	IEnumerator WaitAndRestart()
+	{
+		yield return new WaitForSeconds(3f);
+		RestartLevel();
 	}
 
 	public void RestartLevel()
@@ -101,7 +111,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 
 	public void Lose()
 	{
-		Pause();
+		WaitAndRestart();
 	}
 	public void Win()
 	{

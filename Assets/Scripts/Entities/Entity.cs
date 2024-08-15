@@ -153,6 +153,7 @@ public class Entity : EntitySubject, IVisitable
 			var owner = source.GetOwner();
 			if (owner != null && !owner.IsDead())
 				source.GetOwner().AddScore(scoreValue);
+			NotifyObservers(GetData(VoicePrompt.Lose));
 
 		};
 
