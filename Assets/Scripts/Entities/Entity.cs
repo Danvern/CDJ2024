@@ -16,6 +16,7 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private int scoreValue = 100;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
+	[SerializeField] bool isSecondaryTriggeredOnDeath;
 	[SerializeField] private Weapon dashWeapon;
 	[SerializeField] private bool isEnemy = true;
 	[SerializeField] private bool isUsingPickups = false;
@@ -206,6 +207,9 @@ public class Entity : EntitySubject, IVisitable
 	private void Kill()
 	{
 		if (IsDead) return;
+
+		if (isSecondaryTriggeredOnDeath)
+			SecondaryFire(true);
 
 		//TODO: Temp music switch
 		AudioManager.Instance.SetCombatActive(true);
