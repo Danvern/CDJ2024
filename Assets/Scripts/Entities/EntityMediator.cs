@@ -1,3 +1,4 @@
+using BlackboardSystem;
 using Pathfinding;
 using UnityEngine;
 using UnityServiceLocator;
@@ -25,6 +26,15 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	{
 		return entity;
 
+	}
+	public Vector3 GetTargetPosition()
+	{
+		Blackboard blackboard = GetServiceLocator().Get<BlackboardController>().GetBlackboard();
+		var targetKey = blackboard.GetOrRegisterKey("Target");
+		if (blackboard == null) return Vector3.zero;
+			if (blackboard.TryGetValue(targetKey, out EntityMediator target))
+				return target.GetTransform().position;
+		return Vector3.zero;
 	}
 	public float GetHealth() { return health.GetHealthCurrent(); }
 	public float GetHealthMax() { return health.GetHealthMax(); }

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Burst.Intrinsics;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -115,6 +116,10 @@ public class ProjectileBase : MonoBehaviour, IOwnedEntity
 			{
 				item.color = Color.clear;
 			}
+		foreach (var item in GetComponentsInChildren<ParticleSystem>())
+		{
+			item.Stop();
+		}
 		StartCoroutine(DestroyAfterDelay(deletionDelay));
 	}
 

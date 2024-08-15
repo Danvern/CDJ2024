@@ -13,6 +13,7 @@ public class Attack : MonoBehaviour
 {
 	[SerializeField] GameObject projectile;
 	[SerializeField] bool melee = false;
+	[SerializeField] bool generateAtTarget = false;
 	[SerializeField] Object[] effectData = new Object[0];
 	[SerializeField] private EventReference attackSFX;
 	IAttackEffect[] effects = new IAttackEffect[0];
@@ -34,6 +35,8 @@ public class Attack : MonoBehaviour
 
 		if (melee)
 			ProjectileManager.Instance.GenerateProjectile(projectile, transform.position, transform.rotation, transform, owner);
+		if (generateAtTarget)
+			ProjectileManager.Instance.GenerateProjectile(projectile, owner.GetTargetPosition(), transform.rotation, owner);
 		else
 			ProjectileManager.Instance.GenerateProjectile(projectile, transform.position, transform.rotation, owner);
 

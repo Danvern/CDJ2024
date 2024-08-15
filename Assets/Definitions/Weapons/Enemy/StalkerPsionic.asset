@@ -23,10 +23,11 @@ MonoBehaviour:
   IsProjectileDestroyer: 0
   IsHitEffectOnlyOnPierce: 0
   IsBlockedByWorld: 0
+  IsInvisibleOnDeath: 1
   DetachOnDeath: 0
   CollisionRadius: 0
   CollisionArc: 0
-  StartingVelocity: 10
+  StartingVelocity: 0
   HitEffect: {fileID: 0}
   DeathEffect: {fileID: 8009197107927425177, guid: 16067fcf5113e2c46b67ac2ea5af32ac,
     type: 3}
