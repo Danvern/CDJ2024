@@ -167,6 +167,7 @@ public class AgentSkirmish : IAgent
 			else
 			{
 				blackboard.SetValue(targetPosition, target.GetPosition());
+				entity.SetAimTarget(target.GetPosition());
 			}
 		});
 	}

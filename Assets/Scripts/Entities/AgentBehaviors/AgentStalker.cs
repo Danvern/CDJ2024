@@ -144,7 +144,6 @@ public class AgentStalker : IAgent
 		attackTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition())));
 		attackTarget.AddChild(new Leaf("DashForward", new DashFromTarget(entity, () => GetTargetPosition(), DashPower, DashDuration, new MovementStrategyForwards())));
 		attackTarget.AddChild(new Leaf("Wait", new WaitStrategy(HoldAfterFire)));
-		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
 		actions.AddChild(attackTarget);
 
 
@@ -197,6 +196,7 @@ public class AgentStalker : IAgent
 			else
 			{
 				blackboard.SetValue(targetPosition, target.GetPosition());
+				entity.SetAimTarget(target.GetPosition());
 			}
 		});
 	}

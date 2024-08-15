@@ -27,15 +27,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		return entity;
 
 	}
-	public Vector3 GetTargetPosition()
-	{
-		Blackboard blackboard = GetServiceLocator().Get<BlackboardController>().GetBlackboard();
-		var targetKey = blackboard.GetOrRegisterKey("Target");
-		if (blackboard == null) return Vector3.zero;
-			if (blackboard.TryGetValue(targetKey, out EntityMediator target))
-				return target.GetTransform().position;
-		return Vector3.zero;
-	}
+
 	public float GetHealth() { return health.GetHealthCurrent(); }
 	public float GetHealthMax() { return health.GetHealthMax(); }
 	public void SetInvulnerable(bool invulnerable, InvincibilitySource source) { health.SetInvulnerable(invulnerable, source); }
@@ -120,6 +112,8 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	public void DashToDirection(Vector3 direction, float power, float slideTime, bool invulnerable = false) => entity?.DashToDirection(direction, power, slideTime, invulnerable);
 	public void MoveToDirection(Vector2 direction) => movement?.MoveToDirection(direction);
 	public void FacePosition(Vector2 position) => entity?.FacePosition(position);
+	public void SetAimTarget(Vector2 position) => entity.SetAimTarget(position);
+	public Vector2 GetAimTarget() => entity.GetAimTarget();
 	public void PrimaryFire(bool pressed) => entity?.PrimaryFire(pressed);
 	public void SecondaryFire(bool pressed) => entity?.SecondaryFire(pressed);
 

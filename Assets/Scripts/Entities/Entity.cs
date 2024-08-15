@@ -20,12 +20,16 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private bool isEnemy = true;
 	[SerializeField] private bool isUsingPickups = false;
 	[SerializeField] private Animator animator;
+	private Vector2 aimTarget;
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private EntityMediator mediator;
 	private int personalScore;
 	private IAgent agent;
 	private const float deletionDelay = 1f;
+
+	public Vector2 GetAimTarget() => aimTarget;
+	public void SetAimTarget(Vector2 value) => aimTarget = value;
 
 	public bool IsUsingPickups() => isUsingPickups;
 	public float GetWaypointCloseness() => waypointCloseness;
