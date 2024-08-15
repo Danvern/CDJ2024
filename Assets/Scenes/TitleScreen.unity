@@ -434,10 +434,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.17604168
     y: 0
-    width: 1
-    height: 1
+    width: 0.33333334
+    height: 0.34444442
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a717774ed7a504f825b84448d489a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: TownArenaV3
+  sceneName: IntroCut
 --- !u!1 &1679790805
 GameObject:
   m_ObjectHideFlags: 0

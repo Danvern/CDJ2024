@@ -40,7 +40,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 		}
 		if (manaBar != null)
 		{
-			manaBar.UpdateDisplayValue(DisplayManaMax);
+			manaBar.UpdateDisplayValue(DisplayMana);
 			manaBar.UpdateDisplayValueMax(DisplayManaMax);
 
 		}

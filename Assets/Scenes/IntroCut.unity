@@ -1096,6 +1096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6265574054028800837}
   - component: {fileID: 6265574054028800838}
+  - component: {fileID: 6265574054028800839}
   m_Layer: 5
   m_Name: TitleScreen
   m_TagString: Untagged
@@ -1287,6 +1288,19 @@ MonoBehaviour:
   onCutsceneEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6265574054028800839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460035245679792623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a717774ed7a504f825b84448d489a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: TownArenaV3
 --- !u!223 &6472148232713579638
 Canvas:
   m_ObjectHideFlags: 0
