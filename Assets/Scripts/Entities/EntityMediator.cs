@@ -43,6 +43,8 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	public bool IsUsingPickups() => entity.IsUsingPickups();
 	public int GetAmmo(AmmoType type) { return ammunition.GetAmmo(type); }
 	public int GetAmmoMax(AmmoType type) { return ammunition.GetAmmoMax(type); }
+	public void SetAmmo(AmmoType type, int amount) { ammunition.SetAmmo(type, amount); }
+	public void SetAmmoMax(AmmoType type, int amount) { ammunition.SetAmmoMax(type, amount); }
 	public IUpgradeStats GetUpgradeStats() { return null; }
 	public IAffinity GetAffinity() { return null; }
 	public ServiceLocator GetServiceLocator() => ServiceLocator.For(entity);
