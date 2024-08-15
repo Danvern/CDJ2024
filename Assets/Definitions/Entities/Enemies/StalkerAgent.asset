@@ -16,4 +16,4 @@ MonoBehaviour:
   maximumRange: 2.5
   dashPower: 10
   dashDuration: 0.1
-  holdAfterFire: 1.5
+  holdAfterFire: 4

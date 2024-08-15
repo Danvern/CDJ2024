@@ -19,3 +19,5 @@ MonoBehaviour:
     idealTimingWindow: 1
     chargeAttack: 0
   MaxCombo: 1
+  FireDelay: 2
+  MagicCost: 0

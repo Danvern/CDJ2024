@@ -24,7 +24,7 @@ MonoBehaviour:
   IsHitEffectOnlyOnPierce: 0
   IsBlockedByWorld: 0
   DetachOnDeath: 0
-  CollisionRadius: 1
+  CollisionRadius: 1.5
   CollisionArc: 270
   StartingVelocity: 10
   HitEffect: {fileID: 0}
