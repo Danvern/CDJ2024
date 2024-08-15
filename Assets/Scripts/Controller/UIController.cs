@@ -8,6 +8,8 @@ public class UIController : MonoBehaviour, IEntityObserver
 	public float DisplayHealthMax { get; set; } = 0;
 	public float DisplayMana { get; set; } = 0;
 	public float DisplayManaMax { get; set; } = 0;
+	public float DisplayScore { get; set; } = 0;
+	ScoreDisplay scoreDisplay;
 	HealthIconBar healthIconBar;
 	ManaBar manaBar;
 	public void SetPrimaryPlayer(EntityMediator targetPlayer) => targetPlayer.AddObserver(this);
@@ -22,6 +24,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 	{
 		healthIconBar = ServiceLocator.ForSceneOf(this).Get<HealthIconBar>();
 		manaBar = ServiceLocator.ForSceneOf(this).Get<ManaBar>();
+		scoreDisplay = ServiceLocator.ForSceneOf(this).Get<ScoreDisplay>();
 		UpdateElements();
 	}
 
@@ -38,6 +41,11 @@ public class UIController : MonoBehaviour, IEntityObserver
 			manaBar.UpdateDisplayValueMax(DisplayManaMax);
 
 		}
+		if (scoreDisplay)
+		{
+			scoreDisplay.UpdateDisplayValue(DisplayScore);
+
+		}
 	}
 
 	public void OnNotify(EntityData data)
@@ -46,6 +54,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 		DisplayHealthMax = data.MaxHealth;
 		DisplayMana = data.CurrentMana;
 		DisplayManaMax = data.MaxMana;
+		DisplayScore = data.Score;
 
 		Debug.Log("CurrentPlayerHope:" + DisplayHealth);
 		UpdateElements();
