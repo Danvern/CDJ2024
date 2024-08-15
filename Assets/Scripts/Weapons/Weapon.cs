@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
 		if (data.FireDelay > 0)
 		{
 
-			GetOwner().SetAnimationBool(GetAnimationTag()+"Started", true);
+			GetOwner().SetAnimationBool(GetAnimationTag() + "Started", true);
 			StartCoroutine(TriggerAfterDelay(true, data.FireDelay));
 
 		}
@@ -56,7 +56,7 @@ public class Weapon : MonoBehaviour
 		// }
 		if (data.FireDelay > 0)
 		{
-			GetOwner().SetAnimationBool(GetAnimationTag()+"Started", false);
+			GetOwner().SetAnimationBool(GetAnimationTag() + "Started", false);
 			StartCoroutine(TriggerAfterDelay(false, data.FireDelay));
 
 		}
@@ -86,7 +86,13 @@ public class Weapon : MonoBehaviour
 		if (attacks.Length <= index)
 			return;
 
-		attacks[index].Activate();
+		if (!data.IsFiringEveryAttack)
+			attacks[index].Activate();
+		else
+			foreach (var item in attacks)
+			{
+				item.Activate();
+			}
 		GetOwner().SetAnimationBool(GetAnimationTag(), true);
 	}
 
@@ -95,7 +101,13 @@ public class Weapon : MonoBehaviour
 		if (attacks.Length <= index)
 			return;
 
-		attacks[index].Deactivate();
+		if (!data.IsFiringEveryAttack)
+			attacks[index].Deactivate();
+		else
+			foreach (var item in attacks)
+			{
+				item.Deactivate();
+			}
 		GetOwner().SetAnimationBool(GetAnimationTag(), false);
 	}
 	public float GetLastAttackTime() => logic.GetLastAttackTime();
