@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2a65817ec2bef43bb5ad16b4d760b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentFactory: {fileID: 11400000, guid: 0d5ea5e5bb0e5bd48a8fc360a7c60509, type: 2}
+  agentFactory: {fileID: 11400000, guid: a3fab743dd85f7844be333ff0416caaa, type: 2}
   healthData: {fileID: 11400000, guid: 50e6c4619d0195e4e909bb85aeaf22a6, type: 2}
   waypointCloseness: 0.75
   speed: 1
