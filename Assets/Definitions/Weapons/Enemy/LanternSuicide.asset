@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d670d1e933167e9409e1a47e4cd70cca, type: 3}
-  m_Name: LanternExplode
+  m_Name: LanternSuicide
   m_EditorClassIdentifier: 
   AttackDefinitions:
   - id: 0
@@ -20,6 +20,6 @@ MonoBehaviour:
     chargeAttack: 0
   MaxCombo: 1
   IsFiringEveryAttack: 0
-  IsSuicide: 0
-  FireDelay: 0.35
+  IsSuicide: 1
+  FireDelay: 0
   MagicCost: 0

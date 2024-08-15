@@ -146,6 +146,7 @@ public class Entity : EntitySubject, IVisitable
 		if (drops != null)
 			health.EntityKilled += drops.DropReward;
 		health.EntityKilled += (source) => {
+			if (source.OrNull() == null) return;
 			var owner = source.GetOwner();
 			if (owner != null && !owner.IsDead())
 				source.GetOwner().AddScore(scoreValue);

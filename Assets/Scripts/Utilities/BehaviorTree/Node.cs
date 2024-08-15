@@ -103,14 +103,14 @@ namespace Pathfinding.BehaviourTrees
 				switch (child.Process())
 				{
 					case Status.Running:
-						Debug.Log(child.ToString()+" RUNNING");
+						//Debug.Log(child.ToString()+" RUNNING");
 						return Status.Running;
 					case Status.Success:
 						Reset();
-						Debug.Log(child.ToString()+" SUCCESS");
+						//Debug.Log(child.ToString()+" SUCCESS");
 						return Status.Success;
 					default:
-						Debug.Log(child.ToString()+" FAILURE");
+						//Debug.Log(child.ToString()+" FAILURE");
 						continue;
 				}
 			}

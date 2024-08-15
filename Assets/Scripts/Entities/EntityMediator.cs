@@ -116,6 +116,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 	public Vector2 GetAimTarget() => entity.GetAimTarget();
 	public void PrimaryFire(bool pressed) => entity?.PrimaryFire(pressed);
 	public void SecondaryFire(bool pressed) => entity?.SecondaryFire(pressed);
+	public void SelfDestruct() => health.DoDamage(health.GetHealthMax() * 2);
 
 
 }

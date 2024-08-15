@@ -83,6 +83,12 @@ public class Weapon : MonoBehaviour
 
 	public void ActivateAttack(int index)
 	{
+		if (data.IsSuicide)
+		{
+			GetOwner().SelfDestruct();
+			return;
+
+		}
 		if (attacks.Length <= index)
 			return;
 
@@ -98,6 +104,11 @@ public class Weapon : MonoBehaviour
 
 	public void DeactivateAttack(int index)
 	{
+		if (data.IsSuicide)
+		{
+			return;
+
+		}
 		if (attacks.Length <= index)
 			return;
 
