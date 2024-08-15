@@ -15,6 +15,7 @@ public class ProjectileDamageData : ScriptableObject
 	public bool IsProjectileDestroyer = false;
 	public bool IsHitEffectOnlyOnPierce = false;
 	public bool IsBlockedByWorld = false;
+	public bool IsInvisibleOnDeath = true;
 	public bool DetachOnDeath = false;
 	public float CollisionRadius = 1;
 	public float CollisionArc = 360;

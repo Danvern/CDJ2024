@@ -8,6 +8,8 @@ public class AgentStalkerFactory : IAgentFactory
 		var agent = new AgentStalker.Builder(entity)
 			.WithMinRange(minimumRange)
 			.WithMaxRange(maximumRange)
+			.WithMaxRangeAlternate(maximumRange)
+			.WithMinRangeAlternate(minimumRange)
 			.WithDashPower(dashPower)
 			.WithDashDuration(dashDuration)
 			.WithHoldAfterFire(holdAfterFire)
@@ -17,6 +19,8 @@ public class AgentStalkerFactory : IAgentFactory
 	}
 	[SerializeField] float minimumRange;
 	[SerializeField] float maximumRange;
+	[SerializeField] float minimumRangeAlternate;
+	[SerializeField] float maximumRangeAlternate;
 	[SerializeField] float dashPower;
 	[SerializeField] float dashDuration;
 	[SerializeField] float holdAfterFire;

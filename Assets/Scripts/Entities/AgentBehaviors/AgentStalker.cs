@@ -13,6 +13,8 @@ public class AgentStalker : IAgent
 
 	public float MinimumRange { get; set; } = 0;
 	public float MaximumRange { get; set; } = 0;
+	public float MinimumRangeAlternate { get; set; } = 0;
+	public float MaximumRangeAlternate { get; set; } = 0;
 	public float SensingRange { get; set; } = 0;
 
 	public float DashPower { get; set; } = 8;
@@ -22,8 +24,10 @@ public class AgentStalker : IAgent
 	public class Builder
 	{
 		private EntityMediator entity;
-		private float maxRange = 8;
-		private float minRange = 4;
+		private float maxRange = 2;
+		private float minRange = 0;
+		private float maxRangeAlternate = 8;
+		private float minRangeAlternate = 4;
 		private float senseRange = 16;
 		float power;
 		float duration;
@@ -40,6 +44,16 @@ public class AgentStalker : IAgent
 		public Builder WithMinRange(float min)
 		{
 			minRange = min;
+			return this;
+		}
+		public Builder WithMaxRangeAlternate(float max)
+		{
+			maxRangeAlternate = max;
+			return this;
+		}
+		public Builder WithMinRangeAlternate(float min)
+		{
+			minRangeAlternate = min;
 			return this;
 		}
 		public Builder WithSenseRange(float sense)
@@ -68,6 +82,8 @@ public class AgentStalker : IAgent
 			{
 				MaximumRange = maxRange,
 				MinimumRange = minRange,
+				MaximumRangeAlternate = maxRangeAlternate,
+				MinimumRangeAlternate = minRangeAlternate,
 				SensingRange = senseRange,
 				DashPower = power,
 				DashDuration = duration,
@@ -114,6 +130,11 @@ public class AgentStalker : IAgent
 			float distance = Vector3.Distance(targetPosition, entity.GetPosition());
 			return distance < MaximumRange;
 		}
+		bool IsInAlternateRange(Vector2 targetPosition)
+		{
+			float distance = Vector3.Distance(targetPosition, entity.GetPosition());
+			return distance < MaximumRangeAlternate && distance > MinimumRangeAlternate;
+		}
 		Condition isAlive = new Condition(() => !entity.IsDead());
 		Condition isDead = new Condition(() => entity.IsDead());
 
@@ -124,8 +145,18 @@ public class AgentStalker : IAgent
 		attackTarget.AddChild(new Leaf("DashForward", new DashFromTarget(entity, () => GetTargetPosition(), DashPower, DashDuration, new MovementStrategyForwards())));
 		attackTarget.AddChild(new Leaf("Wait", new WaitStrategy(HoldAfterFire)));
 		attackTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
-
 		actions.AddChild(attackTarget);
+
+
+		Sequence snipeTarget = new Sequence("AttackTarget", 150);
+		snipeTarget.AddChild(new Leaf("IsAlive?", isAlive));
+		snipeTarget.AddChild(new Leaf("isTargetNear?", new Condition(() => GetTarget() != null && IsInAlternateRange(GetTargetPosition()))));
+		snipeTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
+		snipeTarget.AddChild(new Leaf("AttackPlayer", new AttackTowardsDirection(entity, () => GetTargetPosition(), primary: false)));
+		//snipeTarget.AddChild(new Leaf("DashForward", new DashFromTarget(entity, () => GetTargetPosition(), DashPower, DashDuration, new MovementStrategyBackwardsRandom())));
+		snipeTarget.AddChild(new Leaf("Wait", new WaitStrategy(HoldAfterFire)));
+		snipeTarget.AddChild(new Leaf("Stop", new StopMoving(entity)));
+		actions.AddChild(snipeTarget);
 
 		Selector goToPlayer = new Selector("GoToPlayer", 50);
 		Sequence goDirectly = new Sequence("ApproachPlayerDirectly");

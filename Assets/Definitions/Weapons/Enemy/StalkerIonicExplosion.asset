@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96ac5387efbb804ab5b893a795ba7da, type: 3}
+  m_Name: StalkerIonicExplosion
+  m_EditorClassIdentifier: 
+  Lifetime: 0.4
+  DamageMax: 10
+  DamageMin: 8
+  Piercing: 0
+  Knockback: 1
+  KnockbackStun: 0.25
+  IsIndescriminate: 1
+  IsExplosion: 1
+  IsProjectileDestroyer: 0
+  IsHitEffectOnlyOnPierce: 0
+  IsBlockedByWorld: 0
+  IsInvisibleOnDeath: 0
+  DetachOnDeath: 0
+  CollisionRadius: 2
+  CollisionArc: 360
+  StartingVelocity: 10
+  HitEffect: {fileID: 0}
+  DeathEffect: {fileID: 0}
+  SmallKillSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  DamageSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 

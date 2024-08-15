@@ -12,7 +12,7 @@ public class ProjectileBase : MonoBehaviour, IOwnedEntity
 	private EntityMediator owner;
 	private Transform anchor;
 	private Rigidbody2D rb;
-	private const float deletionDelay = 1f;
+	private const float deletionDelay = 2f;
 	bool tryKill = false;
 
 	public bool CanCollideWith(EntityMediator projectileOwner)
@@ -110,10 +110,11 @@ public class ProjectileBase : MonoBehaviour, IOwnedEntity
 			anchor = null;
 		if (rb != null)
 			rb.velocity = Vector3.zero;
-		foreach (SpriteRenderer item in GetComponentsInChildren<SpriteRenderer>())
-		{
-			item.color = Color.clear;
-		}
+		if (projectileDamageData.IsInvisibleOnDeath)
+			foreach (SpriteRenderer item in GetComponentsInChildren<SpriteRenderer>())
+			{
+				item.color = Color.clear;
+			}
 		StartCoroutine(DestroyAfterDelay(deletionDelay));
 	}
 
