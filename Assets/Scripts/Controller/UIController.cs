@@ -15,8 +15,8 @@ public class UIController : MonoBehaviour, IEntityObserver
 	// Start is called before the first frame update
 	void Awake()
 	{
-ServiceLocator.ForSceneOf(this).Register(this);	
-}
+		ServiceLocator.ForSceneOf(this).Register(this);
+	}
 
 	void Start()
 	{
@@ -53,7 +53,7 @@ ServiceLocator.ForSceneOf(this).Register(this);
 
 	public void RestartLevel()
 	{
-	SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
 	}
 

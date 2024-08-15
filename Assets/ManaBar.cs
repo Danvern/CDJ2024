@@ -4,7 +4,7 @@ using UnityServiceLocator;
 
 public class ManaBar : MonoBehaviour
 {
-	[SerializeField] Image activeBar;
+	[SerializeField] Slider activeBar;
 	Material activeMaterial;
 	float displayValue;
 	float displayValueMax;
@@ -14,8 +14,6 @@ public class ManaBar : MonoBehaviour
 
 	void Awake()
 	{
-		activeBar.material = new Material(activeBar.material);
-		activeMaterial = activeBar.material;
 		ServiceLocator.ForSceneOf(this).Register(this);
 
 	}
@@ -29,9 +27,9 @@ public class ManaBar : MonoBehaviour
     void LateUpdate()
     {
 		if (displayValueMax > 0)
-			activeMaterial.SetFloat("_Fullness", displayValue / displayValueMax);
+			activeBar.value = (displayValue / displayValueMax);
 		else
-			activeMaterial.SetFloat("_Fullness", 0);
+			activeBar.value = (0);
     }	
 
 	int CapIndex() {
