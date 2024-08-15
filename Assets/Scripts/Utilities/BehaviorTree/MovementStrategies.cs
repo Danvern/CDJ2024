@@ -5,6 +5,14 @@ public interface IMovementStrategy
 {
 	public Vector3 GetDirection(Vector3 position, Vector3 targetPosition);
 }
+public class MovementStrategyForwards : IMovementStrategy
+{
+	public Vector3 GetDirection(Vector3 position, Vector3 targetPosition)
+	{
+		return targetPosition - position;
+	}
+}
+
 public class MovementStrategyBackwards : IMovementStrategy
 {
 	public Vector3 GetDirection(Vector3 position, Vector3 targetPosition)

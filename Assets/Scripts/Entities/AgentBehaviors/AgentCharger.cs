@@ -135,6 +135,7 @@ public class AgentCharger : IAgent
 			else
 			{
 				blackboard.SetValue(targetPosition, target.GetPosition());
+				entity.SetAimTarget(target.GetPosition());
 			}
 		});
 	}

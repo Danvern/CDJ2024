@@ -18,10 +18,11 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private bool isExplosion = false;
 	private bool isProjectileDestroyer = false;
 	private ProjectileDamageData data;
+	private ProjectileBase mediator;
 
 	private Dictionary<Transform, float> entityCollisions = new Dictionary<Transform, float>();
 
-	public ProjectileDamageLogic(ProjectileDamageData data)
+	public ProjectileDamageLogic(ProjectileDamageData data, ProjectileBase mediator)
 	{
 		this.data = data;
 		lifetime = data.Lifetime;
@@ -36,6 +37,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		isIndescriminate = data.IsIndescriminate;
 		isExplosion = data.IsExplosion;
 		isProjectileDestroyer = data.IsProjectileDestroyer;
+		this.mediator = mediator;
 	}
 
 	public float GetLifetime() { return lifetime; }
@@ -118,12 +120,16 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 					if (entityMediator.IsDead())
 					{
-						if (!data.SmallKillSFX.IsNull)
+						if (!data.HeavyKillSFX.IsNull && entityMediator.IsHeavy())
+							AudioManager.Instance.PlayOneShot(data.HeavyKillSFX, transform.position);
+						else if (!data.SmallKillSFX.IsNull)
 							AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
 					}
 					else
 					{
-						if (!data.DamageSFX.IsNull)
+						if (!data.HeavyDamageSFX.IsNull && entityMediator.IsHeavy())
+							AudioManager.Instance.PlayOneShot(data.HeavyDamageSFX, transform.position);
+						else if (!data.DamageSFX.IsNull)
 							AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
 					}
 					if (piercing < 0 && !IsExplosion())
@@ -152,7 +158,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 
 	public void Visit(EntityHealthLogic visitable)
 	{
-		visitable.DoDamage(GetDamageRandom());
+		visitable.DoDamage(GetDamageRandom(), mediator);
 		//Debug.Log(visitable.ToString());
 
 	}

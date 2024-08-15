@@ -11,7 +11,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/OldVersions/TownArena.unity
     guid: 8a6c2111490b2174b9df37f1c05e3249
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OldVersions/TownArenaV2 1.unity
     guid: 11949b8aebeb80349b8eade9d677c64e
+  - enabled: 1
+    path: Assets/Scenes/TownArenaV3.unity
+    guid: 7166f84eb9af4fd4e8963a392b4dd9b6
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 0df5ab2b64258de42a40c7864542fd07
+  - enabled: 1
+    path: Assets/Scenes/IntroCut.unity
+    guid: 605642c9acbd4794c872f007d22f3d21
   m_configObjects: {}

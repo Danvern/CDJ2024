@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Burst.Intrinsics;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -12,7 +13,7 @@ public class ProjectileBase : MonoBehaviour, IOwnedEntity
 	private EntityMediator owner;
 	private Transform anchor;
 	private Rigidbody2D rb;
-	private const float deletionDelay = 1f;
+	private const float deletionDelay = 2f;
 	bool tryKill = false;
 
 	public bool CanCollideWith(EntityMediator projectileOwner)
@@ -50,7 +51,7 @@ public class ProjectileBase : MonoBehaviour, IOwnedEntity
 	// Start is called before the first frame update
 	void Start()
 	{
-		damageLogic = new ProjectileDamageLogic(projectileDamageData);
+		damageLogic = new ProjectileDamageLogic(projectileDamageData, this);
 		timeCreated = Time.time;
 		rb = GetComponent<Rigidbody2D>();
 		Propell(transform.up * damageLogic.GetSpeed());
@@ -110,9 +111,14 @@ public class ProjectileBase : MonoBehaviour, IOwnedEntity
 			anchor = null;
 		if (rb != null)
 			rb.velocity = Vector3.zero;
-		foreach (SpriteRenderer item in GetComponentsInChildren<SpriteRenderer>())
+		if (projectileDamageData.IsInvisibleOnDeath)
+			foreach (SpriteRenderer item in GetComponentsInChildren<SpriteRenderer>())
+			{
+				item.color = Color.clear;
+			}
+		foreach (var item in GetComponentsInChildren<ParticleSystem>())
 		{
-			item.color = Color.clear;
+			item.Stop();
 		}
 		StartCoroutine(DestroyAfterDelay(deletionDelay));
 	}

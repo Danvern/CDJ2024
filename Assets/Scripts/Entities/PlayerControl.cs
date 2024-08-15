@@ -19,26 +19,40 @@ public class PlayerControl : MonoBehaviour
 	{
 		ServiceLocator.ForSceneOf(this).Get<AgentDirector>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
 		ServiceLocator.ForSceneOf(this).Get<UIController>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
+		ServiceLocator.ForSceneOf(this).Get<VoiceController>().SetPrimaryPlayer(ServiceLocator.For(this).Get<EntityMediator>());
 	}
 
 	public void OnMove(InputValue value)
 	{
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		moveDirection = value.Get<Vector2>();
 	}
 
 	public void OnFire(InputValue value)
+
 	{
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		entity.PrimaryFire(value.isPressed);
 	}
 
 	public void OnFireSecondary(InputValue value)
 	{
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		entity.SecondaryFire(value.isPressed);
 	}
-	
+
 	public void OnDash(InputValue value)
 	{
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		entity.DashActivate(value.isPressed);
+	}
+	public void OnPause(InputValue value)
+	{
+		ServiceLocator.ForSceneOf(this).Get<UIController>().TogglePause();
 	}
 
 	/// <summary>
@@ -90,6 +104,8 @@ public class PlayerControl : MonoBehaviour
 		if (entity == null)
 			return;
 
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		entity.MoveToDirection(new Vector3(moveDirection.x, moveDirection.y, 0));
 
 		// Debug.Log(moveDirection);

@@ -47,6 +47,7 @@ MonoBehaviour:
   projectile: {fileID: 8009197107927425177, guid: 777f98c9d1ff00a438f7cc16c8426d28,
     type: 3}
   melee: 1
+  generateAtTarget: 0
   effectData: []
   attackSFX:
     Guid:
@@ -102,6 +103,7 @@ MonoBehaviour:
   projectile: {fileID: 8009197107927425177, guid: be47329d86fdfaf458638eb0fd8ef88f,
     type: 3}
   melee: 1
+  generateAtTarget: 0
   effectData:
   - {fileID: 11400000, guid: 0774d81618747f74b9b7f27121b8c4ad, type: 2}
   attackSFX:
@@ -158,6 +160,7 @@ MonoBehaviour:
   projectile: {fileID: 8009197107927425177, guid: d09141561693a4d45a50d00c4258a178,
     type: 3}
   melee: 1
+  generateAtTarget: 0
   effectData: []
   attackSFX:
     Guid:
@@ -213,14 +216,15 @@ MonoBehaviour:
   projectile: {fileID: 8009197107927425177, guid: 5d7fed4aa6de8244d9c120356d4a3a67,
     type: 3}
   melee: 1
+  generateAtTarget: 0
   effectData: []
   attackSFX:
     Guid:
-      Data1: 78615263
-      Data2: 1197672482
-      Data3: -30922872
-      Data4: 1658677162
-    Path: event:/player/Slash_def
+      Data1: 619099604
+      Data2: 1105930783
+      Data3: -1705420919
+      Data4: 1502076903
+    Path: event:/player/Slash_ontime
 --- !u!1 &5283588714837828921
 GameObject:
   m_ObjectHideFlags: 0

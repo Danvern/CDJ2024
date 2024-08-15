@@ -379,7 +379,7 @@ namespace Pathfinding.BehaviourTrees
 		readonly Func<Vector3> target;
 		bool primary = true;
 		bool fired = false;
-		float lastCalcTime = 0f;
+		//float lastCalcTime = 0f;
 
 		public AttackTowardsDirection(EntityMediator entity, Func<Vector3> target, bool primary = true)
 		{
@@ -391,7 +391,10 @@ namespace Pathfinding.BehaviourTrees
 		public Node.Status Process()
 		{
 			entity.FacePosition(target());
-			entity.PrimaryFire(!fired);
+			if (primary)
+				entity.PrimaryFire(!fired);
+			else
+				entity.SecondaryFire(!fired);
 			fired = !fired;
 			// entity.LookAt(target.position.With(y:entity.position.y));
 			// Debug.Log("Fired: " + fired);

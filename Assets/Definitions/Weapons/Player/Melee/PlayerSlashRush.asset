@@ -23,6 +23,7 @@ MonoBehaviour:
   IsProjectileDestroyer: 0
   IsHitEffectOnlyOnPierce: 0
   IsBlockedByWorld: 0
+  IsInvisibleOnDeath: 1
   DetachOnDeath: 1
   CollisionRadius: 1
   CollisionArc: 120
@@ -44,3 +45,17 @@ MonoBehaviour:
       Data3: -1067571063
       Data4: -266698099
     Path: event:/player/Slash_dmg
+  HeavyKillSFX:
+    Guid:
+      Data1: 867810895
+      Data2: 1335410747
+      Data3: 1579059092
+      Data4: 1651029453
+    Path: event:/player/Slash_killbig
+  HeavyDamageSFX:
+    Guid:
+      Data1: -1811755041
+      Data2: 1267883621
+      Data3: 1180871865
+      Data4: -1283704766
+    Path: event:/player/Slash_hitbig

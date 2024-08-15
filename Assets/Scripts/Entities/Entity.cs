@@ -16,16 +16,23 @@ public class Entity : EntitySubject, IVisitable
 	[SerializeField] private int scoreValue = 100;
 	[SerializeField] private Weapon primaryWeapon;
 	[SerializeField] private Weapon secondaryWeapon;
+	[SerializeField] bool isSecondaryTriggeredOnDeath;
 	[SerializeField] private Weapon dashWeapon;
 	[SerializeField] private bool isEnemy = true;
 	[SerializeField] private bool isUsingPickups = false;
 	[SerializeField] private Animator animator;
+	private Vector2 aimTarget;
 	private IMovementLogic movement;
 	private EntityHealthLogic health;
 	private EntityMediator mediator;
 	private int personalScore;
 	private IAgent agent;
+	[SerializeField] bool isHeavy = false;
 	private const float deletionDelay = 1f;
+
+	public bool IsHeavy() => isHeavy;
+	public Vector2 GetAimTarget() => aimTarget;
+	public void SetAimTarget(Vector2 value) => aimTarget = value;
 
 	public bool IsUsingPickups() => isUsingPickups;
 	public float GetWaypointCloseness() => waypointCloseness;
@@ -140,7 +147,9 @@ public class Entity : EntitySubject, IVisitable
 		DropController drops = GetComponent<DropController>();
 		if (drops != null)
 			health.EntityKilled += drops.DropReward;
-		health.EntityKilled += (source) => {
+		health.EntityKilled += (source) =>
+		{
+			if (source.OrNull() == null) return;
 			var owner = source.GetOwner();
 			if (owner != null && !owner.IsDead())
 				source.GetOwner().AddScore(scoreValue);
@@ -156,13 +165,14 @@ public class Entity : EntitySubject, IVisitable
 				CurrentMana = mediator.GetAmmo(AmmoType.Magic),
 				MaxMana = mediator.GetAmmoMax(AmmoType.Magic),
 				Score = GetPersonalScore(),
+				Prompt = VoicePrompt.Hurt,
 			};
 			NotifyObservers(data);
 		};
-		NotifyObservers(GetData());
+		NotifyObservers(GetData(VoicePrompt.SpawningIn));
 	}
 
-	EntityData GetData()
+	EntityData GetData(VoicePrompt voicePrompt = VoicePrompt.None)
 	{
 		var data = new EntityData
 		{
@@ -170,6 +180,7 @@ public class Entity : EntitySubject, IVisitable
 			MaxHealth = health.GetHealthMax(),
 			CurrentMana = mediator.GetAmmo(AmmoType.Magic),
 			MaxMana = mediator.GetAmmoMax(AmmoType.Magic),
+			Prompt = voicePrompt,
 		};
 		return data;
 	}
@@ -177,6 +188,8 @@ public class Entity : EntitySubject, IVisitable
 	// Update is called once per frame
 	private void FixedUpdate()
 	{
+		if (ServiceLocator.ForSceneOf(this).Get<UIController>().IsPaused())
+			return;
 		agent?.Update();
 		movement?.Update();
 		health?.Update();
@@ -184,9 +197,9 @@ public class Entity : EntitySubject, IVisitable
 		//mediator.SetAnimationBool("IsMovingLeft", movement.IsMovingLeft());
 		if (animator != null)
 		{
-			bool isLookingLeft = transform.rotation.eulerAngles.z > 0f && transform.rotation.eulerAngles.z  < 180f;
+			bool isLookingLeft = transform.rotation.eulerAngles.z > 0f && transform.rotation.eulerAngles.z < 180f;
 			if (movement.IsMovingLeft())
-			animator.transform.localScale = transform.localScale.With(x: -1);
+				animator.transform.localScale = transform.localScale.With(x: -1);
 			else if (movement.GetCurrentSpeed() > 0)
 				animator.transform.localScale = transform.localScale.With(x: 1);
 			else if (isLookingLeft)
@@ -202,6 +215,9 @@ public class Entity : EntitySubject, IVisitable
 	private void Kill()
 	{
 		if (IsDead) return;
+
+		if (isSecondaryTriggeredOnDeath)
+			SecondaryFire(true);
 
 		//TODO: Temp music switch
 		AudioManager.Instance.SetCombatActive(true);

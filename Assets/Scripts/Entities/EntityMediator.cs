@@ -1,3 +1,4 @@
+using BlackboardSystem;
 using Pathfinding;
 using UnityEngine;
 using UnityServiceLocator;
@@ -26,6 +27,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		return entity;
 
 	}
+
 	public float GetHealth() { return health.GetHealthCurrent(); }
 	public float GetHealthMax() { return health.GetHealthMax(); }
 	public void SetInvulnerable(bool invulnerable, InvincibilitySource source) { health.SetInvulnerable(invulnerable, source); }
@@ -40,6 +42,7 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 
 	}
 	public void AddScore(int score) => entity.AddPersonalScore(score);
+	public int GetScore() => entity.GetPersonalScore();
 	public void AddAmmo(AmmoType type, int amount, float maxMultiplier = 1f) { ammunition.AddAmmo(type, amount, maxMultiplier); }
 	public bool IsUsingPickups() => entity.IsUsingPickups();
 	public int GetAmmo(AmmoType type) { return ammunition.GetAmmo(type); }
@@ -105,13 +108,17 @@ public class EntityMediator : IVisitable, ILootMediator, IAmmunitionSource, IHea
 		movement?.Accept(visitor);
 		visitor.Visit(this);
 	}
+	public bool IsHeavy() => entity.IsHeavy();
 
 	public void DashToAim(float power, float slideTime, bool invulnerable = false) => entity?.DashToAim(power, slideTime, invulnerable);
 	public void DashToDirection(Vector3 direction, float power, float slideTime, bool invulnerable = false) => entity?.DashToDirection(direction, power, slideTime, invulnerable);
 	public void MoveToDirection(Vector2 direction) => movement?.MoveToDirection(direction);
 	public void FacePosition(Vector2 position) => entity?.FacePosition(position);
+	public void SetAimTarget(Vector2 position) => entity.SetAimTarget(position);
+	public Vector2 GetAimTarget() => entity.GetAimTarget();
 	public void PrimaryFire(bool pressed) => entity?.PrimaryFire(pressed);
 	public void SecondaryFire(bool pressed) => entity?.SecondaryFire(pressed);
+	public void SelfDestruct() => health.DoDamage(health.GetHealthMax() * 2);
 
 
 }

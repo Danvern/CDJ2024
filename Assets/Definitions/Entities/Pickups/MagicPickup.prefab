@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb4bf873b351df48a03c06ed51d2b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 371393bf136d02b409bd07cba2a7ad1a, type: 2}
+  stats: {fileID: 11400000, guid: 04149203050c34d46a8732211951a5c1, type: 2}
   <ScaleCurve>k__BackingField:
     serializedVersion: 2
     m_Curve:

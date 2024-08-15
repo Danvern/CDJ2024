@@ -12,6 +12,9 @@ public class UIController : MonoBehaviour, IEntityObserver
 	ScoreDisplay scoreDisplay;
 	HealthIconBar healthIconBar;
 	ManaBar manaBar;
+
+	[SerializeField] GameObject PauseScreen;
+	bool paused = false;
 	public void SetPrimaryPlayer(EntityMediator targetPlayer) => targetPlayer.AddObserver(this);
 
 	// Start is called before the first frame update
@@ -37,7 +40,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 		}
 		if (manaBar != null)
 		{
-			manaBar.UpdateDisplayValue(DisplayManaMax);
+			manaBar.UpdateDisplayValue(DisplayMana);
 			manaBar.UpdateDisplayValueMax(DisplayManaMax);
 
 		}
@@ -56,7 +59,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 		DisplayManaMax = data.MaxMana;
 		DisplayScore = data.Score;
 
-		Debug.Log("CurrentPlayerHope:" + DisplayHealth);
+		//Debug.Log("CurrentPlayerHope:" + DisplayHealth);
 		UpdateElements();
 	}
 
@@ -67,10 +70,51 @@ public class UIController : MonoBehaviour, IEntityObserver
 	}
 
 
+	public bool IsPaused() => paused;
+	public void Pause()
+	{
+		if (paused) return;
+
+		PauseScreen.SetActive(true);
+		Time.timeScale = 0;
+		paused = true;
+
+
+	}
+	public void Unpause()
+	{
+		if (!paused) return;
+
+		PauseScreen.SetActive(false);
+		Time.timeScale = 1.0f;
+		paused = false;
+
+
+	}
+	public void TogglePause()
+	{
+		if (paused)
+			Unpause();
+		else
+			Pause();
+	}
+
+	public void Lose()
+	{
+		Pause();
+	}
+	public void Win()
+	{
+		Pause();
+	}
+
+
 
 	// Update is called once per frame
 	void LateUpdate()
 	{
 
 	}
+
+
 }
