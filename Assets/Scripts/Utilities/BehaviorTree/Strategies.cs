@@ -200,6 +200,11 @@ namespace Pathfinding.BehaviourTrees
 		public void Reset() { initialDirection = null; }
 	}
 
+	// public class Dash : DashFromTarget
+	// {
+		
+	// }
+
 	public class DashFromTarget : IStrategy
 	{
 		readonly EntityMediator entity;
@@ -228,7 +233,7 @@ namespace Pathfinding.BehaviourTrees
 				return Node.Status.Success;
 			}
 
-			entity.DashToDirection(entity.GetTransform().position - target(), power, duration);
+			entity.DashToDirection(GetDirection(entity.GetTransform().position, target()), power, duration);
 			if (isLookingForward)
 				entity.FacePosition(target() - entity.GetTransform().position);
 
@@ -236,6 +241,11 @@ namespace Pathfinding.BehaviourTrees
 				return Node.Status.Success;
 			else
 				return Node.Status.Running;
+		}
+
+		protected Vector3 GetDirection(Vector3 position, Vector3 targetPosition)
+		{
+			return position - targetPosition;
 		}
 
 		public void Reset() { }
