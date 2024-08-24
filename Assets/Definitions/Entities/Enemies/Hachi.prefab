@@ -181,10 +181,12 @@ MonoBehaviour:
   scoreValue: 250
   primaryWeapon: {fileID: 2821160958969626481}
   secondaryWeapon: {fileID: 0}
+  isSecondaryTriggeredOnDeath: 0
   dashWeapon: {fileID: 0}
   isEnemy: 1
   isUsingPickups: 0
   animator: {fileID: 2532057923281369954}
+  isHeavy: 0
 --- !u!114 &2006010728388214129
 MonoBehaviour:
   m_ObjectHideFlags: 0

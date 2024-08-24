@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityServiceLocator;
 
-public class WinWhenDead : MonoBehaviour
+public class WinWhenDead : MonoBehaviour, IEntityObserver
 {
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        
+		GetComponent<Entity>().AddObserver(this);
     }
 
+	public void OnNotify(EntityData data)
+	{
+		switch (data.Prompt)
+		{
+			case VoicePrompt.Lose:
+				ServiceLocator.ForSceneOf(this).Get<UIController>().Win();
+				break;
+		}
+	}
+
     // Update is called once per frame
-    void OnDestroy()
+    void OnDisable()
     {
-        ServiceLocator.ForSceneOf(this).Get<UIController>().Win();
+		GetComponent<Entity>().RemoveObserver(this);
     }
 }

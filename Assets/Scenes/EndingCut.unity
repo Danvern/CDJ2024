@@ -1146,6 +1146,7 @@ MonoBehaviour:
   textSpeed: 0.05
   textWordWait: 0.15
   textMinimumWait: 1
+  finalWait: 1
   fadeDuration: 1
   onCutsceneEnd:
     m_PersistentCalls:
