@@ -24,7 +24,9 @@ public class CutsceneHandler : MonoBehaviour
 	[SerializeField] private float scrollMaxOffset = 100f;
 	[SerializeField] private float scrollTime = 10f;
 	[SerializeField] private float scrollDelay = 2f;
+	[SerializeField] private int scrollTrigger = 0;
 	[SerializeField] private RectTransform imageHolderRectTransform;
+
 
 	private int currentIndex = 0;
 	private bool isTextScrolling = false;
@@ -68,9 +70,6 @@ public class CutsceneHandler : MonoBehaviour
 	{
 		Sprite previousImage = null;
 
-		if (useScrollingMode)
-			StartCoroutine(ScrollImage());
-
 		while (currentIndex < images.Count && currentIndex < texts.Count)
 		{
 			Sprite currentImage = images[currentIndex];
@@ -78,6 +77,8 @@ public class CutsceneHandler : MonoBehaviour
 			if (useScrollingMode)
 			{
 				imageHolder.sprite = currentImage;
+				if (currentIndex == scrollTrigger)
+					StartCoroutine(ScrollImage());
 			}
 			else if (currentImage != previousImage)
 			{

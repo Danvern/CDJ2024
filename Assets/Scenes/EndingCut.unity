@@ -645,9 +645,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: test text that is going to be here until that real that dialogue that is
-    real made here real wow etc and you will eat lemons forever and be otherwise
-    interrupted harshly
+  m_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut
+    nunc sed mauris ultricies dignissim vitae ut velit. Aenean quis tellus tincidunt,
+    rutrum mi ut, fringilla eros. Curabitur posuere ut lorem ornare tristique. Proin
+    eu rhoncus nisi. Etiam vitae dui elit. Phasellus id ante ex. Phasellus at metus
+    eget lectus iaculis pellentesque ut ut nibh. Vestibulum eu ligula est. Fusce
+    aliquam lacinia massa, sit amet consectetur tellus euismod sit amet. Nunc nec
+    porta ex, in convallis magna. Nulla convallis erat sit amet lorem mollis dapibus.
+    Sed gravida nulla auctor pellentesque pretium.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -692,7 +697,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -1159,8 +1164,9 @@ MonoBehaviour:
         m_CallState: 2
   useScrollingMode: 1
   scrollMaxOffset: -112
-  scrollTime: 10
+  scrollTime: 20
   scrollDelay: 2
+  scrollTrigger: 4
   imageHolderRectTransform: {fileID: 1066430898}
 --- !u!223 &6472148232713579638
 Canvas:
