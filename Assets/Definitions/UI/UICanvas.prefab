@@ -652,6 +652,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &836785229313859288
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +895,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1191180120795344955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1570,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1992215615963561574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,6 +1778,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2218660753447459495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2060,6 +2080,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2372869105050597844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,6 +2210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2409365548084890361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,6 +2640,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2941790747773364458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3162,6 +3197,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3496873359885734537
 GameObject:
   m_ObjectHideFlags: 0
@@ -4034,6 +4074,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4941623978721771980
 GameObject:
   m_ObjectHideFlags: 0
@@ -4420,6 +4465,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5334049889249662324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4866,6 +4916,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5980223364049917543
 GameObject:
   m_ObjectHideFlags: 0
@@ -5344,6 +5399,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6826319939174239834
 GameObject:
   m_ObjectHideFlags: 0
@@ -5792,6 +5852,7 @@ GameObject:
   - component: {fileID: 4032665520400137849}
   - component: {fileID: 812469636728889758}
   - component: {fileID: 8704720264099151907}
+  - component: {fileID: 5833699562806437757}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -5897,6 +5958,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseScreen: {fileID: 333892707937620719}
+--- !u!114 &5833699562806437757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7320754427282024981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a717774ed7a504f825b84448d489a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: EndingCut
 --- !u!1 &7521614085894277472
 GameObject:
   m_ObjectHideFlags: 0
@@ -6021,6 +6095,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796e3e53f60bd384cb3b8933b3f24748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 0}
+  hoverSprite: {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7631247244855300990
 GameObject:
   m_ObjectHideFlags: 0

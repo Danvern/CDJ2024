@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore;
 using UnityServiceLocator;
 
 public class UIController : MonoBehaviour, IEntityObserver
@@ -16,6 +17,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 
 	[SerializeField] GameObject PauseScreen;
 	bool paused = false;
+	bool playerWon = false;
 	public void SetPrimaryPlayer(EntityMediator targetPlayer) => targetPlayer.AddObserver(this);
 
 	// Start is called before the first frame update
@@ -30,6 +32,7 @@ public class UIController : MonoBehaviour, IEntityObserver
 		manaBar = ServiceLocator.ForSceneOf(this).Get<ManaBar>();
 		scoreDisplay = ServiceLocator.ForSceneOf(this).Get<ScoreDisplay>();
 		UpdateElements();
+		Unpause();
 	}
 
 	void UpdateElements()
@@ -115,7 +118,12 @@ public class UIController : MonoBehaviour, IEntityObserver
 	}
 	public void Win()
 	{
-		Pause();
+		if (!playerWon)
+		{
+			playerWon = true;
+			Unpause();
+			GetComponent<LoadScene>().Load();
+		}
 	}
 
 

@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TownArenaV3.unity
     guid: 7166f84eb9af4fd4e8963a392b4dd9b6
+  - enabled: 1
+    path: Assets/Scenes/EndingCut.unity
+    guid: 172ac0f9bf7a0d644b8c1fbf3946d7e4
   m_configObjects: {}
