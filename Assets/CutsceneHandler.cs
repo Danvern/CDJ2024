@@ -14,6 +14,8 @@ public class CutsceneHandler : MonoBehaviour
 	[SerializeField] private Image imageHolder;
 	[SerializeField] private TextMeshProUGUI textHolder;
 	[SerializeField] private float textSpeed = 0.05f;
+	[SerializeField] private float textWordWait = 0.25f;
+	[SerializeField] private float textMinimumWait = 1f;
 	[SerializeField] private float fadeDuration = 1f;
 	[SerializeField] private UnityEvent onCutsceneEnd;
 
@@ -120,6 +122,7 @@ public class CutsceneHandler : MonoBehaviour
 			yield return new WaitForSeconds(textSpeed);
 		}
 
+		yield return new WaitForSeconds(textWordWait * fullText.WordCount() + textMinimumWait);
 		isTextScrolling = false;
 	}
 

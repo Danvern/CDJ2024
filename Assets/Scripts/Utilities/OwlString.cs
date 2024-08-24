@@ -45,6 +45,12 @@ public static class OwlString
         return values.ToArray();
     }
 
+	public static int WordCount(this string str)
+	{
+		char[] whitespace = new char[] {' ', '\n', '\r'};
+		return str.Split(whitespace, StringSplitOptions.RemoveEmptyEntries).Length;
+	}
+
 	/// <summary>
     /// Computes the FNV-1a hash for the input string. 
     /// The FNV-1a hash is a non-cryptographic hash function known for its speed and good distribution properties.
