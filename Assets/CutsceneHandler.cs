@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class CutsceneHandler : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class CutsceneHandler : MonoBehaviour
 	private bool isTextScrolling = false;
 	private bool isSkipping = false;
 	private Coroutine textCoroutine;
+	private WaitForSeconds autoScrollWait;
 
 	private void Start()
 	{
@@ -122,8 +124,16 @@ public class CutsceneHandler : MonoBehaviour
 			textHolder.text += fullText[i];
 			yield return new WaitForSeconds(textSpeed);
 		}
+		isSkipping = false;
+		float startWaitTime = Time.unscaledTime;
+		float targetWaitTime = textWordWait * fullText.WordCount() + textMinimumWait;
 
-		yield return new WaitForSeconds(textWordWait * fullText.WordCount() + textMinimumWait);
+		while (Time.unscaledTime - startWaitTime < targetWaitTime && !isSkipping)
+		{
+			yield return new WaitForSeconds(textSpeed);
+		}
+
+		yield return autoScrollWait;
 		isTextScrolling = false;
 	}
 
@@ -152,7 +162,7 @@ public class CutsceneHandler : MonoBehaviour
 
 		// Scroll the image downwards
 		Vector2 initialPosition = imageHolderRectTransform.anchoredPosition;
-		DOTween.To(() => initialPosition, x => imageHolderRectTransform.anchoredPosition = x, initialPosition.Add(y: scrollMaxOffset), scrollTime).SetEase(Ease.OutCubic);
+		DOTween.To(() => initialPosition, x => imageHolderRectTransform.anchoredPosition = x, initialPosition.Add(y: scrollMaxOffset), scrollTime).SetEase(Ease.OutCubic).SetId(this);
 		// while (true)
 		// {
 		// 	imageHolderRectTransform.anchoredPosition += Vector2.down * scrollTime * Time.deltaTime;
@@ -171,5 +181,10 @@ public class CutsceneHandler : MonoBehaviour
 				textHolder.text = "";
 			isTextScrolling = false;
 		}
+	}
+
+	void OnDisable()
+	{
+		DOTween.Kill(this);
 	}
 }
