@@ -1289,6 +1289,8 @@ MonoBehaviour:
   imageHolder: {fileID: 1066430899}
   textHolder: {fileID: 2066798127}
   textSpeed: 0.05
+  textWordWait: 0.15
+  textMinimumWait: 1
   fadeDuration: 1
   onCutsceneEnd:
     m_PersistentCalls:
@@ -1306,7 +1308,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   useScrollingMode: 0
-  scrollSpeed: 10
+  scrollMaxOffset: 100
+  scrollTime: 10
   scrollDelay: 2
   imageHolderRectTransform: {fileID: 0}
 --- !u!114 &6265574054028800839

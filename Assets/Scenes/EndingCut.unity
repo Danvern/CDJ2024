@@ -1139,6 +1139,8 @@ MonoBehaviour:
   imageHolder: {fileID: 1066430899}
   textHolder: {fileID: 965432930}
   textSpeed: 0.05
+  textWordWait: 0.15
+  textMinimumWait: 1
   fadeDuration: 1
   onCutsceneEnd:
     m_PersistentCalls:
