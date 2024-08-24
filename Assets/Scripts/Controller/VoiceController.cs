@@ -42,7 +42,14 @@ public class VoiceLineGroup
 public class VoiceController : MonoBehaviour, IEntityObserver
 {
 	public void SetPrimaryPlayer(EntityMediator targetPlayer) => targetPlayer.AddObserver(this);
+	[SerializeField] VoiceLineGroup idleLines;
 	[SerializeField] VoiceLineGroup hurtLines;
+	[SerializeField] VoiceLineGroup lowHealthEnterLines;
+	[SerializeField] VoiceLineGroup lowHealthExitLines;
+	[SerializeField] VoiceLineGroup healFullLines;
+	[SerializeField] VoiceLineGroup healCollectLines;
+	[SerializeField] VoiceLineGroup magic;
+
 	[SerializeField] VoiceLineGroup spawnLines;
 
 
@@ -61,9 +68,6 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 				spawnLines.PlayLine();
 				break;
 			case VoicePrompt.Hurt:
-				hurtLines.PlayLine();
-				break;
-			case VoicePrompt.HealingPickup:
 				hurtLines.PlayLine();
 				break;
 			case VoicePrompt.MagicPickup:
