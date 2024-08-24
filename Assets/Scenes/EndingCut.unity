@@ -1156,7 +1156,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   useScrollingMode: 1
-  scrollSpeed: 10
+  scrollMaxOffset: -112
+  scrollTime: 10
   scrollDelay: 2
   imageHolderRectTransform: {fileID: 1066430898}
 --- !u!223 &6472148232713579638
