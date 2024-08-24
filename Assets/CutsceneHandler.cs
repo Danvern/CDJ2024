@@ -17,6 +17,7 @@ public class CutsceneHandler : MonoBehaviour
 	[SerializeField] private float textSpeed = 0.05f;
 	[SerializeField] private float textWordWait = 0.25f;
 	[SerializeField] private float textMinimumWait = 1f;
+	[SerializeField] private float finalWait = 1f;
 	[SerializeField] private float fadeDuration = 1f;
 	[SerializeField] private UnityEvent onCutsceneEnd;
 
@@ -103,6 +104,7 @@ public class CutsceneHandler : MonoBehaviour
 			currentIndex++;
 		}
 
+		yield return new WaitForSeconds(finalWait);
 		// Trigger the end of the cutscene
 		onCutsceneEnd.Invoke();
 	}
