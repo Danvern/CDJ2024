@@ -63,6 +63,15 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 			case VoicePrompt.Hurt:
 				hurtLines.PlayLine();
 				break;
+			case VoicePrompt.HealingPickup:
+				hurtLines.PlayLine();
+				break;
+			case VoicePrompt.MagicPickup:
+				hurtLines.PlayLine();
+				break;
+			case VoicePrompt.Lose:
+				hurtLines.PlayLine();
+				break;
 		}
 	}
 

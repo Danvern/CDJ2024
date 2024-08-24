@@ -29,6 +29,7 @@ public class CutsceneHandler : MonoBehaviour
 
     private void Start()
     {
+		textHolder.text = string.Empty;
         StartCutscene();
     }
 
@@ -155,7 +156,10 @@ public class CutsceneHandler : MonoBehaviour
         if (textCoroutine != null)
         {
             StopCoroutine(textCoroutine);
-            textHolder.text = texts[currentIndex];
+			if (currentIndex < texts.Count)
+            	textHolder.text = texts[currentIndex];
+			else
+            	textHolder.text = "";
             isTextScrolling = false;
         }
     }

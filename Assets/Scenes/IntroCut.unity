@@ -958,9 +958,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: test text that is going to be here until that real that dialogue that is
-    real made here real wow etc and you will eat lemons forever and be otherwise
-    interrupted harshly
+  m_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut
+    nunc sed mauris ultricies dignissim vitae ut velit. Aenean quis tellus tincidunt,
+    rutrum mi ut, fringilla eros. Curabitur posuere ut lorem ornare tristique. Proin
+    eu rhoncus nisi. Etiam vitae dui elit. Phasellus id ante ex. Phasellus at metus
+    eget lectus iaculis pellentesque ut ut nibh. Vestibulum eu ligula est. Fusce
+    aliquam lacinia massa, sit amet consectetur tellus euismod sit amet. Nunc nec
+    porta ex, in convallis magna. Nulla convallis erat sit amet lorem mollis dapibus.
+    Sed gravida nulla auctor pellentesque pretium.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1005,7 +1010,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -1287,7 +1292,23 @@ MonoBehaviour:
   fadeDuration: 1
   onCutsceneEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6265574054028800839}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  useScrollingMode: 0
+  scrollSpeed: 10
+  scrollDelay: 2
+  imageHolderRectTransform: {fileID: 0}
 --- !u!114 &6265574054028800839
 MonoBehaviour:
   m_ObjectHideFlags: 0
