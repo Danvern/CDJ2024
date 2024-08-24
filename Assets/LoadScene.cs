@@ -9,6 +9,7 @@ public class LoadScene : MonoBehaviour
     // This method can be called via a UnityEvent to load the specified scene
     public void Load()
     {
+		Time.timeScale = 1.0f; //TODO: normalized timescale manipulation
         if (!string.IsNullOrEmpty(sceneName))
         {
             SceneManager.LoadScene(sceneName);
