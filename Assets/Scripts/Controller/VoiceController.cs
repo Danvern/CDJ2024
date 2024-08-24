@@ -48,9 +48,31 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 	[SerializeField] VoiceLineGroup lowHealthExitLines;
 	[SerializeField] VoiceLineGroup healFullLines;
 	[SerializeField] VoiceLineGroup healCollectLines;
-	[SerializeField] VoiceLineGroup magic;
-
+	[SerializeField] VoiceLineGroup magicPickupLines;
+	[SerializeField] VoiceLineGroup magicFullLines;
+	[SerializeField] VoiceLineGroup magicEmptyLines;
+	[SerializeField] VoiceLineGroup magicCastGoodLines;
+	[SerializeField] VoiceLineGroup magicCastBadLines;
+	[SerializeField] VoiceLineGroup comboStageOneLines;
+	[SerializeField] VoiceLineGroup comboStageTwoLines;
+	[SerializeField] VoiceLineGroup comboStageThreeLines;
+	[SerializeField] VoiceLineGroup spinAttackLines;
+	[SerializeField] VoiceLineGroup chargingSwingLines;
+	[SerializeField] VoiceLineGroup dashLines;
+	[SerializeField] VoiceLineGroup dashBadLines;
+	[SerializeField] VoiceLineGroup upgradeCollectLines;
+	[SerializeField] VoiceLineGroup winLines;
+	[SerializeField] VoiceLineGroup deathLines;
+	[SerializeField] VoiceLineGroup retryLines;
+	[SerializeField] VoiceLineGroup nextWave;
 	[SerializeField] VoiceLineGroup spawnLines;
+	[SerializeField] VoiceLineGroup bossBullLines;
+	[SerializeField] VoiceLineGroup bossGhostLines;
+	[SerializeField] VoiceLineGroup bossFinalLines;
+	[SerializeField] VoiceLineGroup tutorialSwordLines;
+	[SerializeField] VoiceLineGroup tutorialMagicLines;
+	[SerializeField] VoiceLineGroup tutorialDashLines;
+	[SerializeField] VoiceLineGroup tutorialPickupLines;
 
 
 
