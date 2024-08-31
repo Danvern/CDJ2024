@@ -97,6 +97,14 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 				else
 					hurtLines.PlayLine();
 				break;
+			case VoicePrompt.HealingPickup:
+				if (IsHealthFull(data.CurrentHealth / data.MaxHealth))
+					healFullLines.PlayLine();
+				else if (!IsLowHealth(data.CurrentHealth / data.MaxHealth))
+					lowHealthExitLines.PlayLine();
+				else
+					healCollectLines.PlayLine();
+				break;
 			case VoicePrompt.MagicPickup:
 				hurtLines.PlayLine();
 				break;
@@ -110,4 +118,10 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 	{
 		return healthPercentage <= lowHealthPercent;
 	}
+	private bool IsHealthFull(float healthPercentage)
+	{
+		return healthPercentage >= 1f;
+	}
+
+
 }
