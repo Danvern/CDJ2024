@@ -48,7 +48,7 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 	[SerializeField] VoiceLineGroup lowHealthExitLines;
 	[SerializeField] VoiceLineGroup healFullLines;
 	[SerializeField] VoiceLineGroup healCollectLines;
-	[SerializeField] VoiceLineGroup magicPickupLines;
+	[SerializeField] VoiceLineGroup magicCollectLines;
 	[SerializeField] VoiceLineGroup magicFullLines;
 	[SerializeField] VoiceLineGroup magicEmptyLines;
 	[SerializeField] VoiceLineGroup magicCastGoodLines;
@@ -106,7 +106,10 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 					healCollectLines.PlayLine();
 				break;
 			case VoicePrompt.MagicPickup:
-				hurtLines.PlayLine();
+				if (IsMagicFull(data.CurrentMana / data.MaxMana))
+					magicFullLines.PlayLine();
+				else
+					magicCollectLines.PlayLine();
 				break;
 			case VoicePrompt.Lose:
 				hurtLines.PlayLine();
@@ -118,9 +121,15 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 	{
 		return healthPercentage <= lowHealthPercent;
 	}
+
 	private bool IsHealthFull(float healthPercentage)
 	{
 		return healthPercentage >= 1f;
+	}
+
+	private bool IsMagicFull(float magicPercentage)
+	{
+		return magicPercentage >= 1f;
 	}
 
 
