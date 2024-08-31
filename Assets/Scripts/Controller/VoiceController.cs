@@ -125,6 +125,12 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 				else // standard swing
 					chargingSwingLines.PlayLine();
 				break;
+			case VoicePrompt.Dash:
+				if (false)
+					dashBadLines.PlayLine();
+				else
+					dashLines.PlayLine();
+				break;
 			case VoicePrompt.Lose:
 				hurtLines.PlayLine();
 				break;
