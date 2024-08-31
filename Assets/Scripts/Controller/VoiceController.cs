@@ -119,6 +119,12 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 				else
 					magicCastGoodLines.PlayLine();
 				break;
+			case VoicePrompt.SwordSwing:
+				if (false) // spit attack
+					spinAttackLines.PlayLine();
+				else // standard swing
+					chargingSwingLines.PlayLine();
+				break;
 			case VoicePrompt.Lose:
 				hurtLines.PlayLine();
 				break;
