@@ -36,6 +36,8 @@ public enum VoicePrompt
 	Hurt,
 	HealingPickup,
 	MagicPickup,
+	SwordSwing,
+	MagicCast,
 	Combo,
 	Dash,
 	Win,

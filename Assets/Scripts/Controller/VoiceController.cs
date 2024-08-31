@@ -111,6 +111,14 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 				else
 					magicCollectLines.PlayLine();
 				break;
+			case VoicePrompt.MagicCast:
+				if (false) // failed due to lacking magic
+					magicEmptyLines.PlayLine();
+				else if (false) // off beat
+					magicCastBadLines.PlayLine();
+				else
+					magicCastGoodLines.PlayLine();
+				break;
 			case VoicePrompt.Lose:
 				hurtLines.PlayLine();
 				break;
