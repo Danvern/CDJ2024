@@ -17,12 +17,12 @@ public class VoiceLineGroup
 
 		var countdown = Random.Range(0, GetTotal(weights));
 		int i = 0;
-		do 
+		do
 		{
 			countdown -= weights[i++];
 
 		}
-		while(countdown > 0);
+		while (countdown > 0);
 		AudioManager.Instance.PlayOneShot(eventReferences[i - 1], Vector3.zero);
 
 
@@ -74,6 +74,8 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 	[SerializeField] VoiceLineGroup tutorialDashLines;
 	[SerializeField] VoiceLineGroup tutorialPickupLines;
 
+	[SerializeField] float lowHealthPercent = 0.33f;
+
 
 
 	// Start is called before the first frame update
@@ -90,7 +92,10 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 				spawnLines.PlayLine();
 				break;
 			case VoicePrompt.Hurt:
-				hurtLines.PlayLine();
+				if (IsLowHealth(data.CurrentHealth / data.MaxHealth))
+					lowHealthEnterLines.PlayLine();
+				else
+					hurtLines.PlayLine();
 				break;
 			case VoicePrompt.MagicPickup:
 				hurtLines.PlayLine();
@@ -101,5 +106,8 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 		}
 	}
 
-
+	private bool IsLowHealth(float healthPercentage)
+	{
+		return healthPercentage <= lowHealthPercent;
+	}
 }
