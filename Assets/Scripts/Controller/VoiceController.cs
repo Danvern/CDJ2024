@@ -131,8 +131,14 @@ public class VoiceController : MonoBehaviour, IEntityObserver
 				else
 					dashLines.PlayLine();
 				break;
+			case VoicePrompt.Win:
+				winLines.PlayLine();
+				break;
+			case VoicePrompt.Death:
+				deathLines.PlayLine();
+				break;
 			case VoicePrompt.Lose:
-				hurtLines.PlayLine();
+				retryLines.PlayLine();
 				break;
 		}
 	}
