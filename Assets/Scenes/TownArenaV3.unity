@@ -8155,10 +8155,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.15625001
     y: 0
-    width: 1
-    height: 1
+    width: 0.33333334
+    height: 0.34444442
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -9087,6 +9087,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3da7f2d05fa794088a9dcfc298b244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleLines:
+    eventReferences: []
+    weights: 
   hurtLines:
     eventReferences:
     - Guid:
@@ -9102,6 +9105,69 @@ MonoBehaviour:
         Data4: 159906088
       Path: event:/voc/Mei_crafts
     weights: 0500000001000000
+  lowHealthEnterLines:
+    eventReferences: []
+    weights: 
+  lowHealthExitLines:
+    eventReferences: []
+    weights: 
+  healFullLines:
+    eventReferences: []
+    weights: 
+  healCollectLines:
+    eventReferences: []
+    weights: 
+  magicCollectLines:
+    eventReferences: []
+    weights: 
+  magicFullLines:
+    eventReferences: []
+    weights: 
+  magicEmptyLines:
+    eventReferences: []
+    weights: 
+  magicCastGoodLines:
+    eventReferences: []
+    weights: 
+  magicCastBadLines:
+    eventReferences: []
+    weights: 
+  comboStageOneLines:
+    eventReferences: []
+    weights: 
+  comboStageTwoLines:
+    eventReferences: []
+    weights: 
+  comboStageThreeLines:
+    eventReferences: []
+    weights: 
+  spinAttackLines:
+    eventReferences: []
+    weights: 
+  chargingSwingLines:
+    eventReferences: []
+    weights: 
+  dashLines:
+    eventReferences: []
+    weights: 
+  dashBadLines:
+    eventReferences: []
+    weights: 
+  upgradeCollectLines:
+    eventReferences: []
+    weights: 
+  winLines:
+    eventReferences: []
+    weights: 
+  deathLines:
+    eventReferences: []
+    weights: 
+  retryLines:
+    eventReferences: []
+    weights: 
+  nextWave:
+    eventReferences: []
+    weights: 
   spawnLines:
     eventReferences:
     - Guid:
@@ -9117,6 +9183,28 @@ MonoBehaviour:
         Data4: 1612836542
       Path: event:/voc/Mei_thisisit
     weights: 0300000002000000
+  bossBullLines:
+    eventReferences: []
+    weights: 
+  bossGhostLines:
+    eventReferences: []
+    weights: 
+  bossFinalLines:
+    eventReferences: []
+    weights: 
+  tutorialSwordLines:
+    eventReferences: []
+    weights: 
+  tutorialMagicLines:
+    eventReferences: []
+    weights: 
+  tutorialDashLines:
+    eventReferences: []
+    weights: 
+  tutorialPickupLines:
+    eventReferences: []
+    weights: 
+  lowHealthPercent: 0.33
 --- !u!4 &971867222
 Transform:
   m_ObjectHideFlags: 0
@@ -10942,6 +11030,16 @@ PrefabInstance:
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 670926567}
+    - target: {fileID: 2482074444872821145, guid: 01d5121a8260a3a468676ce1624b8d56,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482074444872821145, guid: 01d5121a8260a3a468676ce1624b8d56,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4737439951036461151, guid: 01d5121a8260a3a468676ce1624b8d56,
         type: 3}
       propertyPath: m_Name

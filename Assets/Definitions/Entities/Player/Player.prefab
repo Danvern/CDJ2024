@@ -57,12 +57,16 @@ MonoBehaviour:
   waypointCloseness: 0.75
   speed: 1
   acceleration: 160
+  magicStorage: 10
+  scoreValue: 100
   primaryWeapon: {fileID: 8890011804488458781}
   secondaryWeapon: {fileID: 7482461504137651058}
+  isSecondaryTriggeredOnDeath: 0
   dashWeapon: {fileID: 163678050197324590}
   isEnemy: 0
   isUsingPickups: 1
   animator: {fileID: 5487468954803287456}
+  isHeavy: 0
 --- !u!114 &5791097860434604426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,8 +158,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.5
+  m_LinearDrag: 1
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
