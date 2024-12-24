@@ -14,6 +14,12 @@ public class VoiceLineGroup
 
 	public void PlayLine()
 	{
+		if (eventReferences.Length == 0)
+		{
+			Debug.LogWarning("try to play missing voice line");
+			return;
+
+		}
 
 		var countdown = Random.Range(0, GetTotal(weights));
 		int i = 0;
