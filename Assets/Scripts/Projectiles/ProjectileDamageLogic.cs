@@ -98,11 +98,21 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 					projectile.KillNext();
 
 				}
-
 			}
 			else if (entity != null)
 			{
-				EntityMediator entityMediator = ServiceLocator.For(entity).Get<EntityMediator>();
+				kill = CheckEntityCollision(transform, owner, collider, entity) || kill;
+			}
+			potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius(), layerMask: environmentMask);
+			if (data.IsBlockedByWorld && potentialCollisions.Length > 0)
+				kill = true;
+		}
+		return kill;
+	}
+
+	private bool CheckEntityCollision(Transform transform, EntityMediator owner, Collider2D collider, Entity entity)
+	{
+		EntityMediator entityMediator = ServiceLocator.For(entity).Get<EntityMediator>();
 
 				if (entityCollisions.ContainsKey(collider.transform))
 				{
@@ -134,16 +144,10 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 					}
 					if (piercing < 0 && !IsExplosion())
 					{
-						kill = true;
-						break;
+						return true;
 					}
 				}
-			}
-			potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius(), layerMask: environmentMask);
-			if (data.IsBlockedByWorld && potentialCollisions.Length > 0)
-				kill = true;
-		}
-		return kill;
+				return false;
 	}
 
 	public void DoEntityEffect(EntityMediator entity)
