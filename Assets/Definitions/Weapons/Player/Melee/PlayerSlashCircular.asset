@@ -18,6 +18,7 @@ MonoBehaviour:
   Piercing: 64
   Knockback: 15
   KnockbackStun: 0.5
+  HitLag: 0.2
   IsIndescriminate: 0
   IsExplosion: 0
   IsProjectileDestroyer: 1
