@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
@@ -28,6 +30,19 @@ public class ProjectileManager : MonoBehaviour
 			projectile.TakeOwnership(owner);
 			projectile.TrackTransform(parent);
 		}
+	}
+
+	public void DoHitLag(float time)
+	{
+		StartCoroutine(HitLag(time, 0f));
+	}
+
+	private IEnumerator HitLag(float time, float timescaleFreeze)
+	{
+		Time.timeScale = timescaleFreeze;
+		yield return new WaitForSecondsRealtime(time);
+		Time.timeScale = 1f;
+
 	}
 
 	void Awake()

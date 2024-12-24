@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityServiceLocator;
@@ -13,6 +14,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	private float speed = 1;
 	private float knockback = 10;
 	private float KnockbackStun = .25f;
+	private float hitLag = 0f;
 	private Vector2 impactPosition = Vector2.zero;
 	private bool isIndescriminate = false;
 	private bool isExplosion = false;
@@ -37,6 +39,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		isIndescriminate = data.IsIndescriminate;
 		isExplosion = data.IsExplosion;
 		isProjectileDestroyer = data.IsProjectileDestroyer;
+		hitLag = data.HitLag;
 		this.mediator = mediator;
 	}
 
@@ -80,7 +83,7 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		LayerMask entityMask = LayerMask.GetMask("Entities");
 		LayerMask environmentMask = LayerMask.GetMask("EnvironmentObstacles");
 		LayerMask projectileMask = LayerMask.GetMask("ProjectileVulnerable");
-		Collider2D[] potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius(), layerMask: entityMask|projectileMask);
+		Collider2D[] potentialCollisions = Physics2D.OverlapCircleAll(transform.position, GetCollisionRadius(), layerMask: entityMask | projectileMask);
 
 		if (potentialCollisions.Length == 0) return false;
 
@@ -114,40 +117,42 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 	{
 		EntityMediator entityMediator = ServiceLocator.For(entity).Get<EntityMediator>();
 
-				if (entityCollisions.ContainsKey(collider.transform))
-				{
+		if (entityCollisions.ContainsKey(collider.transform))
+		{
 
-				}
-				else if (entityMediator.IsDead()) { }
-				else if (owner == null || owner.IsHostile(entityMediator) || (IsIndescriminate() && (owner != entityMediator || IsExplosion())))
-				{
-					entityCollisions.Add(collider.transform, Time.time);
-					DecreasePierce(1);
-					DoEntityEffect(entityMediator);
-					if (GetHitEffect() && (piercing >= 0 || !data.IsHitEffectOnlyOnPierce))
-						ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), impactPosition, GetHitEffect().transform.rotation, owner);
-						//ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), collider.ClosestPoint(impactPosition), transform.rotation, owner);
+		}
+		else if (entityMediator.IsDead()) { }
+		else if (owner == null || owner.IsHostile(entityMediator) || (IsIndescriminate() && (owner != entityMediator || IsExplosion())))
+		{
+			entityCollisions.Add(collider.transform, Time.time);
+			DecreasePierce(1);
+			DoEntityEffect(entityMediator);
+			if (GetHitEffect() && (piercing >= 0 || !data.IsHitEffectOnlyOnPierce))
+				ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), impactPosition, GetHitEffect().transform.rotation, owner);
+			//ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), collider.ClosestPoint(impactPosition), transform.rotation, owner);
+			if (hitLag > 0)
+			ProjectileManager.Instance.DoHitLag(hitLag);
 
-					if (entityMediator.IsDead())
-					{
-						if (!data.HeavyKillSFX.IsNull && entityMediator.IsHeavy())
-							AudioManager.Instance.PlayOneShot(data.HeavyKillSFX, transform.position);
-						else if (!data.SmallKillSFX.IsNull)
-							AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
-					}
-					else
-					{
-						if (!data.HeavyDamageSFX.IsNull && entityMediator.IsHeavy())
-							AudioManager.Instance.PlayOneShot(data.HeavyDamageSFX, transform.position);
-						else if (!data.DamageSFX.IsNull)
-							AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
-					}
-					if (piercing < 0 && !IsExplosion())
-					{
-						return true;
-					}
-				}
-				return false;
+			if (entityMediator.IsDead())
+			{
+				if (!data.HeavyKillSFX.IsNull && entityMediator.IsHeavy())
+					AudioManager.Instance.PlayOneShot(data.HeavyKillSFX, transform.position);
+				else if (!data.SmallKillSFX.IsNull)
+					AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
+			}
+			else
+			{
+				if (!data.HeavyDamageSFX.IsNull && entityMediator.IsHeavy())
+					AudioManager.Instance.PlayOneShot(data.HeavyDamageSFX, transform.position);
+				else if (!data.DamageSFX.IsNull)
+					AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
+			}
+			if (piercing < 0 && !IsExplosion())
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void DoEntityEffect(EntityMediator entity)
