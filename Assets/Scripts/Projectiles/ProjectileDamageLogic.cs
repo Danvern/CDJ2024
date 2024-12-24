@@ -124,6 +124,13 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 		else if (entityMediator.IsDead()) { }
 		else if (owner == null || owner.IsHostile(entityMediator) || (IsIndescriminate() && (owner != entityMediator || IsExplosion())))
 		{
+			if (hitLag > 0)
+			{
+
+				ProjectileManager.Instance.DoHitLag(hitLag);
+				AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
+			} //TODO: clean up here
+
 			entityCollisions.Add(collider.transform, Time.time);
 			DecreasePierce(1);
 			DoEntityEffect(entityMediator);
@@ -131,22 +138,21 @@ public class ProjectileDamageLogic : IProjectileDamageLogic
 				ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), impactPosition, GetHitEffect().transform.rotation, owner);
 			//ProjectileManager.Instance.GenerateProjectile(GetHitEffect(), collider.ClosestPoint(impactPosition), transform.rotation, owner);
 			if (hitLag > 0)
-			ProjectileManager.Instance.DoHitLag(hitLag);
 
-			if (entityMediator.IsDead())
-			{
-				if (!data.HeavyKillSFX.IsNull && entityMediator.IsHeavy())
-					AudioManager.Instance.PlayOneShot(data.HeavyKillSFX, transform.position);
-				else if (!data.SmallKillSFX.IsNull)
-					AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
-			}
-			else
-			{
-				if (!data.HeavyDamageSFX.IsNull && entityMediator.IsHeavy())
-					AudioManager.Instance.PlayOneShot(data.HeavyDamageSFX, transform.position);
-				else if (!data.DamageSFX.IsNull)
-					AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
-			}
+				if (entityMediator.IsDead())
+				{
+					if (!data.HeavyKillSFX.IsNull && entityMediator.IsHeavy())
+						AudioManager.Instance.PlayOneShot(data.HeavyKillSFX, transform.position);
+					else if (!data.SmallKillSFX.IsNull)
+						AudioManager.Instance.PlayOneShot(data.SmallKillSFX, transform.position);
+				}
+				else
+				{
+					if (!data.HeavyDamageSFX.IsNull && entityMediator.IsHeavy())
+						AudioManager.Instance.PlayOneShot(data.HeavyDamageSFX, transform.position);
+					else if (!data.DamageSFX.IsNull)
+						AudioManager.Instance.PlayOneShot(data.DamageSFX, transform.position);
+				}
 			if (piercing < 0 && !IsExplosion())
 			{
 				return true;
