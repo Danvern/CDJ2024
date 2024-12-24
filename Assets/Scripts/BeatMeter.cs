@@ -15,6 +15,7 @@ public class BeatMeter : MonoBehaviour
 	void Start()
 	{
 		animator.Play("Base Layer.BeatFlower");
+		gameObject.SetActive(false); //TODO: hide beat meter
 	}
 
 	// Update is called once per frame
